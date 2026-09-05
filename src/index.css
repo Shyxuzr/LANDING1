@@ -1,1 +1,198 @@
 @import "tailwindcss";
+
+/* ============================================================
+   BLUE STAR PLASTIC INDUSTRIES — design tokens (Tailwind v4)
+   Palette: deep navy / steel grey / off-white paper / safety amber
+   Type:    Bebas Neue (display) · IBM Plex Sans (body) · IBM Plex Mono (specs)
+   ============================================================ */
+@theme {
+  --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --color-navy-50: #f2f6fb;
+  --color-navy-100: #e4ecf6;
+  --color-navy-200: #c8d8ea;
+  --color-navy-300: #a2bbd8;
+  --color-navy-400: #7192bc;
+  --color-navy-500: #4a6d9e;
+  --color-navy-600: #325282;
+  --color-navy-700: #213e68;
+  --color-navy-800: #152c4f;
+  --color-navy-900: #0c1e3a;
+  --color-navy-950: #071427;
+
+  --color-steel-100: #eef1f6;
+  --color-steel-200: #dde3ec;
+  --color-steel-300: #c2ccda;
+  --color-steel-400: #98a8bd;
+  --color-steel-500: #6e8098;
+  --color-steel-600: #52627a;
+  --color-steel-700: #3e4b5f;
+
+  --color-paper: #f6f8fb;
+  --color-ink: #0e1a2e;
+
+  --color-accent-300: #ffd489;
+  --color-accent-400: #ffc258;
+  --color-accent-500: #f5a81c;
+  --color-accent-600: #d98e0b;
+  --color-accent-700: #b37206;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-accent-500);
+    color: var(--color-navy-950);
+  }
+}
+
+/* ---------- ambient layers ---------- */
+
+/* Fine engineering grid for light sections */
+.bg-blueprint {
+  background-image: linear-gradient(rgba(21, 44, 79, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 44, 79, 0.055) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Same grid, tuned for navy sections */
+.bg-blueprint-dark {
+  background-image: linear-gradient(rgba(228, 236, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(228, 236, 246, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Fixed film-grain overlay for a printed, non-flat surface */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E");
+}
+
+/* Hollow display headline watermark */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(21, 44, 79, 0.13);
+}
+.text-outline-light {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(228, 236, 246, 0.1);
+}
+
+/* ---------- signature motion ---------- */
+
+/* Spec ticker below the hero */
+.marquee {
+  overflow: hidden;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Scroll reveal (state toggled by IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slow breathing zoom on photography */
+.kenburns {
+  animation: kenburns 16s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes kenburns {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.1) translate(-1.6%, -1.2%);
+  }
+}
+
+/* Floating spec tag on the hero image */
+.float-tag {
+  animation: floatTag 6s ease-in-out infinite alternate;
+}
+@keyframes floatTag {
+  from {
+    transform: translateY(-4px);
+  }
+  to {
+    transform: translateY(7px);
+  }
+}
+
+/* Sliding underline for nav + inline links */
+.nav-underline {
+  position: relative;
+}
+.nav-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -5px;
+  height: 2px;
+  background: var(--color-accent-500);
+  transition: right 0.3s ease;
+}
+.nav-underline:hover::after,
+.nav-underline:focus-visible::after {
+  right: 0;
+}
+
+/* ---------- accessibility: honour reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .kenburns,
+  .float-tag,
+  .marquee-track {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
