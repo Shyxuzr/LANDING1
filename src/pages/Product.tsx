@@ -38,7 +38,7 @@ const DRAWING_FAMILY: Record<string, import("../lib/drawings").Family> = {
   "frp-water-tanks": "tank",
   "grc-facade-panels": "facade",
   "frp-door-frames": "door",
-  "grc-planters": "planter",
+  "frp-planters": "planter",
 };
 const fam = (slug: string) => DRAWING_FAMILY[slug] ?? "chajja";
 

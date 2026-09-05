@@ -598,37 +598,48 @@ function Door({ v }: { v: string }) {
   );
 }
 
-/* ---------- GRC PLANTERS & LANDSCAPE ---------- */
+/* ---------- FRP RECTANGULAR PLANTERS (Selenge & Hudson) ---------- */
 function Planter({ v }: { v: string }) {
-  const foliage = (x: number, y: number) => (
-    <g strokeWidth="1.5" strokeLinecap="round">
-      <path d={`M${x} ${y}c-8-10-6-22 2-30 6 10 6 22-2 30Z`} />
-      <path d={`M${x} ${y}c8-10 6-22-2-30`} />
-      <path d={`M${x - 12} ${y}c-6-6-7-14-3-21 6 5 8 14 3 21Z`} />
-      <path d={`M${x + 12} ${y}c6-6 7-14 3-21-6 5-8 14-3 21Z`} />
-    </g>
-  );
   return (
     <g stroke="currentColor" strokeLinejoin="round" strokeWidth="2">
       <line x1="44" y1="128" x2="196" y2="128" strokeWidth="2.2" />
-      {v === "square" && (
+      {v === "selenge" && (
         <g>
-          {foliage(120, 52)}
-          <rect x="82" y="52" width="76" height="10" />
-          <path d="M86 62h68l-6 66H92Z" />
-          <line x1="88" y1="74" x2="152" y2="74" strokeWidth="1.2" />
+          {/* ornamental grass blades */}
+          <g strokeWidth="1.4" strokeLinecap="round" fill="none">
+            <path d="M92 58 C 90 44 85 36 79 30" />
+            <path d="M104 58 C 104 42 101 32 97 22" />
+            <path d="M118 58 C 119 40 123 30 129 20" />
+            <path d="M132 58 C 133 44 137 34 143 26" />
+            <path d="M146 58 C 149 46 155 38 161 34" />
+          </g>
+          {/* rim band */}
+          <rect x="76" y="58" width="88" height="9" />
+          {/* tapered one-piece body */}
+          <path d="M80 67 H160 L152 118 H88 Z" />
+          {/* recessed shadow-gap base */}
+          <path d="M92 118 H148 V124 H92 Z" strokeWidth="1.4" />
+          {/* moulded liner line */}
+          <line x1="85" y1="76" x2="155" y2="76" strokeWidth="1.2" />
         </g>
       )}
-      {v === "urn" && (
+      {v === "hudson" && (
         <g>
-          {foliage(120, 46)}
-          <rect x="92" y="46" width="56" height="8" />
-          <path d="M94 54c-4 16-4 28 6 34h40c10-6 10-18 6-34" />
-          <path d="M100 88h40l-4 26h-32Z" />
-          <rect x="92" y="114" width="56" height="14" strokeWidth="1.6" />
+          {/* shrub canopy */}
+          <g strokeWidth="1.5" strokeLinecap="round" fill="none">
+            <path d="M74 84 C 68 72 74 60 86 58 C 88 46 102 41 111 49 C 117 37 135 39 138 51 C 151 49 159 59 155 70 C 166 73 164 84 153 84" />
+            <path d="M98 84 C 96 74 99 68 105 65 M126 84 C 126 72 130 66 136 61" strokeWidth="1.1" />
+          </g>
+          {/* rolled lip rim */}
+          <rect x="50" y="84" width="140" height="10" />
+          {/* wide body */}
+          <path d="M56 94 H184 L178 118 H62 Z" />
+          {/* recessed base */}
+          <path d="M66 118 H174 V124 H66 Z" strokeWidth="1.4" />
+          <line x1="60" y1="103" x2="180" y2="103" strokeWidth="1.2" />
         </g>
       )}
-      {v === "raised" && (
+      {/* GRC-era raised/treegrate variants retired for the FRP planters sheet
         <g>
           {[78, 112, 146].map((x) => (
             <g key={x} strokeWidth="1.4" strokeLinecap="round">
@@ -653,6 +664,7 @@ function Planter({ v }: { v: string }) {
           <rect x="70" y="104" width="100" height="20" strokeWidth="1.6" />
         </g>
       )}
+      */}
     </g>
   );
 }
