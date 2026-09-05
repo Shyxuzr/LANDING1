@@ -1,20 +1,25 @@
 /**
  * ============================================================================
- *  BLUE STAR PLASTIC INDUSTRIES — Landing Page #1 : FRP CHAJJAS
+ *  BLUE STAR PLASTIC INDUSTRIES — Landing Page #2 : GRC JALI PANELS
  * ----------------------------------------------------------------------------
- *  Single-file implementation. Sections, in order:
- *    1. Header / Navbar      — brand + right-aligned call button + scroll progress
- *    2. Hero                 — headline, sub-headline, primary CTA, photo + spec tags
- *    3. Spec ticker          — rotating marquee of product credentials
- *    4. Key Advantages       — 3-column icon grid (weather / maintenance / eco)
- *    5. Why FRP comparison   — FRP vs MS steel vs RCC data table
- *    6. Stats band           — animated counters
- *    7. Product Showcase     — 4-column grid with SVG elevation drawings
- *    8. Process              — 4-step "drawing to fixing" timeline + factory photo
- *    9. Quote form           — validated contact form with success state
- *   10. Footer               — sales email, phone, copyright
+ *  Sections, in order:
+ *    1. Header / Navbar        — brand + right-aligned call button
+ *    2. Hero                   — headline + a LIVE jali lattice panel with
+ *                                drifting sunlight and mouse parallax
+ *    3. Spec ticker            — rotating marquee of product credentials
+ *    4. Key Features           — ledger rows (strength / weather / weight)
+ *    5. Applications index     — façades · ventilation · partitions ·
+ *                                balconies · landscape
+ *    6. Pattern Showcase       — 5 real lattice drawings + custom CTA cell
+ *    7. Cinema band            — full-bleed "light through jali" photograph
+ *    8. Why GRC                — comparison vs MS/alu jali & terracotta
+ *    9. Stats band             — animated counters
+ *   10. Process                — sample-to-fixing timeline + workshop photo
+ *   11. Quote form             — validated form with success state
+ *   12. Footer                 — sales email, phone, copyright
  *
- *  Design system: navy / steel-grey / off-white with safety-amber accents.
+ *  Design system shared with Page #1 (FRP Chajjas):
+ *  navy / steel-grey / off-white with safety-amber accents.
  *  Type: Bebas Neue (display) · IBM Plex Sans (body) · IBM Plex Mono (specs).
  * ============================================================================
  */
@@ -29,39 +34,36 @@ const PHONE_TEL = "tel:+919152091020";
 const EMAIL = "sales@bluestarplastic.in";
 const ADDRESS = "Plot 42, MIDC Industrial Area, Taloja, Navi Mumbai — 410208";
 
-const HERO_IMG =
-  "https://image.qwenlm.ai/generated-images/cb9d06be-7c2f-4cc3-81a3-0e60f00a2076/_result.png";
-const FACTORY_IMG =
-  "https://image.qwenlm.ai/generated-images/1df56e0c-c10e-4418-a9e3-f73f828891d0/_result.png";
+const FACADE_IMG =
+  "https://image.qwenlm.ai/generated-images/30e84dfa-f3fb-45e3-b0f6-6d76cd66cf47/_result.png";
+const WORKSHOP_IMG =
+  "https://image.qwenlm.ai/generated-images/c6b2b6ed-aa33-4062-b0a5-2a29e0761084/_result.png";
 
 const NAV_LINKS = [
-  { label: "Advantages", href: "#advantages" },
-  { label: "Why FRP", href: "#why-frp" },
-  { label: "Products", href: "#products" },
-  { label: "Process", href: "#process" },
+  { label: "Features", href: "#features" },
+  { label: "Applications", href: "#applications" },
+  { label: "Patterns", href: "#patterns" },
+  { label: "Why GRC", href: "#why-grc" },
   { label: "Contact", href: "#quote" },
 ];
 
 const TICKER_ITEMS = [
-  "UV-STABILISED GELCOAT FINISH",
-  "ZERO RUST · ZERO ROT · ZERO PAINT",
-  "10-YEAR STRUCTURAL WARRANTY",
-  "CUSTOM RAL COLOURS, MOULDED-IN",
-  "PAN-INDIA SUPPLY & FIXING SUPPORT",
-  "3–4 KG/M² — A FRACTION OF RCC",
-  "IS 12086 TESTED COMPOSITE",
+  "GLASS-FIBRE REINFORCED CONCRETE",
+  "OPEN AREA 29–41%",
+  "CAST-TO-ORDER 600 MM MODULES",
+  "NON-COMBUSTIBLE · CLASS A1",
+  "NATURAL CEMENT OR RAL FINISHES",
+  "5 SIGNATURE PATTERNS + CUSTOM",
+  "PAN-INDIA CRATED DELIVERY",
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Custom inline SVG icons (drawn for this page — no icon library)    */
+/*  Custom inline SVG icons                                            */
 /* ------------------------------------------------------------------ */
 function StarMark({ className = "w-6 h-6" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
-      <path
-        d="M12 0 L14.6 9.4 L24 12 L14.6 14.6 L12 24 L9.4 14.6 L0 12 L9.4 9.4 Z"
-        fill="currentColor"
-      />
+      <path d="M12 0 L14.6 9.4 L24 12 L14.6 14.6 L12 24 L9.4 14.6 L0 12 L9.4 9.4 Z" fill="currentColor" />
     </svg>
   );
 }
@@ -109,7 +111,20 @@ function CheckIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
-/** Advantage icon — shield holding sun + rain: shields from sun, rain, UV. */
+/** Feature icon — compression press on a panel: high strength & durable. */
+function StrengthIcon({ className = "w-7 h-7" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="8" y="26" width="32" height="9" />
+      <path d="M16 6v11M16 17l-4-5M16 17l4-5" />
+      <path d="M32 6v11M32 17l-4-5M32 17l4-5" />
+      <path d="M6 42h36" />
+      <path d="M12 26v-3M36 26v-3" />
+    </svg>
+  );
+}
+
+/** Feature icon — shield holding sun + rain: weather & corrosion resistant. */
 function WeatherIcon({ className = "w-7 h-7" }: { className?: string }) {
   return (
     <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -121,28 +136,68 @@ function WeatherIcon({ className = "w-7 h-7" }: { className?: string }) {
   );
 }
 
-/** Advantage icon — crossed-out droplet + spark: no rust, no rot, no paint. */
-function MaintenanceIcon({ className = "w-7 h-7" }: { className?: string }) {
+/** Feature icon — floating panel with lift arrows: lightweight & easy install. */
+function LightweightIcon({ className = "w-7 h-7" }: { className?: string }) {
   return (
     <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M24 9C24 9 13 22.5 13 30a11 11 0 0 0 22 0C35 22.5 24 9 24 9Z" />
-      <path d="M18.5 31a5.5 5.5 0 0 0 4 5.3" />
-      <path d="M8 8l32 32" />
-      <path d="M39.5 8.5l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1Z" fill="currentColor" strokeWidth="1" />
+      <path d="M8 27 24 19l16 8-16 8Z" />
+      <path d="M8 27v6l16 8 16-8v-6" />
+      <path d="M24 33v14" />
+      <path d="M17 10l7-4 7 4" />
+      <circle cx="11" cy="8" r="1.4" fill="currentColor" stroke="none" />
+      <circle cx="37" cy="8" r="1.4" fill="currentColor" stroke="none" />
     </svg>
   );
 }
 
-/** Advantage icon — leaf with vein + returning arrow: sustainable choice. */
-function EcoIcon({ className = "w-7 h-7" }: { className?: string }) {
+/* Application index glyphs (24 × 24 line icons) */
+function FacadeGlyph({ className = "w-6 h-6" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M36.5 10.5C20 12.5 11.5 22.5 12 37c14.5-.5 23.5-9.5 24.5-26.5Z" />
-      <path d="M14.5 35C18 26.5 25 19.5 33.5 14" />
-      <path d="M40 29a11.5 11.5 0 0 1-7.5 10.5" />
-      <path d="m32.5 36 0 4 4-1.5" />
-      <path d="M8 19a11.5 11.5 0 0 1 7.5-10.5" />
-      <path d="M15.5 12.5v-4l-4 1.5" />
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
+      <rect x="3.5" y="3.5" width="17" height="17" />
+      <path d="M9.2 3.5v17M14.8 3.5v17M3.5 9.2h17M3.5 14.8h17" />
+    </svg>
+  );
+}
+
+function VentGlyph({ className = "w-6 h-6" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
+      <path d="M3 8.5q2.2-3 4.5 0t4.5 0 4.5 0 4.5 0" />
+      <path d="M3 13q2.2-3 4.5 0t4.5 0 4.5 0 4.5 0" />
+      <path d="M3 17.5q2.2-3 4.5 0t4.5 0 4.5 0 4.5 0" />
+    </svg>
+  );
+}
+
+function PartitionGlyph({ className = "w-6 h-6" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
+      <path d="M12 3v18" strokeDasharray="3 2.4" />
+      <rect x="3.5" y="9" width="5" height="6" />
+      <rect x="15.5" y="9" width="5" height="6" />
+    </svg>
+  );
+}
+
+function BalconyGlyph({ className = "w-6 h-6" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
+      <path d="M3 6.5h18" />
+      <path d="M5.5 6.5v11M10 6.5v11M14 6.5v11M18.5 6.5v11" />
+      <path d="M3 17.5h18" />
+      <path d="M4.5 21h15" />
+    </svg>
+  );
+}
+
+function LandscapeGlyph({ className = "w-6 h-6" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 13C12 7 16.5 3.5 20 3.5 20 9.5 16 13 12 13Z" />
+      <path d="M12 13c0-4.5-3.5-7-6.5-7C5.5 10.5 8.5 13 12 13Z" />
+      <path d="M12 13v8" />
+      <path d="M5 21h14" />
     </svg>
   );
 }
@@ -150,8 +205,6 @@ function EcoIcon({ className = "w-7 h-7" }: { className?: string }) {
 /* ------------------------------------------------------------------ */
 /*  Motion helpers                                                     */
 /* ------------------------------------------------------------------ */
-
-/** Observe an element once; returns ref + whether it has entered view. */
 function useInView<T extends HTMLElement>(threshold = 0.15) {
   const ref = useRef<T | null>(null);
   const [inView, setInView] = useState(false);
@@ -181,7 +234,6 @@ function useInView<T extends HTMLElement>(threshold = 0.15) {
   return { ref, inView };
 }
 
-/** Scroll-reveal wrapper — fades/slides children in when scrolled to. */
 function Reveal({
   children,
   className = "",
@@ -203,7 +255,6 @@ function Reveal({
   );
 }
 
-/** Number counter that animates when scrolled into view. */
 function CountUp({ to, suffix = "", duration = 1600 }: { to: number; suffix?: string; duration?: number }) {
   const { ref, inView } = useInView<HTMLSpanElement>(0.4);
   const [val, setVal] = useState(0);
@@ -218,7 +269,7 @@ function CountUp({ to, suffix = "", duration = 1600 }: { to: number; suffix?: st
     const start = performance.now();
     const tick = (now: number) => {
       const p = Math.min(1, (now - start) / duration);
-      setVal(Math.round(to * (1 - Math.pow(1 - p, 4)))); // easeOutQuart
+      setVal(Math.round(to * (1 - Math.pow(1 - p, 4))));
       if (p < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -234,220 +285,127 @@ function CountUp({ to, suffix = "", duration = 1600 }: { to: number; suffix?: st
 }
 
 /* ------------------------------------------------------------------ */
-/*  Chajja elevation drawings (one custom SVG per product profile)     */
+/*  Jali lattice patterns — every pattern is a real, tiling SVG        */
 /* ------------------------------------------------------------------ */
-type ProductVariant = "plain" | "sloped" | "curved" | "decorative";
+type JaliVariant = "basket" | "star" | "maze" | "leaf" | "brick" | "heroStar";
 
-function ChajjaProfile({ variant, label }: { variant: ProductVariant; label: string }) {
-  const gridId = `grid-${variant}`;
-  const hatchId = `hatch-${variant}`;
+/**
+ * Renders a seamless jali lattice. All geometry uses `currentColor` so a
+ * parent `text-*` / `group-hover:text-*` re-colours the whole drawing.
+ * `uid` keeps <pattern> ids unique when several tiles share the page.
+ */
+function JaliTile({ variant, uid, className = "" }: { variant: JaliVariant; uid: string; className?: string }) {
+  const pid = `jali-${uid}`;
+
+  const motif = () => {
+    switch (variant) {
+      /* Over-and-under woven strips in alternating 2 × 2 blocks */
+      case "basket":
+        return (
+          <pattern id={pid} width="44" height="44" patternUnits="userSpaceOnUse">
+            <g fill="currentColor">
+              <rect x="1" y="3" width="20" height="7" />
+              <rect x="1" y="12" width="20" height="7" />
+              <rect x="25" y="1" width="7" height="20" />
+              <rect x="34" y="1" width="7" height="20" />
+              <rect x="1" y="25" width="20" height="7" />
+              <rect x="1" y="34" width="20" height="7" />
+              <rect x="25" y="23" width="7" height="20" />
+              <rect x="34" y="23" width="7" height="20" />
+            </g>
+          </pattern>
+        );
+
+      /* Two overlapping squares + corner diamonds = 8-point star khatam */
+      case "star":
+        return (
+          <pattern id={pid} width="56" height="56" patternUnits="userSpaceOnUse">
+            <g fill="none" stroke="currentColor" strokeWidth="2.5">
+              <rect x="12" y="12" width="32" height="32" />
+              <path d="M28 5 51 28 28 51 5 28Z" />
+              <path d="M0 -6 6 0 0 6 -6 0Z" />
+              <path d="M56 -6 62 0 56 6 50 0Z" />
+              <path d="M0 50 6 56 0 62 -6 56Z" />
+              <path d="M56 50 62 56 56 62 50 56Z" />
+            </g>
+            <circle cx="28" cy="28" r="2" fill="currentColor" />
+          </pattern>
+        );
+
+      /* Concentric squares with offset slots — a square labyrinth */
+      case "maze":
+        return (
+          <pattern id={pid} width="48" height="48" patternUnits="userSpaceOnUse">
+            <g fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="square">
+              <path d="M26 4H44V44H4V4H20" />
+              <path d="M12 22V36H36V12H20" />
+            </g>
+            <rect x="20" y="20" width="8" height="8" fill="currentColor" />
+          </pattern>
+        );
+
+      /* Paired vesica leaves on the diagonal with midribs */
+      case "leaf":
+        return (
+          <pattern id={pid} width="60" height="60" patternUnits="userSpaceOnUse">
+            <g fill="none" stroke="currentColor" strokeWidth="2">
+              <g transform="translate(15 15) rotate(45)">
+                <path d="M0 -12C6 -7 9 -3 9 0C9 3 6 7 0 12C-6 7 -9 3 -9 0C-9 -3 -6 -7 0 -12Z" />
+                <path d="M0 -8V8" strokeWidth="1.2" />
+              </g>
+              <g transform="translate(45 45) rotate(45)">
+                <path d="M0 -12C6 -7 9 -3 9 0C9 3 6 7 0 12C-6 7 -9 3 -9 0C-9 -3 -6 -7 0 -12Z" />
+                <path d="M0 -8V8" strokeWidth="1.2" />
+              </g>
+            </g>
+            <circle cx="45" cy="15" r="1.8" fill="currentColor" />
+            <circle cx="15" cy="45" r="1.8" fill="currentColor" />
+          </pattern>
+        );
+
+      /* Running-bond brick screen with open perpends */
+      case "brick":
+        return (
+          <pattern id={pid} width="56" height="32" patternUnits="userSpaceOnUse">
+            <g fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="2" y="2" width="24" height="12" />
+              <rect x="30" y="2" width="24" height="12" />
+              <rect x="-12" y="18" width="24" height="12" />
+              <rect x="16" y="18" width="24" height="12" />
+              <rect x="44" y="18" width="24" height="12" />
+            </g>
+          </pattern>
+        );
+
+      /* Denser 8-fold lattice used in the hero light panel */
+      case "heroStar":
+        return (
+          <pattern id={pid} width="64" height="64" patternUnits="userSpaceOnUse">
+            <g fill="none" stroke="currentColor" strokeWidth="3.2">
+              <rect x="14" y="14" width="36" height="36" />
+              <path d="M32 6 58 32 32 58 6 32Z" />
+              <path d="M0 -7 7 0 0 7 -7 0Z" />
+              <path d="M64 -7 71 0 64 7 57 0Z" />
+              <path d="M0 57 7 64 0 71 -7 64Z" />
+              <path d="M64 57 71 64 64 71 57 64Z" />
+              <path d="M32 -3 35 0 32 3 29 0Z" />
+              <path d="M0 29 3 32 0 35 -3 32Z" />
+              <path d="M64 29 67 32 64 35 61 32Z" />
+              <path d="M32 61 35 64 32 67 29 64Z" />
+            </g>
+            <circle cx="32" cy="32" r="2.6" fill="currentColor" />
+          </pattern>
+        );
+    }
+  };
 
   return (
-    <svg
-      viewBox="0 0 240 150"
-      role="img"
-      aria-label={`${variant} chajja elevation drawing`}
-      className="w-full fill-none text-navy-800 transition-colors duration-500 group-hover:text-accent-400"
-    >
-      <defs>
-        {/* blueprint grid — flips to amber-on-navy with the card on hover */}
-        <pattern id={gridId} width="16" height="16" patternUnits="userSpaceOnUse">
-          <path d="M16 0H0V16" stroke="currentColor" strokeOpacity="0.14" strokeWidth="0.5" />
-        </pattern>
-        {/* 45° hatch for the wall section */}
-        <pattern id={hatchId} width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <line x1="0" y1="0" x2="0" y2="7" stroke="currentColor" strokeOpacity="0.3" strokeWidth="1" />
-        </pattern>
-      </defs>
-
-      <rect width="240" height="150" fill={`url(#${gridId})`} />
-
-      {/* Wall section (hatched) — common to every profile */}
-      <rect x="16" y="14" width="18" height="118" fill={`url(#${hatchId})`} stroke="currentColor" strokeWidth="1.5" />
-      <line x1="34" y1="14" x2="34" y2="132" stroke="currentColor" strokeWidth="2.5" />
-
-      {/* Profile-specific drawing */}
-      {variant === "plain" && (
-        <g stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
-          <rect x="34" y="62" width="180" height="10" />
-          <path d="M54 72 L54 100 L82 72" />
-          <path d="M164 72 L164 100 L192 72" />
-        </g>
-      )}
-      {variant === "sloped" && (
-        <g stroke="currentColor" strokeLinejoin="round">
-          <path d="M34 56 L214 84 L214 94 L34 66 Z" strokeWidth="2" />
-          <line x1="34" y1="26" x2="198" y2="82" strokeWidth="1.5" />
-          <circle cx="34" cy="26" r="3" strokeWidth="1.5" />
-        </g>
-      )}
-      {variant === "curved" && (
-        <g stroke="currentColor" strokeLinejoin="round">
-          <path d="M34 84 C 92 34, 158 34, 214 70 L214 80 C 158 46, 94 46, 34 94 Z" strokeWidth="2" />
-        </g>
-      )}
-      {variant === "decorative" && (
-        <g stroke="currentColor" strokeLinejoin="round" strokeLinecap="round">
-          <rect x="34" y="58" width="180" height="9" strokeWidth="2" />
-          {/* scalloped fascia — 10 × 18 mm arcs */}
-          <path
-            d="M214 67 a9 9 0 0 1 -18 0 a9 9 0 0 1 -18 0 a9 9 0 0 1 -18 0 a9 9 0 0 1 -18 0 a9 9 0 0 1 -18 0 a9 9 0 0 1 -18 0 a9 9 0 0 1 -18 0 a9 9 0 0 1 -18 0 a9 9 0 0 1 -18 0 a9 9 0 0 1 -18 0"
-            strokeWidth="1.5"
-          />
-          {/* ornamental brackets with curls */}
-          <path d="M62 67 L62 96 Q62 102 68 102 L74 102" strokeWidth="1.8" />
-          <circle cx="77" cy="102" r="3" strokeWidth="1.5" />
-          <path d="M178 67 L178 96 Q178 102 172 102 L166 102" strokeWidth="1.8" />
-          <circle cx="163" cy="102" r="3" strokeWidth="1.5" />
-        </g>
-      )}
-
-      {/* Dimension line + label */}
-      <g className="text-steel-400 transition-colors duration-500 group-hover:text-accent-300">
-        <line x1="34" y1="141" x2="214" y2="141" stroke="currentColor" strokeWidth="1" />
-        <path d="M40 137.5 L34 141 L40 144.5" stroke="currentColor" strokeWidth="1" />
-        <path d="M208 137.5 L214 141 L208 144.5" stroke="currentColor" strokeWidth="1" />
-        <text
-          x="124"
-          y="135"
-          textAnchor="middle"
-          fontSize="7"
-          letterSpacing="1.6"
-          fontFamily="IBM Plex Mono, monospace"
-          fill="currentColor"
-        >
-          {label}
-        </text>
-      </g>
+    <svg viewBox="0 0 240 240" className={className} aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+      <defs>{motif()}</defs>
+      <rect width="240" height="240" fill={`url(#${pid})`} />
     </svg>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Section content data                                               */
-/* ------------------------------------------------------------------ */
-const ADVANTAGES = [
-  {
-    no: "01",
-    icon: WeatherIcon,
-    title: "Weather Resistant",
-    lead: "Shields from sun, rain, UV rays",
-    points: [
-      "UV-stable gelcoat skin — colour never chalks or peels",
-      "Performs from −20 °C to +80 °C without warping",
-      "Monsoon-proof: zero water absorption, zero swelling",
-    ],
-    note: "2000-H QUV WEATHERING TESTED",
-  },
-  {
-    no: "02",
-    icon: MaintenanceIcon,
-    title: "Low Maintenance",
-    lead: "No rust, no rot, no painting",
-    points: [
-      "Non-corrosive composite — immune to salt air & pollution",
-      "Wipe clean with water; no repainting cycles, ever",
-      "No termite or fungal attack on the substrate",
-    ],
-    note: "NSS SALT-SPRAY: NO CORROSION",
-  },
-  {
-    no: "03",
-    icon: EcoIcon,
-    title: "Eco-Friendly",
-    lead: "Sustainable choice",
-    points: [
-      "100% recyclable FRP at end of a 20-year+ service life",
-      "Lower embodied energy than steel or RCC canopies",
-      "Moulded-in colour means zero paint VOCs on site",
-    ],
-    note: "LOW-VOC · RECYCLABLE COMPOSITE",
-  },
-];
-
-const COMPARISON = [
-  { label: "Unit weight (per m²)", frp: "3–4 kg", steel: "18–22 kg", alt: "55–70 kg" },
-  { label: "Rust & corrosion", frp: "Immune", steel: "Prone — repaint yearly", alt: "Rebar spalling" },
-  { label: "Maintenance", frp: "Wipe-clean. Nil.", steel: "Sand + repaint, 2-yr cycle", alt: "Crack patching" },
-  { label: "Installation", frp: "< 60 min / unit, SS screws", steel: "Weld + grind + paint", alt: "Cast-in-situ + 21-day cure" },
-  { label: "Shapes & profiles", frp: "Moulded — any profile", steel: "Flat / folded only", alt: "Plain slab" },
-  { label: "Design life", frp: "20+ years", steel: "8–10 years", alt: "Varies with cover" },
-];
-
-const STATS = [
-  { value: 25, suffix: "+", label: "Years in FRP composites" },
-  { value: 40000, suffix: "+", label: "Chajjas delivered" },
-  { value: 18, suffix: "", label: "States served pan-India" },
-  { value: 10, suffix: "-YR", label: "Structural warranty" },
-];
-
-const PRODUCTS: {
-  variant: ProductVariant;
-  code: string;
-  name: string;
-  tag?: string;
-  dimLabel: string;
-  desc: string;
-  specs: string[];
-}[] = [
-  {
-    variant: "plain",
-    code: "BSP-CJ-01",
-    name: "Plain Chajja",
-    tag: "BEST SELLER",
-    dimLabel: "PROJ. 600–1500 MM",
-    desc: "A crisp horizontal slab on concealed SS brackets — the minimalist default for grid facades and apartment towers.",
-    specs: ["Projection 600–1500 mm", "Fascia depth 40–60 mm", "Gelcoat, any RAL shade"],
-  },
-  {
-    variant: "sloped",
-    code: "BSP-CJ-02",
-    name: "Sloped Chajja",
-    dimLabel: "PITCH 10°–15°",
-    desc: "Pitched to throw monsoon rain clear of the sill, with a tie-rod for confident long spans over entrances.",
-    specs: ["Pitch 10°–15°", "Span up to 1800 mm", "Tie-rod kit included"],
-  },
-  {
-    variant: "curved",
-    code: "BSP-CJ-03",
-    name: "Curved Chajja",
-    tag: "ARCHITECT PICK",
-    dimLabel: "RADIUS: CUSTOM",
-    desc: "A barrel-arch profile that softens hard elevations — radius matched to your opening and facade rhythm.",
-    specs: ["Radius matched to opening", "Projection 600–1200 mm", "Seamless moulded curve"],
-  },
-  {
-    variant: "decorative",
-    code: "BSP-CJ-04",
-    name: "Decorative Chajja",
-    dimLabel: "SCALLOP 90 MM MODULE",
-    desc: "Scalloped fascia and moulded brackets for villas, bungalows and heritage-style street elevations.",
-    specs: ["Scalloped front edge", "Bracket set included", "Antique or gloss finish"],
-  },
-];
-
-const PROCESS_STEPS = [
-  {
-    no: "1",
-    title: "Share your opening sizes",
-    desc: "Send window widths, preferred projection and a facade photo or drawing — WhatsApp or email, both work.",
-  },
-  {
-    no: "2",
-    title: "Get a custom quote in 24 h",
-    desc: "Per-unit pricing, colour options and a CAD profile of your chosen chajja for sign-off before we mould.",
-  },
-  {
-    no: "3",
-    title: "We mould & finish",
-    desc: "Hand-laid FRP with gelcoat colour and brass inserts — cured, demoulded and QC-checked at our Taloja works.",
-  },
-  {
-    no: "4",
-    title: "Deliver & install",
-    desc: "Pan-India dispatch with SS fixture kits; our engineer supports your site team on call through fixing.",
-  },
-];
 
 /* ------------------------------------------------------------------ */
 /*  1. Header / Navbar                                                 */
@@ -470,7 +428,7 @@ function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const light = scrolled || menuOpen; // white-on-navy once scrolled or menu open
+  const light = scrolled || menuOpen;
 
   return (
     <header
@@ -478,10 +436,9 @@ function Header() {
         light ? "bg-navy-950 shadow-lg shadow-navy-950/30" : "bg-paper/95"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2.5 px-5 py-3.5 lg:gap-3 lg:px-8">
-        {/* Brand */}
-        <a href="#top" className="group flex items-center gap-2.5" aria-label="Blue Star Plastic Industries — home">
-          <StarMark className="hidden h-7 w-7 text-accent-500 transition-transform duration-300 group-hover:rotate-45 min-[380px]:block" />
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3.5 sm:gap-3 sm:px-8">
+        <a href="#top" className="group flex min-w-0 items-center gap-2.5" aria-label="Blue Star Plastic Industries — home">
+          <StarMark className="h-7 w-7 shrink-0 text-accent-500 transition-transform duration-300 group-hover:rotate-45" />
           <span className="leading-none">
             <span className={`block font-display text-[22px] tracking-[0.06em] ${light ? "text-white" : "text-navy-900"}`}>
               BLUE STAR
@@ -492,7 +449,6 @@ function Header() {
           </span>
         </a>
 
-        {/* Desktop nav */}
         <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
           {NAV_LINKS.map((l) => (
             <a
@@ -508,19 +464,17 @@ function Header() {
         </nav>
 
         <div className="flex items-center gap-2.5">
-          {/* Right-aligned call button */}
           <a
             href={PHONE_TEL}
             className="inline-flex items-center gap-1.5 bg-accent-500 px-3 py-2.5 text-xs font-semibold text-navy-950 transition-all duration-200 hover:bg-accent-400 hover:shadow-[0_0_0_3px_rgba(245,168,28,0.25)] sm:gap-2 sm:px-4 sm:text-[13px]"
           >
-            <PhoneIcon className="h-4 w-4" />
+            <PhoneIcon className="h-4 w-4 shrink-0" />
             <span className="whitespace-nowrap">
               <span className="hidden sm:inline">Call:&nbsp;</span>
               {PHONE_DISPLAY}
             </span>
           </a>
 
-          {/* Mobile hamburger */}
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
@@ -537,14 +491,12 @@ function Header() {
         </div>
       </div>
 
-      {/* Scroll progress rule */}
       <div
         className="absolute bottom-0 left-0 h-[2px] bg-accent-500 transition-[width] duration-150 ease-out"
         style={{ width: `${progress}%` }}
         aria-hidden="true"
       />
 
-      {/* Mobile menu */}
       {menuOpen && (
         <nav className="border-t border-navy-800 bg-navy-950 px-6 pb-7 pt-4 md:hidden" aria-label="Mobile">
           <div className="flex flex-col">
@@ -573,38 +525,43 @@ function Header() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  2. Hero                                                            */
+/*  2. Hero — copy beside a live jali light panel                      */
 /* ------------------------------------------------------------------ */
 function Hero() {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const reduced = useRef(false);
+
+  useEffect(() => {
+    reduced.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }, []);
+
   return (
     <section id="top" className="relative overflow-hidden bg-paper bg-blueprint pb-24 pt-28 md:pt-36">
-      {/* Oversized hollow watermark */}
       <span
-        className="text-outline pointer-events-none absolute -bottom-8 right-0 select-none font-display text-[24vw] leading-none tracking-tight md:text-[17vw]"
+        className="text-outline pointer-events-none absolute -bottom-8 right-0 select-none font-display text-[26vw] leading-none tracking-tight md:text-[19vw]"
         aria-hidden="true"
       >
-        CHAJJA
+        JALI
       </span>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-10">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-12 lg:gap-12">
         {/* Copy column */}
         <div className="lg:col-span-6">
           <Reveal>
             <p className="inline-flex items-center gap-2.5 font-mono text-[11px] tracking-[0.3em] text-navy-600">
               <StarMark className="h-3.5 w-3.5 text-accent-500" />
-              PREMIUM FRP ARCHITECTURAL PRODUCTS
+              PREMIUM GRC ARCHITECTURAL PRODUCTS
             </p>
           </Reveal>
 
           <Reveal delay={90}>
-            <h1 className="mt-5 font-display text-[52px] leading-[0.98] tracking-[0.015em] text-navy-900 sm:text-7xl xl:text-[88px]">
-              Premium FRP Chajjas —
+            <h1 className="mt-5 font-display text-[52px] leading-[0.98] tracking-[0.015em] text-navy-900 sm:text-7xl xl:text-[86px]">
+              Premium GRC Jali Panels —
               <br />
-              Protection That Lasts,
+              Strength Meets
               <br />
               <span className="relative inline-block">
-                Style That Stays.
-                {/* hand-drawn amber underline */}
+                Elegance.
                 <svg
                   viewBox="0 0 320 14"
                   className="absolute -bottom-2 left-0 w-full text-accent-500"
@@ -619,8 +576,8 @@ function Hero() {
 
           <Reveal delay={180}>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-steel-600">
-              Weather-resistant, lightweight, and maintenance-free roofing solutions for modern
-              construction.
+              Perfect for modern façades, ventilation, partition walls, balconies, and landscape
+              enhancements.
             </p>
           </Reveal>
 
@@ -634,17 +591,17 @@ function Hero() {
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </a>
               <a
-                href="#products"
+                href="#patterns"
                 className="inline-flex items-center gap-3 border-2 border-navy-800 px-7 py-[14px] text-[15px] font-semibold text-navy-800 transition-colors duration-200 hover:bg-navy-800 hover:text-white"
               >
-                Explore Designs
+                Browse the 5 Patterns
               </a>
             </div>
           </Reveal>
 
           <Reveal delay={340}>
             <ul className="mt-10 flex flex-wrap gap-x-7 gap-y-3">
-              {["ISO 9001:2015 CERTIFIED", "10-YEAR WARRANTY", "40,000+ UNITS INSTALLED"].map((t) => (
+              {["IS 13441 GRC SPEC", "NON-COMBUSTIBLE CLASS A1", "10-YEAR WARRANTY"].map((t) => (
                 <li key={t} className="flex items-center gap-2 font-mono text-[10.5px] tracking-[0.16em] text-steel-600">
                   <CheckIcon className="h-3.5 w-3.5 text-accent-600" />
                   {t}
@@ -654,60 +611,68 @@ function Hero() {
           </Reveal>
         </div>
 
-        {/* Image column with drawing-style annotations */}
+        {/* Live jali light panel */}
         <div className="lg:col-span-6">
           <Reveal delay={200}>
-            <div className="relative mr-2 lg:mr-6">
+            <div
+              className="relative mr-2 cursor-crosshair lg:mr-6"
+              onMouseMove={(e) => {
+                if (reduced.current) return;
+                const r = e.currentTarget.getBoundingClientRect();
+                setTilt({
+                  x: ((e.clientX - r.left) / r.width - 0.5) * 52,
+                  y: ((e.clientY - r.top) / r.height - 0.5) * 52,
+                });
+              }}
+              onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+            >
               {/* amber corner brackets */}
-              <span className="absolute -left-2 -top-2 h-7 w-7 border-l-[3px] border-t-[3px] border-accent-500" aria-hidden="true" />
-              <span className="absolute -right-2 -top-2 h-7 w-7 border-r-[3px] border-t-[3px] border-accent-500" aria-hidden="true" />
-              <span className="absolute -bottom-2 -left-2 h-7 w-7 border-b-[3px] border-l-[3px] border-accent-500" aria-hidden="true" />
-              <span className="absolute -bottom-2 -right-2 h-7 w-7 border-b-[3px] border-r-[3px] border-accent-500" aria-hidden="true" />
+              <span className="absolute -left-2 -top-2 z-20 h-7 w-7 border-l-[3px] border-t-[3px] border-accent-500" aria-hidden="true" />
+              <span className="absolute -right-2 -top-2 z-20 h-7 w-7 border-r-[3px] border-t-[3px] border-accent-500" aria-hidden="true" />
+              <span className="absolute -bottom-2 -left-2 z-20 h-7 w-7 border-b-[3px] border-l-[3px] border-accent-500" aria-hidden="true" />
+              <span className="absolute -bottom-2 -right-2 z-20 h-7 w-7 border-b-[3px] border-r-[3px] border-accent-500" aria-hidden="true" />
 
-              <div className="relative overflow-hidden border border-steel-300 bg-navy-900">
-                <img
-                  src={HERO_IMG}
-                  alt="Modern building facade fitted with white FRP chajjas above every window"
-                  className="kenburns aspect-[4/3] w-full object-cover"
-                  loading="eager"
-                />
+              <div className="relative aspect-[4/5] overflow-hidden border border-navy-800 bg-navy-950 sm:aspect-square lg:aspect-[4/5]">
+                {/* sky wash behind the lattice */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(245,168,28,0.14),transparent_70%)]" aria-hidden="true" />
+
+                {/* drifting sunlight — follows the cursor gently */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    transform: `translate(${tilt.x}px, ${tilt.y}px)`,
+                    transition: "transform 0.9s cubic-bezier(0.22, 1, 0.36, 1)",
+                  }}
+                  aria-hidden="true"
+                >
+                  <div className="drift-a absolute left-[8%] top-[10%] h-64 w-64 rounded-full bg-accent-400/80 blur-3xl">
+                    <div className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-300 blur-xl" />
+                  </div>
+                  <div className="drift-b absolute right-[6%] top-[42%] h-52 w-52 rounded-full bg-navy-300/40 blur-3xl" />
+                </div>
+
+                {/* the lattice itself — solid navy, light only through the holes */}
+                <JaliTile variant="heroStar" uid="hero" className="absolute inset-0 h-full w-full text-navy-950" />
+
                 {/* drawing-number stamp */}
-                <span className="absolute right-4 top-4 border border-white/25 bg-navy-950/75 px-2.5 py-1.5 font-mono text-[9.5px] tracking-[0.25em] text-navy-100">
-                  DWG NO. BSP-CJ-01
+                <span className="absolute right-4 top-4 z-10 border border-white/25 bg-navy-950/75 px-2.5 py-1.5 font-mono text-[9.5px] tracking-[0.25em] text-navy-100">
+                  PATTERN GEOMETRIC STAR
                 </span>
+
+                {/* floating spec tags */}
+                <div className="float-tag absolute bottom-16 left-5 z-10 border border-steel-200 border-l-4 border-l-accent-500 bg-white px-4 py-3 shadow-xl shadow-navy-950/20">
+                  <p className="font-mono text-[9px] tracking-[0.25em] text-accent-700">OPEN AREA</p>
+                  <p className="mt-0.5 font-display text-2xl leading-none text-navy-900">38%</p>
+                </div>
+                <div className="float-tag absolute right-5 top-16 z-10 border border-steel-200 border-l-4 border-l-accent-500 bg-white px-4 py-3 shadow-xl shadow-navy-950/20" style={{ animationDelay: "1.2s" }}>
+                  <p className="font-mono text-[9px] tracking-[0.25em] text-accent-700">MODULE</p>
+                  <p className="mt-0.5 font-display text-2xl leading-none text-navy-900">600 × 600 MM</p>
+                </div>
               </div>
 
-              {/* vertical dimension note */}
-              <div className="absolute -right-5 top-8 hidden lg:block" aria-hidden="true">
-                <svg viewBox="0 0 34 190" className="h-44 w-8 text-navy-700">
-                  <line x1="10" y1="8" x2="10" y2="168" stroke="currentColor" strokeWidth="1" />
-                  <path d="M6.5 14 L10 8 L13.5 14" fill="none" stroke="currentColor" strokeWidth="1" />
-                  <path d="M6.5 162 L10 168 L13.5 162" fill="none" stroke="currentColor" strokeWidth="1" />
-                  <line x1="4" y1="8" x2="16" y2="8" stroke="currentColor" strokeWidth="1" />
-                  <line x1="4" y1="168" x2="16" y2="168" stroke="currentColor" strokeWidth="1" />
-                  <text
-                    x="22"
-                    y="92"
-                    fontSize="8"
-                    letterSpacing="1.5"
-                    fontFamily="IBM Plex Mono, monospace"
-                    fill="currentColor"
-                    transform="rotate(90 22 92)"
-                    textAnchor="middle"
-                  >
-                    TYP. 900 MM
-                  </text>
-                </svg>
-              </div>
-
-              {/* floating spec card */}
-              <div className="float-tag absolute -bottom-7 left-5 right-5 border border-steel-200 border-l-4 border-l-accent-500 bg-white p-4 shadow-xl shadow-navy-900/10 sm:right-auto sm:w-80">
-                <p className="font-mono text-[9.5px] tracking-[0.25em] text-accent-700">SPEC 04-A · FINISH</p>
-                <p className="mt-1.5 text-sm font-semibold text-navy-900">Gelcoat finish, moulded-in colour</p>
-                <p className="mt-1 text-xs leading-relaxed text-steel-600">
-                  UV-stable RAL shades that never peel, blister or need repainting.
-                </p>
-              </div>
+              <p className="mt-3 font-mono text-[9.5px] tracking-[0.2em] text-steel-500">
+                FIG. 01 — GEOMETRIC STAR PANEL · LIGHT STUDY · MOVE YOUR CURSOR
+              </p>
             </div>
           </Reveal>
         </div>
@@ -724,9 +689,7 @@ function Ticker() {
     <div className="flex items-center" aria-hidden={hidden}>
       {TICKER_ITEMS.map((item) => (
         <span key={item} className="flex items-center">
-          <span className="whitespace-nowrap px-6 font-mono text-[11px] tracking-[0.22em] text-navy-100">
-            {item}
-          </span>
+          <span className="whitespace-nowrap px-6 font-mono text-[11px] tracking-[0.22em] text-navy-100">{item}</span>
           <StarMark className="h-2.5 w-2.5 shrink-0 text-accent-500" />
         </span>
       ))}
@@ -744,57 +707,86 @@ function Ticker() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  4. Key Advantages (3-column grid)                                  */
+/*  4. Key Features — spec-ledger rows                                 */
 /* ------------------------------------------------------------------ */
-function Advantages() {
+const FEATURES = [
+  {
+    no: "01",
+    icon: StrengthIcon,
+    title: "High Strength & Durable",
+    desc: "Alkali-resistant glass fibre inside a dense cement matrix — GRC carries impact, wind load and its own weight across a 50-year design life without creep or sag.",
+    chips: ["40 MPa COMPRESSIVE", "IMPACT TESTED", "50-YR DESIGN LIFE"],
+  },
+  {
+    no: "02",
+    icon: WeatherIcon,
+    title: "Weather & Corrosion Resistant",
+    desc: "No steel to rust, no timber to rot. Freeze–thaw stable, salt-air safe for coastal sites, and UV-stable in natural cement or painted RAL finishes.",
+    chips: ["NO RUST — AR FIBRE", "FREEZE–THAW STABLE", "COASTAL SAFE"],
+  },
+  {
+    no: "03",
+    icon: LightweightIcon,
+    title: "Lightweight & Easy to Install",
+    desc: "18–25 mm thin panels at roughly 60% the weight of solid RCC screens. Bolt-on SS anchor kits — no welding, no shuttering, no curing on site.",
+    chips: ["60% LIGHTER THAN RCC", "BOLT-ON FIXING KITS", "NO WELDING ON SITE"],
+  },
+];
+
+function Features() {
   return (
-    <section id="advantages" className="scroll-mt-24 bg-paper py-24">
+    <section id="features" className="scroll-mt-24 bg-paper py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">01 / KEY ADVANTAGES</p>
+              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">01 / KEY FEATURES</p>
               <h2 className="mt-3 font-display text-5xl leading-none text-navy-900 sm:text-6xl">
-                ENGINEERED FOR
+                CAST STRONG.
                 <br />
-                THE ELEMENTS.
+                BUILT TO STAY.
               </h2>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-steel-600 md:pb-2 md:text-right">
-              Three reasons specifiers across India switch from steel and concrete to Blue Star FRP.
+              Three properties that make GRC the screen material specifiers ask for by name.
             </p>
           </div>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {ADVANTAGES.map((a, i) => (
-            <Reveal key={a.no} delay={i * 130}>
-              <article className="group relative h-full border border-steel-300 bg-white p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-navy-800 hover:shadow-[10px_10px_0_0_rgba(21,44,79,0.08)]">
-                <div className="flex items-start justify-between">
-                  <span className="flex h-14 w-14 items-center justify-center border border-navy-800 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-accent-400">
-                    <a.icon className="h-7 w-7" />
+        <div className="mt-14 border-t border-navy-800">
+          {FEATURES.map((f, i) => (
+            <Reveal key={f.no} delay={i * 120}>
+              <div className="group grid items-center gap-6 border-b border-steel-300 py-9 transition-colors duration-300 hover:bg-white md:grid-cols-12 md:gap-8 md:px-4">
+                {/* ghost number */}
+                <span className="font-display text-5xl leading-none text-steel-200 transition-colors duration-300 group-hover:text-accent-500 md:col-span-2">
+                  {f.no}
+                </span>
+
+                {/* icon + title */}
+                <div className="flex items-center gap-5 md:col-span-4">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center border border-navy-800 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-accent-400">
+                    <f.icon className="h-7 w-7" />
                   </span>
-                  <span className="font-display text-4xl text-steel-200 transition-colors duration-300 group-hover:text-accent-500">
-                    {a.no}
-                  </span>
+                  <h3 className="font-display text-[28px] leading-none tracking-[0.02em] text-navy-900">
+                    {f.title}
+                  </h3>
                 </div>
 
-                <h3 className="mt-7 font-display text-[28px] tracking-[0.02em] text-navy-900">{a.title}</h3>
-                <p className="mt-1 font-semibold text-navy-700">{a.lead}</p>
+                {/* description */}
+                <p className="text-sm leading-relaxed text-steel-600 md:col-span-4">{f.desc}</p>
 
-                <ul className="mt-5 space-y-2.5">
-                  {a.points.map((p) => (
-                    <li key={p} className="flex gap-2.5 text-sm leading-snug text-steel-600">
-                      <ArrowRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent-600" />
-                      {p}
-                    </li>
+                {/* stat chips */}
+                <div className="flex flex-wrap gap-2 md:col-span-2 md:justify-end">
+                  {f.chips.map((c) => (
+                    <span
+                      key={c}
+                      className="border border-steel-300 bg-white px-2.5 py-1.5 font-mono text-[8.5px] tracking-[0.14em] text-navy-700 transition-colors duration-300 group-hover:border-accent-500"
+                    >
+                      {c}
+                    </span>
                   ))}
-                </ul>
-
-                <p className="mt-7 border-t border-steel-200 pt-4 font-mono text-[9.5px] tracking-[0.2em] text-steel-400 transition-colors duration-300 group-hover:text-navy-600">
-                  {a.note}
-                </p>
-              </article>
+                </div>
+              </div>
             </Reveal>
           ))}
         </div>
@@ -804,23 +796,343 @@ function Advantages() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  5. Why FRP — comparison table                                      */
+/*  5. Applications index                                              */
 /* ------------------------------------------------------------------ */
-function WhyFrp() {
+const APPLICATIONS = [
+  {
+    code: "A1",
+    glyph: FacadeGlyph,
+    name: "Modern Façades",
+    desc: "Brise-soleil screens, feature walls and full building wraps that give a facade depth and shadow.",
+  },
+  {
+    code: "A2",
+    glyph: VentGlyph,
+    name: "Ventilation",
+    desc: "Free cross-flow of air with rain-break geometry — privacy kept, stuffiness gone.",
+  },
+  {
+    code: "A3",
+    glyph: PartitionGlyph,
+    name: "Partition Walls",
+    desc: "Zone interiors without blocking light — offices, lobbies, restaurants and homes.",
+  },
+  {
+    code: "A4",
+    glyph: BalconyGlyph,
+    name: "Balconies",
+    desc: "Railing infills and privacy screens that shade harsh sun but keep the view soft.",
+  },
+  {
+    code: "A5",
+    glyph: LandscapeGlyph,
+    name: "Landscape",
+    desc: "Garden screens, pergola fins and boundary walls that age gracefully outdoors.",
+  },
+];
+
+function Applications() {
   return (
-    <section id="why-frp" className="relative scroll-mt-24 overflow-hidden bg-navy-950 bg-blueprint-dark py-24 text-navy-100">
+    <section id="applications" className="scroll-mt-24 bg-white py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <Reveal>
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">02 / WHERE JALI WORKS</p>
+              <h2 className="mt-3 font-display text-5xl leading-none text-navy-900 sm:text-6xl">
+                ONE PANEL,
+                <br />
+                FIVE JOBS.
+              </h2>
+            </div>
+            <p className="max-w-xs text-sm leading-relaxed text-steel-600 md:pb-2 md:text-right">
+              The same 600 mm module works across the entire envelope — inside and out.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="mt-12 border-t border-navy-800">
+          {APPLICATIONS.map((a, i) => (
+            <Reveal key={a.code} delay={i * 90}>
+              <div className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 border-b border-steel-200 py-6 transition-colors duration-300 hover:bg-navy-50 sm:grid-cols-[70px_56px_240px_1fr_auto] sm:gap-6 md:px-4">
+                <span className="font-mono text-[11px] tracking-[0.22em] text-steel-400 transition-colors duration-300 group-hover:text-accent-700">
+                  {a.code}
+                </span>
+                <span className="hidden h-11 w-11 items-center justify-center border border-navy-800 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-accent-400 sm:flex">
+                  <a.glyph className="h-6 w-6" />
+                </span>
+                <h3 className="font-display text-[26px] leading-none tracking-[0.02em] text-navy-900">
+                  {a.name}
+                </h3>
+                <p className="col-span-3 -mt-3 text-sm leading-relaxed text-steel-600 sm:col-span-1 sm:mt-0">
+                  {a.desc}
+                </p>
+                <ArrowRight className="hidden h-5 w-5 text-steel-300 transition-all duration-300 group-hover:translate-x-1.5 group-hover:text-accent-600 sm:block" />
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  6. Pattern Showcase                                                */
+/* ------------------------------------------------------------------ */
+const PATTERNS: {
+  variant: JaliVariant;
+  uid: string;
+  code: string;
+  name: string;
+  tag?: string;
+  module: string;
+  open: string;
+  desc: string;
+  usedFor: string;
+}[] = [
+  {
+    variant: "basket",
+    uid: "p1",
+    code: "BSP-JL-01",
+    name: "Basket Weave",
+    tag: "BEST SELLER",
+    module: "600 × 600 MM",
+    open: "34%",
+    desc: "Over-and-under woven strips cast in concrete — a warm, textile texture for screens that should feel hand-made.",
+    usedFor: "PARTITIONS · BALCONIES",
+  },
+  {
+    variant: "star",
+    uid: "p2",
+    code: "BSP-JL-02",
+    name: "Geometric Star",
+    tag: "ARCHITECT PICK",
+    module: "600 × 600 MM",
+    open: "41%",
+    desc: "The classic 8-point khatam star. Maximum open area in the range — strong shadows, stronger character.",
+    usedFor: "FAÇADES · FEATURE WALLS",
+  },
+  {
+    variant: "maze",
+    uid: "p3",
+    code: "BSP-JL-03",
+    name: "Square Maze",
+    module: "450 × 450 MM",
+    open: "29%",
+    desc: "A square labyrinth of concentric slots. More solid than open — ideal where privacy has to come first.",
+    usedFor: "VENTILATION · BOUNDARIES",
+  },
+  {
+    variant: "leaf",
+    uid: "p4",
+    code: "BSP-JL-04",
+    name: "Leaf Pattern",
+    module: "600 × 600 MM",
+    open: "37%",
+    desc: "Paired leaves on the diagonal with fine midribs — a softer, botanical register for homes and resorts.",
+    usedFor: "LANDSCAPE · BALCONIES",
+  },
+  {
+    variant: "brick",
+    uid: "p5",
+    code: "BSP-JL-05",
+    name: "Brick Link",
+    module: "600 × 300 MM",
+    open: "31%",
+    desc: "A running-bond brick screen with open perpends. Honest, industrial, and at home beside exposed concrete.",
+    usedFor: "VENTILATION · BOUNDARIES",
+  },
+];
+
+function Showcase() {
+  return (
+    <section id="patterns" className="scroll-mt-24 bg-paper bg-blueprint py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <Reveal>
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">03 / PATTERN LIBRARY</p>
+              <h2 className="mt-3 font-display text-5xl leading-none text-navy-900 sm:text-6xl">
+                FIVE SIGNATURE
+                <br />
+                LATTICES. PLUS YOURS.
+              </h2>
+            </div>
+            <p className="max-w-xs text-sm leading-relaxed text-steel-600 md:pb-2 md:text-right">
+              Each preview below is the real tiling geometry, drawn to scale. Hover to see the
+              night-shift view.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {PATTERNS.map((p, i) => (
+            <Reveal key={p.code} delay={(i % 3) * 110}>
+              <article className="group flex h-full flex-col border border-steel-300 bg-white transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-600 hover:shadow-[10px_10px_0_0_rgba(245,168,28,0.18)]">
+                {/* real lattice preview — inverts to navy on hover */}
+                <div className="relative h-52 overflow-hidden border-b border-steel-200 bg-navy-50 transition-colors duration-500 group-hover:border-navy-800 group-hover:bg-navy-950">
+                  <JaliTile
+                    variant={p.variant}
+                    uid={p.uid}
+                    className="h-full w-full text-navy-800 transition-all duration-700 group-hover:scale-110 group-hover:text-accent-400"
+                  />
+                  <div className="pointer-events-none absolute left-4 top-4 flex items-start justify-between gap-2">
+                    <span className="font-mono text-[9.5px] tracking-[0.2em] text-steel-500 transition-colors duration-500 group-hover:text-navy-300">
+                      {p.code}
+                    </span>
+                  </div>
+                  {p.tag && (
+                    <span className="absolute right-4 top-4 bg-accent-500 px-2 py-1 font-mono text-[8.5px] tracking-[0.18em] text-navy-950">
+                      {p.tag}
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <h3 className="font-display text-[26px] tracking-[0.02em] text-navy-900">{p.name}</h3>
+                    <span className="whitespace-nowrap font-mono text-[9px] tracking-[0.14em] text-accent-700">
+                      OPEN {p.open}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-steel-600">{p.desc}</p>
+
+                  <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+                    <span className="font-mono text-[10px] tracking-[0.12em] text-steel-500">
+                      MODULE {p.module}
+                    </span>
+                    <span className="font-mono text-[10px] tracking-[0.12em] text-steel-500">{p.usedFor}</span>
+                  </div>
+
+                  <a
+                    href="#quote"
+                    className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-navy-800 transition-colors group-hover:text-accent-700"
+                  >
+                    Get pricing
+                    <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1.5" />
+                  </a>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+
+          {/* Custom pattern CTA cell */}
+          <Reveal delay={220}>
+            <a
+              href="#quote"
+              className="group flex h-full min-h-[420px] flex-col items-start justify-between border-2 border-dashed border-navy-400 bg-navy-50/60 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-600 hover:bg-navy-50"
+            >
+              <div>
+                <span className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.22em] text-accent-700">
+                  <StarMark className="h-3 w-3" /> BSP-JL-CUSTOM
+                </span>
+                <h3 className="mt-4 font-display text-[32px] leading-none tracking-[0.02em] text-navy-900">
+                  YOUR PATTERN,
+                  <br />
+                  CAST IN GRC.
+                </h3>
+                <p className="mt-4 max-w-xs text-sm leading-relaxed text-steel-600">
+                  Send a CAD file, a sketch, even a photograph of an old jali you love — we engrave
+                  the mould and cast your motif to order.
+                </p>
+              </div>
+              <span className="inline-flex items-center gap-2 bg-navy-900 px-5 py-3.5 text-sm font-bold text-white transition-colors duration-300 group-hover:bg-accent-500 group-hover:text-navy-950">
+                Discuss a custom design
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1.5" />
+              </span>
+            </a>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  7. Cinema band — full-bleed light-through-jali photograph          */
+/* ------------------------------------------------------------------ */
+function CinemaBand() {
+  return (
+    <section className="relative h-[56vh] min-h-[420px] overflow-hidden bg-navy-950" aria-label="Golden-hour light through GRC jali panels">
+      <img
+        src={FACADE_IMG}
+        alt="Evening sunlight streaming through geometric GRC jali panels on a modern facade"
+        className="kenburns absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/20 to-navy-950/40" aria-hidden="true" />
+      <div className="absolute inset-x-0 bottom-0 mx-auto max-w-7xl px-5 pb-10 sm:px-8">
+        <Reveal>
+          <p className="font-mono text-[10px] tracking-[0.28em] text-accent-400">
+            FIG. 02 — 18:47, GOLDEN HOUR, GEOMETRIC STAR PANEL
+          </p>
+          <p className="mt-3 font-display text-5xl leading-[0.95] text-white sm:text-7xl">
+            LIGHT DOES THE DETAILING.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  8. Why GRC — comparison table                                      */
+/* ------------------------------------------------------------------ */
+const COMPARISON = [
+  {
+    label: "Material core",
+    grc: "AR glass-fibre reinforced concrete",
+    alt1: "Painted MS / powder-coated aluminium",
+    alt2: "Fired terracotta / cement blocks",
+  },
+  {
+    label: "Corrosion & rot",
+    grc: "Immune — no rust, no rot",
+    alt1: "MS rusts; alu oxidises",
+    alt2: "Efflorescence & spalling",
+  },
+  {
+    label: "Fire behaviour",
+    grc: "Non-combustible, Class A1",
+    alt1: "Steel conducts; alu softens at 660 °C",
+    alt2: "Non-combustible",
+  },
+  {
+    label: "Pattern freedom",
+    grc: "Any motif, cast to order",
+    alt1: "Limited to weld grids / CNC cuts",
+    alt2: "Standard modules only",
+  },
+  {
+    label: "Maintenance",
+    grc: "Wash-down only",
+    alt1: "Repaint / re-coat cycles",
+    alt2: "Re-pointing & sealing",
+  },
+  {
+    label: "Design life",
+    grc: "50+ years",
+    alt1: "15–20 years",
+    alt2: "25–30 years",
+  },
+];
+
+function WhyGrc() {
+  return (
+    <section id="why-grc" className="relative scroll-mt-24 overflow-hidden bg-navy-950 bg-blueprint-dark py-24 text-navy-100">
       <span
         className="text-outline-light pointer-events-none absolute -right-4 top-6 select-none font-display text-[11rem] leading-none md:text-[16rem]"
         aria-hidden="true"
       >
-        VS
+        GRC
       </span>
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
-          <p className="font-mono text-[11px] tracking-[0.3em] text-accent-400">02 / WHY SWITCH</p>
+          <p className="font-mono text-[11px] tracking-[0.3em] text-accent-400">04 / WHY GRC</p>
           <h2 className="mt-3 font-display text-5xl leading-none text-white sm:text-6xl">
-            FRP AGAINST THE OLD GUARD.
+            AGAINST EVERY OTHER SCREEN.
           </h2>
         </Reveal>
 
@@ -834,10 +1146,10 @@ function WhyFrp() {
                     <span className="absolute -top-3 left-4 bg-accent-500 px-2 py-0.5 font-mono text-[9px] tracking-[0.18em] text-navy-950">
                       ★ RECOMMENDED
                     </span>
-                    <span className="font-display text-xl tracking-[0.04em] text-white">FRP CHAJJA</span>
+                    <span className="font-display text-xl tracking-[0.04em] text-white">GRC JALI</span>
                   </th>
-                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">MS STEEL</th>
-                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">RCC / WOOD</th>
+                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">MS / ALU JALI</th>
+                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">TERRACOTTA / CONCRETE</th>
                 </tr>
               </thead>
               <tbody>
@@ -847,18 +1159,18 @@ function WhyFrp() {
                     <td className="border-x border-accent-500/25 bg-navy-800/70 p-4 text-sm font-semibold text-white">
                       <span className="flex items-center gap-2.5">
                         <CheckIcon className="h-3.5 w-3.5 shrink-0 text-accent-400" />
-                        {row.frp}
+                        {row.grc}
                       </span>
                     </td>
-                    <td className="p-4 text-sm text-navy-300">{row.steel}</td>
-                    <td className="p-4 text-sm text-navy-300">{row.alt}</td>
+                    <td className="p-4 text-sm text-navy-300">{row.alt1}</td>
+                    <td className="p-4 text-sm text-navy-300">{row.alt2}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
           <p className="mt-4 font-mono text-[10px] tracking-[0.14em] text-steel-500">
-            * INDICATIVE VALUES FOR A 1200 × 900 MM WINDOW CANOPY. TEST REPORTS AVAILABLE ON REQUEST.
+            * TYPICAL 600 × 600 × 20 MM PANEL · TEST REPORTS AVAILABLE ON REQUEST.
           </p>
         </Reveal>
       </div>
@@ -867,8 +1179,15 @@ function WhyFrp() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  6. Stats band                                                      */
+/*  9. Stats band                                                      */
 /* ------------------------------------------------------------------ */
+const STATS = [
+  { value: 25, suffix: "+", label: "Years in GRC & FRP" },
+  { value: 640, suffix: "+", label: "Facade & villa projects" },
+  { value: 32, suffix: "", label: "Standard patterns + custom" },
+  { value: 10, suffix: "-YR", label: "Structural warranty" },
+];
+
 function StatsBand() {
   return (
     <section className="bg-accent-500 text-navy-950">
@@ -885,7 +1204,7 @@ function StatsBand() {
             <p className="font-display text-5xl leading-none sm:text-6xl">
               <CountUp to={s.value} suffix={s.suffix} />
             </p>
-            <p className="mt-3 font-mono text-[10px] tracking-[0.22em] uppercase">{s.label}</p>
+            <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.22em]">{s.label}</p>
           </div>
         ))}
       </div>
@@ -894,101 +1213,49 @@ function StatsBand() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  7. Product Showcase (4-column grid)                                */
+/*  10. Process — sticky image + timeline                              */
 /* ------------------------------------------------------------------ */
-function Showcase() {
-  return (
-    <section id="products" className="scroll-mt-24 bg-paper bg-blueprint py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <Reveal>
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">03 / PRODUCT SHOWCASE</p>
-              <h2 className="mt-3 font-display text-5xl leading-none text-navy-900 sm:text-6xl">
-                FOUR PROFILES.
-                <br />
-                EVERY FACADE COVERED.
-              </h2>
-            </div>
-            <p className="max-w-xs text-sm leading-relaxed text-steel-600 md:pb-2 md:text-right">
-              Every profile is moulded to order. Hover a drawing to flip it to the night-shift
-              blueprint view.
-            </p>
-          </div>
-        </Reveal>
+const PROCESS_STEPS = [
+  {
+    no: "1",
+    title: "Choose a pattern — or send your own",
+    desc: "Pick one of the five signatures, or share a CAD file, sketch or photo. We confirm module size and open area together.",
+  },
+  {
+    no: "2",
+    title: "Approve a sample tile",
+    desc: "We cast a 600 × 600 sample in your chosen finish — natural cement or RAL painted. You sign off before the run.",
+  },
+  {
+    no: "3",
+    title: "Casting & curing",
+    desc: "Hand-sprayed GRC, steam-cured and demoulded at our Taloja works. Every panel is QC-checked for edge sharpness and flatness.",
+  },
+  {
+    no: "4",
+    title: "Crated delivery & fixing",
+    desc: "Foam-separated wooden crates, SS anchor kits inside, and our engineer on call while your site team fixes.",
+  },
+];
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-          {PRODUCTS.map((p, i) => (
-            <Reveal key={p.code} delay={i * 110}>
-              <article className="group flex h-full flex-col border border-steel-300 bg-white transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-600 hover:shadow-[10px_10px_0_0_rgba(245,168,28,0.18)]">
-                {/* Elevation drawing panel — inverts to navy on hover */}
-                <div className="relative border-b border-steel-200 bg-navy-50 p-4 transition-colors duration-500 group-hover:border-navy-800 group-hover:bg-navy-950">
-                  <div className="flex items-start justify-between">
-                    <span className="font-mono text-[9.5px] tracking-[0.2em] text-steel-500 transition-colors duration-500 group-hover:text-navy-300">
-                      {p.code}
-                    </span>
-                    {p.tag && (
-                      <span className="bg-accent-500 px-2 py-1 font-mono text-[8.5px] tracking-[0.18em] text-navy-950">
-                        {p.tag}
-                      </span>
-                    )}
-                  </div>
-                  <ChajjaProfile variant={p.variant} label={p.dimLabel} />
-                </div>
-
-                {/* Copy */}
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-display text-[26px] tracking-[0.02em] text-navy-900">{p.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-steel-600">{p.desc}</p>
-
-                  <ul className="mt-5 space-y-2">
-                    {p.specs.map((s) => (
-                      <li key={s} className="flex items-center gap-2.5 font-mono text-[11px] tracking-[0.08em] text-steel-600">
-                        <span className="h-1.5 w-1.5 shrink-0 bg-accent-500" aria-hidden="true" />
-                        {s.toUpperCase()}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <a
-                    href="#quote"
-                    className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-navy-800 transition-colors group-hover:text-accent-700"
-                  >
-                    Get pricing
-                    <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1.5" />
-                  </a>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  8. Process — sticky image + 4-step timeline                        */
-/* ------------------------------------------------------------------ */
 function Process() {
   return (
     <section id="process" className="scroll-mt-24 bg-white py-24">
       <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-12">
-        {/* Sticky image column */}
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-28">
             <Reveal>
-              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">04 / HOW WE WORK</p>
+              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">05 / HOW WE WORK</p>
               <h2 className="mt-3 font-display text-5xl leading-none text-navy-900 sm:text-6xl">
-                DRAWING TO
+                FROM PATTERN
                 <br />
-                FIXING, IN
+                TO WALL, IN
                 <br />
                 FOUR STEPS.
               </h2>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-steel-600">
-                No CAD expertise needed on your side — a photo of the window and a tape-measure
-                reading is enough to start.
+                A physical sample tile before production means what you approve is exactly what
+                gets cast — no surprises on site.
               </p>
             </Reveal>
 
@@ -998,21 +1265,20 @@ function Process() {
                 <span className="absolute -bottom-2 -right-2 h-6 w-6 border-b-[3px] border-r-[3px] border-accent-500" aria-hidden="true" />
                 <div className="overflow-hidden border border-steel-300 bg-navy-900">
                   <img
-                    src={FACTORY_IMG}
-                    alt="Technician inspecting a moulded FRP chajja panel at the Blue Star workshop"
+                    src={WORKSHOP_IMG}
+                    alt="Craftsman casting wet GRC into a jali lattice mould at the Blue Star workshop"
                     className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
                     loading="lazy"
                   />
                 </div>
                 <p className="mt-3 font-mono text-[9.5px] tracking-[0.2em] text-steel-500">
-                  HAND-LAID FRP SHOP — TALOJA MIDC, NAVI MUMBAI
+                  GRC CASTING SHOP — TALOJA MIDC, NAVI MUMBAI
                 </p>
               </div>
             </Reveal>
           </div>
         </div>
 
-        {/* Step timeline */}
         <div className="lg:col-span-7">
           <div className="relative">
             <span className="absolute bottom-4 left-[21px] top-4 w-px bg-steel-300" aria-hidden="true" />
@@ -1024,12 +1290,8 @@ function Process() {
                       {step.no}
                     </span>
                     <div className="border border-steel-200 bg-paper p-6 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-navy-800 group-hover:shadow-[8px_8px_0_0_rgba(21,44,79,0.07)]">
-                      <p className="font-mono text-[9.5px] tracking-[0.25em] text-accent-700">
-                        STEP {step.no} / 4
-                      </p>
-                      <h3 className="mt-2 font-display text-[24px] tracking-[0.02em] text-navy-900">
-                        {step.title}
-                      </h3>
+                      <p className="font-mono text-[9.5px] tracking-[0.25em] text-accent-700">STEP {step.no} / 4</p>
+                      <h3 className="mt-2 font-display text-[24px] tracking-[0.02em] text-navy-900">{step.title}</h3>
                       <p className="mt-1.5 max-w-lg text-sm leading-relaxed text-steel-600">{step.desc}</p>
                     </div>
                   </li>
@@ -1044,16 +1306,16 @@ function Process() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  9. Quote form                                                      */
+/*  11. Quote form                                                     */
 /* ------------------------------------------------------------------ */
 type QuoteForm = {
   name: string;
   phone: string;
   email: string;
   city: string;
-  type: string;
-  size: string;
-  qty: string;
+  pattern: string;
+  application: string;
+  area: string;
   message: string;
 };
 
@@ -1062,9 +1324,9 @@ const EMPTY_FORM: QuoteForm = {
   phone: "",
   email: "",
   city: "",
-  type: "Plain Chajja",
-  size: "900 mm (standard)",
-  qty: "1–10 units",
+  pattern: "Geometric Star",
+  application: "Facade screen",
+  area: "100–500 sq ft",
   message: "",
 };
 
@@ -1092,7 +1354,7 @@ function QuoteSection() {
     if (form.phone.replace(/\D/g, "").length < 10) next.phone = "Enter a valid 10-digit mobile number.";
     setErrors(next);
     if (Object.keys(next).length > 0) return;
-    setRefId(`BSP-Q-${Math.floor(1000 + Math.random() * 9000)}`);
+    setRefId(`BSP-JL-${Math.floor(1000 + Math.random() * 9000)}`);
     setSubmitted(true);
   };
 
@@ -1108,18 +1370,17 @@ function QuoteSection() {
       </span>
 
       <div className="relative mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-12">
-        {/* Contact rail */}
         <div className="lg:col-span-5">
           <Reveal>
-            <p className="font-mono text-[11px] tracking-[0.3em] text-accent-400">05 / GET A QUOTE</p>
+            <p className="font-mono text-[11px] tracking-[0.3em] text-accent-400">06 / GET A QUOTE</p>
             <h2 className="mt-3 font-display text-5xl leading-[1.02] text-white sm:text-6xl">
-              TELL US YOUR SPAN.
+              SEND YOUR PATTERN.
               <br />
               QUOTED IN 24 HOURS.
             </h2>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-navy-200">
-              Share your window sizes and city — our sales engineer replies with per-unit pricing,
-              colour options and a CAD profile of your chajja.
+              Tell us the pattern, the application and roughly how many square feet — our sales
+              engineer replies with per-panel pricing and a finish recommendation.
             </p>
           </Reveal>
 
@@ -1160,29 +1421,28 @@ function QuoteSection() {
               </div>
             </div>
             <p className="mt-6 font-mono text-[10px] tracking-[0.18em] text-steel-500">
-              MON–SAT · 09:00–18:30 IST · SITE VISITS BY APPOINTMENT
+              MON–SAT · 09:00–18:30 IST · WORKS VISITS BY APPOINTMENT
             </p>
           </Reveal>
         </div>
 
-        {/* Form card */}
         <div className="lg:col-span-7">
           <Reveal delay={200}>
             <div className="border-t-4 border-accent-500 bg-paper p-7 text-ink shadow-2xl shadow-navy-950/50 sm:p-10">
               {submitted ? (
-                /* -------- Success state -------- */
                 <div className="py-6 text-center">
                   <span className="mx-auto flex h-16 w-16 items-center justify-center bg-accent-500 text-navy-950">
                     <CheckIcon className="h-8 w-8" />
                   </span>
                   <h3 className="mt-6 font-display text-4xl text-navy-900">REQUEST RECEIVED.</h3>
                   <p className="mt-3 font-mono text-[11px] tracking-[0.2em] text-accent-700">
-                    REF {refId} · LOGGED {new Date().toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }).toUpperCase()}
+                    REF {refId} · LOGGED{" "}
+                    {new Date().toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }).toUpperCase()}
                   </p>
                   <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-steel-600">
                     Thanks, {form.name.split(" ")[0]} — our sales engineer will call{" "}
                     <span className="font-semibold text-navy-800">{form.phone}</span> within 24
-                    working hours with your custom quote.
+                    working hours with your quote for the {form.pattern} pattern.
                   </p>
                   <button
                     type="button"
@@ -1196,7 +1456,6 @@ function QuoteSection() {
                   </button>
                 </div>
               ) : (
-                /* -------- Form -------- */
                 <form onSubmit={onSubmit} noValidate>
                   <h3 className="font-display text-3xl text-navy-900">REQUEST A CUSTOM QUOTE</h3>
                   <p className="mt-1 text-sm text-steel-600">
@@ -1206,7 +1465,7 @@ function QuoteSection() {
                   <div className="mt-7 grid gap-5 sm:grid-cols-2">
                     <div>
                       <label htmlFor="q-name" className={labelCls}>FULL NAME *</label>
-                      <input id="q-name" type="text" value={form.name} onChange={set("name")} placeholder="e.g. Rajesh Patil" className={inputCls(!!errors.name)} />
+                      <input id="q-name" type="text" value={form.name} onChange={set("name")} placeholder="e.g. Meera Krishnan" className={inputCls(!!errors.name)} />
                       {errors.name && <p className="mt-1.5 text-xs font-medium text-red-600">{errors.name}</p>}
                     </div>
                     <div>
@@ -1220,40 +1479,42 @@ function QuoteSection() {
                     </div>
                     <div>
                       <label htmlFor="q-city" className={labelCls}>CITY</label>
-                      <input id="q-city" type="text" value={form.city} onChange={set("city")} placeholder="e.g. Pune" className={inputCls(false)} />
+                      <input id="q-city" type="text" value={form.city} onChange={set("city")} placeholder="e.g. Ahmedabad" className={inputCls(false)} />
                     </div>
                     <div>
-                      <label htmlFor="q-type" className={labelCls}>CHAJJA TYPE</label>
-                      <select id="q-type" value={form.type} onChange={set("type")} className={inputCls(false)}>
-                        <option>Plain Chajja</option>
-                        <option>Sloped Chajja</option>
-                        <option>Curved Chajja</option>
-                        <option>Decorative Chajja</option>
-                        <option>Multiple / custom profile</option>
+                      <label htmlFor="q-pattern" className={labelCls}>PATTERN</label>
+                      <select id="q-pattern" value={form.pattern} onChange={set("pattern")} className={inputCls(false)}>
+                        <option>Basket Weave</option>
+                        <option>Geometric Star</option>
+                        <option>Square Maze</option>
+                        <option>Leaf Pattern</option>
+                        <option>Brick Link</option>
+                        <option>Custom pattern</option>
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="q-size" className={labelCls}>APPROX. PROJECTION</label>
-                      <select id="q-size" value={form.size} onChange={set("size")} className={inputCls(false)}>
-                        <option>600 mm</option>
-                        <option>900 mm (standard)</option>
-                        <option>1200 mm</option>
-                        <option>1500 mm</option>
-                        <option>Custom / not sure</option>
+                      <label htmlFor="q-app" className={labelCls}>APPLICATION</label>
+                      <select id="q-app" value={form.application} onChange={set("application")} className={inputCls(false)}>
+                        <option>Facade screen</option>
+                        <option>Ventilation</option>
+                        <option>Partition wall</option>
+                        <option>Balcony</option>
+                        <option>Landscape</option>
+                        <option>Other</option>
                       </select>
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="q-qty" className={labelCls}>QUANTITY</label>
-                      <select id="q-qty" value={form.qty} onChange={set("qty")} className={inputCls(false)}>
-                        <option>1–10 units</option>
-                        <option>10–50 units</option>
-                        <option>50–200 units</option>
-                        <option>200+ (project supply)</option>
+                      <label htmlFor="q-area" className={labelCls}>APPROX. AREA</label>
+                      <select id="q-area" value={form.area} onChange={set("area")} className={inputCls(false)}>
+                        <option>Under 100 sq ft</option>
+                        <option>100–500 sq ft</option>
+                        <option>500–2,000 sq ft</option>
+                        <option>2,000+ sq ft (project supply)</option>
                       </select>
                     </div>
                     <div className="sm:col-span-2">
                       <label htmlFor="q-msg" className={labelCls}>ANYTHING ELSE?</label>
-                      <textarea id="q-msg" rows={3} value={form.message} onChange={set("message")} placeholder="Colours, drawings, site photos, deadlines…" className={inputCls(false)} />
+                      <textarea id="q-msg" rows={3} value={form.message} onChange={set("message")} placeholder="Finish, colours, drawings, deadlines…" className={inputCls(false)} />
                     </div>
                   </div>
 
@@ -1278,13 +1539,12 @@ function QuoteSection() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  10. Footer                                                         */
+/*  12. Footer                                                         */
 /* ------------------------------------------------------------------ */
 function Footer() {
   return (
     <footer className="border-t border-navy-800 bg-navy-950 pt-16 text-navy-200">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 md:grid-cols-12">
-        {/* Brand */}
         <div className="md:col-span-4">
           <a href="#top" className="flex items-center gap-2.5">
             <StarMark className="h-7 w-7 text-accent-500" />
@@ -1296,8 +1556,8 @@ function Footer() {
             </span>
           </a>
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-steel-400">
-            Manufacturer of premium FRP and GRC architectural products — chajjas, domes, cornices
-            and custom facade elements — since 2001.
+            Manufacturer of premium FRP and GRC architectural products — jali panels, chajjas,
+            domes, cornices and custom facade elements — since 2001.
           </p>
           <div className="mt-6 flex flex-wrap gap-2">
             {["ISO 9001:2015", "FRP · GRC SPECIALISTS", "MADE IN INDIA"].map((b) => (
@@ -1308,13 +1568,12 @@ function Footer() {
           </div>
         </div>
 
-        {/* Products */}
         <div className="md:col-span-2">
-          <h4 className="font-mono text-[10.5px] tracking-[0.25em] text-accent-400">PRODUCTS</h4>
+          <h4 className="font-mono text-[10.5px] tracking-[0.25em] text-accent-400">PATTERNS</h4>
           <ul className="mt-5 space-y-3 text-sm">
-            {["Plain Chajja", "Sloped Chajja", "Curved Chajja", "Decorative Chajja", "Custom Profiles"].map((p) => (
+            {["Basket Weave", "Geometric Star", "Square Maze", "Leaf Pattern", "Brick Link", "Custom Designs"].map((p) => (
               <li key={p}>
-                <a href="#products" className="nav-underline text-navy-200 transition-colors hover:text-white">
+                <a href="#patterns" className="nav-underline text-navy-200 transition-colors hover:text-white">
                   {p}
                 </a>
               </li>
@@ -1322,9 +1581,8 @@ function Footer() {
           </ul>
         </div>
 
-        {/* Company */}
         <div className="md:col-span-3">
-          <h4 className="font-mono text-[10.5px] tracking-[0.25em] text-accent-400">COMPANY</h4>
+          <h4 className="font-mono text-[10.5px] tracking-[0.25em] text-accent-400">THIS PAGE</h4>
           <ul className="mt-5 space-y-3 text-sm">
             {NAV_LINKS.map((l) => (
               <li key={l.href}>
@@ -1336,18 +1594,17 @@ function Footer() {
           </ul>
         </div>
 
-        {/* Contact */}
         <div className="md:col-span-3">
           <h4 className="font-mono text-[10.5px] tracking-[0.25em] text-accent-400">CONTACT</h4>
           <ul className="mt-5 space-y-3.5 text-sm">
             <li>
-              <a href={`mailto:${EMAIL}`} className="group inline-flex items-center gap-2.5 text-navy-200 transition-colors hover:text-accent-300">
+              <a href={`mailto:${EMAIL}`} className="inline-flex items-center gap-2.5 text-navy-200 transition-colors hover:text-accent-300">
                 <MailIcon className="h-4 w-4 text-accent-500" />
                 {EMAIL}
               </a>
             </li>
             <li>
-              <a href={PHONE_TEL} className="group inline-flex items-center gap-2.5 text-navy-200 transition-colors hover:text-accent-300">
+              <a href={PHONE_TEL} className="inline-flex items-center gap-2.5 text-navy-200 transition-colors hover:text-accent-300">
                 <PhoneIcon className="h-4 w-4 text-accent-500" />
                 {PHONE_DISPLAY}
               </a>
@@ -1366,7 +1623,6 @@ function Footer() {
         </div>
       </div>
 
-      {/* Legal bar */}
       <div className="mt-14 border-t border-navy-800">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 sm:flex-row sm:px-8">
           <p className="text-xs text-steel-500">
@@ -1374,7 +1630,7 @@ function Footer() {
           </p>
           <div className="flex items-center gap-6">
             <p className="hidden font-mono text-[9.5px] tracking-[0.2em] text-steel-500 lg:block">
-              FRP CHAJJAS · LANDING PAGE 01 / 10
+              GRC JALI PANELS · LANDING PAGE 02 / 10
             </p>
             <a href="#top" className="nav-underline font-mono text-[10px] tracking-[0.22em] text-navy-200 transition-colors hover:text-accent-400">
               BACK TO TOP ↑
@@ -1396,15 +1652,16 @@ export default function App() {
       <main>
         <Hero />
         <Ticker />
-        <Advantages />
-        <WhyFrp />
-        <StatsBand />
+        <Features />
+        <Applications />
         <Showcase />
+        <CinemaBand />
+        <WhyGrc />
+        <StatsBand />
         <Process />
         <QuoteSection />
       </main>
       <Footer />
-      {/* fixed film-grain layer for a printed, non-flat surface */}
       <div className="noise-overlay" aria-hidden="true" />
     </div>
   );

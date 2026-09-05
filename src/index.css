@@ -154,6 +154,36 @@
   }
 }
 
+/* Drifting "sunlight" behind the jali lattice in the hero */
+.drift-a {
+  animation: driftA 14s ease-in-out infinite alternate;
+}
+.drift-b {
+  animation: driftB 18s ease-in-out infinite alternate;
+}
+@keyframes driftA {
+  0% {
+    transform: translate(-18%, -12%) scale(1);
+  }
+  50% {
+    transform: translate(30%, 22%) scale(1.15);
+  }
+  100% {
+    transform: translate(-8%, 38%) scale(0.95);
+  }
+}
+@keyframes driftB {
+  0% {
+    transform: translate(32%, 30%) scale(1.05);
+  }
+  50% {
+    transform: translate(-14%, -6%) scale(0.9);
+  }
+  100% {
+    transform: translate(22%, -24%) scale(1.12);
+  }
+}
+
 /* Sliding underline for nav + inline links */
 .nav-underline {
   position: relative;
