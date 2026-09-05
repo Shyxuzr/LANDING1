@@ -1,24 +1,21 @@
 /**
  * ============================================================================
- *  BLUE STAR PLASTIC INDUSTRIES — Landing Page #3 : GRC CORNICES
+ *  BLUE STAR PLASTIC INDUSTRIES — Landing Page #4 : GRC COLUMNS
  * ----------------------------------------------------------------------------
- *  Sections, in order:
- *    1. Header / Navbar      — brand + right-aligned call button + progress rule
- *    2. Moulding band        — a full-width dentil-and-rail strip under the header
- *    3. Hero                 — headline, sub-headline, CTA, photo + drawn section
- *    4. Spec ticker          — rotating marquee of cornice credentials
- *    5. Anatomy of a moulding— labelled section drawing with hover-sync callouts
- *    6. Product showcase     — Classical / Decorative / Layered / Simple profiles
- *    7. Ideal For            — residential, commercial, heritage, villas ledger
- *    8. Why GRC comparison   — GRC vs POP vs wood vs RCC
- *    9. Stats band           — animated counters
- *   10. Process              — 4-step timeline + workshop photo
- *   11. Quote form           — validated contact form with success state
- *   12. Footer               — sales email, phone, copyright
- *
- *  Design system: navy / steel-grey / off-white with safety-amber accents.
- *  Type: Bebas Neue (display) · IBM Plex Sans (body) · IBM Plex Mono (specs).
- * ============================================================================ */
+ *  1. Header + Greek-key meander band
+ *  2. Hero — self-drawing Corinthian column elevation with annotations
+ *  3. Spec ticker
+ *  4. The Six Orders — Corinthian / Ionic / Doric / Tuscan / Roman / Composite,
+ *     each drawn as a genuine stylised SVG elevation with its classical canon
+ *  5. Split-shell anatomy — interactive exploded drawing (hover-synced legend)
+ *  6. Cinematic photo band
+ *  7. Why GRC — comparison vs stone / plaster / timber
+ *  8. Stats band (animated counters)
+ *  9. Process — mould-to-portico, sticky workshop photo
+ * 10. Quote form (validated, with success state)
+ * 11. Footer — email, phone, copyright
+ * ============================================================================
+ */
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode, FormEvent } from "react";
 
@@ -30,31 +27,31 @@ const PHONE_TEL = "tel:+919152091020";
 const EMAIL = "sales@bluestarplastic.in";
 const ADDRESS = "Plot 42, MIDC Industrial Area, Taloja, Navi Mumbai — 410208";
 
-const HERO_IMG =
-  "https://image.qwenlm.ai/generated-images/4dc461ed-c520-441a-8b97-cc69fa6ee5db/_result.png";
-const FACTORY_IMG =
-  "https://image.qwenlm.ai/generated-images/21271d87-3ca7-4dae-b463-bdc2173bfd37/_result.png";
+const VILLA_IMG =
+  "https://image.qwenlm.ai/generated-images/355d1d94-bbd7-4595-93fa-89b37b319a9f/_result.png";
+const WORKSHOP_IMG =
+  "https://image.qwenlm.ai/generated-images/2b176097-f5d6-43f5-9e81-851ca96f5ef3/_result.png";
 
 const NAV_LINKS = [
+  { label: "Orders", href: "#orders" },
   { label: "Anatomy", href: "#anatomy" },
-  { label: "Profiles", href: "#profiles" },
-  { label: "Ideal For", href: "#ideal" },
   { label: "Why GRC", href: "#why-grc" },
+  { label: "Process", href: "#process" },
   { label: "Contact", href: "#quote" },
 ];
 
 const TICKER_ITEMS = [
-  "CLASSICAL · DECORATIVE · LAYERED · SIMPLE",
-  "MOISTURE-PROOF — NO POP HAIRLINE CRACKS",
-  "12 MM SHELL, GALVANISED-REINFORCED",
-  "RUNNING-FT PRICING · STRAIGHT + CURVED",
-  "FACTORY-PRIMED OR PAINTED FINISH",
-  "FIRE CLASS A · ASTM E84",
-  "PAN-INDIA SUPPLY + FIXING SUPPORT",
+  "SIX CLASSICAL ORDERS",
+  "SPLIT-SHELL CASTING",
+  "GALVANIZED STEEL CORE",
+  "FLUTED OR PLAIN SHAFTS",
+  "HEIGHTS TO 6 METRES",
+  "ENTASIS TURNED TO CANON",
+  "PAINT-READY OR POLISHED FINISH",
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Custom inline SVG icons                                            */
+/*  Inline SVG icons                                                   */
 /* ------------------------------------------------------------------ */
 function StarMark({ className = "w-6 h-6" }: { className?: string }) {
   return (
@@ -107,65 +104,9 @@ function CheckIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
-/** Ideal-for icon — residential: gable roof over a cornice double-line. */
-function ResidentialIcon({ className = "w-7 h-7" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M8 20 L24 7 L40 20" />
-      <path d="M9 23.5 H39 M9 27 H39" />
-      <path d="M13 27 V41 H35 V27" />
-      <rect x="20.5" y="33" width="7" height="8" />
-    </svg>
-  );
-}
-
-/** Ideal-for icon — commercial: mid-rise block crowned by a cornice band. */
-function CommercialIcon({ className = "w-7 h-7" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M9 12 H39 M9 15.5 H39" />
-      <path d="M13 15.5 V41 H35 V15.5" />
-      <rect x="17" y="20" width="4" height="4" />
-      <rect x="27" y="20" width="4" height="4" />
-      <rect x="17" y="27" width="4" height="4" />
-      <rect x="27" y="27" width="4" height="4" />
-      <path d="M21 41 V35 H27 V41" />
-    </svg>
-  );
-}
-
-/** Ideal-for icon — heritage: arched opening with keystone under a cornice. */
-function HeritageIcon({ className = "w-7 h-7" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M7 10 H41 M10 13.5 H38" />
-      <path d="M13 17 v-2 M19 17 v-2 M29 17 v-2 M35 17 v-2" />
-      <path d="M14 41 V28 a10 10 0 0 1 20 0 V41" />
-      <path d="M21 18 L20 24 H28 L27 18" />
-      <path d="M10 41 H38" />
-    </svg>
-  );
-}
-
-/** Ideal-for icon — villas & bungalows: low hip roof, verandah columns. */
-function VillaIcon({ className = "w-7 h-7" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M7 23 L16 13 H32 L41 23" />
-      <path d="M5 26.5 H43" />
-      <path d="M11 26.5 V39 H37 V26.5" />
-      <path d="M16 39 V30 M22 39 V30 M32 39 V30" />
-      <path d="M25.5 39 V33.5 H29.5 V39" />
-      <path d="M7 39 H41" />
-    </svg>
-  );
-}
-
 /* ------------------------------------------------------------------ */
 /*  Motion helpers                                                     */
 /* ------------------------------------------------------------------ */
-
-/** Observe an element once; returns ref + whether it has entered view. */
 function useInView<T extends HTMLElement>(threshold = 0.15) {
   const ref = useRef<T | null>(null);
   const [inView, setInView] = useState(false);
@@ -195,7 +136,6 @@ function useInView<T extends HTMLElement>(threshold = 0.15) {
   return { ref, inView };
 }
 
-/** Scroll-reveal wrapper — fades/slides children in when scrolled to. */
 function Reveal({
   children,
   className = "",
@@ -213,7 +153,6 @@ function Reveal({
   );
 }
 
-/** Number counter that animates when scrolled into view. */
 function CountUp({ to, suffix = "", duration = 1600 }: { to: number; suffix?: string; duration?: number }) {
   const { ref, inView } = useInView<HTMLSpanElement>(0.4);
   const [val, setVal] = useState(0);
@@ -228,7 +167,7 @@ function CountUp({ to, suffix = "", duration = 1600 }: { to: number; suffix?: st
     const start = performance.now();
     const tick = (now: number) => {
       const p = Math.min(1, (now - start) / duration);
-      setVal(Math.round(to * (1 - Math.pow(1 - p, 4)))); // easeOutQuart
+      setVal(Math.round(to * (1 - Math.pow(1 - p, 4))));
       if (p < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -243,278 +182,229 @@ function CountUp({ to, suffix = "", duration = 1600 }: { to: number; suffix?: st
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  Cornice drawings                                                   */
-/* ------------------------------------------------------------------ */
-
-/** Shared drawing frame: hatched wall, profile paths, dimension line. */
-function DrawingFrame({
-  children,
-  label,
-  hatchId,
+/** Stroke path that draws itself in when `inView` flips true. */
+function Draw({
+  d,
+  inView,
+  delay = 0,
+  w = 2,
 }: {
-  children: ReactNode;
-  label: string;
-  hatchId: string;
+  d: string;
+  inView: boolean;
+  delay?: number;
+  w?: number;
 }) {
   return (
+    <path
+      d={d}
+      pathLength={1}
+      strokeWidth={w}
+      fill="none"
+      className="profile-line"
+      style={{ strokeDashoffset: inView ? 0 : 1, transitionDelay: `${delay}ms` }}
+    />
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Column-drawing primitives (shared by hero + order cards)           */
+/* ------------------------------------------------------------------ */
+
+/** Ionic-style spiral volute built from shrinking half-circle arcs. */
+function Volute({ cx, cy, r }: { cx: number; cy: number; r: number }) {
+  const d = `M ${cx - r} ${cy} A ${r} ${r} 0 1 1 ${cx + r} ${cy} A ${r * 0.62} ${r * 0.62} 0 1 1 ${cx - r * 0.28} ${cy} A ${r * 0.28} ${r * 0.28} 0 1 1 ${cx + r * 0.14} ${cy}`;
+  return <path d={d} fill="none" strokeWidth="1.8" />;
+}
+
+/** A row of stylised acanthus leaves (lens shapes with midribs). */
+function LeafRow({ y, x0, x1, n, h }: { y: number; x0: number; x1: number; n: number; h: number }) {
+  const w = (x1 - x0) / n;
+  return (
+    <g fill="none" strokeWidth="1.4">
+      {Array.from({ length: n }, (_, i) => {
+        const x = x0 + i * w;
+        return (
+          <g key={i}>
+            <path d={`M${x} ${y} Q${x + w / 2} ${y - h} ${x + w} ${y} Q${x + w / 2} ${y - h * 0.45} ${x} ${y} Z`} />
+            <line x1={x + w / 2} y1={y - 2} x2={x + w / 2} y2={y - h * 0.7} />
+          </g>
+        );
+      })}
+    </g>
+  );
+}
+
+/** Vertical flutes between a tapered top and bottom edge. */
+function Flutes({ xTL, xTR, xBL, xBR, yTop, yBot, n }: { xTL: number; xTR: number; xBL: number; xBR: number; yTop: number; yBot: number; n: number }) {
+  return (
+    <g strokeWidth="1">
+      {Array.from({ length: n }, (_, i) => {
+        const t = (i + 1) / (n + 1);
+        return <line key={i} x1={xTL + t * (xTR - xTL)} y1={yTop} x2={xBL + t * (xBR - xBL)} y2={yBot} />;
+      })}
+    </g>
+  );
+}
+
+/** Convex torus moulding between yTop and yBot. */
+function Torus({ x0, x1, yTop, yBot }: { x0: number; x1: number; yTop: number; yBot: number }) {
+  const mid = (yTop + yBot) / 2;
+  const o = 9; // outward bulge
+  return (
+    <path
+      d={`M ${x0} ${yBot} C ${x0 - o} ${mid + 2} ${x0 - o} ${mid - 2} ${x0 + 2} ${yTop} L ${x1 - 2} ${yTop} C ${x1 + o} ${mid - 2} ${x1 + o} ${mid + 2} ${x1} ${yBot} Z`}
+      fill="none"
+      strokeWidth="1.8"
+    />
+  );
+}
+
+/** Concave scotia moulding between yTop and yBot. */
+function Scotia({ x0, x1, yTop, yBot }: { x0: number; x1: number; yTop: number; yBot: number }) {
+  const mid = (yTop + yBot) / 2;
+  return (
+    <path
+      d={`M ${x0} ${yTop} C ${x0 + 11} ${mid - 1} ${x0 + 11} ${mid + 1} ${x0 + 3} ${yBot} L ${x1 - 3} ${yBot} C ${x1 - 11} ${mid + 1} ${x1 - 11} ${mid - 1} ${x1} ${yTop} Z`}
+      fill="none"
+      strokeWidth="1.6"
+    />
+  );
+}
+
+/** Classic base stack: torus / scotia / torus / plinth. */
+function BaseStack({ x0, x1 }: { x0: number; x1: number }) {
+  return (
+    <g>
+      <Torus x0={x0 + 2} x1={x1 - 2} yTop={306} yBot={318} />
+      <Scotia x0={x0 + 6} x1={x1 - 6} yTop={318} yBot={331} />
+      <Torus x0={x0} x1={x1} yTop={331} yBot={347} />
+      <rect x={x0 - 6} y={347} width={x1 - x0 + 12} height={25} fill="none" strokeWidth="2" />
+    </g>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  The six order elevations                                           */
+/* ------------------------------------------------------------------ */
+type OrderId = "corinthian" | "ionic" | "doric" | "tuscan" | "roman" | "composite";
+
+function OrderDrawing({ order }: { order: OrderId }) {
+  const gridId = `ogrid-${order}`;
+  return (
     <svg
-      viewBox="0 0 240 150"
+      viewBox="0 0 200 400"
       role="img"
-      aria-label={`Cornice section: ${label}`}
+      aria-label={`${order} order — elevation drawing`}
       className="w-full fill-none text-navy-800 transition-colors duration-500 group-hover:text-accent-400"
     >
       <defs>
-        <pattern id={`g-${hatchId}`} width="16" height="16" patternUnits="userSpaceOnUse">
-          <path d="M16 0H0V16" stroke="currentColor" strokeOpacity="0.13" strokeWidth="0.5" />
-        </pattern>
-        <pattern id={`h-${hatchId}`} width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <line x1="0" y1="0" x2="0" y2="7" stroke="currentColor" strokeOpacity="0.3" strokeWidth="1" />
+        <pattern id={gridId} width="16" height="16" patternUnits="userSpaceOnUse">
+          <path d="M16 0H0V16" stroke="currentColor" strokeOpacity="0.13" strokeWidth="0.5" fill="none" />
         </pattern>
       </defs>
+      <rect width="200" height="400" fill={`url(#${gridId})`} />
+      {/* ground line + centreline */}
+      <line x1="28" y1="372" x2="172" y2="372" stroke="currentColor" strokeWidth="2.2" />
+      <line x1="100" y1="44" x2="100" y2="372" stroke="currentColor" strokeOpacity="0.3" strokeWidth="0.8" strokeDasharray="4 5" />
 
-      <rect width="240" height="150" fill={`url(#g-${hatchId})`} />
-      <rect x="18" y="16" width="20" height="116" fill={`url(#h-${hatchId})`} stroke="currentColor" strokeWidth="1.5" />
-      <line x1="38" y1="16" x2="38" y2="132" stroke="currentColor" strokeWidth="2.5" />
+      {order === "doric" && (
+        <g fill="none" strokeWidth="2" strokeLinejoin="round">
+          <rect x="52" y="88" width="96" height="14" />
+          <path d="M64 120 C 58 112 56 106 52 102 L148 102 C 144 106 142 112 136 120 Z" />
+          <line x1="66" y1="125" x2="134" y2="125" strokeWidth="1.2" />
+          <path d="M66 130 C 60 220 58 290 58 356 M134 130 C 140 220 142 290 142 356" />
+          <line x1="58" y1="356" x2="142" y2="356" />
+          <rect x="50" y="356" width="100" height="16" strokeWidth="1.6" />
+          <Flutes xTL={69} xTR={131} xBL={61} xBR={139} yTop={134} yBot={352} n={9} />
+        </g>
+      )}
 
-      {children}
+      {order === "tuscan" && (
+        <g fill="none" strokeWidth="2" strokeLinejoin="round">
+          <rect x="58" y="92" width="84" height="12" />
+          <path d="M68 122 C 64 114 62 110 58 104 L142 104 C 138 110 136 114 132 122 Z" />
+          <line x1="68" y1="126" x2="132" y2="126" strokeWidth="1.2" />
+          <line x1="68" y1="130" x2="132" y2="130" strokeWidth="1.2" />
+          <path d="M68 130 C 62 210 60 280 60 334 M132 130 C 138 210 140 280 140 334" />
+          <Torus x0={56} x1={144} yTop={334} yBot={350} />
+          <rect x="48" y="350" width="104" height="22" />
+        </g>
+      )}
 
-      {/* dimension line */}
-      <g className="text-steel-400 transition-colors duration-500 group-hover:text-accent-300">
-        <line x1="38" y1="141" x2="200" y2="141" stroke="currentColor" strokeWidth="1" />
-        <path d="M44 137.5 L38 141 L44 144.5" stroke="currentColor" strokeWidth="1" />
-        <path d="M194 137.5 L200 141 L194 144.5" stroke="currentColor" strokeWidth="1" />
-        <text x="119" y="135" textAnchor="middle" fontSize="7" letterSpacing="1.6" fontFamily="IBM Plex Mono, monospace" fill="currentColor">
-          {label}
-        </text>
-      </g>
+      {order === "ionic" && (
+        <g fill="none" strokeWidth="2" strokeLinejoin="round">
+          <rect x="58" y="84" width="84" height="10" />
+          <Volute cx={70} cy={108} r={13} />
+          <Volute cx={130} cy={108} r={13} />
+          {/* egg-and-dart echinus */}
+          <g strokeWidth="1.2">
+            <line x1="80" y1="118" x2="120" y2="118" />
+            <ellipse cx="86" cy="124" rx="2.6" ry="4" />
+            <ellipse cx="95.3" cy="124" rx="2.6" ry="4" />
+            <ellipse cx="104.7" cy="124" rx="2.6" ry="4" />
+            <ellipse cx="114" cy="124" rx="2.6" ry="4" />
+            <line x1="80" y1="130" x2="120" y2="130" />
+          </g>
+          <line x1="72" y1="135" x2="128" y2="135" strokeWidth="1.2" />
+          <path d="M70 140 C 64 210 62 260 62 306 M130 140 C 136 210 138 260 138 306" />
+          <Flutes xTL={72} xTR={128} xBL={64} xBR={136} yTop={144} yBot={302} n={9} />
+          <BaseStack x0={58} x1={142} />
+        </g>
+      )}
+
+      {order === "corinthian" && (
+        <g fill="none" strokeWidth="2" strokeLinejoin="round">
+          <path d="M64 88 L136 88 C 134 95 132 100 130 103 L70 103 C 68 100 66 95 64 88 Z" />
+          <circle cx="100" cy="96" r="2.4" strokeWidth="1.2" />
+          <Volute cx={72} cy={112} r={8} />
+          <Volute cx={128} cy={112} r={8} />
+          <LeafRow y={134} x0={72} x1={128} n={4} h={16} />
+          <LeafRow y={152} x0={68} x1={132} n={4} h={22} />
+          <line x1="70" y1="155" x2="130" y2="155" strokeWidth="1.2" />
+          <path d="M70 158 C 64 215 62 262 62 306 M130 158 C 136 215 138 262 138 306" />
+          <Flutes xTL={72} xTR={128} xBL={64} xBR={136} yTop={162} yBot={302} n={9} />
+          <BaseStack x0={58} x1={142} />
+        </g>
+      )}
+
+      {order === "roman" && (
+        <g fill="none" strokeWidth="2" strokeLinejoin="round">
+          <rect x="56" y="88" width="88" height="13" />
+          <path d="M66 124 C 60 118 58 112 56 101 L144 101 C 142 112 140 118 134 124 Z" />
+          {/* beaded moulding row */}
+          <g strokeWidth="1.2">
+            {[72, 81, 90, 99, 108, 117, 126].map((x) => (
+              <circle key={x} cx={x} cy={112} r="2.2" />
+            ))}
+          </g>
+          <line x1="68" y1="128" x2="132" y2="128" strokeWidth="1.2" />
+          <path d="M68 136 C 62 220 60 280 60 336 M132 136 C 138 220 140 280 140 336" />
+          <Flutes xTL={70} xTR={130} xBL={62} xBR={138} yTop={140} yBot={332} n={11} />
+          <Torus x0={54} x1={146} yTop={336} yBot={352} />
+          <rect x="46" y="352" width="108" height="20" />
+        </g>
+      )}
+
+      {order === "composite" && (
+        <g fill="none" strokeWidth="2" strokeLinejoin="round">
+          <path d="M64 86 L136 86 C 134 93 132 98 130 101 L70 101 C 68 98 66 93 64 86 Z" />
+          <circle cx="100" cy="94" r="2.4" strokeWidth="1.2" />
+          <Volute cx={68} cy={114} r={14} />
+          <Volute cx={132} cy={114} r={14} />
+          <LeafRow y={136} x0={74} x1={126} n={4} h={15} />
+          <LeafRow y={154} x0={70} x1={130} n={4} h={20} />
+          <line x1="70" y1="157" x2="130" y2="157" strokeWidth="1.2" />
+          <path d="M70 160 C 64 215 62 262 62 306 M130 160 C 136 215 138 262 138 306" />
+          <Flutes xTL={72} xTR={128} xBL={64} xBR={136} yTop={164} yBot={302} n={9} />
+          <BaseStack x0={58} x1={142} />
+        </g>
+      )}
     </svg>
   );
 }
 
-/** Classical cornice section — cyma recta crown over a dentil course. */
-function ClassicalSection({ label }: { label: string }) {
-  return (
-    <DrawingFrame label={label} hatchId="cor01">
-      <g stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
-        <path d="M38 26 H198 V34 C 186 34, 182 44, 172 48 C 164 51.5, 156 50, 148 52 H38" />
-        <path d="M38 66 H148 V52" />
-      </g>
-      <g stroke="currentColor" strokeWidth="1.5">
-        {[48, 65, 82, 99, 116, 133].map((x) => (
-          <rect key={x} x={x} y="52" width="9" height="14" />
-        ))}
-      </g>
-    </DrawingFrame>
-  );
-}
-
-/** Decorative cornice section — steep cyma, scalloped bed, bead course. */
-function DecorativeSection({ label }: { label: string }) {
-  return (
-    <DrawingFrame label={label} hatchId="cor02">
-      <g stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
-        <path d="M38 30 H190 V38 C 179 38, 175 47, 166 51 C 158 54.5, 150 53.5, 142 55 H38" />
-        <path d="M142 55 a8.7 8.7 0 0 1 -17.3 0 a8.7 8.7 0 0 1 -17.3 0 a8.7 8.7 0 0 1 -17.3 0 a8.7 8.7 0 0 1 -17.3 0 a8.7 8.7 0 0 1 -17.3 0 a8.7 8.7 0 0 1 -17.3 0" />
-        <path d="M38 75 H142 V55" />
-      </g>
-      <g stroke="currentColor" strokeWidth="1.5">
-        {[52, 70, 88, 106, 124].map((cx) => (
-          <circle key={cx} cx={cx} cy="66" r="3" />
-        ))}
-      </g>
-    </DrawingFrame>
-  );
-}
-
-/** Layered cornice section — three stepped fascia reveals. */
-function LayeredSection({ label }: { label: string }) {
-  return (
-    <DrawingFrame label={label} hatchId="cor03">
-      <g stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
-        <path d="M38 30 H200 V42 H178 V56 H156 V72 H38" />
-        <path d="M46 36 H192" strokeWidth="0.75" strokeOpacity="0.5" />
-        <path d="M46 49 H170" strokeWidth="0.75" strokeOpacity="0.5" />
-      </g>
-    </DrawingFrame>
-  );
-}
-
-/** Simple cornice section — single bullnose slab. */
-function SimpleSection({ label }: { label: string }) {
-  return (
-    <DrawingFrame label={label} hatchId="cor04">
-      <g stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
-        <path d="M38 34 H176 C 187 34, 187 50, 176 50 H38" />
-      </g>
-      <path d="M46 42 H166" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.5" />
-    </DrawingFrame>
-  );
-}
-
-/** Hero section drawing — classical profile that draws itself in. */
-function HeroSectionDraw() {
-  const { ref, inView } = useInView<HTMLDivElement>(0.35);
-  return (
-    <div ref={ref} className={inView ? "drawn" : ""}>
-      <svg viewBox="0 0 240 120" className="w-full fill-none text-navy-100" role="img" aria-label="Classical cornice section drawing">
-        <defs>
-          <pattern id="hhatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-            <line x1="0" y1="0" x2="0" y2="7" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1" />
-          </pattern>
-        </defs>
-        <rect x="24" y="12" width="20" height="96" fill="url(#hhatch)" stroke="currentColor" strokeWidth="1.2" />
-        <line x1="44" y1="12" x2="44" y2="108" stroke="currentColor" strokeWidth="2.2" />
-        <path
-          className="profile-line"
-          d="M44 22 H204 V30 C 192 30, 188 40, 178 44 C 170 47.5, 162 46, 154 48 H44"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinejoin="round"
-        />
-        <path className="profile-line d2" d="M44 62 H154 V48" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-        <path className="profile-line d3" d="M52 48 h9 v14 h-9 z M69 48 h9 v14 h-9 z M86 48 h9 v14 h-9 z M103 48 h9 v14 h-9 z M120 48 h9 v14 h-9 z M137 48 h9 v14 h-9 z" stroke="currentColor" strokeWidth="1.3" />
-      </svg>
-    </div>
-  );
-}
-
-/** Moulding strip mounted under the header — rail, amber rule, dentils. */
-function MouldingBand() {
-  return (
-    <div className="overflow-hidden" aria-hidden="true">
-      <svg className="block h-9 w-full" preserveAspectRatio="none">
-        <defs>
-          <pattern id="dentil-strip" width="26" height="36" patternUnits="userSpaceOnUse">
-            <rect x="5" y="12" width="13" height="14" fill="#152c4f" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="8" fill="#152c4f" />
-        <rect y="8" width="100%" height="2" fill="#f5a81c" />
-        <rect y="10" width="100%" height="16" fill="#eef1f6" />
-        <rect y="10" width="100%" height="16" fill="url(#dentil-strip)" />
-        <rect y="26" width="100%" height="10" fill="#0c1e3a" />
-      </svg>
-    </div>
-  );
-}
-
 /* ------------------------------------------------------------------ */
-/*  Section content data                                               */
-/* ------------------------------------------------------------------ */
-
-const ANATOMY = [
-  { name: "Cyma Recta", desc: "The S-curve crown that catches raking light and gives the profile its classical character." },
-  { name: "Corona", desc: "The projecting shelf that throws rainwater clear of the wall face below." },
-  { name: "Dentil Course", desc: "The toothed rhythm borrowed from the classical orders — crisp and shadow-deep in GRC." },
-  { name: "Bed Moulding", desc: "The transition line that settles the profile onto the wall without a visual break." },
-  { name: "Soffit", desc: "The underside plane — kept true and shadow-free by factory-cast accuracy." },
-  { name: "Frieze", desc: "The wall face the cornice crowns. Our mouldings are dimensioned to its module." },
-];
-
-const PRODUCTS = [
-  {
-    code: "COR-01",
-    name: "Classical Cornice",
-    tag: "BEST SELLER",
-    label: "PROJ. 150–300 MM",
-    Section: ClassicalSection,
-    desc: "Cyma recta crown over a dentil course — the canonical order for classical facades, temples and heritage-style interiors.",
-    specs: ["Projection 150–300 mm", "Dentil module 60 mm", "Raw, primed or painted"],
-  },
-  {
-    code: "COR-02",
-    name: "Decorative Cornice",
-    tag: "ORNATE",
-    label: "PROJ. 180–320 MM",
-    Section: DecorativeSection,
-    desc: "Scalloped bed moulding with a bead course for banquet halls, palaces and ornamented street elevations.",
-    specs: ["Projection 180–320 mm", "Scallop 60 mm module", "Optional gilt accents"],
-  },
-  {
-    code: "COR-03",
-    name: "Layered Cornice",
-    tag: "ARCHITECT PICK",
-    label: "PROJ. 120–250 MM",
-    Section: LayeredSection,
-    desc: "Three crisp stepped fascia reveals that shadow-line contemporary facades, parapets and floor bands.",
-    specs: ["Projection 120–250 mm", "3-step reveal", "Shadow-gap detailing"],
-  },
-  {
-    code: "COR-04",
-    name: "Simple Cornice",
-    tag: "ECONOMICAL",
-    label: "PROJ. 100–150 MM",
-    Section: SimpleSection,
-    desc: "A single bullnose slab with a soft rounded nose — the clean, budget-friendly finish for apartments and row houses.",
-    specs: ["Projection 100–150 mm", "Radius nose profile", "Fastest to install"],
-  },
-];
-
-const IDEAL_FOR = [
-  {
-    icon: ResidentialIcon,
-    title: "Residential Projects",
-    desc: "Flat lines and parapet crowns for apartments and row houses — crisp factory-cast edges that never hairline-crack like site-run POP.",
-    chip: "SIMPLE · LAYERED",
-  },
-  {
-    icon: CommercialIcon,
-    title: "Commercial Buildings",
-    desc: "Facade bands and floor-line cornices that tie large elevations together — lightweight, so no structural overloading on high-rises.",
-    chip: "LAYERED · CLASSICAL",
-  },
-  {
-    icon: HeritageIcon,
-    title: "Heritage Structures",
-    desc: "Period-accurate cyma, dentil and bead profiles recast from existing sections, photographs or measured drawings.",
-    chip: "CLASSICAL · DECORATIVE",
-  },
-  {
-    icon: VillaIcon,
-    title: "Villas & Bungalows",
-    desc: "Crown the roofline, porch and verandah with ornate profiles — weatherproof even in coastal, salt-laden air.",
-    chip: "DECORATIVE · CLASSICAL",
-  },
-];
-
-const COMPARISON = [
-  { label: "Weight per running ft", grc: "1.2–2 kg", pop: "3–4 kg", wood: "2–3 kg", rcc: "6–8 kg" },
-  { label: "Exterior & moisture", grc: "Immune", pop: "Crumbles when wet", wood: "Rots & warps", rcc: "Stains & spalls" },
-  { label: "Hairline cracking", grc: "Flexible joints — none", pop: "Always", wood: "Shrinks at joints", rcc: "Shrinkage cracks" },
-  { label: "Termites & fungus", grc: "Immune", pop: "Damp attracts both", wood: "Prone", rcc: "Immune" },
-  { label: "Detail sharpness", grc: "Crisp, moulded", pop: "Degrades in weather", wood: "Carved — costly", rcc: "Coarse" },
-  { label: "Exterior service life", grc: "25+ years", pop: "5–8 years", wood: "10–15 years", rcc: "20+ (needs paint)" },
-];
-
-const STATS = [
-  { value: 25, suffix: "+", label: "Years in GRC & FRP" },
-  { value: 120000, suffix: "+", label: "Running feet supplied" },
-  { value: 18, suffix: "", label: "States served pan-India" },
-  { value: 10, suffix: "-YR", label: "Material warranty" },
-];
-
-const PROCESS_STEPS = [
-  {
-    title: "Share running feet & profile",
-    desc: "Send facade photos or drawings and pick from our four profiles — or send a custom section for recasting.",
-  },
-  {
-    title: "CAD section + quote in 24 h",
-    desc: "Per-running-foot rates, a curved-length plan for radii, and finish options laid out before you commit.",
-  },
-  {
-    title: "Cast & cure",
-    desc: "Alkali-resistant glass fibre sprayed into silicone moulds, then moisture-cured for seven full days.",
-  },
-  {
-    title: "Fix & finish",
-    desc: "SS cradle brackets and polymer-mortar joints; our site engineer supports your masons on call.",
-  },
-];
-
-/* ------------------------------------------------------------------ */
-/*  1. Header / Navbar                                                 */
+/*  1. Header + Greek-key band                                         */
 /* ------------------------------------------------------------------ */
 function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -630,24 +520,43 @@ function Header() {
   );
 }
 
+/** Slow-scrolling Greek-key meander strip under the navbar. */
+function GreekKeyBand() {
+  return (
+    <div className="marquee mt-[68px] border-b border-navy-800 bg-navy-950 py-2">
+      <div className="meander-track">
+        {[0, 1].map((k) => (
+          <svg key={k} width="1440" height="14" className="shrink-0" aria-hidden={k === 1}>
+            <defs>
+              <pattern id={`meander-${k}`} width="36" height="14" patternUnits="userSpaceOnUse">
+                <path d="M2 12 H14 V2 H30 V8 H20 V5 H26" fill="none" stroke="#f5a81c" strokeOpacity="0.5" strokeWidth="1.6" />
+              </pattern>
+            </defs>
+            <rect width="1440" height="14" fill={`url(#meander-${k})`} />
+          </svg>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ------------------------------------------------------------------ */
-/*  3. Hero                                                            */
+/*  2. Hero — self-drawing Corinthian elevation                        */
 /* ------------------------------------------------------------------ */
 function Hero() {
-  return (
-    <section id="top" className="relative overflow-hidden bg-paper bg-blueprint pb-24 pt-[68px] md:pt-[76px]">
-      {/* The page opens with the product itself: a moulding strip */}
-      <MouldingBand />
+  const { ref, inView } = useInView<HTMLDivElement>(0.2);
 
+  return (
+    <section id="top" className="relative overflow-hidden bg-paper bg-blueprint pb-24 pt-14 md:pt-20">
       <span
-        className="text-outline pointer-events-none absolute -bottom-8 right-0 select-none font-display text-[20vw] leading-none tracking-tight md:text-[15vw]"
+        className="text-outline pointer-events-none absolute -bottom-10 right-0 select-none font-display text-[22vw] leading-none md:text-[15vw]"
         aria-hidden="true"
       >
-        CORNICE
+        ORDERS
       </span>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 pt-14 sm:px-8 lg:grid-cols-12 lg:gap-10 lg:pt-20">
-        {/* Copy column */}
+      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-8">
+        {/* Copy */}
         <div className="lg:col-span-6">
           <Reveal>
             <p className="inline-flex items-center gap-2.5 font-mono text-[11px] tracking-[0.3em] text-navy-600">
@@ -657,24 +566,23 @@ function Hero() {
           </Reveal>
 
           <Reveal delay={90}>
-            <h1 className="mt-5 font-display text-[52px] leading-[0.98] tracking-[0.015em] text-navy-900 sm:text-7xl xl:text-[84px]">
-              GRC Cornice —
+            <h1 className="mt-5 font-display text-[52px] leading-[0.98] tracking-[0.015em] text-navy-900 sm:text-7xl xl:text-[86px]">
+              GRC Columns —
               <br />
               <span className="relative inline-block">
-                Elegant Finish.
+                Timeless Beauty.
                 <svg viewBox="0 0 320 14" className="absolute -bottom-2 left-0 w-full text-accent-500" preserveAspectRatio="none" aria-hidden="true">
                   <path d="M3 10 C 70 3, 190 3, 317 8" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
                 </svg>
               </span>
               <br />
-              Stronger Performance.
+              Built to Last.
             </h1>
           </Reveal>
 
           <Reveal delay={180}>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-steel-600">
-              Lightweight yet strong cornices offering superior durability and a premium finish
-              for modern and classical designs.
+              Crafted to bring classical elegance and modern performance to your spaces.
             </p>
           </Reveal>
 
@@ -688,17 +596,17 @@ function Hero() {
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </a>
               <a
-                href="#profiles"
+                href="#orders"
                 className="inline-flex items-center gap-3 border-2 border-navy-800 px-7 py-[14px] text-[15px] font-semibold text-navy-800 transition-colors duration-200 hover:bg-navy-800 hover:text-white"
               >
-                View Profiles
+                Explore the Six Orders
               </a>
             </div>
           </Reveal>
 
           <Reveal delay={340}>
             <ul className="mt-10 flex flex-wrap gap-x-7 gap-y-3">
-              {["ISO 9001:2015 CERTIFIED", "MOISTURE-PROOF GRC", "CUSTOM PROFILE RECASTING"].map((t) => (
+              {["GALVANIZED STEEL CORE", "HEIGHTS TO 6 M", "SEISMIC-SAFE LIGHTWEIGHT"].map((t) => (
                 <li key={t} className="flex items-center gap-2 font-mono text-[10.5px] tracking-[0.16em] text-steel-600">
                   <CheckIcon className="h-3.5 w-3.5 text-accent-600" />
                   {t}
@@ -708,54 +616,105 @@ function Hero() {
           </Reveal>
         </div>
 
-        {/* Image + drawn section card */}
-        <div className="lg:col-span-6">
-          <Reveal delay={200}>
-            <div className="relative mr-2 lg:mr-6">
-              <span className="absolute -left-2 -top-2 h-7 w-7 border-l-[3px] border-t-[3px] border-accent-500" aria-hidden="true" />
-              <span className="absolute -right-2 -top-2 h-7 w-7 border-r-[3px] border-t-[3px] border-accent-500" aria-hidden="true" />
-              <span className="absolute -bottom-2 -left-2 h-7 w-7 border-b-[3px] border-l-[3px] border-accent-500" aria-hidden="true" />
-              <span className="absolute -bottom-2 -right-2 h-7 w-7 border-b-[3px] border-r-[3px] border-accent-500" aria-hidden="true" />
+        {/* Self-drawing elevation */}
+        <div className="lg:col-span-6" ref={ref}>
+          <div className="relative mr-2 lg:mr-6">
+            <span className="absolute -left-2 -top-2 h-7 w-7 border-l-[3px] border-t-[3px] border-accent-500" aria-hidden="true" />
+            <span className="absolute -right-2 -top-2 h-7 w-7 border-r-[3px] border-t-[3px] border-accent-500" aria-hidden="true" />
+            <span className="absolute -bottom-2 -left-2 h-7 w-7 border-b-[3px] border-l-[3px] border-accent-500" aria-hidden="true" />
+            <span className="absolute -bottom-2 -right-2 h-7 w-7 border-b-[3px] border-r-[3px] border-accent-500" aria-hidden="true" />
 
-              <div className="relative overflow-hidden border border-steel-300 bg-navy-900">
-                <img
-                  src={HERO_IMG}
-                  alt="Building facade with white GRC cornice bands casting shadow lines under raking evening light"
-                  className="kenburns aspect-[4/3] w-full object-cover"
-                  loading="eager"
-                />
-                <span className="absolute right-4 top-4 border border-white/25 bg-navy-950/75 px-2.5 py-1.5 font-mono text-[9.5px] tracking-[0.25em] text-navy-100">
-                  DWG NO. BSP-COR-01
-                </span>
-              </div>
+            <div className="relative border border-steel-300 bg-navy-50 px-6 pb-4 pt-12">
+              <span className="absolute left-4 top-4 font-mono text-[9.5px] tracking-[0.25em] text-steel-500">
+                ELEVATION · CORINTHIAN ORDER
+              </span>
+              <span className="absolute right-4 top-4 border border-navy-800/30 bg-white px-2.5 py-1.5 font-mono text-[9.5px] tracking-[0.25em] text-navy-800">
+                DWG NO. BSP-COL-01
+              </span>
 
-              {/* vertical dimension note */}
-              <div className="absolute -right-5 top-8 hidden lg:block" aria-hidden="true">
-                <svg viewBox="0 0 34 190" className="h-44 w-8 text-navy-700">
-                  <line x1="10" y1="8" x2="10" y2="168" stroke="currentColor" strokeWidth="1" />
-                  <path d="M6.5 14 L10 8 L13.5 14" fill="none" stroke="currentColor" strokeWidth="1" />
-                  <path d="M6.5 162 L10 168 L13.5 162" fill="none" stroke="currentColor" strokeWidth="1" />
-                  <line x1="4" y1="8" x2="16" y2="8" stroke="currentColor" strokeWidth="1" />
-                  <line x1="4" y1="168" x2="16" y2="168" stroke="currentColor" strokeWidth="1" />
-                  <text x="22" y="92" fontSize="8" letterSpacing="1.5" fontFamily="IBM Plex Mono, monospace" fill="currentColor" transform="rotate(90 22 92)" textAnchor="middle">
-                    TYP. 240 MM DROP
-                  </text>
-                </svg>
-              </div>
+              <svg viewBox="0 0 360 660" className="mx-auto w-full max-w-md text-navy-800" role="img" aria-label="Corinthian column elevation drawing">
+                {/* outline strokes that draw themselves in */}
+                <g fill="none" stroke="currentColor" strokeLinejoin="round">
+                  <Draw inView={inView} delay={0} d="M120 96 H240 C238 104 236 110 233 116 H127 C124 110 122 104 120 96 Z" />
+                  <circle cx="180" cy="106" r="4" pathLength={1} strokeWidth="1.5" fill="none" className="profile-line" style={{ strokeDashoffset: inView ? 0 : 1, transitionDelay: "250ms" }} />
+                  <Draw inView={inView} delay={300} w={1.8} d="M120 128 A10 10 0 1 1 140 128 A6.2 6.2 0 1 1 127.2 128 A2.8 2.8 0 1 1 131.4 128" />
+                  <Draw inView={inView} delay={300} w={1.8} d="M220 128 A10 10 0 1 1 240 128 A6.2 6.2 0 1 1 227.2 128 A2.8 2.8 0 1 1 231.4 128" />
+                  {/* acanthus rows */}
+                  <Draw inView={inView} delay={500} w={1.4} d="M136 168 Q147 142 158 168 Q147 156 136 168 Z M158 168 Q169 142 180 168 Q169 156 158 168 Z M180 168 Q191 142 202 168 Q191 156 180 168 Z M202 168 Q213 142 224 168 Q213 156 202 168 Z" />
+                  <Draw inView={inView} delay={650} w={1.4} d="M132 196 Q146 162 160 196 Q146 180 132 196 Z M160 196 Q174 162 188 196 Q174 180 160 196 Z M188 196 Q202 162 216 196 Q202 180 188 196 Z M216 196 Q230 162 244 196 Q230 180 216 196 Z" />
+                  <Draw inView={inView} delay={200} d="M142 220 C136 340 133 460 133 560 M218 220 C224 340 227 460 227 560" />
+                  {/* flutes */}
+                  <Draw inView={inView} delay={850} w={1} d="M149 226 L141.6 556 M156 226 L150.3 556 M163 226 L158.9 556 M170 226 L167.5 556 M177 226 L176.2 556 M184 226 L184.8 556 M191 226 L193.4 556 M198 226 L202.1 556 M205 226 L210.7 556 M212 226 L219.3 556" />
+                  <Draw inView={inView} delay={400} w={1.5} d="M138 208 H222 M138 220 H222" />
+                  {/* base */}
+                  <Draw inView={inView} delay={500} w={1.5} d="M130 560 H230 M128 568 H232" />
+                  <Draw inView={inView} delay={550} d="M126 568 C136 575 136 578 128 584 H232 C224 578 224 575 234 568" />
+                  <Draw inView={inView} delay={600} d="M124 584 C114 596 114 600 126 606 H234 C246 600 246 596 236 584 Z" />
+                  <Draw inView={inView} delay={650} d="M112 606 H248 V634 H112 Z" />
+                  <Draw inView={inView} delay={700} w={2.2} d="M48 634 H312" />
+                </g>
 
-              {/* self-drawing section card */}
-              <div className="absolute -bottom-10 left-4 right-4 border-t-4 border-accent-500 bg-navy-950 p-5 shadow-xl shadow-navy-900/25 sm:right-auto sm:w-[22rem]">
-                <div className="flex items-center justify-between">
-                  <p className="font-mono text-[9.5px] tracking-[0.25em] text-accent-400">SECTION A–A · COR-01</p>
-                  <p className="font-mono text-[9.5px] tracking-[0.25em] text-steel-500">SCALE 1:4</p>
-                </div>
-                <HeroSectionDraw />
-                <p className="mt-1 font-mono text-[9.5px] tracking-[0.18em] text-navy-300">
-                  CYMA RECTA · DENTIL COURSE · GRC 12 MM SHELL
+                {/* annotations (desktop) */}
+                <g
+                  className="hidden md:block"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="0.8"
+                  fontFamily="IBM Plex Mono, monospace"
+                  style={{ opacity: inView ? 1 : 0, transition: "opacity 0.8s ease 1s" }}
+                >
+                  <g>
+                    <line x1="244" y1="106" x2="296" y2="106" />
+                    <text x="300" y="109" fontSize="8" letterSpacing="1.4" stroke="none" fill="currentColor">ABACUS</text>
+                  </g>
+                  <g>
+                    <line x1="246" y1="172" x2="296" y2="172" />
+                    <text x="300" y="175" fontSize="8" letterSpacing="1.4" stroke="none" fill="currentColor">ACANTHUS CAPITAL</text>
+                  </g>
+                  <g>
+                    <line x1="230" y1="380" x2="296" y2="380" />
+                    <text x="300" y="383" fontSize="8" letterSpacing="1.4" stroke="none" fill="currentColor">FLUTED SHAFT</text>
+                  </g>
+                  <g>
+                    <line x1="64" y1="214" x2="132" y2="214" />
+                    <text x="60" y="217" fontSize="8" letterSpacing="1.4" textAnchor="end" stroke="none" fill="currentColor">ASTRAGAL</text>
+                  </g>
+                  <g>
+                    <line x1="64" y1="410" x2="130" y2="410" />
+                    <text x="60" y="413" fontSize="8" letterSpacing="1.4" textAnchor="end" stroke="none" fill="currentColor">ENTASIS</text>
+                  </g>
+                  <g>
+                    <line x1="64" y1="596" x2="116" y2="596" />
+                    <text x="60" y="599" fontSize="8" letterSpacing="1.4" textAnchor="end" stroke="none" fill="currentColor">TORUS BASE</text>
+                  </g>
+                  <g>
+                    <line x1="252" y1="620" x2="296" y2="620" />
+                    <text x="300" y="623" fontSize="8" letterSpacing="1.4" stroke="none" fill="currentColor">PLINTH</text>
+                  </g>
+                  {/* vertical dimension */}
+                  <g className="text-steel-400">
+                    <line x1="330" y1="96" x2="330" y2="634" strokeWidth="1" />
+                    <path d="M326.5 103 L330 96 L333.5 103" strokeWidth="1" />
+                    <path d="M326.5 627 L330 634 L333.5 627" strokeWidth="1" />
+                    <line x1="324" y1="96" x2="336" y2="96" strokeWidth="1" />
+                    <line x1="324" y1="634" x2="336" y2="634" strokeWidth="1" />
+                    <text x="342" y="372" fontSize="8" letterSpacing="1.6" textAnchor="middle" stroke="none" fill="currentColor" transform="rotate(90 342 372)">
+                      TYP. 3600 MM
+                    </text>
+                  </g>
+                </g>
+              </svg>
+
+              {/* floating spec tag */}
+              <div className="float-tag absolute -bottom-7 left-5 right-5 border border-steel-200 border-l-4 border-l-accent-500 bg-white p-4 shadow-xl shadow-navy-900/10 sm:right-auto sm:w-80">
+                <p className="font-mono text-[9.5px] tracking-[0.25em] text-accent-700">CONSTRUCTION</p>
+                <p className="mt-1.5 text-sm font-semibold text-navy-900">18 mm GRC shell over a galvanized steel core</p>
+                <p className="mt-1 text-xs leading-relaxed text-steel-600">
+                  The skin carries the beauty; the steel carries the load.
                 </p>
               </div>
             </div>
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>
@@ -763,7 +722,7 @@ function Hero() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  4. Spec ticker                                                     */
+/*  3. Ticker                                                          */
 /* ------------------------------------------------------------------ */
 function Ticker() {
   const row = (hidden: boolean) => (
@@ -778,7 +737,7 @@ function Ticker() {
   );
 
   return (
-    <div className="marquee mt-8 border-y border-navy-800 bg-navy-950 py-3.5">
+    <div className="marquee border-y border-navy-800 bg-navy-950 py-3.5">
       <div className="marquee-track">
         {row(false)}
         {row(true)}
@@ -788,197 +747,116 @@ function Ticker() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  5. Anatomy of a moulding (hover-sync callouts)                     */
+/*  4. The Six Orders                                                  */
 /* ------------------------------------------------------------------ */
-function CalloutDot({ x, y, n, active }: { x: number; y: number; n: number; active: boolean }) {
+const ORDERS: {
+  id: OrderId;
+  code: string;
+  name: string;
+  tag?: string;
+  canon: string;
+  desc: string;
+  specs: string[];
+}[] = [
+  {
+    id: "corinthian",
+    code: "BSP-COL-01",
+    name: "Corinthian Column",
+    tag: "MOST REQUESTED",
+    canon: "CANON · H = 10D",
+    desc: "The ornate order — twin rows of acanthus leaves under corner volutes. The default for porticos, temples and grand lobbies.",
+    specs: ["Acanthus capital, two leaf rows", "24 flutes with fillets", "Dia 250–600 mm"],
+  },
+  {
+    id: "ionic",
+    code: "BSP-COL-02",
+    name: "Ionic Column",
+    canon: "CANON · H = 9D",
+    desc: "Paired volutes over an egg-and-dart echinus. Graceful, scholarly proportions for verandahs and clubhouse colonnades.",
+    specs: ["Paired corner volutes", "Egg-and-dart echinus", "Dia 250–500 mm"],
+  },
+  {
+    id: "doric",
+    code: "BSP-COL-03",
+    name: "Doric Column",
+    canon: "CANON · H = 8D",
+    desc: "The stout Greek original — fluted shaft, plain capital, no base. Honest strength for gates and minimalist porticos.",
+    specs: ["Plain echinus + abacus", "20 shallow flutes, no base", "Dia 300–600 mm"],
+  },
+  {
+    id: "tuscan",
+    code: "BSP-COL-04",
+    name: "Tuscan Column",
+    tag: "BEST VALUE",
+    canon: "CANON · H = 7D",
+    desc: "Rome's plainer Doric: a smooth, unfluted shaft on a simple torus base. Quiet elegance that never competes with the facade.",
+    specs: ["Smooth unfluted shaft", "Simple torus base", "Dia 250–500 mm"],
+  },
+  {
+    id: "roman",
+    code: "BSP-COL-05",
+    name: "Roman Column",
+    canon: "CANON · H = 8D",
+    desc: "Roman Doric with a moulded base and beaded echinus — closer-set flutes on a slender canon. Civic gravitas out of the box.",
+    specs: ["Beaded echinus moulding", "24 flutes on moulded base", "Dia 250–550 mm"],
+  },
+  {
+    id: "composite",
+    code: "BSP-COL-06",
+    name: "Composite Column",
+    tag: "GRANDEST",
+    canon: "CANON · H = 10D",
+    desc: "Ionic volutes stacked over Corinthian acanthus — the grandest order in the canon, reserved for statement entrances.",
+    specs: ["Volute + acanthus capital", "24 flutes with fillets", "Dia 300–600 mm"],
+  },
+];
+
+function OrdersSection() {
   return (
-    <g transform={`translate(${x} ${y})`}>
-      {active && <circle r="18" fill="none" stroke="#f5a81c" strokeOpacity="0.55" strokeWidth="1.5" />}
-      <circle
-        r="11"
-        fill={active ? "#f5a81c" : "#152c4f"}
-        stroke={active ? "#f5a81c" : "#7192bc"}
-        strokeWidth="1.2"
-        className="transition-colors duration-300"
-      />
-      <text
-        textAnchor="middle"
-        dy="3.5"
-        fontSize="10"
-        fontWeight="600"
-        fontFamily="IBM Plex Mono, monospace"
-        fill={active ? "#071427" : "#e4ecf6"}
-      >
-        {n}
-      </text>
-    </g>
-  );
-}
-
-function Anatomy() {
-  const [hover, setHover] = useState(-1);
-  const { ref, inView } = useInView<HTMLDivElement>(0.25);
-
-  return (
-    <section id="anatomy" className="relative scroll-mt-24 overflow-hidden bg-navy-950 bg-blueprint-dark py-24 text-navy-100">
-      <span
-        className="text-outline-light pointer-events-none absolute -right-6 top-4 select-none font-display text-[10rem] leading-none md:text-[15rem]"
-        aria-hidden="true"
-      >
-        SEC
-      </span>
-
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <Reveal>
-          <p className="font-mono text-[11px] tracking-[0.3em] text-accent-400">01 / ANATOMY</p>
-          <h2 className="mt-3 font-display text-5xl leading-none text-white sm:text-6xl">
-            ANATOMY OF A MOULDING.
-          </h2>
-          <p className="mt-4 max-w-lg text-sm leading-relaxed text-navy-200">
-            Every Blue Star cornice is a true classical section — cast, not carved. Hover a part
-            name to locate it on the drawing.
-          </p>
-        </Reveal>
-
-        <div className="mt-12 grid items-center gap-12 lg:grid-cols-12">
-          {/* Big section drawing */}
-          <div className="lg:col-span-7">
-            <Reveal delay={120}>
-              <div ref={ref} className={`border border-navy-800 bg-navy-900/50 p-6 ${inView ? "drawn" : ""}`}>
-                <svg viewBox="0 0 360 210" className="w-full fill-none text-navy-100" role="img" aria-label="Anatomical section of a classical GRC cornice with numbered callouts">
-                  <defs>
-                    <pattern id="agrid" width="18" height="18" patternUnits="userSpaceOnUse">
-                      <path d="M18 0H0V18" stroke="currentColor" strokeOpacity="0.08" strokeWidth="0.5" />
-                    </pattern>
-                    <pattern id="awall" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                      <line x1="0" y1="0" x2="0" y2="7" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1" />
-                    </pattern>
-                  </defs>
-                  <rect width="360" height="210" fill="url(#agrid)" />
-
-                  {/* wall + frieze */}
-                  <rect x="20" y="16" width="30" height="178" fill="url(#awall)" stroke="currentColor" strokeWidth="1.5" />
-                  <line x1="50" y1="16" x2="50" y2="194" stroke="currentColor" strokeWidth="2.5" />
-
-                  {/* profile outline */}
-                  <path
-                    className="profile-line"
-                    d="M50 36 H290 V48 C 272 48, 266 62, 251 68 C 239 73, 227 71, 215 74 H50"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinejoin="round"
-                  />
-                  <path className="profile-line d2" d="M50 96 H215 V74" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
-                  <path
-                    className="profile-line d3"
-                    d="M62 74 h13 v22 h-13 z M87 74 h13 v22 h-13 z M112 74 h13 v22 h-13 z M137 74 h13 v22 h-13 z M162 74 h13 v22 h-13 z M187 74 h13 v22 h-13 z"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                  />
-
-                  {/* callouts */}
-                  <CalloutDot x={252} y={60} n={1} active={hover === 0} />
-                  <CalloutDot x={282} y={42} n={2} active={hover === 1} />
-                  <CalloutDot x={125} y={85} n={3} active={hover === 2} />
-                  <CalloutDot x={180} y={74} n={4} active={hover === 3} />
-                  <CalloutDot x={135} y={100} n={5} active={hover === 4} />
-                  <CalloutDot x={35} y={150} n={6} active={hover === 5} />
-
-                  <text x="298" y="188" fontSize="8" letterSpacing="2" fontFamily="IBM Plex Mono, monospace" fill="currentColor" opacity="0.5">
-                    BSP-COR-SEC-A
-                  </text>
-                </svg>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Legend */}
-          <div className="lg:col-span-5">
-            <div className="space-y-3">
-              {ANATOMY.map((part, i) => (
-                <Reveal key={part.name} delay={i * 90}>
-                  <div
-                    tabIndex={0}
-                    onMouseEnter={() => setHover(i)}
-                    onMouseLeave={() => setHover(-1)}
-                    onFocus={() => setHover(i)}
-                    onBlur={() => setHover(-1)}
-                    className={`group flex cursor-default items-start gap-4 border p-4 outline-none transition-all duration-300 ${
-                      hover === i
-                        ? "border-accent-500 bg-navy-800/70"
-                        : "border-navy-800 bg-navy-900/40 hover:border-navy-600"
-                    }`}
-                  >
-                    <span
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center border font-mono text-xs font-semibold transition-colors duration-300 ${
-                        hover === i ? "border-accent-500 bg-accent-500 text-navy-950" : "border-navy-600 text-navy-200"
-                      }`}
-                    >
-                      {i + 1}
-                    </span>
-                    <span>
-                      <span className={`block font-display text-xl tracking-[0.03em] transition-colors duration-300 ${hover === i ? "text-accent-300" : "text-white"}`}>
-                        {part.name.toUpperCase()}
-                      </span>
-                      <span className="mt-1 block text-[13px] leading-relaxed text-navy-300">{part.desc}</span>
-                    </span>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  6. Product showcase                                                */
-/* ------------------------------------------------------------------ */
-function Showcase() {
-  return (
-    <section id="profiles" className="scroll-mt-24 bg-paper bg-blueprint py-24">
+    <section id="orders" className="scroll-mt-24 bg-paper bg-blueprint py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">02 / PROFILES</p>
+              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">01 / THE SIX ORDERS</p>
               <h2 className="mt-3 font-display text-5xl leading-none text-navy-900 sm:text-6xl">
-                FOUR WAYS TO
+                EVERY CANON,
                 <br />
-                CROWN A WALL.
+                CAST IN GRC.
               </h2>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-steel-600 md:pb-2 md:text-right">
-              Cast to order in straight lengths and radii. Hover a drawing to flip it to the
-              night-shift blueprint view.
+              Each order is drawn to its classical proportions, then spray-cast from a master mould.
+              Hover a plate for the night-shift view.
             </p>
           </div>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-          {PRODUCTS.map((p, i) => (
-            <Reveal key={p.code} delay={i * 110}>
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+          {ORDERS.map((o, i) => (
+            <Reveal key={o.id} delay={(i % 3) * 120}>
               <article className="group flex h-full flex-col border border-steel-300 bg-white transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-600 hover:shadow-[10px_10px_0_0_rgba(245,168,28,0.18)]">
-                <div className="relative border-b border-steel-200 bg-navy-50 p-4 transition-colors duration-500 group-hover:border-navy-800 group-hover:bg-navy-950">
-                  <div className="flex items-start justify-between">
+                <div className="relative border-b border-steel-200 bg-navy-50 p-3 transition-colors duration-500 group-hover:border-navy-800 group-hover:bg-navy-950">
+                  <div className="flex items-start justify-between px-2 pt-1">
                     <span className="font-mono text-[9.5px] tracking-[0.2em] text-steel-500 transition-colors duration-500 group-hover:text-navy-300">
-                      {p.code}
+                      {o.code}
                     </span>
-                    {p.tag && (
-                      <span className="bg-accent-500 px-2 py-1 font-mono text-[8.5px] tracking-[0.18em] text-navy-950">{p.tag}</span>
+                    {o.tag && (
+                      <span className="bg-accent-500 px-2 py-1 font-mono text-[8.5px] tracking-[0.18em] text-navy-950">{o.tag}</span>
                     )}
                   </div>
-                  <p.Section label={p.label} />
+                  <OrderDrawing order={o.id} />
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-display text-[26px] tracking-[0.02em] text-navy-900">{p.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-steel-600">{p.desc}</p>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <h3 className="font-display text-[26px] tracking-[0.02em] text-navy-900">{o.name}</h3>
+                  </div>
+                  <p className="mt-0.5 font-mono text-[9.5px] tracking-[0.2em] text-accent-700">{o.canon}</p>
+                  <p className="mt-2.5 text-sm leading-relaxed text-steel-600">{o.desc}</p>
 
                   <ul className="mt-5 space-y-2">
-                    {p.specs.map((s) => (
+                    {o.specs.map((s) => (
                       <li key={s} className="flex items-center gap-2.5 font-mono text-[11px] tracking-[0.08em] text-steel-600">
                         <span className="h-1.5 w-1.5 shrink-0 bg-accent-500" aria-hidden="true" />
                         {s.toUpperCase()}
@@ -1004,60 +882,184 @@ function Showcase() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  7. Ideal For                                                       */
+/*  5. Split-shell anatomy — interactive exploded drawing              */
 /* ------------------------------------------------------------------ */
-function IdealFor() {
-  return (
-    <section id="ideal" className="scroll-mt-24 bg-white py-24">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-12">
-        <div className="lg:col-span-4">
-          <div className="lg:sticky lg:top-28">
-            <Reveal>
-              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">03 / IDEAL FOR</p>
-              <h2 className="mt-3 font-display text-5xl leading-none text-navy-900 sm:text-6xl">
-                WHERE OUR
-                <br />
-                CORNICES
-                <br />
-                WORK HARDEST.
-              </h2>
-              <p className="mt-5 max-w-sm text-sm leading-relaxed text-steel-600">
-                From a two-bedroom row house to a heritage restoration — one material, four
-                profile families, zero compromises on the finish line.
-              </p>
-              <a
-                href="#quote"
-                className="group mt-8 inline-flex items-center gap-3 border-2 border-navy-800 px-6 py-3.5 text-sm font-semibold text-navy-800 transition-colors duration-200 hover:bg-navy-800 hover:text-white"
-              >
-                Discuss your project
-                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-              </a>
-            </Reveal>
-          </div>
-        </div>
+const ANATOMY_PARTS = [
+  {
+    title: "Split-shell GRC halves",
+    desc: "Two 18 mm GRC shells, spray-cast from a single master mould and joined with polymer mortar — the seam disappears after finishing.",
+  },
+  {
+    title: "Galvanized steel core",
+    desc: "A structural MS post carries every load; the GRC is cladding, never structure. Seismic-safe at any height.",
+  },
+  {
+    title: "SS fixing brackets",
+    desc: "Adjustable stainless brackets tie each shell course to the core — plumbable on site, no wet trades required.",
+  },
+  {
+    title: "Cast base shoe",
+    desc: "A moulded shoe covers the fixing ring at floor level and sheds water away from the core.",
+  },
+];
 
-        <div className="lg:col-span-8">
-          <div className="space-y-5">
-            {IDEAL_FOR.map((item, i) => (
-              <Reveal key={item.title} delay={i * 110}>
-                <div className="group flex flex-col gap-5 border border-steel-200 border-l-4 border-l-steel-300 bg-paper p-6 transition-all duration-300 hover:-translate-y-1 hover:border-l-accent-500 hover:shadow-[10px_10px_0_0_rgba(21,44,79,0.07)] sm:flex-row sm:items-center sm:gap-7 sm:p-7">
-                  <span className="font-display text-3xl text-steel-300 transition-colors duration-300 group-hover:text-accent-500">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="flex h-14 w-14 shrink-0 items-center justify-center border border-navy-800 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-accent-400">
-                    <item.icon className="h-7 w-7" />
-                  </span>
-                  <div className="flex-1">
-                    <h3 className="font-display text-[26px] tracking-[0.02em] text-navy-900">{item.title}</h3>
-                    <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-steel-600">{item.desc}</p>
+function Anatomy() {
+  const [active, setActive] = useState<number | null>(null);
+
+  const gCls = (i: number) =>
+    `transition-all duration-300 ${active !== null && active !== i ? "opacity-25" : ""} ${
+      active === i ? "text-accent-600" : ""
+    }`;
+
+  return (
+    <section id="anatomy" className="scroll-mt-24 bg-white py-24">
+      <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-12">
+        {/* Legend */}
+        <div className="lg:col-span-5">
+          <Reveal>
+            <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">02 / SPLIT-SHELL ANATOMY</p>
+            <h2 className="mt-3 font-display text-5xl leading-[1.02] text-navy-900 sm:text-6xl">
+              BEAUTY ON THE
+              <br />
+              OUTSIDE. STEEL
+              <br />
+              ON THE INSIDE.
+            </h2>
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-steel-600">
+              A Blue Star column is never solid GRC. Run your cursor over the list — every stone you
+              see on your building hangs off a galvanized core.
+            </p>
+          </Reveal>
+
+          <div className="mt-9 space-y-3">
+            {ANATOMY_PARTS.map((p, i) => (
+              <Reveal key={p.title} delay={i * 110}>
+                <div
+                  onMouseEnter={() => setActive(i)}
+                  onMouseLeave={() => setActive(null)}
+                  onFocus={() => setActive(i)}
+                  onBlur={() => setActive(null)}
+                  tabIndex={0}
+                  role="button"
+                  aria-pressed={active === i}
+                  className={`cursor-default border p-5 outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-accent-500 ${
+                    active === i
+                      ? "-translate-x-1 border-accent-600 bg-navy-50 shadow-[6px_6px_0_0_rgba(245,168,28,0.25)]"
+                      : "border-steel-200 bg-paper hover:border-navy-800"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center border font-mono text-xs font-semibold transition-colors ${
+                        active === i ? "border-accent-600 bg-accent-500 text-navy-950" : "border-navy-800 text-navy-800"
+                      }`}
+                    >
+                      {i + 1}
+                    </span>
+                    <h3 className="font-display text-xl tracking-[0.03em] text-navy-900">{p.title.toUpperCase()}</h3>
                   </div>
-                  <span className="shrink-0 self-start border border-steel-300 px-3 py-2 font-mono text-[9.5px] tracking-[0.18em] text-steel-600 transition-colors duration-300 group-hover:border-accent-600 group-hover:text-accent-700 sm:self-center">
-                    {item.chip}
-                  </span>
+                  <p className="mt-2 text-sm leading-relaxed text-steel-600">{p.desc}</p>
                 </div>
               </Reveal>
             ))}
           </div>
+        </div>
+
+        {/* Exploded drawing */}
+        <div className="lg:col-span-7">
+          <Reveal delay={150}>
+            <div className="relative border border-steel-300 bg-navy-50 p-6 sm:p-10">
+              <span className="absolute left-4 top-4 font-mono text-[9.5px] tracking-[0.25em] text-steel-500">
+                SPLIT-SHELL CONSTRUCTION — EXPLODED
+              </span>
+              <svg viewBox="0 0 500 520" className="w-full text-navy-800" role="img" aria-label="Exploded drawing of a split-shell GRC column on a steel core">
+                <defs>
+                  <pattern id="steelhatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                    <line x1="0" y1="0" x2="0" y2="7" stroke="currentColor" strokeOpacity="0.5" strokeWidth="1" />
+                  </pattern>
+                  <pattern id="agrid" width="16" height="16" patternUnits="userSpaceOnUse">
+                    <path d="M16 0H0V16" stroke="currentColor" strokeOpacity="0.12" strokeWidth="0.5" fill="none" />
+                  </pattern>
+                </defs>
+                <rect width="500" height="520" fill="url(#agrid)" />
+                <line x1="40" y1="468" x2="460" y2="468" stroke="currentColor" strokeWidth="2.2" />
+
+                {/* As-built ghost, far left */}
+                <g fill="none" stroke="currentColor" strokeWidth="1.6" strokeOpacity="0.45">
+                  <path d="M96 84 L164 84 L156 116 L104 116 Z" />
+                  <path d="M108 116 C 100 220 100 320 108 420 L152 420 C 160 320 160 220 152 116 Z" />
+                  <path d="M100 420 L160 420 L154 452 L106 452 Z" />
+                  <text x="130" y="492" fontSize="8" letterSpacing="1.6" textAnchor="middle" stroke="none" fill="currentColor" fontFamily="IBM Plex Mono, monospace">
+                    AS-BUILT
+                  </text>
+                </g>
+
+                {/* Exploded assembly */}
+                <g fill="none" stroke="currentColor" strokeLinejoin="round">
+                  {/* 2 — steel core */}
+                  <g className={gCls(1)} strokeWidth="1.8">
+                    <rect x="330" y="70" width="20" height="392" fill="url(#steelhatch)" />
+                    <line x1="322" y1="70" x2="358" y2="70" />
+                    <circle cx="340" cy="86" r="2.5" strokeWidth="1.2" />
+                    <circle cx="340" cy="446" r="2.5" strokeWidth="1.2" />
+                  </g>
+
+                  {/* 1 — shell halves (incl. capital caps) */}
+                  <g className={gCls(0)} strokeWidth="2">
+                    <path d="M286 120 L326 120 L318 86 L296 86 Z" />
+                    <path d="M394 120 L354 120 L362 86 L384 86 Z" />
+                    <path d="M286 124 C 276 214 276 314 286 404 L322 404 C 314 314 314 214 322 124 Z" />
+                    <path d="M394 124 C 404 214 404 314 394 404 L358 404 C 366 314 366 214 358 124 Z" />
+                  </g>
+
+                  {/* 3 — brackets */}
+                  <g className={gCls(2)} strokeWidth="1.8">
+                    <rect x="322" y="188" width="8" height="16" />
+                    <rect x="350" y="188" width="8" height="16" />
+                    <circle cx="326" cy="196" r="2" strokeWidth="1.2" />
+                    <circle cx="354" cy="196" r="2" strokeWidth="1.2" />
+                    <rect x="322" y="316" width="8" height="16" />
+                    <rect x="350" y="316" width="8" height="16" />
+                    <circle cx="326" cy="324" r="2" strokeWidth="1.2" />
+                    <circle cx="354" cy="324" r="2" strokeWidth="1.2" />
+                  </g>
+
+                  {/* 4 — base shoe */}
+                  <g className={gCls(3)} strokeWidth="2">
+                    <path d="M278 452 L402 452 L390 412 L290 412 Z" />
+                    <line x1="290" y1="424" x2="390" y2="424" strokeWidth="1.2" />
+                  </g>
+                </g>
+
+                {/* hotspot markers */}
+                {active === null &&
+                  [
+                    { x: 268, y: 264, n: 1 },
+                    { x: 340, y: 56, n: 2 },
+                    { x: 372, y: 196, n: 3 },
+                    { x: 416, y: 432, n: 4 },
+                  ].map((h) => (
+                    <g key={h.n} className="text-accent-600">
+                      <circle cx={h.x} cy={h.y} r="9" fill="none" stroke="currentColor" strokeWidth="1.6" />
+                      <text
+                        x={h.x}
+                        y={h.y + 3.2}
+                        fontSize="9"
+                        textAnchor="middle"
+                        fill="currentColor"
+                        fontFamily="IBM Plex Mono, monospace"
+                        fontWeight="600"
+                      >
+                        {h.n}
+                      </text>
+                    </g>
+                  ))}
+              </svg>
+              <p className="mt-4 font-mono text-[9.5px] tracking-[0.2em] text-steel-500">
+                SECTION THROUGH SHAFT · SHELL 18 MM · CORE 80 × 80 MS
+              </p>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -1065,8 +1067,46 @@ function IdealFor() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  8. Why GRC — comparison table                                      */
+/*  6. Cinematic band                                                  */
 /* ------------------------------------------------------------------ */
+function CinematicBand() {
+  return (
+    <section className="relative overflow-hidden bg-navy-950">
+      <div className="absolute inset-0">
+        <img
+          src={VILLA_IMG}
+          alt="Grand villa portico with tall white GRC columns at dusk"
+          className="kenburns h-full w-full object-cover opacity-80"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/70 to-navy-950/30" />
+      </div>
+      <div className="relative mx-auto max-w-7xl px-5 py-28 sm:px-8 md:py-36">
+        <Reveal>
+          <p className="font-mono text-[11px] tracking-[0.3em] text-accent-400">PROOF, NOT PROMISES</p>
+          <p className="mt-4 max-w-3xl font-display text-5xl leading-[1.02] text-white sm:text-6xl md:text-7xl">
+            THE ORDERS, CAST FOR THE INDIAN CLIMATE.
+          </p>
+          <p className="mt-6 font-mono text-[10.5px] tracking-[0.22em] text-navy-200">
+            SPRAY-CAST IN OUR TALOJA WORKS · ERECTED ON STEEL CORES ACROSS 18 STATES
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  7. Why GRC — comparison                                            */
+/* ------------------------------------------------------------------ */
+const COMPARISON = [
+  { label: "Weight per running foot", grc: "35–50 kg", stone: "300–400 kg", plaster: "12–18 kg", timber: "25–30 kg" },
+  { label: "Detail sharpness", grc: "Mould-perfect acanthus & flutes", stone: "Hand-carved — at a price", plaster: "Softens with age", timber: "Limited profiles" },
+  { label: "Weather & life", grc: "50+ years outdoors", stone: "Centuries, but erodes", plaster: "Indoor only", timber: "Rots · termites" },
+  { label: "Installation", grc: "Dry-fix to steel core", stone: "Cranes + masons", plaster: "Cast in situ", timber: "Carpentry crew" },
+  { label: "Cost vs stone", grc: "30–40% of carved stone", stone: "Baseline", plaster: "Cheapest — and fragile", timber: "Premium joinery" },
+];
+
 function WhyGrc() {
   return (
     <section id="why-grc" className="relative scroll-mt-24 overflow-hidden bg-navy-950 bg-blueprint-dark py-24 text-navy-100">
@@ -1074,14 +1114,16 @@ function WhyGrc() {
         className="text-outline-light pointer-events-none absolute -right-4 top-6 select-none font-display text-[11rem] leading-none md:text-[16rem]"
         aria-hidden="true"
       >
-        VS
+        WHY
       </span>
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
-          <p className="font-mono text-[11px] tracking-[0.3em] text-accent-400">04 / WHY GRC</p>
+          <p className="font-mono text-[11px] tracking-[0.3em] text-accent-400">03 / WHY GRC</p>
           <h2 className="mt-3 font-display text-5xl leading-none text-white sm:text-6xl">
-            THE MOULDING THAT OUTLIVES THE BUILDING'S MOODS.
+            THE LOOK OF STONE.
+            <br />
+            NONE OF THE STONE.
           </h2>
         </Reveal>
 
@@ -1095,11 +1137,11 @@ function WhyGrc() {
                     <span className="absolute -top-3 left-4 bg-accent-500 px-2 py-0.5 font-mono text-[9px] tracking-[0.18em] text-navy-950">
                       ★ RECOMMENDED
                     </span>
-                    <span className="font-display text-xl tracking-[0.04em] text-white">GRC CORNICE</span>
+                    <span className="font-display text-xl tracking-[0.04em] text-white">GRC COLUMN</span>
                   </th>
-                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">POP (PLASTER)</th>
-                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">WOOD</th>
-                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">RCC CAST</th>
+                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">CARVED STONE</th>
+                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">PLASTER / POP</th>
+                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">TIMBER</th>
                 </tr>
               </thead>
               <tbody>
@@ -1112,16 +1154,16 @@ function WhyGrc() {
                         {row.grc}
                       </span>
                     </td>
-                    <td className="p-4 text-sm text-navy-300">{row.pop}</td>
-                    <td className="p-4 text-sm text-navy-300">{row.wood}</td>
-                    <td className="p-4 text-sm text-navy-300">{row.rcc}</td>
+                    <td className="p-4 text-sm text-navy-300">{row.stone}</td>
+                    <td className="p-4 text-sm text-navy-300">{row.plaster}</td>
+                    <td className="p-4 text-sm text-navy-300">{row.timber}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
           <p className="mt-4 font-mono text-[10px] tracking-[0.14em] text-steel-500">
-            * INDICATIVE VALUES FOR A 240 MM PROJECTION CORNICE PROFILE. TEST REPORTS AVAILABLE ON REQUEST.
+            * INDICATIVE VALUES FOR A 300 MM DIA × 3.6 M COLUMN. TEST REPORTS AVAILABLE ON REQUEST.
           </p>
         </Reveal>
       </div>
@@ -1130,8 +1172,15 @@ function WhyGrc() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  9. Stats band                                                      */
+/*  8. Stats band                                                      */
 /* ------------------------------------------------------------------ */
+const STATS = [
+  { value: 6, suffix: "", label: "Orders in canon" },
+  { value: 40000, suffix: "+", label: "Columns cast" },
+  { value: 18, suffix: "", label: "States served pan-India" },
+  { value: 10, suffix: "-YR", label: "Structural warranty" },
+];
+
 function StatsBand() {
   return (
     <section className="bg-accent-500 text-navy-950">
@@ -1148,7 +1197,7 @@ function StatsBand() {
             <p className="font-display text-5xl leading-none sm:text-6xl">
               <CountUp to={s.value} suffix={s.suffix} />
             </p>
-            <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.22em]">{s.label}</p>
+            <p className="mt-3 font-mono text-[10px] tracking-[0.22em] uppercase">{s.label}</p>
           </div>
         ))}
       </div>
@@ -1157,8 +1206,27 @@ function StatsBand() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  10. Process                                                        */
+/*  9. Process                                                         */
 /* ------------------------------------------------------------------ */
+const PROCESS_STEPS = [
+  {
+    title: "Pick your order & sizes",
+    desc: "Choose from the six canons and share heights, diameters and counts — a facade photo is enough to start.",
+  },
+  {
+    title: "CAD elevation + quote in 24 h",
+    desc: "An approved elevation and section of your column, with per-unit pricing and finish options.",
+  },
+  {
+    title: "Spray-cast & cure",
+    desc: "18 mm GRC shells from the master mould, seven-day cure, then demould and QC at our Taloja works.",
+  },
+  {
+    title: "Erect the core, hang the shells",
+    desc: "Your site team fixes the galvanized core; shells bolt on, joints grout out. Our engineer stays on call.",
+  },
+];
+
 function Process() {
   return (
     <section id="process" className="scroll-mt-24 bg-white py-24">
@@ -1166,17 +1234,17 @@ function Process() {
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-28">
             <Reveal>
-              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">05 / HOW WE WORK</p>
+              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">04 / FROM MOULD TO PORTICO</p>
               <h2 className="mt-3 font-display text-5xl leading-none text-navy-900 sm:text-6xl">
-                FROM MOULD
+                FOUR STEPS
                 <br />
-                TO MONOLITHIC
+                TO YOUR
                 <br />
-                FINISH LINE.
+                COLONNADE.
               </h2>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-steel-600">
-                Cornices are priced per running foot, cast per project, and numbered for a
-                foolproof sequence on site.
+                No carving crew, no crane hire, no curing downtime on site — the stone arrives
+                finished and bolts straight onto the core.
               </p>
             </Reveal>
 
@@ -1186,14 +1254,14 @@ function Process() {
                 <span className="absolute -bottom-2 -right-2 h-6 w-6 border-b-[3px] border-r-[3px] border-accent-500" aria-hidden="true" />
                 <div className="overflow-hidden border border-steel-300 bg-navy-900">
                   <img
-                    src={FACTORY_IMG}
-                    alt="Craftsman demoulding a long white GRC cornice profile at the Blue Star casting workshop"
+                    src={WORKSHOP_IMG}
+                    alt="Craftsman hand-finishing the flutes of a GRC column shaft in the Blue Star workshop"
                     className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
                     loading="lazy"
                   />
                 </div>
                 <p className="mt-3 font-mono text-[9.5px] tracking-[0.2em] text-steel-500">
-                  GRC CASTING SHOP — TALOJA MIDC, NAVI MUMBAI
+                  FLUTE FINISHING BY HAND — TALOJA MIDC, NAVI MUMBAI
                 </p>
               </div>
             </Reveal>
@@ -1210,9 +1278,9 @@ function Process() {
                     <span className="z-10 flex h-11 w-11 shrink-0 items-center justify-center border border-navy-800 bg-paper font-display text-xl text-navy-800 transition-colors duration-300 group-hover:border-accent-600 group-hover:bg-accent-500 group-hover:text-navy-950">
                       {i + 1}
                     </span>
-                    <div className="border border-steel-200 bg-paper p-6 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-navy-800 group-hover:shadow-[8px_8px_0_0_rgba(21,44,79,0.07)]">
+                    <div className="flex-1 border border-steel-200 bg-paper p-6 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-navy-800 group-hover:shadow-[8px_8px_0_0_rgba(21,44,79,0.07)]">
                       <p className="font-mono text-[9.5px] tracking-[0.25em] text-accent-700">STEP {i + 1} / 4</p>
-                      <h3 className="mt-2 font-display text-[24px] tracking-[0.02em] text-navy-900">{step.title}</h3>
+                      <h3 className="mt-2 font-display text-[24px] tracking-[0.02em] text-navy-900">{step.title.toUpperCase()}</h3>
                       <p className="mt-1.5 max-w-lg text-sm leading-relaxed text-steel-600">{step.desc}</p>
                     </div>
                   </li>
@@ -1227,16 +1295,16 @@ function Process() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  11. Quote form                                                     */
+/*  10. Quote form                                                     */
 /* ------------------------------------------------------------------ */
 type QuoteForm = {
   name: string;
   phone: string;
   email: string;
   city: string;
-  type: string;
-  length: string;
-  finish: string;
+  order: string;
+  height: string;
+  qty: string;
   message: string;
 };
 
@@ -1245,9 +1313,9 @@ const EMPTY_FORM: QuoteForm = {
   phone: "",
   email: "",
   city: "",
-  type: "Classical Cornice",
-  length: "100–500 running ft",
-  finish: "Factory primed",
+  order: "Corinthian Column",
+  height: "2.4–3.6 m",
+  qty: "1–4 columns",
   message: "",
 };
 
@@ -1275,7 +1343,7 @@ function QuoteSection() {
     if (form.phone.replace(/\D/g, "").length < 10) next.phone = "Enter a valid 10-digit mobile number.";
     setErrors(next);
     if (Object.keys(next).length > 0) return;
-    setRefId(`BSP-CQ-${Math.floor(1000 + Math.random() * 9000)}`);
+    setRefId(`BSP-Q-${Math.floor(1000 + Math.random() * 9000)}`);
     setSubmitted(true);
   };
 
@@ -1291,17 +1359,18 @@ function QuoteSection() {
       </span>
 
       <div className="relative mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-12">
+        {/* Contact rail */}
         <div className="lg:col-span-5">
           <Reveal>
-            <p className="font-mono text-[11px] tracking-[0.3em] text-accent-400">06 / GET A QUOTE</p>
+            <p className="font-mono text-[11px] tracking-[0.3em] text-accent-400">05 / GET A QUOTE</p>
             <h2 className="mt-3 font-display text-5xl leading-[1.02] text-white sm:text-6xl">
-              SEND YOUR
+              TELL US YOUR ORDER.
               <br />
-              RUNNING FEET.
+              QUOTED IN 24 HOURS.
             </h2>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-navy-200">
-              Share your profile choice and approximate lengths — our sales engineer replies with
-              per-foot rates, a CAD section and a delivery schedule within 24 hours.
+              Share the order, height and count — our sales engineer replies with per-column
+              pricing, a CAD elevation and a fixing plan.
             </p>
           </Reveal>
 
@@ -1347,6 +1416,7 @@ function QuoteSection() {
           </Reveal>
         </div>
 
+        {/* Form */}
         <div className="lg:col-span-7">
           <Reveal delay={200}>
             <div className="border-t-4 border-accent-500 bg-paper p-7 text-ink shadow-2xl shadow-navy-950/50 sm:p-10">
@@ -1363,7 +1433,7 @@ function QuoteSection() {
                   <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-steel-600">
                     Thanks, {form.name.split(" ")[0]} — our sales engineer will call{" "}
                     <span className="font-semibold text-navy-800">{form.phone}</span> within 24
-                    working hours with your cornice quotation.
+                    working hours with your custom quote.
                   </p>
                   <button
                     type="button"
@@ -1386,7 +1456,7 @@ function QuoteSection() {
                   <div className="mt-7 grid gap-5 sm:grid-cols-2">
                     <div>
                       <label htmlFor="q-name" className={labelCls}>FULL NAME *</label>
-                      <input id="q-name" type="text" value={form.name} onChange={set("name")} placeholder="e.g. Meera Kulkarni" className={inputCls(!!errors.name)} />
+                      <input id="q-name" type="text" value={form.name} onChange={set("name")} placeholder="e.g. Ar. Kavita Rao" className={inputCls(!!errors.name)} />
                       {errors.name && <p className="mt-1.5 text-xs font-medium text-red-600">{errors.name}</p>}
                     </div>
                     <div>
@@ -1396,42 +1466,43 @@ function QuoteSection() {
                     </div>
                     <div>
                       <label htmlFor="q-email" className={labelCls}>EMAIL</label>
-                      <input id="q-email" type="email" value={form.email} onChange={set("email")} placeholder="you@company.in" className={inputCls(false)} />
+                      <input id="q-email" type="email" value={form.email} onChange={set("email")} placeholder="you@studio.in" className={inputCls(false)} />
                     </div>
                     <div>
                       <label htmlFor="q-city" className={labelCls}>CITY</label>
-                      <input id="q-city" type="text" value={form.city} onChange={set("city")} placeholder="e.g. Jaipur" className={inputCls(false)} />
+                      <input id="q-city" type="text" value={form.city} onChange={set("city")} placeholder="e.g. Nashik" className={inputCls(false)} />
                     </div>
                     <div>
-                      <label htmlFor="q-type" className={labelCls}>PROFILE</label>
-                      <select id="q-type" value={form.type} onChange={set("type")} className={inputCls(false)}>
-                        <option>Classical Cornice</option>
-                        <option>Decorative Cornice</option>
-                        <option>Layered Cornice</option>
-                        <option>Simple Cornice</option>
-                        <option>Multiple / custom section</option>
+                      <label htmlFor="q-order" className={labelCls}>ORDER</label>
+                      <select id="q-order" value={form.order} onChange={set("order")} className={inputCls(false)}>
+                        {ORDERS.map((o) => (
+                          <option key={o.id}>{o.name}</option>
+                        ))}
+                        <option>Multiple orders / custom profile</option>
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="q-length" className={labelCls}>APPROX. LENGTH</label>
-                      <select id="q-length" value={form.length} onChange={set("length")} className={inputCls(false)}>
-                        <option>Up to 100 running ft</option>
-                        <option>100–500 running ft</option>
-                        <option>500–2000 running ft</option>
-                        <option>2000+ (project supply)</option>
+                      <label htmlFor="q-height" className={labelCls}>COLUMN HEIGHT</label>
+                      <select id="q-height" value={form.height} onChange={set("height")} className={inputCls(false)}>
+                        <option>Upto 2.4 m</option>
+                        <option>2.4–3.6 m</option>
+                        <option>3.6–4.8 m</option>
+                        <option>4.8–6 m</option>
+                        <option>Custom / not sure</option>
                       </select>
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="q-finish" className={labelCls}>FINISH</label>
-                      <select id="q-finish" value={form.finish} onChange={set("finish")} className={inputCls(false)}>
-                        <option>Raw cast (site paint)</option>
-                        <option>Factory primed</option>
-                        <option>Factory painted — RAL shade</option>
+                      <label htmlFor="q-qty" className={labelCls}>QUANTITY</label>
+                      <select id="q-qty" value={form.qty} onChange={set("qty")} className={inputCls(false)}>
+                        <option>1–4 columns</option>
+                        <option>4–12 columns</option>
+                        <option>12–50 columns</option>
+                        <option>50+ (project supply)</option>
                       </select>
                     </div>
                     <div className="sm:col-span-2">
                       <label htmlFor="q-msg" className={labelCls}>ANYTHING ELSE?</label>
-                      <textarea id="q-msg" rows={3} value={form.message} onChange={set("message")} placeholder="Curved lengths, heritage recasting, drawings, deadlines…" className={inputCls(false)} />
+                      <textarea id="q-msg" rows={3} value={form.message} onChange={set("message")} placeholder="Finish, facade photos, drawings, deadlines…" className={inputCls(false)} />
                     </div>
                   </div>
 
@@ -1456,7 +1527,7 @@ function QuoteSection() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  12. Footer                                                         */
+/*  11. Footer                                                         */
 /* ------------------------------------------------------------------ */
 function Footer() {
   return (
@@ -1473,8 +1544,8 @@ function Footer() {
             </span>
           </a>
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-steel-400">
-            Manufacturer of premium FRP and GRC architectural products — cornices, chajjas, jali
-            panels and custom facade elements — since 2001.
+            Manufacturer of premium FRP and GRC architectural products — chajjas, jali panels,
+            cornices, columns and custom facade elements — since 2001.
           </p>
           <div className="mt-6 flex flex-wrap gap-2">
             {["ISO 9001:2015", "FRP · GRC SPECIALISTS", "MADE IN INDIA"].map((b) => (
@@ -1485,12 +1556,12 @@ function Footer() {
           </div>
         </div>
 
-        <div className="md:col-span-2">
-          <h4 className="font-mono text-[10.5px] tracking-[0.25em] text-accent-400">PROFILES</h4>
+        <div className="md:col-span-3">
+          <h4 className="font-mono text-[10.5px] tracking-[0.25em] text-accent-400">PRODUCTS</h4>
           <ul className="mt-5 space-y-3 text-sm">
-            {["Classical Cornice", "Decorative Cornice", "Layered Cornice", "Simple Cornice", "Custom Sections"].map((p) => (
+            {["FRP Chajjas", "GRC Jali Panels", "GRC Cornices", "GRC Columns", "Custom Profiles"].map((p) => (
               <li key={p}>
-                <a href="#profiles" className="nav-underline text-navy-200 transition-colors hover:text-white">
+                <a href="#orders" className="nav-underline text-navy-200 transition-colors hover:text-white">
                   {p}
                 </a>
               </li>
@@ -1498,10 +1569,10 @@ function Footer() {
           </ul>
         </div>
 
-        <div className="md:col-span-3">
+        <div className="md:col-span-2">
           <h4 className="font-mono text-[10.5px] tracking-[0.25em] text-accent-400">COMPANY</h4>
           <ul className="mt-5 space-y-3 text-sm">
-            {[...NAV_LINKS, { label: "Process", href: "#process" }].map((l) => (
+            {NAV_LINKS.map((l) => (
               <li key={l.href}>
                 <a href={l.href} className="nav-underline text-navy-200 transition-colors hover:text-white">
                   {l.label}
@@ -1542,10 +1613,12 @@ function Footer() {
 
       <div className="mt-14 border-t border-navy-800">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 sm:flex-row sm:px-8">
-          <p className="text-xs text-steel-500">© {new Date().getFullYear()} Blue Star Plastic Industries. All rights reserved.</p>
+          <p className="text-xs text-steel-500">
+            © {new Date().getFullYear()} Blue Star Plastic Industries. All rights reserved.
+          </p>
           <div className="flex items-center gap-6">
             <p className="hidden font-mono text-[9.5px] tracking-[0.2em] text-steel-500 lg:block">
-              GRC CORNICES · LANDING PAGE 03 / 10
+              GRC COLUMNS · LANDING PAGE 04 / 10
             </p>
             <a href="#top" className="nav-underline font-mono text-[10px] tracking-[0.22em] text-navy-200 transition-colors hover:text-accent-400">
               BACK TO TOP ↑
@@ -1565,11 +1638,12 @@ export default function App() {
     <div className="min-h-screen overflow-x-clip bg-paper font-sans text-ink">
       <Header />
       <main>
+        <GreekKeyBand />
         <Hero />
         <Ticker />
+        <OrdersSection />
         <Anatomy />
-        <Showcase />
-        <IdealFor />
+        <CinematicBand />
         <WhyGrc />
         <StatsBand />
         <Process />

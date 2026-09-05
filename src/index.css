@@ -107,6 +107,13 @@
 .marquee:hover .marquee-track {
   animation-play-state: paused;
 }
+
+/* Greek-key meander band under the header — same mechanism, slower pace */
+.meander-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+}
 @keyframes marquee {
   from {
     transform: translateX(0);
