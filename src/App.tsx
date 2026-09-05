@@ -1,28 +1,24 @@
 /**
  * ============================================================================
- *  BLUE STAR PLASTIC INDUSTRIES — Landing Page #2 : GRC JALI PANELS
+ *  BLUE STAR PLASTIC INDUSTRIES — Landing Page #3 : GRC CORNICES
  * ----------------------------------------------------------------------------
  *  Sections, in order:
- *    1. Header / Navbar        — brand + right-aligned call button
- *    2. Hero                   — headline + a LIVE jali lattice panel with
- *                                drifting sunlight and mouse parallax
- *    3. Spec ticker            — rotating marquee of product credentials
- *    4. Key Features           — ledger rows (strength / weather / weight)
- *    5. Applications index     — façades · ventilation · partitions ·
- *                                balconies · landscape
- *    6. Pattern Showcase       — 5 real lattice drawings + custom CTA cell
- *    7. Cinema band            — full-bleed "light through jali" photograph
- *    8. Why GRC                — comparison vs MS/alu jali & terracotta
- *    9. Stats band             — animated counters
- *   10. Process                — sample-to-fixing timeline + workshop photo
- *   11. Quote form             — validated form with success state
- *   12. Footer                 — sales email, phone, copyright
+ *    1. Header / Navbar      — brand + right-aligned call button + progress rule
+ *    2. Moulding band        — a full-width dentil-and-rail strip under the header
+ *    3. Hero                 — headline, sub-headline, CTA, photo + drawn section
+ *    4. Spec ticker          — rotating marquee of cornice credentials
+ *    5. Anatomy of a moulding— labelled section drawing with hover-sync callouts
+ *    6. Product showcase     — Classical / Decorative / Layered / Simple profiles
+ *    7. Ideal For            — residential, commercial, heritage, villas ledger
+ *    8. Why GRC comparison   — GRC vs POP vs wood vs RCC
+ *    9. Stats band           — animated counters
+ *   10. Process              — 4-step timeline + workshop photo
+ *   11. Quote form           — validated contact form with success state
+ *   12. Footer               — sales email, phone, copyright
  *
- *  Design system shared with Page #1 (FRP Chajjas):
- *  navy / steel-grey / off-white with safety-amber accents.
+ *  Design system: navy / steel-grey / off-white with safety-amber accents.
  *  Type: Bebas Neue (display) · IBM Plex Sans (body) · IBM Plex Mono (specs).
- * ============================================================================
- */
+ * ============================================================================ */
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode, FormEvent } from "react";
 
@@ -34,27 +30,27 @@ const PHONE_TEL = "tel:+919152091020";
 const EMAIL = "sales@bluestarplastic.in";
 const ADDRESS = "Plot 42, MIDC Industrial Area, Taloja, Navi Mumbai — 410208";
 
-const FACADE_IMG =
-  "https://image.qwenlm.ai/generated-images/30e84dfa-f3fb-45e3-b0f6-6d76cd66cf47/_result.png";
-const WORKSHOP_IMG =
-  "https://image.qwenlm.ai/generated-images/c6b2b6ed-aa33-4062-b0a5-2a29e0761084/_result.png";
+const HERO_IMG =
+  "https://image.qwenlm.ai/generated-images/4dc461ed-c520-441a-8b97-cc69fa6ee5db/_result.png";
+const FACTORY_IMG =
+  "https://image.qwenlm.ai/generated-images/21271d87-3ca7-4dae-b463-bdc2173bfd37/_result.png";
 
 const NAV_LINKS = [
-  { label: "Features", href: "#features" },
-  { label: "Applications", href: "#applications" },
-  { label: "Patterns", href: "#patterns" },
+  { label: "Anatomy", href: "#anatomy" },
+  { label: "Profiles", href: "#profiles" },
+  { label: "Ideal For", href: "#ideal" },
   { label: "Why GRC", href: "#why-grc" },
   { label: "Contact", href: "#quote" },
 ];
 
 const TICKER_ITEMS = [
-  "GLASS-FIBRE REINFORCED CONCRETE",
-  "OPEN AREA 29–41%",
-  "CAST-TO-ORDER 600 MM MODULES",
-  "NON-COMBUSTIBLE · CLASS A1",
-  "NATURAL CEMENT OR RAL FINISHES",
-  "5 SIGNATURE PATTERNS + CUSTOM",
-  "PAN-INDIA CRATED DELIVERY",
+  "CLASSICAL · DECORATIVE · LAYERED · SIMPLE",
+  "MOISTURE-PROOF — NO POP HAIRLINE CRACKS",
+  "12 MM SHELL, GALVANISED-REINFORCED",
+  "RUNNING-FT PRICING · STRAIGHT + CURVED",
+  "FACTORY-PRIMED OR PAINTED FINISH",
+  "FIRE CLASS A · ASTM E84",
+  "PAN-INDIA SUPPLY + FIXING SUPPORT",
 ];
 
 /* ------------------------------------------------------------------ */
@@ -111,93 +107,56 @@ function CheckIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
-/** Feature icon — compression press on a panel: high strength & durable. */
-function StrengthIcon({ className = "w-7 h-7" }: { className?: string }) {
+/** Ideal-for icon — residential: gable roof over a cornice double-line. */
+function ResidentialIcon({ className = "w-7 h-7" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="8" y="26" width="32" height="9" />
-      <path d="M16 6v11M16 17l-4-5M16 17l4-5" />
-      <path d="M32 6v11M32 17l-4-5M32 17l4-5" />
-      <path d="M6 42h36" />
-      <path d="M12 26v-3M36 26v-3" />
+    <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M8 20 L24 7 L40 20" />
+      <path d="M9 23.5 H39 M9 27 H39" />
+      <path d="M13 27 V41 H35 V27" />
+      <rect x="20.5" y="33" width="7" height="8" />
     </svg>
   );
 }
 
-/** Feature icon — shield holding sun + rain: weather & corrosion resistant. */
-function WeatherIcon({ className = "w-7 h-7" }: { className?: string }) {
+/** Ideal-for icon — commercial: mid-rise block crowned by a cornice band. */
+function CommercialIcon({ className = "w-7 h-7" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M24 4.5 39 10v12c0 10.5-6.2 17.6-15 21C15.2 39.6 9 32.5 9 22V10Z" />
-      <circle cx="24" cy="18" r="4.5" />
-      <path d="M24 10.5v2.2M24 23.3v2.2M16.5 18h2.2M29.3 18h2.2M18.7 12.7l1.5 1.5M27.8 21.8l1.5 1.5M29.3 12.7l-1.5 1.5M20.2 21.8l-1.5 1.5" />
-      <path d="M18.5 29.5 17 34M24.5 29.5 23 34M30.5 29.5 29 34" />
+    <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M9 12 H39 M9 15.5 H39" />
+      <path d="M13 15.5 V41 H35 V15.5" />
+      <rect x="17" y="20" width="4" height="4" />
+      <rect x="27" y="20" width="4" height="4" />
+      <rect x="17" y="27" width="4" height="4" />
+      <rect x="27" y="27" width="4" height="4" />
+      <path d="M21 41 V35 H27 V41" />
     </svg>
   );
 }
 
-/** Feature icon — floating panel with lift arrows: lightweight & easy install. */
-function LightweightIcon({ className = "w-7 h-7" }: { className?: string }) {
+/** Ideal-for icon — heritage: arched opening with keystone under a cornice. */
+function HeritageIcon({ className = "w-7 h-7" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M8 27 24 19l16 8-16 8Z" />
-      <path d="M8 27v6l16 8 16-8v-6" />
-      <path d="M24 33v14" />
-      <path d="M17 10l7-4 7 4" />
-      <circle cx="11" cy="8" r="1.4" fill="currentColor" stroke="none" />
-      <circle cx="37" cy="8" r="1.4" fill="currentColor" stroke="none" />
+    <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M7 10 H41 M10 13.5 H38" />
+      <path d="M13 17 v-2 M19 17 v-2 M29 17 v-2 M35 17 v-2" />
+      <path d="M14 41 V28 a10 10 0 0 1 20 0 V41" />
+      <path d="M21 18 L20 24 H28 L27 18" />
+      <path d="M10 41 H38" />
     </svg>
   );
 }
 
-/* Application index glyphs (24 × 24 line icons) */
-function FacadeGlyph({ className = "w-6 h-6" }: { className?: string }) {
+/** Ideal-for icon — villas & bungalows: low hip roof, verandah columns. */
+function VillaIcon({ className = "w-7 h-7" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
-      <rect x="3.5" y="3.5" width="17" height="17" />
-      <path d="M9.2 3.5v17M14.8 3.5v17M3.5 9.2h17M3.5 14.8h17" />
-    </svg>
-  );
-}
-
-function VentGlyph({ className = "w-6 h-6" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
-      <path d="M3 8.5q2.2-3 4.5 0t4.5 0 4.5 0 4.5 0" />
-      <path d="M3 13q2.2-3 4.5 0t4.5 0 4.5 0 4.5 0" />
-      <path d="M3 17.5q2.2-3 4.5 0t4.5 0 4.5 0 4.5 0" />
-    </svg>
-  );
-}
-
-function PartitionGlyph({ className = "w-6 h-6" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
-      <path d="M12 3v18" strokeDasharray="3 2.4" />
-      <rect x="3.5" y="9" width="5" height="6" />
-      <rect x="15.5" y="9" width="5" height="6" />
-    </svg>
-  );
-}
-
-function BalconyGlyph({ className = "w-6 h-6" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
-      <path d="M3 6.5h18" />
-      <path d="M5.5 6.5v11M10 6.5v11M14 6.5v11M18.5 6.5v11" />
-      <path d="M3 17.5h18" />
-      <path d="M4.5 21h15" />
-    </svg>
-  );
-}
-
-function LandscapeGlyph({ className = "w-6 h-6" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M12 13C12 7 16.5 3.5 20 3.5 20 9.5 16 13 12 13Z" />
-      <path d="M12 13c0-4.5-3.5-7-6.5-7C5.5 10.5 8.5 13 12 13Z" />
-      <path d="M12 13v8" />
-      <path d="M5 21h14" />
+    <svg viewBox="0 0 48 48" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M7 23 L16 13 H32 L41 23" />
+      <path d="M5 26.5 H43" />
+      <path d="M11 26.5 V39 H37 V26.5" />
+      <path d="M16 39 V30 M22 39 V30 M32 39 V30" />
+      <path d="M25.5 39 V33.5 H29.5 V39" />
+      <path d="M7 39 H41" />
     </svg>
   );
 }
@@ -205,6 +164,8 @@ function LandscapeGlyph({ className = "w-6 h-6" }: { className?: string }) {
 /* ------------------------------------------------------------------ */
 /*  Motion helpers                                                     */
 /* ------------------------------------------------------------------ */
+
+/** Observe an element once; returns ref + whether it has entered view. */
 function useInView<T extends HTMLElement>(threshold = 0.15) {
   const ref = useRef<T | null>(null);
   const [inView, setInView] = useState(false);
@@ -234,6 +195,7 @@ function useInView<T extends HTMLElement>(threshold = 0.15) {
   return { ref, inView };
 }
 
+/** Scroll-reveal wrapper — fades/slides children in when scrolled to. */
 function Reveal({
   children,
   className = "",
@@ -245,16 +207,13 @@ function Reveal({
 }) {
   const { ref, inView } = useInView<HTMLDivElement>();
   return (
-    <div
-      ref={ref}
-      className={`reveal ${inView ? "is-in" : ""} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
+    <div ref={ref} className={`reveal ${inView ? "is-in" : ""} ${className}`} style={{ transitionDelay: `${delay}ms` }}>
       {children}
     </div>
   );
 }
 
+/** Number counter that animates when scrolled into view. */
 function CountUp({ to, suffix = "", duration = 1600 }: { to: number; suffix?: string; duration?: number }) {
   const { ref, inView } = useInView<HTMLSpanElement>(0.4);
   const [val, setVal] = useState(0);
@@ -269,7 +228,7 @@ function CountUp({ to, suffix = "", duration = 1600 }: { to: number; suffix?: st
     const start = performance.now();
     const tick = (now: number) => {
       const p = Math.min(1, (now - start) / duration);
-      setVal(Math.round(to * (1 - Math.pow(1 - p, 4))));
+      setVal(Math.round(to * (1 - Math.pow(1 - p, 4)))); // easeOutQuart
       if (p < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -285,127 +244,274 @@ function CountUp({ to, suffix = "", duration = 1600 }: { to: number; suffix?: st
 }
 
 /* ------------------------------------------------------------------ */
-/*  Jali lattice patterns — every pattern is a real, tiling SVG        */
+/*  Cornice drawings                                                   */
 /* ------------------------------------------------------------------ */
-type JaliVariant = "basket" | "star" | "maze" | "leaf" | "brick" | "heroStar";
 
-/**
- * Renders a seamless jali lattice. All geometry uses `currentColor` so a
- * parent `text-*` / `group-hover:text-*` re-colours the whole drawing.
- * `uid` keeps <pattern> ids unique when several tiles share the page.
- */
-function JaliTile({ variant, uid, className = "" }: { variant: JaliVariant; uid: string; className?: string }) {
-  const pid = `jali-${uid}`;
-
-  const motif = () => {
-    switch (variant) {
-      /* Over-and-under woven strips in alternating 2 × 2 blocks */
-      case "basket":
-        return (
-          <pattern id={pid} width="44" height="44" patternUnits="userSpaceOnUse">
-            <g fill="currentColor">
-              <rect x="1" y="3" width="20" height="7" />
-              <rect x="1" y="12" width="20" height="7" />
-              <rect x="25" y="1" width="7" height="20" />
-              <rect x="34" y="1" width="7" height="20" />
-              <rect x="1" y="25" width="20" height="7" />
-              <rect x="1" y="34" width="20" height="7" />
-              <rect x="25" y="23" width="7" height="20" />
-              <rect x="34" y="23" width="7" height="20" />
-            </g>
-          </pattern>
-        );
-
-      /* Two overlapping squares + corner diamonds = 8-point star khatam */
-      case "star":
-        return (
-          <pattern id={pid} width="56" height="56" patternUnits="userSpaceOnUse">
-            <g fill="none" stroke="currentColor" strokeWidth="2.5">
-              <rect x="12" y="12" width="32" height="32" />
-              <path d="M28 5 51 28 28 51 5 28Z" />
-              <path d="M0 -6 6 0 0 6 -6 0Z" />
-              <path d="M56 -6 62 0 56 6 50 0Z" />
-              <path d="M0 50 6 56 0 62 -6 56Z" />
-              <path d="M56 50 62 56 56 62 50 56Z" />
-            </g>
-            <circle cx="28" cy="28" r="2" fill="currentColor" />
-          </pattern>
-        );
-
-      /* Concentric squares with offset slots — a square labyrinth */
-      case "maze":
-        return (
-          <pattern id={pid} width="48" height="48" patternUnits="userSpaceOnUse">
-            <g fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="square">
-              <path d="M26 4H44V44H4V4H20" />
-              <path d="M12 22V36H36V12H20" />
-            </g>
-            <rect x="20" y="20" width="8" height="8" fill="currentColor" />
-          </pattern>
-        );
-
-      /* Paired vesica leaves on the diagonal with midribs */
-      case "leaf":
-        return (
-          <pattern id={pid} width="60" height="60" patternUnits="userSpaceOnUse">
-            <g fill="none" stroke="currentColor" strokeWidth="2">
-              <g transform="translate(15 15) rotate(45)">
-                <path d="M0 -12C6 -7 9 -3 9 0C9 3 6 7 0 12C-6 7 -9 3 -9 0C-9 -3 -6 -7 0 -12Z" />
-                <path d="M0 -8V8" strokeWidth="1.2" />
-              </g>
-              <g transform="translate(45 45) rotate(45)">
-                <path d="M0 -12C6 -7 9 -3 9 0C9 3 6 7 0 12C-6 7 -9 3 -9 0C-9 -3 -6 -7 0 -12Z" />
-                <path d="M0 -8V8" strokeWidth="1.2" />
-              </g>
-            </g>
-            <circle cx="45" cy="15" r="1.8" fill="currentColor" />
-            <circle cx="15" cy="45" r="1.8" fill="currentColor" />
-          </pattern>
-        );
-
-      /* Running-bond brick screen with open perpends */
-      case "brick":
-        return (
-          <pattern id={pid} width="56" height="32" patternUnits="userSpaceOnUse">
-            <g fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="2" y="2" width="24" height="12" />
-              <rect x="30" y="2" width="24" height="12" />
-              <rect x="-12" y="18" width="24" height="12" />
-              <rect x="16" y="18" width="24" height="12" />
-              <rect x="44" y="18" width="24" height="12" />
-            </g>
-          </pattern>
-        );
-
-      /* Denser 8-fold lattice used in the hero light panel */
-      case "heroStar":
-        return (
-          <pattern id={pid} width="64" height="64" patternUnits="userSpaceOnUse">
-            <g fill="none" stroke="currentColor" strokeWidth="3.2">
-              <rect x="14" y="14" width="36" height="36" />
-              <path d="M32 6 58 32 32 58 6 32Z" />
-              <path d="M0 -7 7 0 0 7 -7 0Z" />
-              <path d="M64 -7 71 0 64 7 57 0Z" />
-              <path d="M0 57 7 64 0 71 -7 64Z" />
-              <path d="M64 57 71 64 64 71 57 64Z" />
-              <path d="M32 -3 35 0 32 3 29 0Z" />
-              <path d="M0 29 3 32 0 35 -3 32Z" />
-              <path d="M64 29 67 32 64 35 61 32Z" />
-              <path d="M32 61 35 64 32 67 29 64Z" />
-            </g>
-            <circle cx="32" cy="32" r="2.6" fill="currentColor" />
-          </pattern>
-        );
-    }
-  };
-
+/** Shared drawing frame: hatched wall, profile paths, dimension line. */
+function DrawingFrame({
+  children,
+  label,
+  hatchId,
+}: {
+  children: ReactNode;
+  label: string;
+  hatchId: string;
+}) {
   return (
-    <svg viewBox="0 0 240 240" className={className} aria-hidden="true" preserveAspectRatio="xMidYMid slice">
-      <defs>{motif()}</defs>
-      <rect width="240" height="240" fill={`url(#${pid})`} />
+    <svg
+      viewBox="0 0 240 150"
+      role="img"
+      aria-label={`Cornice section: ${label}`}
+      className="w-full fill-none text-navy-800 transition-colors duration-500 group-hover:text-accent-400"
+    >
+      <defs>
+        <pattern id={`g-${hatchId}`} width="16" height="16" patternUnits="userSpaceOnUse">
+          <path d="M16 0H0V16" stroke="currentColor" strokeOpacity="0.13" strokeWidth="0.5" />
+        </pattern>
+        <pattern id={`h-${hatchId}`} width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="7" stroke="currentColor" strokeOpacity="0.3" strokeWidth="1" />
+        </pattern>
+      </defs>
+
+      <rect width="240" height="150" fill={`url(#g-${hatchId})`} />
+      <rect x="18" y="16" width="20" height="116" fill={`url(#h-${hatchId})`} stroke="currentColor" strokeWidth="1.5" />
+      <line x1="38" y1="16" x2="38" y2="132" stroke="currentColor" strokeWidth="2.5" />
+
+      {children}
+
+      {/* dimension line */}
+      <g className="text-steel-400 transition-colors duration-500 group-hover:text-accent-300">
+        <line x1="38" y1="141" x2="200" y2="141" stroke="currentColor" strokeWidth="1" />
+        <path d="M44 137.5 L38 141 L44 144.5" stroke="currentColor" strokeWidth="1" />
+        <path d="M194 137.5 L200 141 L194 144.5" stroke="currentColor" strokeWidth="1" />
+        <text x="119" y="135" textAnchor="middle" fontSize="7" letterSpacing="1.6" fontFamily="IBM Plex Mono, monospace" fill="currentColor">
+          {label}
+        </text>
+      </g>
     </svg>
   );
 }
+
+/** Classical cornice section — cyma recta crown over a dentil course. */
+function ClassicalSection({ label }: { label: string }) {
+  return (
+    <DrawingFrame label={label} hatchId="cor01">
+      <g stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
+        <path d="M38 26 H198 V34 C 186 34, 182 44, 172 48 C 164 51.5, 156 50, 148 52 H38" />
+        <path d="M38 66 H148 V52" />
+      </g>
+      <g stroke="currentColor" strokeWidth="1.5">
+        {[48, 65, 82, 99, 116, 133].map((x) => (
+          <rect key={x} x={x} y="52" width="9" height="14" />
+        ))}
+      </g>
+    </DrawingFrame>
+  );
+}
+
+/** Decorative cornice section — steep cyma, scalloped bed, bead course. */
+function DecorativeSection({ label }: { label: string }) {
+  return (
+    <DrawingFrame label={label} hatchId="cor02">
+      <g stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
+        <path d="M38 30 H190 V38 C 179 38, 175 47, 166 51 C 158 54.5, 150 53.5, 142 55 H38" />
+        <path d="M142 55 a8.7 8.7 0 0 1 -17.3 0 a8.7 8.7 0 0 1 -17.3 0 a8.7 8.7 0 0 1 -17.3 0 a8.7 8.7 0 0 1 -17.3 0 a8.7 8.7 0 0 1 -17.3 0 a8.7 8.7 0 0 1 -17.3 0" />
+        <path d="M38 75 H142 V55" />
+      </g>
+      <g stroke="currentColor" strokeWidth="1.5">
+        {[52, 70, 88, 106, 124].map((cx) => (
+          <circle key={cx} cx={cx} cy="66" r="3" />
+        ))}
+      </g>
+    </DrawingFrame>
+  );
+}
+
+/** Layered cornice section — three stepped fascia reveals. */
+function LayeredSection({ label }: { label: string }) {
+  return (
+    <DrawingFrame label={label} hatchId="cor03">
+      <g stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
+        <path d="M38 30 H200 V42 H178 V56 H156 V72 H38" />
+        <path d="M46 36 H192" strokeWidth="0.75" strokeOpacity="0.5" />
+        <path d="M46 49 H170" strokeWidth="0.75" strokeOpacity="0.5" />
+      </g>
+    </DrawingFrame>
+  );
+}
+
+/** Simple cornice section — single bullnose slab. */
+function SimpleSection({ label }: { label: string }) {
+  return (
+    <DrawingFrame label={label} hatchId="cor04">
+      <g stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
+        <path d="M38 34 H176 C 187 34, 187 50, 176 50 H38" />
+      </g>
+      <path d="M46 42 H166" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.5" />
+    </DrawingFrame>
+  );
+}
+
+/** Hero section drawing — classical profile that draws itself in. */
+function HeroSectionDraw() {
+  const { ref, inView } = useInView<HTMLDivElement>(0.35);
+  return (
+    <div ref={ref} className={inView ? "drawn" : ""}>
+      <svg viewBox="0 0 240 120" className="w-full fill-none text-navy-100" role="img" aria-label="Classical cornice section drawing">
+        <defs>
+          <pattern id="hhatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="7" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1" />
+          </pattern>
+        </defs>
+        <rect x="24" y="12" width="20" height="96" fill="url(#hhatch)" stroke="currentColor" strokeWidth="1.2" />
+        <line x1="44" y1="12" x2="44" y2="108" stroke="currentColor" strokeWidth="2.2" />
+        <path
+          className="profile-line"
+          d="M44 22 H204 V30 C 192 30, 188 40, 178 44 C 170 47.5, 162 46, 154 48 H44"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinejoin="round"
+        />
+        <path className="profile-line d2" d="M44 62 H154 V48" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+        <path className="profile-line d3" d="M52 48 h9 v14 h-9 z M69 48 h9 v14 h-9 z M86 48 h9 v14 h-9 z M103 48 h9 v14 h-9 z M120 48 h9 v14 h-9 z M137 48 h9 v14 h-9 z" stroke="currentColor" strokeWidth="1.3" />
+      </svg>
+    </div>
+  );
+}
+
+/** Moulding strip mounted under the header — rail, amber rule, dentils. */
+function MouldingBand() {
+  return (
+    <div className="overflow-hidden" aria-hidden="true">
+      <svg className="block h-9 w-full" preserveAspectRatio="none">
+        <defs>
+          <pattern id="dentil-strip" width="26" height="36" patternUnits="userSpaceOnUse">
+            <rect x="5" y="12" width="13" height="14" fill="#152c4f" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="8" fill="#152c4f" />
+        <rect y="8" width="100%" height="2" fill="#f5a81c" />
+        <rect y="10" width="100%" height="16" fill="#eef1f6" />
+        <rect y="10" width="100%" height="16" fill="url(#dentil-strip)" />
+        <rect y="26" width="100%" height="10" fill="#0c1e3a" />
+      </svg>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Section content data                                               */
+/* ------------------------------------------------------------------ */
+
+const ANATOMY = [
+  { name: "Cyma Recta", desc: "The S-curve crown that catches raking light and gives the profile its classical character." },
+  { name: "Corona", desc: "The projecting shelf that throws rainwater clear of the wall face below." },
+  { name: "Dentil Course", desc: "The toothed rhythm borrowed from the classical orders — crisp and shadow-deep in GRC." },
+  { name: "Bed Moulding", desc: "The transition line that settles the profile onto the wall without a visual break." },
+  { name: "Soffit", desc: "The underside plane — kept true and shadow-free by factory-cast accuracy." },
+  { name: "Frieze", desc: "The wall face the cornice crowns. Our mouldings are dimensioned to its module." },
+];
+
+const PRODUCTS = [
+  {
+    code: "COR-01",
+    name: "Classical Cornice",
+    tag: "BEST SELLER",
+    label: "PROJ. 150–300 MM",
+    Section: ClassicalSection,
+    desc: "Cyma recta crown over a dentil course — the canonical order for classical facades, temples and heritage-style interiors.",
+    specs: ["Projection 150–300 mm", "Dentil module 60 mm", "Raw, primed or painted"],
+  },
+  {
+    code: "COR-02",
+    name: "Decorative Cornice",
+    tag: "ORNATE",
+    label: "PROJ. 180–320 MM",
+    Section: DecorativeSection,
+    desc: "Scalloped bed moulding with a bead course for banquet halls, palaces and ornamented street elevations.",
+    specs: ["Projection 180–320 mm", "Scallop 60 mm module", "Optional gilt accents"],
+  },
+  {
+    code: "COR-03",
+    name: "Layered Cornice",
+    tag: "ARCHITECT PICK",
+    label: "PROJ. 120–250 MM",
+    Section: LayeredSection,
+    desc: "Three crisp stepped fascia reveals that shadow-line contemporary facades, parapets and floor bands.",
+    specs: ["Projection 120–250 mm", "3-step reveal", "Shadow-gap detailing"],
+  },
+  {
+    code: "COR-04",
+    name: "Simple Cornice",
+    tag: "ECONOMICAL",
+    label: "PROJ. 100–150 MM",
+    Section: SimpleSection,
+    desc: "A single bullnose slab with a soft rounded nose — the clean, budget-friendly finish for apartments and row houses.",
+    specs: ["Projection 100–150 mm", "Radius nose profile", "Fastest to install"],
+  },
+];
+
+const IDEAL_FOR = [
+  {
+    icon: ResidentialIcon,
+    title: "Residential Projects",
+    desc: "Flat lines and parapet crowns for apartments and row houses — crisp factory-cast edges that never hairline-crack like site-run POP.",
+    chip: "SIMPLE · LAYERED",
+  },
+  {
+    icon: CommercialIcon,
+    title: "Commercial Buildings",
+    desc: "Facade bands and floor-line cornices that tie large elevations together — lightweight, so no structural overloading on high-rises.",
+    chip: "LAYERED · CLASSICAL",
+  },
+  {
+    icon: HeritageIcon,
+    title: "Heritage Structures",
+    desc: "Period-accurate cyma, dentil and bead profiles recast from existing sections, photographs or measured drawings.",
+    chip: "CLASSICAL · DECORATIVE",
+  },
+  {
+    icon: VillaIcon,
+    title: "Villas & Bungalows",
+    desc: "Crown the roofline, porch and verandah with ornate profiles — weatherproof even in coastal, salt-laden air.",
+    chip: "DECORATIVE · CLASSICAL",
+  },
+];
+
+const COMPARISON = [
+  { label: "Weight per running ft", grc: "1.2–2 kg", pop: "3–4 kg", wood: "2–3 kg", rcc: "6–8 kg" },
+  { label: "Exterior & moisture", grc: "Immune", pop: "Crumbles when wet", wood: "Rots & warps", rcc: "Stains & spalls" },
+  { label: "Hairline cracking", grc: "Flexible joints — none", pop: "Always", wood: "Shrinks at joints", rcc: "Shrinkage cracks" },
+  { label: "Termites & fungus", grc: "Immune", pop: "Damp attracts both", wood: "Prone", rcc: "Immune" },
+  { label: "Detail sharpness", grc: "Crisp, moulded", pop: "Degrades in weather", wood: "Carved — costly", rcc: "Coarse" },
+  { label: "Exterior service life", grc: "25+ years", pop: "5–8 years", wood: "10–15 years", rcc: "20+ (needs paint)" },
+];
+
+const STATS = [
+  { value: 25, suffix: "+", label: "Years in GRC & FRP" },
+  { value: 120000, suffix: "+", label: "Running feet supplied" },
+  { value: 18, suffix: "", label: "States served pan-India" },
+  { value: 10, suffix: "-YR", label: "Material warranty" },
+];
+
+const PROCESS_STEPS = [
+  {
+    title: "Share running feet & profile",
+    desc: "Send facade photos or drawings and pick from our four profiles — or send a custom section for recasting.",
+  },
+  {
+    title: "CAD section + quote in 24 h",
+    desc: "Per-running-foot rates, a curved-length plan for radii, and finish options laid out before you commit.",
+  },
+  {
+    title: "Cast & cure",
+    desc: "Alkali-resistant glass fibre sprayed into silicone moulds, then moisture-cured for seven full days.",
+  },
+  {
+    title: "Fix & finish",
+    desc: "SS cradle brackets and polymer-mortar joints; our site engineer supports your masons on call.",
+  },
+];
 
 /* ------------------------------------------------------------------ */
 /*  1. Header / Navbar                                                 */
@@ -436,9 +542,9 @@ function Header() {
         light ? "bg-navy-950 shadow-lg shadow-navy-950/30" : "bg-paper/95"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3.5 sm:gap-3 sm:px-8">
-        <a href="#top" className="group flex min-w-0 items-center gap-2.5" aria-label="Blue Star Plastic Industries — home">
-          <StarMark className="h-7 w-7 shrink-0 text-accent-500 transition-transform duration-300 group-hover:rotate-45" />
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-5 py-3.5 sm:px-8">
+        <a href="#top" className="group flex items-center gap-2.5" aria-label="Blue Star Plastic Industries — home">
+          <StarMark className="h-7 w-7 text-accent-500 transition-transform duration-300 group-hover:rotate-45" />
           <span className="leading-none">
             <span className={`block font-display text-[22px] tracking-[0.06em] ${light ? "text-white" : "text-navy-900"}`}>
               BLUE STAR
@@ -468,7 +574,7 @@ function Header() {
             href={PHONE_TEL}
             className="inline-flex items-center gap-1.5 bg-accent-500 px-3 py-2.5 text-xs font-semibold text-navy-950 transition-all duration-200 hover:bg-accent-400 hover:shadow-[0_0_0_3px_rgba(245,168,28,0.25)] sm:gap-2 sm:px-4 sm:text-[13px]"
           >
-            <PhoneIcon className="h-4 w-4 shrink-0" />
+            <PhoneIcon className="h-4 w-4" />
             <span className="whitespace-nowrap">
               <span className="hidden sm:inline">Call:&nbsp;</span>
               {PHONE_DISPLAY}
@@ -525,26 +631,22 @@ function Header() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  2. Hero — copy beside a live jali light panel                      */
+/*  3. Hero                                                            */
 /* ------------------------------------------------------------------ */
 function Hero() {
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const reduced = useRef(false);
-
-  useEffect(() => {
-    reduced.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  }, []);
-
   return (
-    <section id="top" className="relative overflow-hidden bg-paper bg-blueprint pb-24 pt-28 md:pt-36">
+    <section id="top" className="relative overflow-hidden bg-paper bg-blueprint pb-24 pt-[68px] md:pt-[76px]">
+      {/* The page opens with the product itself: a moulding strip */}
+      <MouldingBand />
+
       <span
-        className="text-outline pointer-events-none absolute -bottom-8 right-0 select-none font-display text-[26vw] leading-none tracking-tight md:text-[19vw]"
+        className="text-outline pointer-events-none absolute -bottom-8 right-0 select-none font-display text-[20vw] leading-none tracking-tight md:text-[15vw]"
         aria-hidden="true"
       >
-        JALI
+        CORNICE
       </span>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-12 lg:gap-12">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 pt-14 sm:px-8 lg:grid-cols-12 lg:gap-10 lg:pt-20">
         {/* Copy column */}
         <div className="lg:col-span-6">
           <Reveal>
@@ -555,29 +657,24 @@ function Hero() {
           </Reveal>
 
           <Reveal delay={90}>
-            <h1 className="mt-5 font-display text-[52px] leading-[0.98] tracking-[0.015em] text-navy-900 sm:text-7xl xl:text-[86px]">
-              Premium GRC Jali Panels —
-              <br />
-              Strength Meets
+            <h1 className="mt-5 font-display text-[52px] leading-[0.98] tracking-[0.015em] text-navy-900 sm:text-7xl xl:text-[84px]">
+              GRC Cornice —
               <br />
               <span className="relative inline-block">
-                Elegance.
-                <svg
-                  viewBox="0 0 320 14"
-                  className="absolute -bottom-2 left-0 w-full text-accent-500"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
+                Elegant Finish.
+                <svg viewBox="0 0 320 14" className="absolute -bottom-2 left-0 w-full text-accent-500" preserveAspectRatio="none" aria-hidden="true">
                   <path d="M3 10 C 70 3, 190 3, 317 8" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
                 </svg>
               </span>
+              <br />
+              Stronger Performance.
             </h1>
           </Reveal>
 
           <Reveal delay={180}>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-steel-600">
-              Perfect for modern façades, ventilation, partition walls, balconies, and landscape
-              enhancements.
+              Lightweight yet strong cornices offering superior durability and a premium finish
+              for modern and classical designs.
             </p>
           </Reveal>
 
@@ -591,17 +688,17 @@ function Hero() {
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </a>
               <a
-                href="#patterns"
+                href="#profiles"
                 className="inline-flex items-center gap-3 border-2 border-navy-800 px-7 py-[14px] text-[15px] font-semibold text-navy-800 transition-colors duration-200 hover:bg-navy-800 hover:text-white"
               >
-                Browse the 5 Patterns
+                View Profiles
               </a>
             </div>
           </Reveal>
 
           <Reveal delay={340}>
             <ul className="mt-10 flex flex-wrap gap-x-7 gap-y-3">
-              {["IS 13441 GRC SPEC", "NON-COMBUSTIBLE CLASS A1", "10-YEAR WARRANTY"].map((t) => (
+              {["ISO 9001:2015 CERTIFIED", "MOISTURE-PROOF GRC", "CUSTOM PROFILE RECASTING"].map((t) => (
                 <li key={t} className="flex items-center gap-2 font-mono text-[10.5px] tracking-[0.16em] text-steel-600">
                   <CheckIcon className="h-3.5 w-3.5 text-accent-600" />
                   {t}
@@ -611,68 +708,52 @@ function Hero() {
           </Reveal>
         </div>
 
-        {/* Live jali light panel */}
+        {/* Image + drawn section card */}
         <div className="lg:col-span-6">
           <Reveal delay={200}>
-            <div
-              className="relative mr-2 cursor-crosshair lg:mr-6"
-              onMouseMove={(e) => {
-                if (reduced.current) return;
-                const r = e.currentTarget.getBoundingClientRect();
-                setTilt({
-                  x: ((e.clientX - r.left) / r.width - 0.5) * 52,
-                  y: ((e.clientY - r.top) / r.height - 0.5) * 52,
-                });
-              }}
-              onMouseLeave={() => setTilt({ x: 0, y: 0 })}
-            >
-              {/* amber corner brackets */}
-              <span className="absolute -left-2 -top-2 z-20 h-7 w-7 border-l-[3px] border-t-[3px] border-accent-500" aria-hidden="true" />
-              <span className="absolute -right-2 -top-2 z-20 h-7 w-7 border-r-[3px] border-t-[3px] border-accent-500" aria-hidden="true" />
-              <span className="absolute -bottom-2 -left-2 z-20 h-7 w-7 border-b-[3px] border-l-[3px] border-accent-500" aria-hidden="true" />
-              <span className="absolute -bottom-2 -right-2 z-20 h-7 w-7 border-b-[3px] border-r-[3px] border-accent-500" aria-hidden="true" />
+            <div className="relative mr-2 lg:mr-6">
+              <span className="absolute -left-2 -top-2 h-7 w-7 border-l-[3px] border-t-[3px] border-accent-500" aria-hidden="true" />
+              <span className="absolute -right-2 -top-2 h-7 w-7 border-r-[3px] border-t-[3px] border-accent-500" aria-hidden="true" />
+              <span className="absolute -bottom-2 -left-2 h-7 w-7 border-b-[3px] border-l-[3px] border-accent-500" aria-hidden="true" />
+              <span className="absolute -bottom-2 -right-2 h-7 w-7 border-b-[3px] border-r-[3px] border-accent-500" aria-hidden="true" />
 
-              <div className="relative aspect-[4/5] overflow-hidden border border-navy-800 bg-navy-950 sm:aspect-square lg:aspect-[4/5]">
-                {/* sky wash behind the lattice */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(245,168,28,0.14),transparent_70%)]" aria-hidden="true" />
-
-                {/* drifting sunlight — follows the cursor gently */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    transform: `translate(${tilt.x}px, ${tilt.y}px)`,
-                    transition: "transform 0.9s cubic-bezier(0.22, 1, 0.36, 1)",
-                  }}
-                  aria-hidden="true"
-                >
-                  <div className="drift-a absolute left-[8%] top-[10%] h-64 w-64 rounded-full bg-accent-400/80 blur-3xl">
-                    <div className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-300 blur-xl" />
-                  </div>
-                  <div className="drift-b absolute right-[6%] top-[42%] h-52 w-52 rounded-full bg-navy-300/40 blur-3xl" />
-                </div>
-
-                {/* the lattice itself — solid navy, light only through the holes */}
-                <JaliTile variant="heroStar" uid="hero" className="absolute inset-0 h-full w-full text-navy-950" />
-
-                {/* drawing-number stamp */}
-                <span className="absolute right-4 top-4 z-10 border border-white/25 bg-navy-950/75 px-2.5 py-1.5 font-mono text-[9.5px] tracking-[0.25em] text-navy-100">
-                  PATTERN GEOMETRIC STAR
+              <div className="relative overflow-hidden border border-steel-300 bg-navy-900">
+                <img
+                  src={HERO_IMG}
+                  alt="Building facade with white GRC cornice bands casting shadow lines under raking evening light"
+                  className="kenburns aspect-[4/3] w-full object-cover"
+                  loading="eager"
+                />
+                <span className="absolute right-4 top-4 border border-white/25 bg-navy-950/75 px-2.5 py-1.5 font-mono text-[9.5px] tracking-[0.25em] text-navy-100">
+                  DWG NO. BSP-COR-01
                 </span>
-
-                {/* floating spec tags */}
-                <div className="float-tag absolute bottom-16 left-5 z-10 border border-steel-200 border-l-4 border-l-accent-500 bg-white px-4 py-3 shadow-xl shadow-navy-950/20">
-                  <p className="font-mono text-[9px] tracking-[0.25em] text-accent-700">OPEN AREA</p>
-                  <p className="mt-0.5 font-display text-2xl leading-none text-navy-900">38%</p>
-                </div>
-                <div className="float-tag absolute right-5 top-16 z-10 border border-steel-200 border-l-4 border-l-accent-500 bg-white px-4 py-3 shadow-xl shadow-navy-950/20" style={{ animationDelay: "1.2s" }}>
-                  <p className="font-mono text-[9px] tracking-[0.25em] text-accent-700">MODULE</p>
-                  <p className="mt-0.5 font-display text-2xl leading-none text-navy-900">600 × 600 MM</p>
-                </div>
               </div>
 
-              <p className="mt-3 font-mono text-[9.5px] tracking-[0.2em] text-steel-500">
-                FIG. 01 — GEOMETRIC STAR PANEL · LIGHT STUDY · MOVE YOUR CURSOR
-              </p>
+              {/* vertical dimension note */}
+              <div className="absolute -right-5 top-8 hidden lg:block" aria-hidden="true">
+                <svg viewBox="0 0 34 190" className="h-44 w-8 text-navy-700">
+                  <line x1="10" y1="8" x2="10" y2="168" stroke="currentColor" strokeWidth="1" />
+                  <path d="M6.5 14 L10 8 L13.5 14" fill="none" stroke="currentColor" strokeWidth="1" />
+                  <path d="M6.5 162 L10 168 L13.5 162" fill="none" stroke="currentColor" strokeWidth="1" />
+                  <line x1="4" y1="8" x2="16" y2="8" stroke="currentColor" strokeWidth="1" />
+                  <line x1="4" y1="168" x2="16" y2="168" stroke="currentColor" strokeWidth="1" />
+                  <text x="22" y="92" fontSize="8" letterSpacing="1.5" fontFamily="IBM Plex Mono, monospace" fill="currentColor" transform="rotate(90 22 92)" textAnchor="middle">
+                    TYP. 240 MM DROP
+                  </text>
+                </svg>
+              </div>
+
+              {/* self-drawing section card */}
+              <div className="absolute -bottom-10 left-4 right-4 border-t-4 border-accent-500 bg-navy-950 p-5 shadow-xl shadow-navy-900/25 sm:right-auto sm:w-[22rem]">
+                <div className="flex items-center justify-between">
+                  <p className="font-mono text-[9.5px] tracking-[0.25em] text-accent-400">SECTION A–A · COR-01</p>
+                  <p className="font-mono text-[9.5px] tracking-[0.25em] text-steel-500">SCALE 1:4</p>
+                </div>
+                <HeroSectionDraw />
+                <p className="mt-1 font-mono text-[9.5px] tracking-[0.18em] text-navy-300">
+                  CYMA RECTA · DENTIL COURSE · GRC 12 MM SHELL
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -682,7 +763,7 @@ function Hero() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  3. Spec ticker                                                     */
+/*  4. Spec ticker                                                     */
 /* ------------------------------------------------------------------ */
 function Ticker() {
   const row = (hidden: boolean) => (
@@ -697,7 +778,7 @@ function Ticker() {
   );
 
   return (
-    <div className="marquee border-y border-navy-800 bg-navy-950 py-3.5">
+    <div className="marquee mt-8 border-y border-navy-800 bg-navy-950 py-3.5">
       <div className="marquee-track">
         {row(false)}
         {row(true)}
@@ -707,170 +788,145 @@ function Ticker() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  4. Key Features — spec-ledger rows                                 */
+/*  5. Anatomy of a moulding (hover-sync callouts)                     */
 /* ------------------------------------------------------------------ */
-const FEATURES = [
-  {
-    no: "01",
-    icon: StrengthIcon,
-    title: "High Strength & Durable",
-    desc: "Alkali-resistant glass fibre inside a dense cement matrix — GRC carries impact, wind load and its own weight across a 50-year design life without creep or sag.",
-    chips: ["40 MPa COMPRESSIVE", "IMPACT TESTED", "50-YR DESIGN LIFE"],
-  },
-  {
-    no: "02",
-    icon: WeatherIcon,
-    title: "Weather & Corrosion Resistant",
-    desc: "No steel to rust, no timber to rot. Freeze–thaw stable, salt-air safe for coastal sites, and UV-stable in natural cement or painted RAL finishes.",
-    chips: ["NO RUST — AR FIBRE", "FREEZE–THAW STABLE", "COASTAL SAFE"],
-  },
-  {
-    no: "03",
-    icon: LightweightIcon,
-    title: "Lightweight & Easy to Install",
-    desc: "18–25 mm thin panels at roughly 60% the weight of solid RCC screens. Bolt-on SS anchor kits — no welding, no shuttering, no curing on site.",
-    chips: ["60% LIGHTER THAN RCC", "BOLT-ON FIXING KITS", "NO WELDING ON SITE"],
-  },
-];
-
-function Features() {
+function CalloutDot({ x, y, n, active }: { x: number; y: number; n: number; active: boolean }) {
   return (
-    <section id="features" className="scroll-mt-24 bg-paper py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <g transform={`translate(${x} ${y})`}>
+      {active && <circle r="18" fill="none" stroke="#f5a81c" strokeOpacity="0.55" strokeWidth="1.5" />}
+      <circle
+        r="11"
+        fill={active ? "#f5a81c" : "#152c4f"}
+        stroke={active ? "#f5a81c" : "#7192bc"}
+        strokeWidth="1.2"
+        className="transition-colors duration-300"
+      />
+      <text
+        textAnchor="middle"
+        dy="3.5"
+        fontSize="10"
+        fontWeight="600"
+        fontFamily="IBM Plex Mono, monospace"
+        fill={active ? "#071427" : "#e4ecf6"}
+      >
+        {n}
+      </text>
+    </g>
+  );
+}
+
+function Anatomy() {
+  const [hover, setHover] = useState(-1);
+  const { ref, inView } = useInView<HTMLDivElement>(0.25);
+
+  return (
+    <section id="anatomy" className="relative scroll-mt-24 overflow-hidden bg-navy-950 bg-blueprint-dark py-24 text-navy-100">
+      <span
+        className="text-outline-light pointer-events-none absolute -right-6 top-4 select-none font-display text-[10rem] leading-none md:text-[15rem]"
+        aria-hidden="true"
+      >
+        SEC
+      </span>
+
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">01 / KEY FEATURES</p>
-              <h2 className="mt-3 font-display text-5xl leading-none text-navy-900 sm:text-6xl">
-                CAST STRONG.
-                <br />
-                BUILT TO STAY.
-              </h2>
-            </div>
-            <p className="max-w-xs text-sm leading-relaxed text-steel-600 md:pb-2 md:text-right">
-              Three properties that make GRC the screen material specifiers ask for by name.
-            </p>
-          </div>
+          <p className="font-mono text-[11px] tracking-[0.3em] text-accent-400">01 / ANATOMY</p>
+          <h2 className="mt-3 font-display text-5xl leading-none text-white sm:text-6xl">
+            ANATOMY OF A MOULDING.
+          </h2>
+          <p className="mt-4 max-w-lg text-sm leading-relaxed text-navy-200">
+            Every Blue Star cornice is a true classical section — cast, not carved. Hover a part
+            name to locate it on the drawing.
+          </p>
         </Reveal>
 
-        <div className="mt-14 border-t border-navy-800">
-          {FEATURES.map((f, i) => (
-            <Reveal key={f.no} delay={i * 120}>
-              <div className="group grid items-center gap-6 border-b border-steel-300 py-9 transition-colors duration-300 hover:bg-white md:grid-cols-12 md:gap-8 md:px-4">
-                {/* ghost number */}
-                <span className="font-display text-5xl leading-none text-steel-200 transition-colors duration-300 group-hover:text-accent-500 md:col-span-2">
-                  {f.no}
-                </span>
+        <div className="mt-12 grid items-center gap-12 lg:grid-cols-12">
+          {/* Big section drawing */}
+          <div className="lg:col-span-7">
+            <Reveal delay={120}>
+              <div ref={ref} className={`border border-navy-800 bg-navy-900/50 p-6 ${inView ? "drawn" : ""}`}>
+                <svg viewBox="0 0 360 210" className="w-full fill-none text-navy-100" role="img" aria-label="Anatomical section of a classical GRC cornice with numbered callouts">
+                  <defs>
+                    <pattern id="agrid" width="18" height="18" patternUnits="userSpaceOnUse">
+                      <path d="M18 0H0V18" stroke="currentColor" strokeOpacity="0.08" strokeWidth="0.5" />
+                    </pattern>
+                    <pattern id="awall" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                      <line x1="0" y1="0" x2="0" y2="7" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1" />
+                    </pattern>
+                  </defs>
+                  <rect width="360" height="210" fill="url(#agrid)" />
 
-                {/* icon + title */}
-                <div className="flex items-center gap-5 md:col-span-4">
-                  <span className="flex h-14 w-14 shrink-0 items-center justify-center border border-navy-800 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-accent-400">
-                    <f.icon className="h-7 w-7" />
-                  </span>
-                  <h3 className="font-display text-[28px] leading-none tracking-[0.02em] text-navy-900">
-                    {f.title}
-                  </h3>
-                </div>
+                  {/* wall + frieze */}
+                  <rect x="20" y="16" width="30" height="178" fill="url(#awall)" stroke="currentColor" strokeWidth="1.5" />
+                  <line x1="50" y1="16" x2="50" y2="194" stroke="currentColor" strokeWidth="2.5" />
 
-                {/* description */}
-                <p className="text-sm leading-relaxed text-steel-600 md:col-span-4">{f.desc}</p>
+                  {/* profile outline */}
+                  <path
+                    className="profile-line"
+                    d="M50 36 H290 V48 C 272 48, 266 62, 251 68 C 239 73, 227 71, 215 74 H50"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinejoin="round"
+                  />
+                  <path className="profile-line d2" d="M50 96 H215 V74" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
+                  <path
+                    className="profile-line d3"
+                    d="M62 74 h13 v22 h-13 z M87 74 h13 v22 h-13 z M112 74 h13 v22 h-13 z M137 74 h13 v22 h-13 z M162 74 h13 v22 h-13 z M187 74 h13 v22 h-13 z"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                  />
 
-                {/* stat chips */}
-                <div className="flex flex-wrap gap-2 md:col-span-2 md:justify-end">
-                  {f.chips.map((c) => (
+                  {/* callouts */}
+                  <CalloutDot x={252} y={60} n={1} active={hover === 0} />
+                  <CalloutDot x={282} y={42} n={2} active={hover === 1} />
+                  <CalloutDot x={125} y={85} n={3} active={hover === 2} />
+                  <CalloutDot x={180} y={74} n={4} active={hover === 3} />
+                  <CalloutDot x={135} y={100} n={5} active={hover === 4} />
+                  <CalloutDot x={35} y={150} n={6} active={hover === 5} />
+
+                  <text x="298" y="188" fontSize="8" letterSpacing="2" fontFamily="IBM Plex Mono, monospace" fill="currentColor" opacity="0.5">
+                    BSP-COR-SEC-A
+                  </text>
+                </svg>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Legend */}
+          <div className="lg:col-span-5">
+            <div className="space-y-3">
+              {ANATOMY.map((part, i) => (
+                <Reveal key={part.name} delay={i * 90}>
+                  <div
+                    tabIndex={0}
+                    onMouseEnter={() => setHover(i)}
+                    onMouseLeave={() => setHover(-1)}
+                    onFocus={() => setHover(i)}
+                    onBlur={() => setHover(-1)}
+                    className={`group flex cursor-default items-start gap-4 border p-4 outline-none transition-all duration-300 ${
+                      hover === i
+                        ? "border-accent-500 bg-navy-800/70"
+                        : "border-navy-800 bg-navy-900/40 hover:border-navy-600"
+                    }`}
+                  >
                     <span
-                      key={c}
-                      className="border border-steel-300 bg-white px-2.5 py-1.5 font-mono text-[8.5px] tracking-[0.14em] text-navy-700 transition-colors duration-300 group-hover:border-accent-500"
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center border font-mono text-xs font-semibold transition-colors duration-300 ${
+                        hover === i ? "border-accent-500 bg-accent-500 text-navy-950" : "border-navy-600 text-navy-200"
+                      }`}
                     >
-                      {c}
+                      {i + 1}
                     </span>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  5. Applications index                                              */
-/* ------------------------------------------------------------------ */
-const APPLICATIONS = [
-  {
-    code: "A1",
-    glyph: FacadeGlyph,
-    name: "Modern Façades",
-    desc: "Brise-soleil screens, feature walls and full building wraps that give a facade depth and shadow.",
-  },
-  {
-    code: "A2",
-    glyph: VentGlyph,
-    name: "Ventilation",
-    desc: "Free cross-flow of air with rain-break geometry — privacy kept, stuffiness gone.",
-  },
-  {
-    code: "A3",
-    glyph: PartitionGlyph,
-    name: "Partition Walls",
-    desc: "Zone interiors without blocking light — offices, lobbies, restaurants and homes.",
-  },
-  {
-    code: "A4",
-    glyph: BalconyGlyph,
-    name: "Balconies",
-    desc: "Railing infills and privacy screens that shade harsh sun but keep the view soft.",
-  },
-  {
-    code: "A5",
-    glyph: LandscapeGlyph,
-    name: "Landscape",
-    desc: "Garden screens, pergola fins and boundary walls that age gracefully outdoors.",
-  },
-];
-
-function Applications() {
-  return (
-    <section id="applications" className="scroll-mt-24 bg-white py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <Reveal>
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">02 / WHERE JALI WORKS</p>
-              <h2 className="mt-3 font-display text-5xl leading-none text-navy-900 sm:text-6xl">
-                ONE PANEL,
-                <br />
-                FIVE JOBS.
-              </h2>
+                    <span>
+                      <span className={`block font-display text-xl tracking-[0.03em] transition-colors duration-300 ${hover === i ? "text-accent-300" : "text-white"}`}>
+                        {part.name.toUpperCase()}
+                      </span>
+                      <span className="mt-1 block text-[13px] leading-relaxed text-navy-300">{part.desc}</span>
+                    </span>
+                  </div>
+                </Reveal>
+              ))}
             </div>
-            <p className="max-w-xs text-sm leading-relaxed text-steel-600 md:pb-2 md:text-right">
-              The same 600 mm module works across the entire envelope — inside and out.
-            </p>
           </div>
-        </Reveal>
-
-        <div className="mt-12 border-t border-navy-800">
-          {APPLICATIONS.map((a, i) => (
-            <Reveal key={a.code} delay={i * 90}>
-              <div className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 border-b border-steel-200 py-6 transition-colors duration-300 hover:bg-navy-50 sm:grid-cols-[70px_56px_240px_1fr_auto] sm:gap-6 md:px-4">
-                <span className="font-mono text-[11px] tracking-[0.22em] text-steel-400 transition-colors duration-300 group-hover:text-accent-700">
-                  {a.code}
-                </span>
-                <span className="hidden h-11 w-11 items-center justify-center border border-navy-800 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-accent-400 sm:flex">
-                  <a.glyph className="h-6 w-6" />
-                </span>
-                <h3 className="font-display text-[26px] leading-none tracking-[0.02em] text-navy-900">
-                  {a.name}
-                </h3>
-                <p className="col-span-3 -mt-3 text-sm leading-relaxed text-steel-600 sm:col-span-1 sm:mt-0">
-                  {a.desc}
-                </p>
-                <ArrowRight className="hidden h-5 w-5 text-steel-300 transition-all duration-300 group-hover:translate-x-1.5 group-hover:text-accent-600 sm:block" />
-              </div>
-            </Reveal>
-          ))}
         </div>
       </div>
     </section>
@@ -878,132 +934,57 @@ function Applications() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  6. Pattern Showcase                                                */
+/*  6. Product showcase                                                */
 /* ------------------------------------------------------------------ */
-const PATTERNS: {
-  variant: JaliVariant;
-  uid: string;
-  code: string;
-  name: string;
-  tag?: string;
-  module: string;
-  open: string;
-  desc: string;
-  usedFor: string;
-}[] = [
-  {
-    variant: "basket",
-    uid: "p1",
-    code: "BSP-JL-01",
-    name: "Basket Weave",
-    tag: "BEST SELLER",
-    module: "600 × 600 MM",
-    open: "34%",
-    desc: "Over-and-under woven strips cast in concrete — a warm, textile texture for screens that should feel hand-made.",
-    usedFor: "PARTITIONS · BALCONIES",
-  },
-  {
-    variant: "star",
-    uid: "p2",
-    code: "BSP-JL-02",
-    name: "Geometric Star",
-    tag: "ARCHITECT PICK",
-    module: "600 × 600 MM",
-    open: "41%",
-    desc: "The classic 8-point khatam star. Maximum open area in the range — strong shadows, stronger character.",
-    usedFor: "FAÇADES · FEATURE WALLS",
-  },
-  {
-    variant: "maze",
-    uid: "p3",
-    code: "BSP-JL-03",
-    name: "Square Maze",
-    module: "450 × 450 MM",
-    open: "29%",
-    desc: "A square labyrinth of concentric slots. More solid than open — ideal where privacy has to come first.",
-    usedFor: "VENTILATION · BOUNDARIES",
-  },
-  {
-    variant: "leaf",
-    uid: "p4",
-    code: "BSP-JL-04",
-    name: "Leaf Pattern",
-    module: "600 × 600 MM",
-    open: "37%",
-    desc: "Paired leaves on the diagonal with fine midribs — a softer, botanical register for homes and resorts.",
-    usedFor: "LANDSCAPE · BALCONIES",
-  },
-  {
-    variant: "brick",
-    uid: "p5",
-    code: "BSP-JL-05",
-    name: "Brick Link",
-    module: "600 × 300 MM",
-    open: "31%",
-    desc: "A running-bond brick screen with open perpends. Honest, industrial, and at home beside exposed concrete.",
-    usedFor: "VENTILATION · BOUNDARIES",
-  },
-];
-
 function Showcase() {
   return (
-    <section id="patterns" className="scroll-mt-24 bg-paper bg-blueprint py-24">
+    <section id="profiles" className="scroll-mt-24 bg-paper bg-blueprint py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">03 / PATTERN LIBRARY</p>
+              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">02 / PROFILES</p>
               <h2 className="mt-3 font-display text-5xl leading-none text-navy-900 sm:text-6xl">
-                FIVE SIGNATURE
+                FOUR WAYS TO
                 <br />
-                LATTICES. PLUS YOURS.
+                CROWN A WALL.
               </h2>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-steel-600 md:pb-2 md:text-right">
-              Each preview below is the real tiling geometry, drawn to scale. Hover to see the
-              night-shift view.
+              Cast to order in straight lengths and radii. Hover a drawing to flip it to the
+              night-shift blueprint view.
             </p>
           </div>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {PATTERNS.map((p, i) => (
-            <Reveal key={p.code} delay={(i % 3) * 110}>
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          {PRODUCTS.map((p, i) => (
+            <Reveal key={p.code} delay={i * 110}>
               <article className="group flex h-full flex-col border border-steel-300 bg-white transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-600 hover:shadow-[10px_10px_0_0_rgba(245,168,28,0.18)]">
-                {/* real lattice preview — inverts to navy on hover */}
-                <div className="relative h-52 overflow-hidden border-b border-steel-200 bg-navy-50 transition-colors duration-500 group-hover:border-navy-800 group-hover:bg-navy-950">
-                  <JaliTile
-                    variant={p.variant}
-                    uid={p.uid}
-                    className="h-full w-full text-navy-800 transition-all duration-700 group-hover:scale-110 group-hover:text-accent-400"
-                  />
-                  <div className="pointer-events-none absolute left-4 top-4 flex items-start justify-between gap-2">
+                <div className="relative border-b border-steel-200 bg-navy-50 p-4 transition-colors duration-500 group-hover:border-navy-800 group-hover:bg-navy-950">
+                  <div className="flex items-start justify-between">
                     <span className="font-mono text-[9.5px] tracking-[0.2em] text-steel-500 transition-colors duration-500 group-hover:text-navy-300">
                       {p.code}
                     </span>
+                    {p.tag && (
+                      <span className="bg-accent-500 px-2 py-1 font-mono text-[8.5px] tracking-[0.18em] text-navy-950">{p.tag}</span>
+                    )}
                   </div>
-                  {p.tag && (
-                    <span className="absolute right-4 top-4 bg-accent-500 px-2 py-1 font-mono text-[8.5px] tracking-[0.18em] text-navy-950">
-                      {p.tag}
-                    </span>
-                  )}
+                  <p.Section label={p.label} />
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="font-display text-[26px] tracking-[0.02em] text-navy-900">{p.name}</h3>
-                    <span className="whitespace-nowrap font-mono text-[9px] tracking-[0.14em] text-accent-700">
-                      OPEN {p.open}
-                    </span>
-                  </div>
+                  <h3 className="font-display text-[26px] tracking-[0.02em] text-navy-900">{p.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-steel-600">{p.desc}</p>
 
-                  <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
-                    <span className="font-mono text-[10px] tracking-[0.12em] text-steel-500">
-                      MODULE {p.module}
-                    </span>
-                    <span className="font-mono text-[10px] tracking-[0.12em] text-steel-500">{p.usedFor}</span>
-                  </div>
+                  <ul className="mt-5 space-y-2">
+                    {p.specs.map((s) => (
+                      <li key={s} className="flex items-center gap-2.5 font-mono text-[11px] tracking-[0.08em] text-steel-600">
+                        <span className="h-1.5 w-1.5 shrink-0 bg-accent-500" aria-hidden="true" />
+                        {s.toUpperCase()}
+                      </li>
+                    ))}
+                  </ul>
 
                   <a
                     href="#quote"
@@ -1016,33 +997,6 @@ function Showcase() {
               </article>
             </Reveal>
           ))}
-
-          {/* Custom pattern CTA cell */}
-          <Reveal delay={220}>
-            <a
-              href="#quote"
-              className="group flex h-full min-h-[420px] flex-col items-start justify-between border-2 border-dashed border-navy-400 bg-navy-50/60 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-600 hover:bg-navy-50"
-            >
-              <div>
-                <span className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.22em] text-accent-700">
-                  <StarMark className="h-3 w-3" /> BSP-JL-CUSTOM
-                </span>
-                <h3 className="mt-4 font-display text-[32px] leading-none tracking-[0.02em] text-navy-900">
-                  YOUR PATTERN,
-                  <br />
-                  CAST IN GRC.
-                </h3>
-                <p className="mt-4 max-w-xs text-sm leading-relaxed text-steel-600">
-                  Send a CAD file, a sketch, even a photograph of an old jali you love — we engrave
-                  the mould and cast your motif to order.
-                </p>
-              </div>
-              <span className="inline-flex items-center gap-2 bg-navy-900 px-5 py-3.5 text-sm font-bold text-white transition-colors duration-300 group-hover:bg-accent-500 group-hover:text-navy-950">
-                Discuss a custom design
-                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1.5" />
-              </span>
-            </a>
-          </Reveal>
         </div>
       </div>
     </section>
@@ -1050,27 +1004,61 @@ function Showcase() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  7. Cinema band — full-bleed light-through-jali photograph          */
+/*  7. Ideal For                                                       */
 /* ------------------------------------------------------------------ */
-function CinemaBand() {
+function IdealFor() {
   return (
-    <section className="relative h-[56vh] min-h-[420px] overflow-hidden bg-navy-950" aria-label="Golden-hour light through GRC jali panels">
-      <img
-        src={FACADE_IMG}
-        alt="Evening sunlight streaming through geometric GRC jali panels on a modern facade"
-        className="kenburns absolute inset-0 h-full w-full object-cover"
-        loading="lazy"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/20 to-navy-950/40" aria-hidden="true" />
-      <div className="absolute inset-x-0 bottom-0 mx-auto max-w-7xl px-5 pb-10 sm:px-8">
-        <Reveal>
-          <p className="font-mono text-[10px] tracking-[0.28em] text-accent-400">
-            FIG. 02 — 18:47, GOLDEN HOUR, GEOMETRIC STAR PANEL
-          </p>
-          <p className="mt-3 font-display text-5xl leading-[0.95] text-white sm:text-7xl">
-            LIGHT DOES THE DETAILING.
-          </p>
-        </Reveal>
+    <section id="ideal" className="scroll-mt-24 bg-white py-24">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-12">
+        <div className="lg:col-span-4">
+          <div className="lg:sticky lg:top-28">
+            <Reveal>
+              <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">03 / IDEAL FOR</p>
+              <h2 className="mt-3 font-display text-5xl leading-none text-navy-900 sm:text-6xl">
+                WHERE OUR
+                <br />
+                CORNICES
+                <br />
+                WORK HARDEST.
+              </h2>
+              <p className="mt-5 max-w-sm text-sm leading-relaxed text-steel-600">
+                From a two-bedroom row house to a heritage restoration — one material, four
+                profile families, zero compromises on the finish line.
+              </p>
+              <a
+                href="#quote"
+                className="group mt-8 inline-flex items-center gap-3 border-2 border-navy-800 px-6 py-3.5 text-sm font-semibold text-navy-800 transition-colors duration-200 hover:bg-navy-800 hover:text-white"
+              >
+                Discuss your project
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </a>
+            </Reveal>
+          </div>
+        </div>
+
+        <div className="lg:col-span-8">
+          <div className="space-y-5">
+            {IDEAL_FOR.map((item, i) => (
+              <Reveal key={item.title} delay={i * 110}>
+                <div className="group flex flex-col gap-5 border border-steel-200 border-l-4 border-l-steel-300 bg-paper p-6 transition-all duration-300 hover:-translate-y-1 hover:border-l-accent-500 hover:shadow-[10px_10px_0_0_rgba(21,44,79,0.07)] sm:flex-row sm:items-center sm:gap-7 sm:p-7">
+                  <span className="font-display text-3xl text-steel-300 transition-colors duration-300 group-hover:text-accent-500">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center border border-navy-800 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-accent-400">
+                    <item.icon className="h-7 w-7" />
+                  </span>
+                  <div className="flex-1">
+                    <h3 className="font-display text-[26px] tracking-[0.02em] text-navy-900">{item.title}</h3>
+                    <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-steel-600">{item.desc}</p>
+                  </div>
+                  <span className="shrink-0 self-start border border-steel-300 px-3 py-2 font-mono text-[9.5px] tracking-[0.18em] text-steel-600 transition-colors duration-300 group-hover:border-accent-600 group-hover:text-accent-700 sm:self-center">
+                    {item.chip}
+                  </span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -1079,45 +1067,6 @@ function CinemaBand() {
 /* ------------------------------------------------------------------ */
 /*  8. Why GRC — comparison table                                      */
 /* ------------------------------------------------------------------ */
-const COMPARISON = [
-  {
-    label: "Material core",
-    grc: "AR glass-fibre reinforced concrete",
-    alt1: "Painted MS / powder-coated aluminium",
-    alt2: "Fired terracotta / cement blocks",
-  },
-  {
-    label: "Corrosion & rot",
-    grc: "Immune — no rust, no rot",
-    alt1: "MS rusts; alu oxidises",
-    alt2: "Efflorescence & spalling",
-  },
-  {
-    label: "Fire behaviour",
-    grc: "Non-combustible, Class A1",
-    alt1: "Steel conducts; alu softens at 660 °C",
-    alt2: "Non-combustible",
-  },
-  {
-    label: "Pattern freedom",
-    grc: "Any motif, cast to order",
-    alt1: "Limited to weld grids / CNC cuts",
-    alt2: "Standard modules only",
-  },
-  {
-    label: "Maintenance",
-    grc: "Wash-down only",
-    alt1: "Repaint / re-coat cycles",
-    alt2: "Re-pointing & sealing",
-  },
-  {
-    label: "Design life",
-    grc: "50+ years",
-    alt1: "15–20 years",
-    alt2: "25–30 years",
-  },
-];
-
 function WhyGrc() {
   return (
     <section id="why-grc" className="relative scroll-mt-24 overflow-hidden bg-navy-950 bg-blueprint-dark py-24 text-navy-100">
@@ -1125,20 +1074,20 @@ function WhyGrc() {
         className="text-outline-light pointer-events-none absolute -right-4 top-6 select-none font-display text-[11rem] leading-none md:text-[16rem]"
         aria-hidden="true"
       >
-        GRC
+        VS
       </span>
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
           <p className="font-mono text-[11px] tracking-[0.3em] text-accent-400">04 / WHY GRC</p>
           <h2 className="mt-3 font-display text-5xl leading-none text-white sm:text-6xl">
-            AGAINST EVERY OTHER SCREEN.
+            THE MOULDING THAT OUTLIVES THE BUILDING'S MOODS.
           </h2>
         </Reveal>
 
         <Reveal delay={150}>
           <div className="mt-12 overflow-x-auto">
-            <table className="w-full min-w-[680px] border-collapse text-left">
+            <table className="w-full min-w-[760px] border-collapse text-left">
               <thead>
                 <tr>
                   <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">PROPERTY</th>
@@ -1146,10 +1095,11 @@ function WhyGrc() {
                     <span className="absolute -top-3 left-4 bg-accent-500 px-2 py-0.5 font-mono text-[9px] tracking-[0.18em] text-navy-950">
                       ★ RECOMMENDED
                     </span>
-                    <span className="font-display text-xl tracking-[0.04em] text-white">GRC JALI</span>
+                    <span className="font-display text-xl tracking-[0.04em] text-white">GRC CORNICE</span>
                   </th>
-                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">MS / ALU JALI</th>
-                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">TERRACOTTA / CONCRETE</th>
+                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">POP (PLASTER)</th>
+                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">WOOD</th>
+                  <th className="p-4 font-mono text-[10.5px] tracking-[0.2em] text-steel-400">RCC CAST</th>
                 </tr>
               </thead>
               <tbody>
@@ -1162,15 +1112,16 @@ function WhyGrc() {
                         {row.grc}
                       </span>
                     </td>
-                    <td className="p-4 text-sm text-navy-300">{row.alt1}</td>
-                    <td className="p-4 text-sm text-navy-300">{row.alt2}</td>
+                    <td className="p-4 text-sm text-navy-300">{row.pop}</td>
+                    <td className="p-4 text-sm text-navy-300">{row.wood}</td>
+                    <td className="p-4 text-sm text-navy-300">{row.rcc}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
           <p className="mt-4 font-mono text-[10px] tracking-[0.14em] text-steel-500">
-            * TYPICAL 600 × 600 × 20 MM PANEL · TEST REPORTS AVAILABLE ON REQUEST.
+            * INDICATIVE VALUES FOR A 240 MM PROJECTION CORNICE PROFILE. TEST REPORTS AVAILABLE ON REQUEST.
           </p>
         </Reveal>
       </div>
@@ -1181,13 +1132,6 @@ function WhyGrc() {
 /* ------------------------------------------------------------------ */
 /*  9. Stats band                                                      */
 /* ------------------------------------------------------------------ */
-const STATS = [
-  { value: 25, suffix: "+", label: "Years in GRC & FRP" },
-  { value: 640, suffix: "+", label: "Facade & villa projects" },
-  { value: 32, suffix: "", label: "Standard patterns + custom" },
-  { value: 10, suffix: "-YR", label: "Structural warranty" },
-];
-
 function StatsBand() {
   return (
     <section className="bg-accent-500 text-navy-950">
@@ -1213,31 +1157,8 @@ function StatsBand() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  10. Process — sticky image + timeline                              */
+/*  10. Process                                                        */
 /* ------------------------------------------------------------------ */
-const PROCESS_STEPS = [
-  {
-    no: "1",
-    title: "Choose a pattern — or send your own",
-    desc: "Pick one of the five signatures, or share a CAD file, sketch or photo. We confirm module size and open area together.",
-  },
-  {
-    no: "2",
-    title: "Approve a sample tile",
-    desc: "We cast a 600 × 600 sample in your chosen finish — natural cement or RAL painted. You sign off before the run.",
-  },
-  {
-    no: "3",
-    title: "Casting & curing",
-    desc: "Hand-sprayed GRC, steam-cured and demoulded at our Taloja works. Every panel is QC-checked for edge sharpness and flatness.",
-  },
-  {
-    no: "4",
-    title: "Crated delivery & fixing",
-    desc: "Foam-separated wooden crates, SS anchor kits inside, and our engineer on call while your site team fixes.",
-  },
-];
-
 function Process() {
   return (
     <section id="process" className="scroll-mt-24 bg-white py-24">
@@ -1247,15 +1168,15 @@ function Process() {
             <Reveal>
               <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">05 / HOW WE WORK</p>
               <h2 className="mt-3 font-display text-5xl leading-none text-navy-900 sm:text-6xl">
-                FROM PATTERN
+                FROM MOULD
                 <br />
-                TO WALL, IN
+                TO MONOLITHIC
                 <br />
-                FOUR STEPS.
+                FINISH LINE.
               </h2>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-steel-600">
-                A physical sample tile before production means what you approve is exactly what
-                gets cast — no surprises on site.
+                Cornices are priced per running foot, cast per project, and numbered for a
+                foolproof sequence on site.
               </p>
             </Reveal>
 
@@ -1265,8 +1186,8 @@ function Process() {
                 <span className="absolute -bottom-2 -right-2 h-6 w-6 border-b-[3px] border-r-[3px] border-accent-500" aria-hidden="true" />
                 <div className="overflow-hidden border border-steel-300 bg-navy-900">
                   <img
-                    src={WORKSHOP_IMG}
-                    alt="Craftsman casting wet GRC into a jali lattice mould at the Blue Star workshop"
+                    src={FACTORY_IMG}
+                    alt="Craftsman demoulding a long white GRC cornice profile at the Blue Star casting workshop"
                     className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
                     loading="lazy"
                   />
@@ -1284,13 +1205,13 @@ function Process() {
             <span className="absolute bottom-4 left-[21px] top-4 w-px bg-steel-300" aria-hidden="true" />
             <ol className="space-y-4">
               {PROCESS_STEPS.map((step, i) => (
-                <Reveal key={step.no} delay={i * 130}>
+                <Reveal key={step.title} delay={i * 130}>
                   <li className="group relative flex gap-6 pb-6">
                     <span className="z-10 flex h-11 w-11 shrink-0 items-center justify-center border border-navy-800 bg-paper font-display text-xl text-navy-800 transition-colors duration-300 group-hover:border-accent-600 group-hover:bg-accent-500 group-hover:text-navy-950">
-                      {step.no}
+                      {i + 1}
                     </span>
                     <div className="border border-steel-200 bg-paper p-6 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-navy-800 group-hover:shadow-[8px_8px_0_0_rgba(21,44,79,0.07)]">
-                      <p className="font-mono text-[9.5px] tracking-[0.25em] text-accent-700">STEP {step.no} / 4</p>
+                      <p className="font-mono text-[9.5px] tracking-[0.25em] text-accent-700">STEP {i + 1} / 4</p>
                       <h3 className="mt-2 font-display text-[24px] tracking-[0.02em] text-navy-900">{step.title}</h3>
                       <p className="mt-1.5 max-w-lg text-sm leading-relaxed text-steel-600">{step.desc}</p>
                     </div>
@@ -1313,9 +1234,9 @@ type QuoteForm = {
   phone: string;
   email: string;
   city: string;
-  pattern: string;
-  application: string;
-  area: string;
+  type: string;
+  length: string;
+  finish: string;
   message: string;
 };
 
@@ -1324,9 +1245,9 @@ const EMPTY_FORM: QuoteForm = {
   phone: "",
   email: "",
   city: "",
-  pattern: "Geometric Star",
-  application: "Facade screen",
-  area: "100–500 sq ft",
+  type: "Classical Cornice",
+  length: "100–500 running ft",
+  finish: "Factory primed",
   message: "",
 };
 
@@ -1354,7 +1275,7 @@ function QuoteSection() {
     if (form.phone.replace(/\D/g, "").length < 10) next.phone = "Enter a valid 10-digit mobile number.";
     setErrors(next);
     if (Object.keys(next).length > 0) return;
-    setRefId(`BSP-JL-${Math.floor(1000 + Math.random() * 9000)}`);
+    setRefId(`BSP-CQ-${Math.floor(1000 + Math.random() * 9000)}`);
     setSubmitted(true);
   };
 
@@ -1374,13 +1295,13 @@ function QuoteSection() {
           <Reveal>
             <p className="font-mono text-[11px] tracking-[0.3em] text-accent-400">06 / GET A QUOTE</p>
             <h2 className="mt-3 font-display text-5xl leading-[1.02] text-white sm:text-6xl">
-              SEND YOUR PATTERN.
+              SEND YOUR
               <br />
-              QUOTED IN 24 HOURS.
+              RUNNING FEET.
             </h2>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-navy-200">
-              Tell us the pattern, the application and roughly how many square feet — our sales
-              engineer replies with per-panel pricing and a finish recommendation.
+              Share your profile choice and approximate lengths — our sales engineer replies with
+              per-foot rates, a CAD section and a delivery schedule within 24 hours.
             </p>
           </Reveal>
 
@@ -1421,7 +1342,7 @@ function QuoteSection() {
               </div>
             </div>
             <p className="mt-6 font-mono text-[10px] tracking-[0.18em] text-steel-500">
-              MON–SAT · 09:00–18:30 IST · WORKS VISITS BY APPOINTMENT
+              MON–SAT · 09:00–18:30 IST · SITE VISITS BY APPOINTMENT
             </p>
           </Reveal>
         </div>
@@ -1442,7 +1363,7 @@ function QuoteSection() {
                   <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-steel-600">
                     Thanks, {form.name.split(" ")[0]} — our sales engineer will call{" "}
                     <span className="font-semibold text-navy-800">{form.phone}</span> within 24
-                    working hours with your quote for the {form.pattern} pattern.
+                    working hours with your cornice quotation.
                   </p>
                   <button
                     type="button"
@@ -1465,7 +1386,7 @@ function QuoteSection() {
                   <div className="mt-7 grid gap-5 sm:grid-cols-2">
                     <div>
                       <label htmlFor="q-name" className={labelCls}>FULL NAME *</label>
-                      <input id="q-name" type="text" value={form.name} onChange={set("name")} placeholder="e.g. Meera Krishnan" className={inputCls(!!errors.name)} />
+                      <input id="q-name" type="text" value={form.name} onChange={set("name")} placeholder="e.g. Meera Kulkarni" className={inputCls(!!errors.name)} />
                       {errors.name && <p className="mt-1.5 text-xs font-medium text-red-600">{errors.name}</p>}
                     </div>
                     <div>
@@ -1479,42 +1400,38 @@ function QuoteSection() {
                     </div>
                     <div>
                       <label htmlFor="q-city" className={labelCls}>CITY</label>
-                      <input id="q-city" type="text" value={form.city} onChange={set("city")} placeholder="e.g. Ahmedabad" className={inputCls(false)} />
+                      <input id="q-city" type="text" value={form.city} onChange={set("city")} placeholder="e.g. Jaipur" className={inputCls(false)} />
                     </div>
                     <div>
-                      <label htmlFor="q-pattern" className={labelCls}>PATTERN</label>
-                      <select id="q-pattern" value={form.pattern} onChange={set("pattern")} className={inputCls(false)}>
-                        <option>Basket Weave</option>
-                        <option>Geometric Star</option>
-                        <option>Square Maze</option>
-                        <option>Leaf Pattern</option>
-                        <option>Brick Link</option>
-                        <option>Custom pattern</option>
+                      <label htmlFor="q-type" className={labelCls}>PROFILE</label>
+                      <select id="q-type" value={form.type} onChange={set("type")} className={inputCls(false)}>
+                        <option>Classical Cornice</option>
+                        <option>Decorative Cornice</option>
+                        <option>Layered Cornice</option>
+                        <option>Simple Cornice</option>
+                        <option>Multiple / custom section</option>
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="q-app" className={labelCls}>APPLICATION</label>
-                      <select id="q-app" value={form.application} onChange={set("application")} className={inputCls(false)}>
-                        <option>Facade screen</option>
-                        <option>Ventilation</option>
-                        <option>Partition wall</option>
-                        <option>Balcony</option>
-                        <option>Landscape</option>
-                        <option>Other</option>
+                      <label htmlFor="q-length" className={labelCls}>APPROX. LENGTH</label>
+                      <select id="q-length" value={form.length} onChange={set("length")} className={inputCls(false)}>
+                        <option>Up to 100 running ft</option>
+                        <option>100–500 running ft</option>
+                        <option>500–2000 running ft</option>
+                        <option>2000+ (project supply)</option>
                       </select>
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="q-area" className={labelCls}>APPROX. AREA</label>
-                      <select id="q-area" value={form.area} onChange={set("area")} className={inputCls(false)}>
-                        <option>Under 100 sq ft</option>
-                        <option>100–500 sq ft</option>
-                        <option>500–2,000 sq ft</option>
-                        <option>2,000+ sq ft (project supply)</option>
+                      <label htmlFor="q-finish" className={labelCls}>FINISH</label>
+                      <select id="q-finish" value={form.finish} onChange={set("finish")} className={inputCls(false)}>
+                        <option>Raw cast (site paint)</option>
+                        <option>Factory primed</option>
+                        <option>Factory painted — RAL shade</option>
                       </select>
                     </div>
                     <div className="sm:col-span-2">
                       <label htmlFor="q-msg" className={labelCls}>ANYTHING ELSE?</label>
-                      <textarea id="q-msg" rows={3} value={form.message} onChange={set("message")} placeholder="Finish, colours, drawings, deadlines…" className={inputCls(false)} />
+                      <textarea id="q-msg" rows={3} value={form.message} onChange={set("message")} placeholder="Curved lengths, heritage recasting, drawings, deadlines…" className={inputCls(false)} />
                     </div>
                   </div>
 
@@ -1556,8 +1473,8 @@ function Footer() {
             </span>
           </a>
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-steel-400">
-            Manufacturer of premium FRP and GRC architectural products — jali panels, chajjas,
-            domes, cornices and custom facade elements — since 2001.
+            Manufacturer of premium FRP and GRC architectural products — cornices, chajjas, jali
+            panels and custom facade elements — since 2001.
           </p>
           <div className="mt-6 flex flex-wrap gap-2">
             {["ISO 9001:2015", "FRP · GRC SPECIALISTS", "MADE IN INDIA"].map((b) => (
@@ -1569,11 +1486,11 @@ function Footer() {
         </div>
 
         <div className="md:col-span-2">
-          <h4 className="font-mono text-[10.5px] tracking-[0.25em] text-accent-400">PATTERNS</h4>
+          <h4 className="font-mono text-[10.5px] tracking-[0.25em] text-accent-400">PROFILES</h4>
           <ul className="mt-5 space-y-3 text-sm">
-            {["Basket Weave", "Geometric Star", "Square Maze", "Leaf Pattern", "Brick Link", "Custom Designs"].map((p) => (
+            {["Classical Cornice", "Decorative Cornice", "Layered Cornice", "Simple Cornice", "Custom Sections"].map((p) => (
               <li key={p}>
-                <a href="#patterns" className="nav-underline text-navy-200 transition-colors hover:text-white">
+                <a href="#profiles" className="nav-underline text-navy-200 transition-colors hover:text-white">
                   {p}
                 </a>
               </li>
@@ -1582,9 +1499,9 @@ function Footer() {
         </div>
 
         <div className="md:col-span-3">
-          <h4 className="font-mono text-[10.5px] tracking-[0.25em] text-accent-400">THIS PAGE</h4>
+          <h4 className="font-mono text-[10.5px] tracking-[0.25em] text-accent-400">COMPANY</h4>
           <ul className="mt-5 space-y-3 text-sm">
-            {NAV_LINKS.map((l) => (
+            {[...NAV_LINKS, { label: "Process", href: "#process" }].map((l) => (
               <li key={l.href}>
                 <a href={l.href} className="nav-underline text-navy-200 transition-colors hover:text-white">
                   {l.label}
@@ -1625,12 +1542,10 @@ function Footer() {
 
       <div className="mt-14 border-t border-navy-800">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 sm:flex-row sm:px-8">
-          <p className="text-xs text-steel-500">
-            © {new Date().getFullYear()} Blue Star Plastic Industries. All rights reserved.
-          </p>
+          <p className="text-xs text-steel-500">© {new Date().getFullYear()} Blue Star Plastic Industries. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <p className="hidden font-mono text-[9.5px] tracking-[0.2em] text-steel-500 lg:block">
-              GRC JALI PANELS · LANDING PAGE 02 / 10
+              GRC CORNICES · LANDING PAGE 03 / 10
             </p>
             <a href="#top" className="nav-underline font-mono text-[10px] tracking-[0.22em] text-navy-200 transition-colors hover:text-accent-400">
               BACK TO TOP ↑
@@ -1652,10 +1567,9 @@ export default function App() {
       <main>
         <Hero />
         <Ticker />
-        <Features />
-        <Applications />
+        <Anatomy />
         <Showcase />
-        <CinemaBand />
+        <IdealFor />
         <WhyGrc />
         <StatsBand />
         <Process />

@@ -184,6 +184,22 @@
   }
 }
 
+/* Cornice section-drawing: strokes draw themselves in when scrolled into view */
+.profile-line {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+}
+.drawn .profile-line {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.drawn .profile-line.d2 {
+  transition-delay: 0.35s;
+}
+.drawn .profile-line.d3 {
+  transition-delay: 0.7s;
+}
+
 /* Sliding underline for nav + inline links */
 .nav-underline {
   position: relative;
@@ -217,6 +233,10 @@
   .float-tag,
   .marquee-track {
     animation: none !important;
+  }
+  .profile-line {
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
   }
   *,
   *::before,
