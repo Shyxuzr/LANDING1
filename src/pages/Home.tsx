@@ -16,6 +16,7 @@ import {
   MailIcon,
   PhoneIcon,
   Reveal,
+  RequestQuoteSection,
   StarMark,
   EMAIL,
   PHONE_DISPLAY,
@@ -310,7 +311,7 @@ function ContactBand() {
           <Reveal delay={140}>
             <div className="flex flex-col gap-4">
               <GoLink
-                to="/p/frp-chajjas#quote"
+                to="#request-quote"
                 className="group inline-flex items-center justify-center gap-3 bg-navy-950 px-7 py-4 text-[15px] font-bold text-white transition-all duration-200 hover:bg-navy-800"
               >
                 Request a Custom Quote
@@ -363,6 +364,7 @@ export default function Home() {
           title={["THE GRC", "RANGE."]}
           intro="Stone's elegance at a fraction of the weight: jali panels, cornices, columns, balustrades, facade cladding and landscape pieces."
         />
+        <RequestQuoteSection />
         <ContactBand />
       </main>
       <Footer mode="home" />

@@ -1081,6 +1081,303 @@ export function AnatomySection({ product, kicker }: { product: Product; kicker: 
 }
 
 /* ------------------------------------------------------------------ */
+/*  WhatsApp glyph + floating action button (all pages)                */
+/* ------------------------------------------------------------------ */
+function WhatsAppGlyph({ className = "h-7 w-7" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm0 18.15a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 1 1 6.98 3.86Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.8-.78.97-.14.17-.29.19-.54.06a6.7 6.7 0 0 1-3.35-2.93c-.25-.43.25-.4.72-1.35.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29Z" />
+    </svg>
+  );
+}
+
+export const WHATSAPP_URL = `https://wa.me/919152091020?text=${encodeURIComponent(
+  "Hi Blue Star! I'd like a quote for your FRP / GRC products."
+)}`;
+
+/** Fixed bottom-right WhatsApp button with sonar ring and hover label. */
+export function WhatsAppFab() {
+  return (
+    <a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat with Blue Star Plastic Industries on WhatsApp — +91 91520 91020"
+      className="group fixed bottom-5 right-5 z-[70] sm:bottom-7 sm:right-7"
+    >
+      {/* sonar ring */}
+      <span className="wa-ping absolute inset-0 bg-[#25D366]/60" aria-hidden="true" />
+      {/* button */}
+      <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-navy-950/40 ring-2 ring-white/80 transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
+        <WhatsAppGlyph className="h-7 w-7" />
+      </span>
+      {/* slide-out label */}
+      <span className="pointer-events-none absolute right-full top-1/2 mr-3 hidden -translate-y-1/2 whitespace-nowrap border border-navy-700 bg-navy-950 px-3 py-2 font-mono text-[10px] tracking-[0.18em] text-navy-100 opacity-0 shadow-xl shadow-navy-950/40 transition-all duration-200 group-hover:-translate-x-1 group-hover:opacity-100 sm:block">
+        CHAT ON WHATSAPP · +91 91520 91020
+      </span>
+    </a>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Request a Quote — unified, high-conversion contact section         */
+/* ------------------------------------------------------------------ */
+type RQForm = { name: string; phone: string; email: string; interest: string };
+const RQ_EMPTY: RQForm = { name: "", phone: "", email: "", interest: "" };
+
+export function RequestQuoteSection() {
+  const [form, setForm] = useState<RQForm>(RQ_EMPTY);
+  const [errors, setErrors] = useState<{ name?: string; phone?: string; email?: string; interest?: string }>({});
+  const [submitted, setSubmitted] = useState(false);
+  const [refId, setRefId] = useState("");
+
+  const frp = PRODUCTS.filter((p) => p.family === "FRP");
+  const grc = PRODUCTS.filter((p) => p.family === "GRC");
+
+  const set = (key: keyof RQForm) => (e: { target: { value: string } }) => setForm((f) => ({ ...f, [key]: e.target.value }));
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const next: typeof errors = {};
+    if (form.name.trim().length < 2) next.name = "Please enter your full name.";
+    if (form.phone.replace(/\D/g, "").length < 10) next.phone = "Enter a valid 10-digit mobile number.";
+    if (form.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()))
+      next.email = "That email doesn't look right.";
+    if (!form.interest) next.interest = "Pick the product you're interested in.";
+    setErrors(next);
+    if (Object.keys(next).length > 0) return;
+    setRefId(`BSP-Q-${Math.floor(1000 + Math.random() * 9000)}`);
+    setSubmitted(true);
+  };
+
+  const labelCls = "mb-1.5 block font-mono text-[10.5px] tracking-[0.18em] text-steel-600";
+  const inputCls = (invalid: boolean) =>
+    `w-full border bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-steel-400 focus:ring-2 ${
+      invalid
+        ? "border-red-500 focus:border-red-500 focus:ring-red-500/25"
+        : "border-steel-300 focus:border-accent-600 focus:ring-accent-500/30"
+    }`;
+
+  return (
+    <section id="request-quote" className="relative scroll-mt-24 overflow-hidden bg-navy-950 bg-blueprint-dark py-24 text-navy-100">
+      {/* oversized hollow watermark */}
+      <span
+        className="text-outline-light pointer-events-none absolute -top-6 right-0 select-none font-display text-[9rem] leading-none md:text-[14rem]"
+        aria-hidden="true"
+      >
+        24 HRS
+      </span>
+
+      <div className="relative mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-12">
+        {/* Trust rail */}
+        <div className="lg:col-span-5">
+          <Reveal>
+            <p className="font-mono text-[11px] tracking-[0.3em] text-accent-400">REQUEST A QUOTE</p>
+            <h2 className="mt-3 font-display text-5xl leading-[1.02] text-white sm:text-6xl">
+              TELL US WHAT
+              <br />
+              YOU'RE <span className="text-accent-400">BUILDING.</span>
+            </h2>
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-navy-200">
+              Four fields, thirty seconds. A sales engineer calls you back with pricing, specs and
+              samples for exactly what your project needs.
+            </p>
+          </Reveal>
+
+          <Reveal delay={140}>
+            {/* live desk indicator */}
+            <div className="mt-8 inline-flex items-center gap-3 border border-navy-700 bg-navy-900/70 px-4 py-2.5">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-400 opacity-60 motion-reduce:animate-none" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent-500" />
+              </span>
+              <span className="font-mono text-[10px] tracking-[0.22em] text-navy-100">
+                SALES DESK ONLINE · MON–SAT 09:00–18:30 IST
+              </span>
+            </div>
+          </Reveal>
+
+          {/* what happens next — numbered ledger, not cards */}
+          <Reveal delay={200}>
+            <div className="mt-9">
+              <p className="font-mono text-[9.5px] tracking-[0.3em] text-steel-400">WHAT HAPPENS NEXT</p>
+              <ol className="mt-4">
+                {[
+                  { t: "We call you back", d: "Within 24 working hours — usually the same day." },
+                  { t: "You get a custom quote", d: "Per-unit pricing, sizes, colours and a CAD/spec sheet." },
+                  { t: "Samples on request", d: "Gelcoat chips or a sample piece before you commit." },
+                ].map((s, i) => (
+                  <li key={s.t} className="group flex gap-4 border-t border-navy-800 py-4 transition-colors last:border-b hover:bg-navy-900/50">
+                    <span className="font-display text-2xl leading-none text-steel-500 transition-colors group-hover:text-accent-400">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span>
+                      <span className="block text-sm font-semibold text-white">{s.t}</span>
+                      <span className="mt-0.5 block text-[13px] leading-relaxed text-navy-300">{s.d}</span>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </Reveal>
+
+          {/* direct lines */}
+          <Reveal delay={260}>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={PHONE_TEL}
+                className="inline-flex items-center justify-center gap-2.5 border border-navy-700 px-5 py-3 font-mono text-[10.5px] tracking-[0.16em] text-navy-100 transition-colors hover:border-accent-500 hover:text-accent-300"
+              >
+                <PhoneIcon className="h-4 w-4 text-accent-500" />
+                {PHONE_DISPLAY}
+              </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 border border-navy-700 px-5 py-3 font-mono text-[10.5px] tracking-[0.16em] text-navy-100 transition-colors hover:border-[#25D366] hover:text-[#25D366]"
+              >
+                <WhatsAppGlyph className="h-4 w-4 text-[#25D366]" />
+                WHATSAPP US
+              </a>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* The form card */}
+        <div className="lg:col-span-7">
+          <Reveal delay={180}>
+            <div className="border-t-4 border-accent-500 bg-paper p-7 text-ink shadow-2xl shadow-navy-950/50 sm:p-10">
+              {submitted ? (
+                <div className="py-8 text-center">
+                  <span className="mx-auto flex h-16 w-16 items-center justify-center bg-accent-500 text-navy-950">
+                    <CheckIcon className="h-8 w-8" />
+                  </span>
+                  <h3 className="mt-6 font-display text-4xl text-navy-900">REQUEST RECEIVED.</h3>
+                  <p className="mt-3 font-mono text-[11px] tracking-[0.2em] text-accent-700">
+                    REF {refId} · LOGGED{" "}
+                    {new Date().toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }).toUpperCase()}
+                  </p>
+                  <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-steel-600">
+                    Thanks, {form.name.split(" ")[0]} — our sales engineer will call{" "}
+                    <span className="font-semibold text-navy-800">{form.phone}</span> within 24
+                    working hours about <span className="font-semibold text-navy-800">{form.interest}</span>.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setForm(RQ_EMPTY);
+                      setSubmitted(false);
+                    }}
+                    className="mt-8 inline-flex items-center gap-2 border-2 border-navy-800 px-6 py-3 text-sm font-semibold text-navy-800 transition-colors hover:bg-navy-800 hover:text-white"
+                  >
+                    Submit another request
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={onSubmit} noValidate>
+                  <h3 className="font-display text-3xl text-navy-900">REQUEST A QUOTE</h3>
+                  <p className="mt-1 text-sm text-steel-600">
+                    Fields marked <span className="font-bold text-accent-700">*</span> are required.
+                  </p>
+
+                  <div className="mt-7 grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="rq-name" className={labelCls}>
+                        NAME *
+                      </label>
+                      <input
+                        id="rq-name"
+                        type="text"
+                        value={form.name}
+                        onChange={set("name")}
+                        placeholder="e.g. Ar. Kavita Rao"
+                        className={inputCls(!!errors.name)}
+                      />
+                      {errors.name && <p className="mt-1.5 text-xs font-medium text-red-600">{errors.name}</p>}
+                    </div>
+                    <div>
+                      <label htmlFor="rq-phone" className={labelCls}>
+                        PHONE NUMBER *
+                      </label>
+                      <input
+                        id="rq-phone"
+                        type="tel"
+                        value={form.phone}
+                        onChange={set("phone")}
+                        placeholder="10-digit mobile"
+                        className={inputCls(!!errors.phone)}
+                      />
+                      {errors.phone && <p className="mt-1.5 text-xs font-medium text-red-600">{errors.phone}</p>}
+                    </div>
+                    <div>
+                      <label htmlFor="rq-email" className={labelCls}>
+                        EMAIL
+                      </label>
+                      <input
+                        id="rq-email"
+                        type="email"
+                        value={form.email}
+                        onChange={set("email")}
+                        placeholder="you@company.in"
+                        className={inputCls(!!errors.email)}
+                      />
+                      {errors.email && <p className="mt-1.5 text-xs font-medium text-red-600">{errors.email}</p>}
+                    </div>
+                    <div>
+                      <label htmlFor="rq-interest" className={labelCls}>
+                        PRODUCT INTEREST *
+                      </label>
+                      <select
+                        id="rq-interest"
+                        value={form.interest}
+                        onChange={set("interest")}
+                        className={inputCls(!!errors.interest)}
+                      >
+                        <option value="" disabled>
+                          Select a product…
+                        </option>
+                        <optgroup label="FRP RANGE">
+                          {frp.map((p) => (
+                            <option key={p.slug} value={p.name}>
+                              {p.code} — {p.name}
+                            </option>
+                          ))}
+                        </optgroup>
+                        <optgroup label="GRC RANGE">
+                          {grc.map((p) => (
+                            <option key={p.slug} value={p.name}>
+                              {p.code} — {p.name}
+                            </option>
+                          ))}
+                        </optgroup>
+                        <option value="Not sure yet — advise me">Not sure yet — advise me</option>
+                      </select>
+                      {errors.interest && <p className="mt-1.5 text-xs font-medium text-red-600">{errors.interest}</p>}
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="group mt-7 inline-flex w-full items-center justify-center gap-3 bg-accent-500 px-7 py-4 text-[15px] font-bold text-navy-950 shadow-[6px_6px_0_0_var(--color-navy-800)] transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:bg-accent-400 hover:shadow-[2px_2px_0_0_var(--color-navy-800)]"
+                  >
+                    Send My Request
+                    <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                  </button>
+                  <p className="mt-4 text-center font-mono text-[9.5px] tracking-[0.16em] text-steel-500">
+                    NO SPAM — YOUR NUMBER GOES STRAIGHT TO OUR SALES DESK.
+                  </p>
+                </form>
+              )}
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  Footer                                                             */
 /* ------------------------------------------------------------------ */
 export function Footer({ mode, pageNo }: { mode: "home" | "product"; pageNo?: string }) {
