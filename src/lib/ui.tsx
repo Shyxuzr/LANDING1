@@ -4,7 +4,7 @@
  */
 import { useEffect, useRef, useState } from "react";
 import type { FormEvent, ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { PRODUCTS } from "./data";
 import type { Product } from "./data";
 import { CorniceSection, ColumnExploded, Drawing } from "./drawings";
@@ -431,62 +431,107 @@ export function CheckIcon({ className = "w-4 h-4" }: { className?: string }) {
 /* ------------------------------------------------------------------ */
 /*  Header                                                             */
 /* ------------------------------------------------------------------ */
-const HOME_NAV = [
-  { label: "The Register", to: "#register" },
-  { label: "FRP Range", to: "#frp" },
-  { label: "GRC Range", to: "#grc" },
-  { label: "Contact", to: "#contact" },
-];
-const PRODUCT_NAV = [
-  { label: "Advantages", to: "#features" },
-  { label: "Designs", to: "#showcase" },
-  { label: "Why", to: "#why" },
-  { label: "Process", to: "#process" },
-  { label: "Contact", to: "#quote" },
-];
-
-function ProductsDropdown({ light }: { light: boolean }) {
+/**
+ * Products dropdown — click-controlled, grouped by material family,
+ * with the current sheet highlighted. Closes on outside click / Escape.
+ */
+function ProductsDropdown({
+  light,
+  open,
+  onToggle,
+  currentPath,
+}: {
+  light: boolean;
+  open: boolean;
+  onToggle: () => void;
+  currentPath: string;
+}) {
   const frp = PRODUCTS.filter((p) => p.family === "FRP");
   const grc = PRODUCTS.filter((p) => p.family === "GRC");
+
   const col = (title: string, items: Product[]) => (
     <div>
-      <p className="font-mono text-[9px] tracking-[0.3em] text-accent-400">{title}</p>
-      <ul className="mt-3 space-y-2">
-        {items.map((p) => (
-          <li key={p.slug}>
-            <Link
-              to={`/p/${p.slug}`}
-              className="group/item flex items-baseline gap-2 text-sm text-navy-100 transition-colors hover:text-accent-300"
-            >
-              <span className="font-mono text-[9px] tracking-wider text-steel-500 transition-colors group-hover/item:text-accent-500">
-                {p.code}
-              </span>
-              {p.name}
-            </Link>
-          </li>
-        ))}
+      <p className="font-mono text-[9px] tracking-[0.3em] text-accent-400">
+        {title} · {String(items.length).padStart(2, "0")}
+      </p>
+      <ul className="mt-3 space-y-1.5">
+        {items.map((p) => {
+          const active = currentPath === `/p/${p.slug}`;
+          return (
+            <li key={p.slug}>
+              <Link
+                to={`/p/${p.slug}`}
+                aria-current={active ? "page" : undefined}
+                className="group/item flex items-baseline gap-2.5 py-0.5 text-sm transition-colors hover:text-accent-300"
+              >
+                <span className="font-mono text-[9px] tracking-wider text-steel-500 transition-colors group-hover/item:text-accent-500">
+                  {p.code}
+                </span>
+                <span className={active ? "font-semibold text-accent-400" : "text-navy-100"}>{p.name}</span>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
 
   return (
-    <div className="group relative hidden md:block">
+    <div className="relative hidden md:block">
       <button
         type="button"
-        className={`nav-underline flex items-center gap-1.5 font-mono text-[11px] tracking-[0.18em] transition-colors ${
-          light ? "text-navy-100 hover:text-white" : "text-navy-700 hover:text-navy-950"
-        }`}
+        onClick={onToggle}
         aria-haspopup="true"
+        aria-expanded={open}
+        className={`nav-underline flex items-center gap-1.5 font-mono text-[11px] tracking-[0.18em] transition-colors ${
+          open ? "text-accent-500" : light ? "text-navy-100 hover:text-white" : "text-navy-700 hover:text-navy-950"
+        }`}
       >
         PRODUCTS
-        <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          className={`h-3 w-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          aria-hidden="true"
+        >
           <path d="m6 9 6 6 6-6" />
         </svg>
       </button>
-      <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 translate-y-2 pt-4 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-        <div className="grid w-[480px] grid-cols-2 gap-8 border border-navy-700 bg-navy-950 p-6 shadow-2xl shadow-navy-950/50">
-          {col("FRP RANGE", frp)}
-          {col("GRC RANGE", grc)}
+
+      <div
+        className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 transition-all duration-200 ${
+          open ? "visible translate-y-0 opacity-100" : "invisible translate-y-2 opacity-0"
+        }`}
+      >
+        <div className="w-[540px] border border-navy-700 bg-navy-950 shadow-2xl shadow-navy-950/60">
+          <div className="flex items-center justify-between border-b border-navy-800 px-6 py-3.5">
+            <p className="font-mono text-[9px] tracking-[0.3em] text-steel-400">
+              PRODUCT REGISTER · {PRODUCTS.length} SHEETS
+            </p>
+            <StarMark className="h-3 w-3 text-accent-500" />
+          </div>
+          <div className="grid grid-cols-2 gap-8 px-6 py-5">
+            {col("FRP RANGE", frp)}
+            {col("GRC RANGE", grc)}
+          </div>
+          <div className="flex items-center justify-between gap-4 border-t border-navy-800 bg-navy-900/60 px-6 py-3.5">
+            <a
+              href={PHONE_TEL}
+              className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.16em] text-navy-200 transition-colors hover:text-accent-400"
+            >
+              <PhoneIcon className="h-3.5 w-3.5 text-accent-500" />
+              CALL {PHONE_DISPLAY}
+            </a>
+            <GoLink
+              to="/#register"
+              className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.16em] text-accent-400 transition-colors hover:text-accent-300"
+            >
+              FULL REGISTER <ArrowRight className="h-3 w-3" />
+            </GoLink>
+          </div>
         </div>
       </div>
     </div>
@@ -497,6 +542,10 @@ export function Header({ mode }: { mode: "home" | "product" }) {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropOpen, setDropOpen] = useState(false);
+  const [mobileProducts, setMobileProducts] = useState(false);
+  const dropRef = useRef<HTMLDivElement | null>(null);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const onScroll = () => {
@@ -511,8 +560,58 @@ export function Header({ mode }: { mode: "home" | "product" }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close the dropdown on outside click or Escape
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (dropRef.current && !dropRef.current.contains(e.target as Node)) setDropOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setDropOpen(false);
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
+  // Reset menus on navigation
+  useEffect(() => {
+    setMenuOpen(false);
+    setDropOpen(false);
+    setMobileProducts(false);
+  }, [pathname]);
+
   const light = scrolled || menuOpen;
-  const nav = mode === "home" ? HOME_NAV : PRODUCT_NAV;
+  const contactTo = mode === "home" ? "#contact" : "#quote";
+  const frp = PRODUCTS.filter((p) => p.family === "FRP");
+  const grc = PRODUCTS.filter((p) => p.family === "GRC");
+
+  const mobileProductLinks = (title: string, items: Product[]) => (
+    <div className="py-2">
+      <p className="font-mono text-[9px] tracking-[0.3em] text-accent-400">{title}</p>
+      <ul className="mt-2">
+        {items.map((p) => (
+          <li key={p.slug}>
+            <GoLink
+              to={`/p/${p.slug}`}
+              onClick={() => setMenuOpen(false)}
+              className={`flex items-baseline gap-2.5 border-b border-navy-800/60 py-2.5 text-sm transition-colors hover:text-accent-400 ${
+                pathname === `/p/${p.slug}` ? "font-semibold text-accent-400" : "text-navy-100"
+              }`}
+            >
+              <span className="font-mono text-[9px] tracking-wider text-steel-500">{p.code}</span>
+              {p.name}
+            </GoLink>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 
   return (
     <header
@@ -521,8 +620,11 @@ export function Header({ mode }: { mode: "home" | "product" }) {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-5 py-3.5 sm:px-8">
-        <GoLink to="/" className="group flex items-center gap-2.5" onClick={() => setMenuOpen(false)}>
-          <StarMark className="h-7 w-7 text-accent-500 transition-transform duration-300 group-hover:rotate-45" />
+        <GoLink to="/" className="group flex items-center gap-3" onClick={() => setMenuOpen(false)} aria-label="Blue Star Plastic Industries — home">
+          {/* logo placeholder — amber star on a navy plate */}
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-accent-500 bg-navy-950 transition-shadow duration-300 group-hover:shadow-[0_0_0_3px_rgba(245,168,28,0.25)]">
+            <StarMark className="h-5 w-5 text-accent-500 transition-transform duration-300 group-hover:rotate-45" />
+          </span>
           <span className="leading-none">
             <span className={`block font-display text-[22px] tracking-[0.06em] ${light ? "text-white" : "text-navy-900"}`}>
               BLUE STAR
@@ -533,32 +635,39 @@ export function Header({ mode }: { mode: "home" | "product" }) {
           </span>
         </GoLink>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
-          {nav.map((l) => (
-            <GoLink
-              key={l.to}
-              to={l.to}
-              className={`nav-underline font-mono text-[11px] tracking-[0.18em] transition-colors ${
-                light ? "text-navy-100 hover:text-white" : "text-navy-700 hover:text-navy-950"
-              }`}
-            >
-              {l.label.toUpperCase()}
-            </GoLink>
-          ))}
-          <ProductsDropdown light={light} />
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
+          <GoLink
+            to="/"
+            aria-current={pathname === "/" ? "page" : undefined}
+            className={`nav-underline font-mono text-[11px] tracking-[0.18em] transition-colors ${
+              pathname === "/"
+                ? "text-accent-600"
+                : light
+                  ? "text-navy-100 hover:text-white"
+                  : "text-navy-700 hover:text-navy-950"
+            }`}
+          >
+            HOME
+          </GoLink>
+          <div ref={dropRef}>
+            <ProductsDropdown
+              light={light}
+              open={dropOpen}
+              onToggle={() => setDropOpen((v) => !v)}
+              currentPath={pathname}
+            />
+          </div>
         </nav>
 
         <div className="flex items-center gap-2.5">
-          <a
-            href={PHONE_TEL}
-            className="inline-flex items-center gap-1.5 bg-accent-500 px-3 py-2.5 text-xs font-semibold text-navy-950 transition-all duration-200 hover:bg-accent-400 hover:shadow-[0_0_0_3px_rgba(245,168,28,0.25)] sm:gap-2 sm:px-4 sm:text-[13px]"
+          <GoLink
+            to={contactTo}
+            className="group/cta inline-flex items-center gap-2 bg-accent-500 px-3.5 py-2.5 text-xs font-bold tracking-wide text-navy-950 shadow-[3px_3px_0_0_var(--color-navy-800)] transition-all duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-accent-400 hover:shadow-[1px_1px_0_0_var(--color-navy-800)] sm:px-5 sm:text-[13px]"
           >
-            <PhoneIcon className="h-4 w-4" />
-            <span className="whitespace-nowrap">
-              <span className="hidden sm:inline">Call:&nbsp;</span>
-              {PHONE_DISPLAY}
-            </span>
-          </a>
+            <MailIcon className="h-4 w-4" />
+            <span className="whitespace-nowrap">Contact Us</span>
+            <ArrowRight className="hidden h-3.5 w-3.5 transition-transform duration-200 group-hover/cta:translate-x-1 sm:block" />
+          </GoLink>
 
           <button
             type="button"
@@ -585,35 +694,67 @@ export function Header({ mode }: { mode: "home" | "product" }) {
       {menuOpen && (
         <nav className="max-h-[calc(100vh-64px)] overflow-y-auto border-t border-navy-800 bg-navy-950 px-6 pb-8 pt-4 md:hidden" aria-label="Mobile">
           <div className="flex flex-col">
-            {nav.map((l) => (
-              <GoLink
-                key={l.to}
-                to={l.to}
-                onClick={() => setMenuOpen(false)}
-                className="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-navy-100 transition-colors hover:text-accent-400"
-              >
-                {l.label.toUpperCase()}
-              </GoLink>
-            ))}
-            <p className="mt-6 font-mono text-[9px] tracking-[0.3em] text-accent-400">PRODUCT REGISTER</p>
-            {PRODUCTS.map((p) => (
-              <GoLink
-                key={p.slug}
-                to={`/p/${p.slug}`}
-                onClick={() => setMenuOpen(false)}
-                className="border-b border-navy-800/70 py-3 text-sm text-navy-100 transition-colors hover:text-accent-400"
-              >
-                <span className="mr-3 font-mono text-[9px] tracking-wider text-steel-500">{p.code}</span>
-                {p.name}
-              </GoLink>
-            ))}
+            {/* Home */}
             <GoLink
-              to={mode === "home" ? "#contact" : "#quote"}
+              to="/"
               onClick={() => setMenuOpen(false)}
-              className="mt-6 inline-flex items-center justify-center gap-2 bg-accent-500 px-4 py-3 text-sm font-semibold text-navy-950"
+              aria-current={pathname === "/" ? "page" : undefined}
+              className={`border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] transition-colors hover:text-accent-400 ${
+                pathname === "/" ? "text-accent-400" : "text-navy-100"
+              }`}
             >
-              Request a Custom Quote <ArrowRight className="h-4 w-4" />
+              HOME
             </GoLink>
+
+            {/* Products accordion */}
+            <button
+              type="button"
+              onClick={() => setMobileProducts((v) => !v)}
+              aria-expanded={mobileProducts}
+              className="flex w-full items-center justify-between border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-navy-100 transition-colors hover:text-accent-400"
+            >
+              <span className="flex items-center gap-2.5">
+                PRODUCTS
+                <span className="border border-accent-500/60 px-1.5 py-0.5 font-mono text-[9px] text-accent-400">
+                  {PRODUCTS.length}
+                </span>
+              </span>
+              <svg
+                viewBox="0 0 24 24"
+                className={`h-3.5 w-3.5 transition-transform duration-200 ${mobileProducts ? "rotate-180" : ""}`}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                aria-hidden="true"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+            {mobileProducts && (
+              <div className="border-b border-navy-800/70 pl-1">
+                {mobileProductLinks("FRP RANGE", frp)}
+                {mobileProductLinks("GRC RANGE", grc)}
+              </div>
+            )}
+
+            {/* Contact Us CTA + phone fallback */}
+            <GoLink
+              to={contactTo}
+              onClick={() => setMenuOpen(false)}
+              className="mt-6 inline-flex items-center justify-center gap-2 bg-accent-500 px-4 py-3.5 text-sm font-bold text-navy-950 transition-colors hover:bg-accent-400"
+            >
+              <MailIcon className="h-4 w-4" />
+              Contact Us
+              <ArrowRight className="h-4 w-4" />
+            </GoLink>
+            <a
+              href={PHONE_TEL}
+              className="mt-4 inline-flex items-center justify-center gap-2 font-mono text-[10px] tracking-[0.2em] text-navy-200 transition-colors hover:text-accent-400"
+            >
+              <PhoneIcon className="h-3.5 w-3.5 text-accent-500" />
+              OR CALL {PHONE_DISPLAY}
+            </a>
           </div>
         </nav>
       )}
