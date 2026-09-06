@@ -710,6 +710,66 @@ function Planter({ v }: { v: string }) {
             </g>
           );
         })()}
+      {v === "rio" && (
+        <g>
+          {/* wide canopy */}
+          <g strokeWidth="1.5" strokeLinecap="round" fill="none">
+            <path d="M120 54 C 100 42 84 38 70 40 C 84 28 106 32 120 46" />
+            <path d="M120 54 C 140 42 156 38 170 40 C 156 28 134 32 120 46" />
+            <path d="M120 54 C 116 38 118 26 126 16 C 132 28 128 42 122 52" />
+          </g>
+          {/* rim + true-cylinder body */}
+          <ellipse cx="120" cy="60" rx="54" ry="9" />
+          <ellipse cx="120" cy="60" rx="44" ry="6.5" strokeWidth="1.1" strokeDasharray="3 3" />
+          <path d="M66 60 V116 A54 9 0 0 0 174 116 V60" />
+          <path d="M86 74 C 84 92 84 104 88 112" strokeWidth="1" strokeOpacity="0.5" />
+        </g>
+      )}
+      {v === "corry" && (
+        <g>
+          {/* tall grasses */}
+          <g strokeWidth="1.5" strokeLinecap="round" fill="none">
+            <path d="M120 28 C 118 18 114 10 106 4" />
+            <path d="M120 28 C 121 16 124 8 122 2" />
+            <path d="M120 28 C 123 18 128 10 136 6" />
+            <path d="M112 30 C 106 22 100 20 94 22" strokeWidth="1.2" />
+            <path d="M128 30 C 134 22 140 20 146 22" strokeWidth="1.2" />
+          </g>
+          {/* rim + tall body */}
+          <ellipse cx="120" cy="32" rx="28" ry="5.5" />
+          <ellipse cx="120" cy="32" rx="22" ry="4" strokeWidth="1.1" strokeDasharray="3 3" />
+          <path d="M92 32 V116 A28 5.5 0 0 0 148 116 V32" />
+          <path d="M101 44 C 99 68 99 96 103 110" strokeWidth="1" strokeOpacity="0.5" />
+        </g>
+      )}
+      {v === "cylpair" && (
+        <g>
+          {/* Rio Grande — wide & low */}
+          <g strokeWidth="1.3" strokeLinecap="round" fill="none">
+            <path d="M82 80 C 70 72 60 70 52 72 C 60 64 74 66 82 76" />
+            <path d="M82 80 C 94 72 104 70 112 72 C 104 64 90 66 82 76" />
+            <path d="M82 80 C 80 70 82 62 88 56 C 92 64 88 74 84 79" />
+          </g>
+          <ellipse cx="82" cy="86" rx="38" ry="6.5" fill="none" />
+          <ellipse cx="82" cy="86" rx="31" ry="5" fill="none" strokeWidth="1" strokeDasharray="2.5 2.5" />
+          <path d="M44 86 V124 A38 6.5 0 0 0 120 124 V86" fill="none" />
+          {/* Corry — tall & sleek */}
+          <g strokeWidth="1.3" strokeLinecap="round" fill="none">
+            <path d="M168 30 C 167 22 164 16 158 12" />
+            <path d="M168 30 C 169 20 171 12 170 6" />
+            <path d="M168 30 C 171 22 175 16 181 12" />
+          </g>
+          <ellipse cx="168" cy="36" rx="20" ry="4" fill="none" />
+          <ellipse cx="168" cy="36" rx="16" ry="3.2" fill="none" strokeWidth="1" strokeDasharray="2.5 2.5" />
+          <path d="M148 36 V124 A20 4 0 0 0 188 124 V36" fill="none" />
+          <text x="82" y="120" textAnchor="middle" fontSize="6" letterSpacing="1.4" fontFamily="IBM Plex Mono, monospace" stroke="none" fill="currentColor" opacity="0.75">
+            RIO
+          </text>
+          <text x="168" y="120" textAnchor="middle" fontSize="6" letterSpacing="1.4" fontFamily="IBM Plex Mono, monospace" stroke="none" fill="currentColor" opacity="0.75">
+            CORRY
+          </text>
+        </g>
+      )}
       {/* GRC-era raised/treegrate variants retired for the FRP planters sheet
         <g>
           {[78, 112, 146].map((x) => (

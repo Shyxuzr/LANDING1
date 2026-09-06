@@ -41,6 +41,7 @@ const DRAWING_FAMILY: Record<string, import("../lib/drawings").Family> = {
   "frp-door-frames": "door",
   "frp-planters": "planter",
   "frp-square-planters": "planter",
+  "frp-cylinder-planters": "planter",
 };
 const fam = (slug: string) => DRAWING_FAMILY[slug] ?? "chajja";
 
@@ -659,6 +660,219 @@ function SizerSection({ product, no }: { product: Product; no: string }) {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Cylinder proportion study — Rio Grande vs Corry, drawn to scale    */
+/* ------------------------------------------------------------------ */
+const CYL_MODELS = [
+  {
+    id: "rio",
+    name: "Rio Grande",
+    tag: "CLASSIC WIDE",
+    desc: "The classic wide cylinder — a generous rim and a low, grounded stance for wide-canopy planting and paired entries.",
+    wmm: 450,
+    hmm: 400,
+    soil: "≈ 47 L",
+    weight: "≈ 5.5 kg",
+    best: "Wide-canopy greens, entry pairs, pool decks",
+  },
+  {
+    id: "corry",
+    name: "Corry",
+    tag: "TALL & SLEEK",
+    desc: "Tall and sleek — a slim vertical that draws the eye up, made for palms, grasses and privacy columns.",
+    wmm: 300,
+    hmm: 900,
+    soil: "≈ 52 L",
+    weight: "≈ 6 kg",
+    best: "Palms, grasses, privacy columns, slim corners",
+  },
+];
+
+function CylinderStudy({ product, no }: { product: Product; no: string }) {
+  const s = product.study!;
+  const [sel, setSel] = useState(0);
+
+  const S = 0.3; // drawing scale, px per mm
+  const GY = 330; // ground line
+  const cx = [160, 360];
+  const m = CYL_MODELS[sel];
+
+  return (
+    <section id="study" className="scroll-mt-24 bg-white py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <SectionHead kicker={`${no} / ${stripNo(s.kicker)}`} title={s.lines} aside={s.intro} />
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-12">
+          {/* Scale drawing panel */}
+          <Reveal className="lg:col-span-7">
+            <div className="relative h-full border border-steel-300 bg-navy-50 p-4 sm:p-8">
+              <span className="font-mono text-[9.5px] tracking-[0.25em] text-steel-500">
+                PROPORTION STUDY · BOTH DRAWN TO THE SAME SCALE
+              </span>
+              <svg
+                viewBox="0 0 520 380"
+                className="mt-4 w-full text-navy-800"
+                role="group"
+                aria-label="Rio Grande and Corry cylinder planters, drawn to the same scale"
+              >
+                <defs>
+                  <pattern id="studygrid" width="16" height="16" patternUnits="userSpaceOnUse">
+                    <path d="M16 0H0V16" stroke="currentColor" strokeOpacity="0.1" strokeWidth="0.5" fill="none" />
+                  </pattern>
+                </defs>
+                <rect width="520" height="380" fill="url(#studygrid)" />
+                <line x1="30" y1={GY} x2="490" y2={GY} stroke="currentColor" strokeWidth="2.2" />
+
+                {CYL_MODELS.map((mm, i) => {
+                  const rx = (mm.wmm * S) / 2;
+                  const h = mm.hmm * S;
+                  const top = GY - h;
+                  const active = sel === i;
+                  return (
+                    <g
+                      key={mm.id}
+                      onClick={() => setSel(i)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          setSel(i);
+                        }
+                      }}
+                      role="button"
+                      tabIndex={0}
+                      aria-pressed={active}
+                      className={`cursor-pointer transition-opacity duration-500 focus:outline-none ${
+                        active ? "opacity-100" : "opacity-30 hover:opacity-60"
+                      }`}
+                    >
+                      {/* plant */}
+                      <g stroke="currentColor" fill="none" strokeLinecap="round" strokeWidth={active ? 1.8 : 1.5}>
+                        {i === 0 ? (
+                          <>
+                            <path d={`M${cx[i]} ${top - 6} C ${cx[i] - 24} ${top - 20} ${cx[i] - 40} ${top - 24} ${cx[i] - 54} ${top - 22} C ${cx[i] - 40} ${top - 34} ${cx[i] - 18} ${top - 30} ${cx[i]} ${top - 16}`} />
+                            <path d={`M${cx[i]} ${top - 6} C ${cx[i] + 24} ${top - 20} ${cx[i] + 40} ${top - 24} ${cx[i] + 54} ${top - 22} C ${cx[i] + 40} ${top - 34} ${cx[i] + 18} ${top - 30} ${cx[i]} ${top - 16}`} />
+                            <path d={`M${cx[i]} ${top - 6} C ${cx[i] - 4} ${top - 22} ${cx[i] - 2} ${top - 34} ${cx[i] + 6} ${top - 44} C ${cx[i] + 12} ${top - 32} ${cx[i] + 8} ${top - 18} ${cx[i] + 2} ${top - 8}`} />
+                          </>
+                        ) : (
+                          <>
+                            <path d={`M${cx[i]} ${top - 4} C ${cx[i] - 2} ${top - 24} ${cx[i] - 6} ${top - 40} ${cx[i] - 16} ${top - 50}`} />
+                            <path d={`M${cx[i]} ${top - 4} C ${cx[i] + 1} ${top - 28} ${cx[i] + 3} ${top - 44} ${cx[i] + 1} ${top - 56}`} />
+                            <path d={`M${cx[i]} ${top - 4} C ${cx[i] + 3} ${top - 24} ${cx[i] + 7} ${top - 40} ${cx[i] + 17} ${top - 50}`} />
+                            <path d={`M${cx[i] - 8} ${top - 2} C ${cx[i] - 14} ${top - 12} ${cx[i] - 20} ${top - 16} ${cx[i] - 28} ${top - 14}`} strokeWidth={active ? 1.4 : 1.2} />
+                            <path d={`M${cx[i] + 8} ${top - 2} C ${cx[i] + 14} ${top - 12} ${cx[i] + 20} ${top - 16} ${cx[i] + 28} ${top - 14}`} strokeWidth={active ? 1.4 : 1.2} />
+                          </>
+                        )}
+                      </g>
+                      {/* rim + body */}
+                      <g stroke="currentColor" fill="none" strokeLinejoin="round" strokeWidth={active ? 2.4 : 2}>
+                        <ellipse cx={cx[i]} cy={top} rx={rx} ry={rx * 0.17} />
+                        <ellipse cx={cx[i]} cy={top} rx={rx * 0.82} ry={rx * 0.13} strokeWidth="1.2" strokeDasharray="4 4" />
+                        <path d={`M${cx[i] - rx} ${top} V${GY} A${rx} ${rx * 0.17} 0 0 0 ${cx[i] + rx} ${GY} V${top}`} />
+                        <path
+                          d={`M${cx[i] - rx * 0.65} ${top + h * 0.16} C ${cx[i] - rx * 0.72} ${top + h * 0.5} ${cx[i] - rx * 0.72} ${top + h * 0.75} ${cx[i] - rx * 0.6} ${top + h * 0.9}`}
+                          strokeWidth="1"
+                          strokeOpacity="0.45"
+                        />
+                      </g>
+                      {/* dimension lines */}
+                      <g className={active ? "text-accent-600" : "text-steel-400"} fill="none" stroke="currentColor" strokeWidth="1">
+                        <line x1={cx[i] - rx} y1={GY + 16} x2={cx[i] + rx} y2={GY + 16} />
+                        <path d={`M${cx[i] - rx + 5} ${GY + 12.5} L${cx[i] - rx} ${GY + 16} L${cx[i] - rx + 5} ${GY + 19.5}`} />
+                        <path d={`M${cx[i] + rx - 5} ${GY + 12.5} L${cx[i] + rx} ${GY + 16} L${cx[i] + rx - 5} ${GY + 19.5}`} />
+                        <text x={cx[i]} y={GY + 31} textAnchor="middle" fontSize="9" letterSpacing="1.5" fontFamily="IBM Plex Mono, monospace" fill="currentColor" stroke="none">
+                          Ø {mm.wmm} MM
+                        </text>
+                        <line x1={cx[i] + rx + 16} y1={top} x2={cx[i] + rx + 16} y2={GY} />
+                        <path d={`M${cx[i] + rx + 12.5} ${top + 5} L${cx[i] + rx + 16} ${top} L${cx[i] + rx + 19.5} ${top + 5}`} />
+                        <path d={`M${cx[i] + rx + 12.5} ${GY - 5} L${cx[i] + rx + 16} ${GY} L${cx[i] + rx + 19.5} ${GY - 5}`} />
+                        <text
+                          x={cx[i] + rx + 27}
+                          y={(top + GY) / 2}
+                          fontSize="9"
+                          letterSpacing="1.5"
+                          fontFamily="IBM Plex Mono, monospace"
+                          fill="currentColor"
+                          stroke="none"
+                          textAnchor="middle"
+                          transform={`rotate(90 ${cx[i] + rx + 27} ${(top + GY) / 2})`}
+                        >
+                          {mm.hmm} MM H
+                        </text>
+                      </g>
+                    </g>
+                  );
+                })}
+              </svg>
+              <p className="mt-3 font-mono text-[9.5px] tracking-[0.2em] text-steel-500">
+                CLICK A SILHOUETTE TO READ ITS PROPORTIONS
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Readout */}
+          <Reveal delay={150} className="lg:col-span-5">
+            <div className="flex h-full flex-col border border-steel-300 bg-paper p-7 sm:p-9">
+              <div className="flex gap-3">
+                {CYL_MODELS.map((mm, i) => (
+                  <button
+                    key={mm.id}
+                    type="button"
+                    onClick={() => setSel(i)}
+                    aria-pressed={sel === i}
+                    className={`flex-1 border px-4 py-3 font-mono text-[10px] tracking-[0.2em] transition-all duration-300 ${
+                      sel === i
+                        ? "border-navy-900 bg-navy-900 text-white"
+                        : "border-steel-300 bg-white text-steel-600 hover:border-navy-800 hover:text-navy-900"
+                    }`}
+                  >
+                    {mm.name.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+
+              <div className="mt-8">
+                <p className="font-mono text-[9.5px] tracking-[0.25em] text-accent-700">{m.tag}</p>
+                <h3 className="mt-2 font-display text-5xl leading-none text-navy-900">{m.name.toUpperCase()}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-steel-600">{m.desc}</p>
+
+                <div className="mt-6 grid grid-cols-2 gap-3">
+                  {(
+                    [
+                      ["DIAMETER", `Ø ${m.wmm} MM`],
+                      ["HEIGHT", `${m.hmm} MM`],
+                      ["CAPACITY", m.soil],
+                      ["WEIGHT", m.weight],
+                    ] as [string, string][]
+                  ).map(([k, val]) => (
+                    <div key={k} className="border border-steel-200 bg-white p-4">
+                      <p className="font-mono text-[9px] tracking-[0.2em] text-steel-500">{k}</p>
+                      <p className="mt-1.5 font-display text-2xl leading-none text-navy-900">{val}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="mt-6 font-mono text-[10px] tracking-[0.16em] text-steel-500">
+                  BEST FOR — <span className="text-navy-800">{m.best.toUpperCase()}</span>
+                </p>
+              </div>
+
+              <div className="mt-auto pt-8">
+                <GoLink
+                  to="#quote"
+                  className="group inline-flex items-center gap-3 bg-accent-500 px-6 py-3.5 text-sm font-bold text-navy-950 shadow-[5px_5px_0_0_var(--color-navy-800)] transition-all duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-accent-400 hover:shadow-[2px_2px_0_0_var(--color-navy-800)]"
+                >
+                  Quote the {m.name}
+                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                </GoLink>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */
 export default function ProductPage() {
@@ -672,6 +886,7 @@ export default function ProductPage() {
   const next = () => String(++n).padStart(2, "0");
   const noFeatures = next();
   const noSizer = product.sizer ? next() : null;
+  const noStudy = product.study ? next() : null;
   const noApps = product.applications ? next() : null;
   const noAnatomy = product.anatomy ? next() : null;
   const noShowcase = next();
@@ -689,6 +904,7 @@ export default function ProductPage() {
         <Ticker items={product.ticker} />
         <Features product={product} no={noFeatures} />
         {product.sizer && noSizer && <SizerSection product={product} no={noSizer} />}
+        {product.study && noStudy && <CylinderStudy product={product} no={noStudy} />}
         {product.applications && noApps && <Applications product={product} no={noApps} />}
         {product.anatomy && noAnatomy && <AnatomySection product={product} kicker={`${noAnatomy} / ${stripNo(product.anatomy.kicker)}`} />}
         <Showcase product={product} no={noShowcase} />

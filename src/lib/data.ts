@@ -54,6 +54,11 @@ export interface Product {
     lines: string[];
     intro: string;
   };
+  study?: {
+    kicker: string;
+    lines: string[];
+    intro: string;
+  };
   comparison: {
     kicker: string;
     title: string[];
@@ -1956,6 +1961,157 @@ export const PRODUCTS: Product[] = [
       ],
       qtyLabel: "CUBE COUNT",
       qtyOptions: ["1–10 cubes", "10–50 cubes", "50–200 cubes", "200+ (project supply)"],
+    },
+  },
+
+  /* ---------------- 12 · FRP VERTICAL CYLINDER PLANTERS (RIO GRANDE & CORRY) ---------------- */
+  {
+    slug: "frp-cylinder-planters",
+    code: "BSP-12",
+    family: "FRP",
+    name: "FRP Vertical Cylinder Planters",
+    navLabel: "Cylinder Planters",
+    registerLine: "Rio Grande & Corry — true-cylinder FRP planters, wide or tall.",
+    hero: {
+      kicker: "PREMIUM FRP LANDSCAPE PRODUCTS",
+      lines: [
+        { text: "FRP Vertical" },
+        { text: "Cylinder Planters —", underline: true },
+        { text: "Modern. Durable. Elegant." },
+      ],
+      sub: "Sleek cylindrical planters that add a touch of sophistication to any indoor or outdoor space.",
+      media: "drawing",
+      drawingVariant: "cylpair",
+      stamp: "DWG NO. BSP-FP-05",
+      dimLabel: "RIO GRANDE & CORRY · TO SCALE",
+      tag: {
+        kicker: "SPEC 12-A · FORM",
+        title: "Two silhouettes, one geometry",
+        body: "Wide and low, or tall and sleek — both turned on the same true-cylinder axis with an identical rim detail.",
+      },
+      watermark: "CYLINDERS",
+    },
+    ticker: [
+      "RIO GRANDE · WIDE CYLINDER",
+      "CORRY · TALL & SLEEK",
+      "≈ 5–6 KG EMPTY",
+      "UV-STABLE GELCOAT",
+      "BUILT-IN DRAINAGE SUMP",
+      "FROST & RUST IMMUNE",
+      "INDOOR & OUTDOOR RATED",
+    ],
+    features: [
+      {
+        icon: "compass",
+        title: "Precision Cylinder Form",
+        lead: "Turned, not folded",
+        points: [
+          "True-cylinder moulds — the rim line stays dead straight for years",
+          "Seamless one-piece shell: no welds, folds or seam marks",
+          "Architectural Ø-to-height proportions on both silhouettes",
+        ],
+        note: "TRUE-CYLINDER MOULD",
+      },
+      {
+        icon: "shield",
+        title: "Durable in All Weather",
+        lead: "Modern outside, engineered inside",
+        points: [
+          "UV-stable gelcoat — colour never chalks, fades or peels",
+          "No rust, no rot, no frost cracking, no staining",
+          "Composite shell shrugs off knocks, trolleys and weather",
+        ],
+        note: "−20 °C TO +80 °C RATED",
+      },
+      {
+        icon: "dropcross",
+        title: "Elegant & Easy Care",
+        lead: "Sophistication that wipes clean",
+        points: [
+          "Colour moulded in — no painting, no sealing, ever",
+          "Hose it down or wipe; the gelcoat skin repels stains",
+          "Self-draining sump keeps soil and roots healthy",
+        ],
+        note: "40+ COLOURS & FINISHES",
+      },
+    ],
+    study: {
+      kicker: "02 / PROPORTION STUDY",
+      lines: ["WIDE OR TALL.", "SAME DNA."],
+      intro: "Click a silhouette — or use the buttons — and read its proportions. Both cylinders share the same rim detail, gelcoat skin and shadow-gap base, so they pair cleanly in a single scheme.",
+    },
+    applications: [
+      { icon: "railing", title: "Balconies & Pool Decks", desc: "Feather-light cylinders safe on edges and rooftop slabs.", chip: "ROOFTOP SAFE" },
+      { icon: "keystone", title: "Hotels & Resorts", desc: "Entry pairs and lobby columns that survive luggage and monsoon.", chip: "HOSPITALITY" },
+      { icon: "tower", title: "Corporate Lobbies", desc: "Branded colour runs for atriums, boardrooms and receptions.", chip: "OFFICES" },
+      { icon: "home", title: "Restaurants & Cafés", desc: "Warm greens for decks, counters and courtyard seating.", chip: "F&B" },
+    ],
+    familyLabel: "FRP CYLINDER",
+    familyDim: "RIO & CORRY",
+    showcaseCols: "2/3",
+    showcase: [
+      {
+        variant: "rio",
+        code: "BSP-FP-05A",
+        name: "Rio Grande",
+        tag: "CLASSIC WIDE",
+        dimLabel: "Ø 450 × H 400 MM",
+        desc: "The classic wide cylinder — a generous rim and a low, grounded stance for wide-canopy planting and paired entries.",
+        specs: ["Ø 450 × H 400 mm", "≈ 5.5 kg · 47 L soil", "Wide-canopy greens"],
+      },
+      {
+        variant: "corry",
+        code: "BSP-FP-05B",
+        name: "Corry",
+        tag: "TALL & SLEEK",
+        dimLabel: "Ø 300 × H 900 MM",
+        desc: "Tall and sleek — a slim vertical that draws the eye up, made for palms, grasses and privacy columns.",
+        specs: ["Ø 300 × H 900 mm", "≈ 6 kg · 52 L soil", "Palms & grasses"],
+      },
+    ],
+    comparison: {
+      kicker: "05 / WHY SWITCH",
+      title: ["THE CYLINDER THAT", "STAYS TRUE."],
+      highlight: "FRP CYLINDER",
+      cols: ["TERRACOTTA", "FIBRECLAY", "MS METAL"],
+      rows: [
+        { label: "Ø 450 cylinder, empty", cells: ["≈ 5.5 kg", "≈ 18 kg", "≈ 9 kg — warps", "≈ 8 kg — rusts"] },
+        { label: "Frost & sun", cells: ["UV gelcoat, frost-proof", "Cracks in frost", "Coat flakes off", "Bakes roots, rusts"] },
+        { label: "Shape integrity", cells: ["Mould stays true", "Wobbles on kiln warp", "Rim chips easily", "Dents show"] },
+        { label: "Finish life", cells: ["Moulded-in, 25+ yrs", "Glaze crazes", "Repaint the coat", "Repaint yearly"] },
+        { label: "Move it planted", cells: ["One person", "Two people", "Chips on edges", "Dents on edges"] },
+      ],
+      note: "* INDICATIVE VALUES FOR A 450 MM CYLINDER. TEST REPORTS AVAILABLE ON REQUEST.",
+    },
+    stats: [
+      { value: 12000, suffix: "+", label: "Cylinders shipped" },
+      { value: 2, suffix: "", label: "Silhouettes — Rio & Corry" },
+      { value: 40, suffix: "+", label: "Colours & finishes" },
+      { value: 10, suffix: "-YR", label: "Structural warranty" },
+    ],
+    process: {
+      kicker: "06 / FROM IDEA TO PLANTED",
+      title: ["FOUR STEPS", "TO SLEEK", "GREENS."],
+      intro: "Tell us Rio, Corry or both — with counts and a colour. We quote per cylinder and deliver ready to plant.",
+      steps: [
+        { title: "Pick silhouettes & colour", desc: "Rio Grande, Corry or a mixed run; share counts, colour and indoor/outdoor use." },
+        { title: "Quote + chips in 24 h", desc: "Per-cylinder pricing with colour chips; mixed-run discounts quoted the same day." },
+        { title: "Turn & gelcoat", desc: "One-piece shells turned on true-cylinder moulds, gelcoat-finished with sump and feet." },
+        { title: "Deliver ready to plant", desc: "Bubble-wrapped, palletised, pan-India. Fill, plant, done — no curing, no sealing." },
+      ],
+      media: "drawing",
+      drawingVariant: "rio",
+      caption: "RIO GRANDE · Ø 450 MM TYPICAL",
+    },
+    quote: {
+      heading: "TELL US YOUR RUN.",
+      sub: "Share silhouettes, counts and city — our sales engineer replies with per-cylinder pricing and colour samples.",
+      selects: [
+        { label: "MODEL", options: ["Rio Grande", "Corry", "Rio + Corry mix", "Custom diameter"] },
+        { label: "COLOUR / FINISH", options: ["Matte black", "Stone grey", "Terracotta tone", "Any RAL colour", "Not sure — send samples"] },
+      ],
+      qtyLabel: "CYLINDER COUNT",
+      qtyOptions: ["1–10 cylinders", "10–50 cylinders", "50–200 cylinders", "200+ (project supply)"],
     },
   },
 ];
