@@ -59,14 +59,14 @@ function Hero({ product }: { product: Product }) {
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-6">
-          <Reveal>
+          <Reveal variant="fade">
             <p className="inline-flex items-center gap-2.5 font-mono text-[11px] tracking-[0.3em] text-navy-600">
               <StarMark className="h-3.5 w-3.5 text-accent-500" />
               {h.kicker}
             </p>
           </Reveal>
 
-          <Reveal delay={90}>
+          <Reveal variant="fade" delay={120}>
             <h1 className="mt-5 font-display text-[46px] leading-[1.0] tracking-[0.015em] text-navy-900 sm:text-6xl xl:text-[76px]">
               {h.lines.map((l) => (
                 <span key={l.text} className="block">
@@ -85,11 +85,11 @@ function Hero({ product }: { product: Product }) {
             </h1>
           </Reveal>
 
-          <Reveal delay={180}>
+          <Reveal variant="fade" delay={240}>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-steel-600">{h.sub}</p>
           </Reveal>
 
-          <Reveal delay={260}>
+          <Reveal variant="fade" delay={360}>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <GoLink
                 to="#quote"
@@ -107,7 +107,7 @@ function Hero({ product }: { product: Product }) {
             </div>
           </Reveal>
 
-          <Reveal delay={340}>
+          <Reveal variant="fade" delay={480}>
             <ul className="mt-10 flex flex-wrap gap-x-7 gap-y-3">
               {["ISO 9001:2015 CERTIFIED", "10-YEAR WARRANTY", "PAN-INDIA SUPPLY"].map((t) => (
                 <li key={t} className="flex items-center gap-2 font-mono text-[10.5px] tracking-[0.16em] text-steel-600">
@@ -121,7 +121,7 @@ function Hero({ product }: { product: Product }) {
 
         {/* media panel */}
         <div className="lg:col-span-6">
-          <Reveal delay={200}>
+          <Reveal gentle delay={300}>
             <div className="relative mr-2 lg:mr-6">
               <span className="absolute -left-2 -top-2 h-7 w-7 border-l-[3px] border-t-[3px] border-accent-500" aria-hidden="true" />
               <span className="absolute -right-2 -top-2 h-7 w-7 border-r-[3px] border-t-[3px] border-accent-500" aria-hidden="true" />
@@ -264,7 +264,7 @@ function Showcase({ product, no }: { product: Product; no: string }) {
         />
         <div className={`mt-14 grid gap-6 ${cols}`}>
           {product.showcase.map((s, i) => (
-            <Reveal key={s.code} delay={(i % 4) * 110}>
+            <Reveal key={s.code} gentle delay={Math.min(i * 90, 360)}>
               <article className="group flex h-full flex-col border border-steel-300 bg-white transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-600 hover:shadow-[10px_10px_0_0_rgba(245,168,28,0.18)]">
                 <div className="relative border-b border-steel-200 bg-navy-50 p-3 transition-colors duration-500 group-hover:border-navy-800 group-hover:bg-navy-950">
                   <div className="flex items-start justify-between px-2 pt-1">
@@ -378,10 +378,12 @@ function StatsBand({ product }: { product: Product }) {
               i === 3 ? "border-t border-l border-navy-950/15 lg:border-t-0" : ""
             }`}
           >
-            <p className="font-display text-5xl leading-none sm:text-6xl">
-              <CountUp to={s.value} suffix={s.suffix} />
-            </p>
-            <p className="mt-3 font-mono text-[10px] tracking-[0.22em] uppercase">{s.label}</p>
+            <Reveal gentle delay={i * 90}>
+              <p className="font-display text-5xl leading-none sm:text-6xl">
+                <CountUp to={s.value} suffix={s.suffix} />
+              </p>
+              <p className="mt-3 font-mono text-[10px] tracking-[0.22em] uppercase">{s.label}</p>
+            </Reveal>
           </div>
         ))}
       </div>

@@ -53,14 +53,25 @@ export function Reveal({
   children,
   className = "",
   delay = 0,
+  variant,
+  gentle = false,
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
+  /** AOS-style direction: fade (opacity only) · left · right · zoom. Omit for fade-up. */
+  variant?: "fade" | "left" | "right" | "zoom";
+  /** Shorter travel + slower ease — for card grids that should rise gently. */
+  gentle?: boolean;
 }) {
   const { ref, inView } = useInView<HTMLDivElement>();
   return (
-    <div ref={ref} className={`reveal ${inView ? "is-in" : ""} ${className}`} style={{ transitionDelay: `${delay}ms` }}>
+    <div
+      ref={ref}
+      data-aos={variant}
+      className={`reveal ${gentle ? "reveal-gentle" : ""} ${inView ? "is-in" : ""} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
       {children}
     </div>
   );

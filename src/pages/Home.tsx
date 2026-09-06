@@ -64,13 +64,13 @@ function Opening() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid items-end gap-10 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <Reveal>
+            <Reveal variant="fade">
               <p className="inline-flex items-center gap-2.5 font-mono text-[11px] tracking-[0.3em] text-navy-600">
                 <StarMark className="h-3.5 w-3.5 text-accent-500" />
                 MANUFACTURER'S CATALOGUE · EDITION 2026
               </p>
             </Reveal>
-            <Reveal delay={90}>
+            <Reveal variant="fade" delay={120}>
               <h1 className="mt-5 font-display text-[64px] leading-[0.95] tracking-[0.01em] text-navy-900 sm:text-8xl xl:text-[112px]">
                 THE BLUE STAR
                 <br />
@@ -82,7 +82,7 @@ function Opening() {
                 </span>
               </h1>
             </Reveal>
-            <Reveal delay={180}>
+            <Reveal variant="fade" delay={240}>
               <p className="mt-7 max-w-2xl text-lg leading-relaxed text-steel-600">
                 Ten product families in premium <strong className="font-semibold text-navy-800">FRP</strong> and{" "}
                 <strong className="font-semibold text-navy-800">GRC</strong> — chajjas, jali panels, cornices, columns, domes,
@@ -90,7 +90,7 @@ function Opening() {
                 landing page with drawings, data and a 24-hour quote line.
               </p>
             </Reveal>
-            <Reveal delay={260}>
+            <Reveal variant="fade" delay={360}>
               <div className="mt-9 flex flex-wrap items-center gap-4">
                 <GoLink
                   to="#register"
