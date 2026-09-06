@@ -3,6 +3,7 @@
  * Section order: Hero → Ticker → Features → [Applications] → [Anatomy] →
  * Showcase → Comparison → Stats → Process → Quote → More from register → Footer.
  */
+import { useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { findProduct, PRODUCTS } from "../lib/data";
 import type { Product } from "../lib/data";
@@ -39,6 +40,7 @@ const DRAWING_FAMILY: Record<string, import("../lib/drawings").Family> = {
   "grc-facade-panels": "facade",
   "frp-door-frames": "door",
   "frp-planters": "planter",
+  "frp-square-planters": "planter",
 };
 const fam = (slug: string) => DRAWING_FAMILY[slug] ?? "chajja";
 
@@ -244,7 +246,12 @@ function Applications({ product, no }: { product: Product; no: string }) {
 /*  Showcase                                                           */
 /* ------------------------------------------------------------------ */
 function Showcase({ product, no }: { product: Product; no: string }) {
-  const cols = product.showcaseCols === "2/3" ? "sm:grid-cols-2 lg:grid-cols-3" : "sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
+  const cols =
+    product.showcaseCols === "2/3"
+      ? "sm:grid-cols-2 lg:grid-cols-3"
+      : product.showcaseCols === "2/3/5"
+        ? "sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
+        : "sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
   return (
     <section id="showcase" className="scroll-mt-24 bg-paper bg-blueprint py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -492,6 +499,166 @@ function MoreFromRegister({ product }: { product: Product }) {
 }
 
 /* ------------------------------------------------------------------ */
+/*  The size run — interactive Montroy Cube sizer                      */
+/* ------------------------------------------------------------------ */
+const CUBE_SIZES = [
+  { inch: 16, mm: 400, L: 25, kg: 3, plant: "Herbs & succulents", s: 0.5 },
+  { inch: 20, mm: 500, L: 45, kg: 5, plant: "Seasonal flowers", s: 0.62 },
+  { inch: 24, mm: 600, L: 80, kg: 7, plant: "All-rounder greens", s: 0.74 },
+  { inch: 30, mm: 750, L: 150, kg: 10, plant: "Palms & statements", s: 0.87 },
+  { inch: 40, mm: 1000, L: 330, kg: 14, plant: "Small trees", s: 1 },
+];
+
+/** Large cube elevation for the sizer stage — labelled with the live size. */
+function CubeArt({ mm }: { mm: number }) {
+  const W = 220;
+  const cx = 180;
+  const yB = 300;
+  const x0 = cx - W / 2;
+  const x1 = cx + W / 2;
+  const y0 = yB - W;
+  const d = 40;
+  const rise = 25;
+  return (
+    <svg viewBox="0 0 360 340" className="w-full max-w-md text-navy-800" role="img" aria-label={`Montroy Cube, ${mm} millimetre elevation`}>
+      <g fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="2.4">
+        {/* front face */}
+        <path d={`M${x0} ${yB} V${y0} H${x1} V${yB} Z`} />
+        {/* open top + side */}
+        <path d={`M${x0} ${y0} L${x0 + d} ${y0 - rise} H${x1 + d} L${x1} ${y0} Z`} />
+        <path d={`M${x1} ${y0} L${x1 + d} ${y0 - rise} V${yB - rise} L${x1} ${yB} Z`} />
+        {/* inner rim lip */}
+        <path d={`M${x0 + 14} ${y0 - 7} h ${W - 28} l 16 -10 h ${-(W - 28)} Z`} strokeWidth="1.5" />
+        {/* gelcoat shadow line */}
+        <line x1={x0 + 10} y1={y0 + 14} x2={x1 - 10} y2={y0 + 14} strokeWidth="1.4" />
+      </g>
+      {/* moulded-in feet */}
+      <g fill="none" stroke="currentColor" strokeWidth="1.6">
+        <rect x={x0 + 14} y={yB} width="16" height="7" />
+        <rect x={x1 - 30} y={yB} width="16" height="7" />
+      </g>
+      {/* live dimension */}
+      <g className="text-steel-500" stroke="currentColor" strokeWidth="1">
+        <line x1={x0} y1="322" x2={x1} y2="322" />
+        <path d={`M${x0 + 6} 318.5 ${x0} 322l6 3.5`} />
+        <path d={`M${x1 - 6} 318.5 ${x1} 322l-6 3.5`} />
+        <text x="180" y="316" textAnchor="middle" fontSize="9" letterSpacing="1.8" fontFamily="IBM Plex Mono, monospace" fill="currentColor" stroke="none">
+          {mm} MM SQ.
+        </text>
+      </g>
+    </svg>
+  );
+}
+
+function SizerSection({ product, no }: { product: Product; no: string }) {
+  const [idx, setIdx] = useState(2); // default to the 24″ best-seller
+  const sz = CUBE_SIZES[idx];
+  const s = product.sizer;
+  if (!s) return null;
+
+  return (
+    <section id="sizes" className="scroll-mt-24 bg-white py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <SectionHead
+          kicker={`${no} / ${stripNo(s.kicker)}`}
+          title={s.lines}
+          aside={s.intro}
+        />
+
+        <div className="mt-14 grid items-center gap-10 lg:grid-cols-12">
+          {/* Controls + live readout */}
+          <div className="lg:col-span-5">
+            <p className="font-mono text-[10.5px] tracking-[0.2em] text-steel-600">SELECT A SIZE</p>
+            <div className="mt-3 flex flex-wrap gap-2.5" role="group" aria-label="Montroy Cube size selector">
+              {CUBE_SIZES.map((c, i) => (
+                <button
+                  key={c.inch}
+                  type="button"
+                  onClick={() => setIdx(i)}
+                  aria-pressed={i === idx}
+                  className={`border px-4 py-2.5 font-mono text-sm transition-all duration-200 ${
+                    i === idx
+                      ? "border-accent-600 bg-accent-500 font-semibold text-navy-950 shadow-[4px_4px_0_0_var(--color-navy-800)]"
+                      : "border-steel-300 bg-paper text-navy-800 hover:-translate-y-0.5 hover:border-navy-800"
+                  }`}
+                >
+                  {c.inch}″
+                </button>
+              ))}
+            </div>
+
+            <div key={sz.inch} className="mt-8 grid grid-cols-2 border border-steel-300 bg-paper">
+              {[
+                { l: "SIZE", v: `${sz.mm}`, u: "MM" },
+                { l: "SOIL VOLUME", v: `${sz.L}`, u: "LITRES" },
+                { l: "EMPTY WEIGHT", v: `≈ ${sz.kg}`, u: "KG" },
+                { l: "PLANTS", v: sz.plant, u: "" },
+              ].map((cell, i) => (
+                <div key={cell.l} className={`p-5 ${i % 2 === 1 ? "border-l border-steel-200" : ""} ${i >= 2 ? "border-t border-steel-200" : ""}`}>
+                  <p className="font-mono text-[9px] tracking-[0.22em] text-steel-500">{cell.l}</p>
+                  <p className="mt-1 font-display text-[26px] leading-none text-navy-900">
+                    {cell.v}
+                    {cell.u && <span className="ml-1.5 font-mono text-[10px] tracking-[0.15em] text-accent-700">{cell.u}</span>}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <GoLink
+              to="#quote"
+              className="group mt-7 inline-flex items-center gap-3 border-2 border-navy-800 px-6 py-3.5 text-sm font-semibold text-navy-800 transition-colors duration-200 hover:bg-navy-800 hover:text-white"
+            >
+              Quote the {sz.inch}″ cube
+              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+            </GoLink>
+          </div>
+
+          {/* Scaling cube stage */}
+          <div className="lg:col-span-7">
+            <Reveal>
+              <div className="relative border border-steel-300 bg-navy-50 bg-blueprint px-6 pb-2 pt-10">
+                <span className="absolute left-4 top-3.5 font-mono text-[9.5px] tracking-[0.25em] text-steel-500">
+                  MONTROY CUBE · ELEVATION, DRAWN TO SCALE
+                </span>
+                <span className="absolute right-4 top-3 border border-navy-800/30 bg-white px-2.5 py-1.5 font-mono text-[9.5px] tracking-[0.25em] text-navy-800">
+                  {sz.mm} × {sz.mm} H
+                </span>
+                <div
+                  className="mx-auto max-w-md"
+                  style={{
+                    transform: `scale(${sz.s})`,
+                    transformOrigin: "50% 88%",
+                    transition: "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
+                  }}
+                >
+                  <CubeArt mm={sz.mm} />
+                </div>
+
+                {/* mini size ruler */}
+                <div className="flex items-end justify-center gap-3 pb-5 pt-2" aria-hidden="true">
+                  {CUBE_SIZES.map((c, i) => (
+                    <button
+                      key={c.inch}
+                      type="button"
+                      tabIndex={-1}
+                      onClick={() => setIdx(i)}
+                      className={`border transition-colors duration-300 ${
+                        i === idx ? "border-accent-600 bg-accent-500" : "border-navy-800/40 bg-white hover:border-navy-800"
+                      }`}
+                      style={{ width: c.inch * 0.9, height: c.inch * 0.9 }}
+                    />
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */
 export default function ProductPage() {
@@ -504,6 +671,7 @@ export default function ProductPage() {
   let n = 0;
   const next = () => String(++n).padStart(2, "0");
   const noFeatures = next();
+  const noSizer = product.sizer ? next() : null;
   const noApps = product.applications ? next() : null;
   const noAnatomy = product.anatomy ? next() : null;
   const noShowcase = next();
@@ -520,6 +688,7 @@ export default function ProductPage() {
         <Hero product={product} />
         <Ticker items={product.ticker} />
         <Features product={product} no={noFeatures} />
+        {product.sizer && noSizer && <SizerSection product={product} no={noSizer} />}
         {product.applications && noApps && <Applications product={product} no={noApps} />}
         {product.anatomy && noAnatomy && <AnatomySection product={product} kicker={`${noAnatomy} / ${stripNo(product.anatomy.kicker)}`} />}
         <Showcase product={product} no={noShowcase} />

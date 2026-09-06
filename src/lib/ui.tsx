@@ -1052,7 +1052,9 @@ export function Footer({ mode, pageNo }: { mode: "home" | "product"; pageNo?: st
           <p className="text-xs text-steel-500">© {new Date().getFullYear()} Blue Star Plastic Industries. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <p className="hidden font-mono text-[9.5px] tracking-[0.2em] text-steel-500 lg:block">
-              {mode === "home" ? "PRODUCT REGISTER · 10 SHEETS" : `LANDING PAGE ${pageNo} / 10`}
+              {mode === "home"
+                ? `PRODUCT REGISTER · ${PRODUCTS.length} SHEETS`
+                : `LANDING PAGE ${pageNo} / ${PRODUCTS.length}`}
             </p>
             <GoLink to="#top" className="nav-underline font-mono text-[10px] tracking-[0.22em] text-navy-200 transition-colors hover:text-accent-400">
               BACK TO TOP ↑

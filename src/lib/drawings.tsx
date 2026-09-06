@@ -639,6 +639,77 @@ function Planter({ v }: { v: string }) {
           <line x1="60" y1="103" x2="180" y2="103" strokeWidth="1.2" />
         </g>
       )}
+      {/* ---- FRP SQUARE PLANTER · Montroy Cube size ladder ---- */}
+      {v === "montroy" &&
+        (() => {
+          const sizes = [28, 34, 42, 52, 64];
+          const lefts = [46, 68, 90, 114, 140];
+          const labels = [16, 20, 24, 30, 40];
+          return (
+            <g fill="none">
+              {sizes.map((W, i) => {
+                const x0 = lefts[i];
+                const y0 = 127 - W;
+                const big = i >= 3;
+                const d = W * 0.18;
+                const rise = d * 0.62;
+                return (
+                  <g key={W} strokeWidth={big ? 1.8 : 1.3}>
+                    <path d={`M${x0} 127 V${y0} H${x0 + W} V127 Z`} />
+                    {big && <path d={`M${x0} ${y0} L${x0 + d} ${y0 - rise} H${x0 + W + d} L${x0 + W} ${y0} Z`} />}
+                    {big && <path d={`M${x0 + W} ${y0} L${x0 + W + d} ${y0 - rise} V${127 - rise} L${x0 + W} 127 Z`} />}
+                  </g>
+                );
+              })}
+              {sizes.map((W, i) => (
+                <g key={labels[i]} strokeWidth="1">
+                  <line x1={lefts[i] + W / 2} y1={129} x2={lefts[i] + W / 2} y2={133} />
+                  <text
+                    x={lefts[i] + W / 2}
+                    y={140}
+                    textAnchor="middle"
+                    fontSize="6.5"
+                    letterSpacing="0.5"
+                    fontFamily="IBM Plex Mono, monospace"
+                    stroke="none"
+                    fill="currentColor"
+                  >
+                    {labels[i]}″
+                  </text>
+                </g>
+              ))}
+            </g>
+          );
+        })()}
+      {/* ---- Montroy Cube · single sizes drawn to relative scale ---- */}
+      {(v === "m16" || v === "m20" || v === "m24" || v === "m30" || v === "m40") &&
+        (() => {
+          const widths: Record<string, number> = { m16: 52, m20: 64, m24: 76, m30: 90, m40: 104 };
+          const W = widths[v] ?? 76;
+          const cx = 120;
+          const yB = 127;
+          const x0 = cx - W / 2;
+          const x1 = cx + W / 2;
+          const y0 = yB - W;
+          const d = W * 0.18;
+          const rise = d * 0.62;
+          return (
+            <g fill="none" strokeWidth="1.8">
+              {/* front face */}
+              <path d={`M${x0} ${yB} V${y0} H${x1} V${yB} Z`} />
+              {/* open top + side */}
+              <path d={`M${x0} ${y0} L${x0 + d} ${y0 - rise} H${x1 + d} L${x1} ${y0} Z`} />
+              <path d={`M${x1} ${y0} L${x1 + d} ${y0 - rise} V${yB - rise} L${x1} ${yB} Z`} />
+              {/* inner lip of the rim */}
+              <path
+                d={`M${x0 + d * 0.3} ${y0 - rise * 0.25} h ${W - d * 0.6} l ${d * 0.4} ${-rise * 0.5} h ${-(W - d * 0.6)} Z`}
+                strokeWidth="1.2"
+              />
+              {/* gelcoat shadow line */}
+              <line x1={x0 + 5} y1={y0 + 8} x2={x1 - 5} y2={y0 + 8} strokeWidth="1.1" />
+            </g>
+          );
+        })()}
       {/* GRC-era raised/treegrate variants retired for the FRP planters sheet
         <g>
           {[78, 112, 146].map((x) => (

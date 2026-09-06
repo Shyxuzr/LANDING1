@@ -33,6 +33,7 @@ const FAMILY: Record<string, Family> = {
   "grc-facade-panels": "facade",
   "frp-door-frames": "door",
   "frp-planters": "planter",
+  "frp-square-planters": "planter",
 };
 
 function FamilyChip({ family }: { family: "FRP" | "GRC" }) {
@@ -111,7 +112,7 @@ function Opening() {
             <Reveal delay={200}>
               <div className="grid grid-cols-2 border border-steel-300 bg-white">
                 {[
-                  { v: 10, s: "", l: "PRODUCT SHEETS" },
+                  { v: PRODUCTS.length, s: "", l: "PRODUCT SHEETS" },
                   { v: 2, s: "", l: "MATERIAL FAMILIES" },
                   { v: 25, s: "+", l: "YEARS MANUFACTURING" },
                   { v: 18, s: "", l: "STATES SERVED" },
@@ -152,7 +153,7 @@ function Register() {
             <div>
               <p className="font-mono text-[11px] tracking-[0.3em] text-accent-700">01 / DRAWING REGISTER</p>
               <h2 className="mt-3 font-display text-5xl leading-none text-navy-900 sm:text-6xl">
-                TEN SHEETS,
+                ELEVEN SHEETS,
                 <br />
                 ONE WORKS.
               </h2>
@@ -254,7 +255,7 @@ function FamilyRange({
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <div className={`mt-12 grid gap-5 sm:grid-cols-2 ${items.length > 5 ? "lg:grid-cols-3" : "lg:grid-cols-5"}`}>
           {items.map((p, i) => (
             <Reveal key={p.slug} delay={i * 100}>
               <Link
@@ -350,7 +351,7 @@ export default function Home() {
           family="FRP"
           kicker="02 / FIBRE REINFORCED POLYMER"
           title={["THE FRP", "RANGE."]}
-          intro="Composites that laugh at rust: window chajjas, skylight domes, water tanks and door frames — moulded, gelcoat-finished and feather-light."
+          intro="Composites that laugh at rust: window chajjas, skylight domes, water tanks, door frames and feather-light planters — moulded, gelcoat-finished, one-hand movable."
         />
         <FamilyRange
           id="grc"

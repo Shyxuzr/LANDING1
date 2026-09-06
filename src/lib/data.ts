@@ -40,7 +40,7 @@ export interface Product {
   familyLabel: string;
   familyDim: string;
   showcase: ShowcaseItem[];
-  showcaseCols: "2/3" | "2/3/4";
+  showcaseCols: "2/3" | "2/3/4" | "2/3/5";
   anatomy?: {
     kicker: string;
     lines: string[];
@@ -48,6 +48,11 @@ export interface Product {
     drawing: "cornice" | "column";
     caption: string;
     parts: { title: string; desc: string }[];
+  };
+  sizer?: {
+    kicker: string;
+    lines: string[];
+    intro: string;
   };
   comparison: {
     kicker: string;
@@ -1775,6 +1780,182 @@ export const PRODUCTS: Product[] = [
       ],
       qtyLabel: "UNIT COUNT",
       qtyOptions: ["1–10 units", "10–50 units", "50–200 units", "200+ (project supply)"],
+    },
+  },
+
+  /* ---------------- 11 · FRP SQUARE PLANTERS (MONTROY CUBE) ---------------- */
+  {
+    slug: "frp-square-planters",
+    code: "BSP-11",
+    family: "FRP",
+    name: "FRP Square Planters",
+    navLabel: "Square Planters",
+    registerLine: "Montroy Cube — one profile in five sizes, 16″ to 40″.",
+    hero: {
+      kicker: "PREMIUM FRP LANDSCAPE PRODUCTS",
+      lines: [
+        { text: "Premium FRP" },
+        { text: "Square Planter —", underline: true },
+        { text: "Modern, Durable, Elegant." },
+      ],
+      sub: "Stylish square planters that blend functionality with contemporary design to enhance any space.",
+      media: "drawing",
+      drawingVariant: "montroy",
+      stamp: "DWG NO. BSP-FP-03",
+      dimLabel: "SIZE RUN · 16–40 IN",
+      tag: {
+        kicker: "SPEC 11-A · PROFILE",
+        title: "One mould, five sizes",
+        body: "The Montroy profile is drawn once, then scaled to 16, 20, 24, 30 and 40 inches — a family, not five products.",
+      },
+      watermark: "CUBES",
+    },
+    ticker: [
+      "MONTROY CUBE · 16″–40″",
+      "5 SIZES, ONE PROFILE",
+      "≈ 3–14 KG EMPTY",
+      "UV-STABLE GELCOAT COLOURS",
+      "STACKS FLAT WHEN EMPTY",
+      "BUILT-IN DRAINAGE SUMP",
+      "INDOOR & OUTDOOR RATED",
+    ],
+    features: [
+      {
+        icon: "feather",
+        title: "Feather-Light Cube",
+        lead: "A 40″ cube still weighs just 14 kg",
+        points: [
+          "16″ starts at ≈ 3 kg — carry it planted",
+          "Roof, balcony and podium safe at every size",
+          "Moulded-in feet keep floors dry and level",
+        ],
+        note: "1/6TH THE WEIGHT OF CONCRETE",
+      },
+      {
+        icon: "shield",
+        title: "Durable in All Weather",
+        lead: "Modern outside, engineered inside",
+        points: [
+          "UV-stable gelcoat — colour never chalks or fades",
+          "No rust, no rot, no frost cracking, no staining",
+          "Composite shell shrugs off knocks and trolleys",
+        ],
+        note: "−20 °C TO +80 °C RATED",
+      },
+      {
+        icon: "dropcross",
+        title: "Elegant & Maintenance-Free",
+        lead: "The finish is the structure",
+        points: [
+          "Colour moulded in — no painting, no sealing",
+          "Sharp, shadow-gap lines stay crisp for decades",
+          "Hose it down; the gelcoat wipes clean",
+        ],
+        note: "40+ COLOURS & FINISHES",
+      },
+    ],
+    sizer: {
+      kicker: "02 / THE SIZE RUN",
+      lines: ["ONE CUBE.", "FIVE SIZES."],
+      intro: "Pick a size and watch the Montroy Cube scale. Every cube keeps the same profile, lip and shadow-gap base — so sizes mix into clean modular runs.",
+    },
+    applications: [
+      { icon: "railing", title: "Balconies & Terraces", desc: "Feather-light cubes where floor load is the enemy.", chip: "ROOFTOP SAFE" },
+      { icon: "tower", title: "Corporate Lobbies", desc: "Branded cube runs in any RAL colour, moved for events.", chip: "OFFICES" },
+      { icon: "keystone", title: "Hotels, Cafés & Retail", desc: "Hard-wearing greens for entrances, decks and food courts.", chip: "HOSPITALITY" },
+      { icon: "grid", title: "Modular Runs & Screens", desc: "Line cubes up as hedges, privacy screens and wayfinding greens.", chip: "MODULE SYSTEM" },
+    ],
+    familyLabel: "MONTROY CUBE",
+    familyDim: "16–40 IN",
+    showcaseCols: "2/3/5",
+    showcase: [
+      {
+        variant: "m16",
+        code: "BSP-FP-03A",
+        name: "Montroy Cube 16″",
+        tag: "COMPACT",
+        dimLabel: "400 × 400 H MM",
+        desc: "The entry cube — windowsills, desks, café tables and step runs of green.",
+        specs: ["400 mm square", "≈ 3 kg · 25 L soil", "Herbs & succulents"],
+      },
+      {
+        variant: "m20",
+        code: "BSP-FP-03B",
+        name: "Montroy Cube 20″",
+        dimLabel: "500 × 500 H MM",
+        desc: "The balcony standard — seasonal flowers and compact evergreens.",
+        specs: ["500 mm square", "≈ 5 kg · 45 L soil", "Seasonal planting"],
+      },
+      {
+        variant: "m24",
+        code: "BSP-FP-03C",
+        name: "Montroy Cube 24″",
+        tag: "BEST SELLER",
+        dimLabel: "600 × 600 H MM",
+        desc: "The all-rounder — porches, lobbies and long hedge lines.",
+        specs: ["600 mm square", "≈ 7 kg · 80 L soil", "All-rounder greens"],
+      },
+      {
+        variant: "m30",
+        code: "BSP-FP-03D",
+        name: "Montroy Cube 30″",
+        dimLabel: "750 × 750 H MM",
+        desc: "The statement cube — entrances, palms and sculptural planting.",
+        specs: ["750 mm square", "≈ 10 kg · 150 L soil", "Palms & statements"],
+      },
+      {
+        variant: "m40",
+        code: "BSP-FP-03E",
+        name: "Montroy Cube 40″",
+        tag: "GRANDEST",
+        dimLabel: "1000 × 1000 H MM",
+        desc: "The anchor cube — small trees, feature corners and courtyards.",
+        specs: ["1000 mm square", "≈ 14 kg · 330 L soil", "Small trees"],
+      },
+    ],
+    comparison: {
+      kicker: "05 / WHY SWITCH",
+      title: ["THE CUBE THAT", "OUTLASTS THE REST."],
+      highlight: "FRP CUBE",
+      cols: ["CONCRETE CUBE", "TERRACOTTA", "MS METAL BOX"],
+      rows: [
+        { label: "24″ cube weight", cells: ["≈ 7 kg empty", "≈ 45 kg", "≈ 25 kg — cracks", "≈ 12 kg — rusts"] },
+        { label: "Frost & sun", cells: ["UV gelcoat, frost-proof", "Spalls & stains", "Cracks in frost", "Bakes roots, rusts"] },
+        { label: "Finish life", cells: ["Moulded-in, 25+ yrs", "Paint peels", "Glaze crazes", "Repaint yearly"] },
+        { label: "Move it planted", cells: ["One person", "Two people + a trolley", "Risk of shatter", "Dents on edges"] },
+        { label: "Drainage", cells: ["Moulded sump + feet", "Drill yourself", "Single hole", "Rusts at the hole"] },
+      ],
+      note: "* INDICATIVE VALUES FOR A 600 MM (24″) CUBE. TEST REPORTS AVAILABLE ON REQUEST.",
+    },
+    stats: [
+      { value: 15000, suffix: "+", label: "Montroy cubes shipped" },
+      { value: 5, suffix: "", label: "Sizes · 16–40 in" },
+      { value: 40, suffix: "+", label: "Colours & finishes" },
+      { value: 10, suffix: "-YR", label: "Structural warranty" },
+    ],
+    process: {
+      kicker: "06 / FROM IDEA TO PLANTED",
+      title: ["FOUR STEPS", "TO YOUR", "CUBE RUN."],
+      intro: "Send sizes and a colour — or just a photo of the space. We match the run, quote per cube and deliver ready to plant.",
+      steps: [
+        { title: "Pick sizes & colour", desc: "Mix the five Montroy sizes freely; share counts, colour and indoor/outdoor use." },
+        { title: "Quote + chips in 24 h", desc: "Per-cube pricing with colour chips; mixed-run discounts quoted the same day." },
+        { title: "Mould & gelcoat", desc: "One-piece FRP shells with moulded-in colour, drainage sump and feet." },
+        { title: "Deliver ready to plant", desc: "Bubble-wrapped, palletised, pan-India. Fill, plant, done — no curing, no sealing." },
+      ],
+      media: "drawing",
+      drawingVariant: "montroy",
+      caption: "MONTROY CUBE · SIZE RUN 16–40 IN",
+    },
+    quote: {
+      heading: "TELL US YOUR RUN.",
+      sub: "Share sizes, counts and city — our sales engineer replies with per-cube pricing and colour samples.",
+      selects: [
+        { label: "CUBE SIZE", options: ["24″ (600 mm)", "16″ (400 mm)", "20″ (500 mm)", "30″ (750 mm)", "40″ (1000 mm)", "Mixed size run"] },
+        { label: "COLOUR / FINISH", options: ["Matte black", "Stone grey", "Terracotta tone", "Any RAL colour", "Not sure — send samples"] },
+      ],
+      qtyLabel: "CUBE COUNT",
+      qtyOptions: ["1–10 cubes", "10–50 cubes", "50–200 cubes", "200+ (project supply)"],
     },
   },
 ];
