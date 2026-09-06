@@ -42,6 +42,7 @@ const DRAWING_FAMILY: Record<string, import("../lib/drawings").Family> = {
   "frp-planters": "planter",
   "frp-square-planters": "planter",
   "frp-cylinder-planters": "planter",
+  "frp-tree-planters": "planter",
 };
 const fam = (slug: string) => DRAWING_FAMILY[slug] ?? "chajja";
 
@@ -873,6 +874,192 @@ function CylinderStudy({ product, no }: { product: Product; no: string }) {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Two-Tone Studio — interactive colour banding (tree planters)       */
+/* ------------------------------------------------------------------ */
+const TONES = [
+  { name: "Matte Black", hex: "#26292e" },
+  { name: "Stone Grey", hex: "#9aa3ad" },
+  { name: "Bone", hex: "#e3ddd0" },
+  { name: "Terracotta", hex: "#c26a4a" },
+  { name: "Sage", hex: "#8a9b84" },
+  { name: "Navy", hex: "#2c4a73" },
+];
+const PRESETS = [
+  { label: "Charcoal on Bone", top: 0, bottom: 2 },
+  { label: "Terracotta on Bone", top: 3, bottom: 2 },
+  { label: "Sage on Stone", top: 4, bottom: 1 },
+  { label: "Navy on Bone", top: 5, bottom: 2 },
+];
+
+function TwotoneStudio({ product, no }: { product: Product; no: string }) {
+  const t = product.twotone;
+  const [top, setTop] = useState(0);
+  const [bottom, setBottom] = useState(2);
+  if (!t) return null;
+  const topC = TONES[top];
+  const botC = TONES[bottom];
+
+  const swatches = (kind: "top" | "body", active: number, onPick: (i: number) => void) => (
+    <div className="flex flex-wrap gap-2.5">
+      {TONES.map((c, i) => (
+        <button
+          key={c.name}
+          type="button"
+          title={c.name}
+          aria-label={`${kind === "top" ? "Top band" : "Body"} colour: ${c.name}`}
+          aria-pressed={active === i}
+          onClick={() => onPick(i)}
+          className={`h-10 w-10 border-2 transition-all duration-200 hover:-translate-y-0.5 ${
+            active === i
+              ? "border-accent-500 shadow-[3px_3px_0_0_var(--color-navy-800)]"
+              : "border-navy-800/30"
+          }`}
+          style={{ backgroundColor: c.hex }}
+        />
+      ))}
+    </div>
+  );
+
+  return (
+    <section id="twotone" className="scroll-mt-24 bg-white py-24">
+      <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-12">
+        {/* Controls */}
+        <div className="lg:col-span-5">
+          <Reveal>
+            <SectionHead kicker={`${no} / ${stripNo(t.kicker)}`} title={t.lines} />
+          </Reveal>
+          <Reveal delay={100}>
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-steel-600">{t.intro}</p>
+          </Reveal>
+
+          <Reveal delay={160}>
+            <div className="mt-8 space-y-6">
+              <div>
+                <p className="font-mono text-[10px] tracking-[0.25em] text-steel-500">
+                  TOP BAND — <span className="text-navy-800">{topC.name.toUpperCase()}</span>
+                </p>
+                <div className="mt-2.5">{swatches("top", top, setTop)}</div>
+              </div>
+              <div>
+                <p className="font-mono text-[10px] tracking-[0.25em] text-steel-500">
+                  BODY — <span className="text-navy-800">{botC.name.toUpperCase()}</span>
+                </p>
+                <div className="mt-2.5">{swatches("body", bottom, setBottom)}</div>
+              </div>
+              <div>
+                <p className="font-mono text-[10px] tracking-[0.25em] text-steel-500">QUICK MIXES</p>
+                <div className="mt-2.5 flex flex-wrap gap-2">
+                  {PRESETS.map((p) => (
+                    <button
+                      key={p.label}
+                      type="button"
+                      onClick={() => {
+                        setTop(p.top);
+                        setBottom(p.bottom);
+                      }}
+                      className="border border-navy-800/40 px-3 py-2 font-mono text-[10px] tracking-[0.14em] text-navy-700 transition-colors hover:border-accent-600 hover:bg-accent-500 hover:text-navy-950"
+                    >
+                      {p.label.toUpperCase()}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="border border-steel-200 border-l-4 border-l-accent-500 bg-paper p-5">
+                <p className="font-mono text-[9.5px] tracking-[0.25em] text-accent-700">YOUR MIX</p>
+                <p className="mt-1.5 text-sm font-semibold text-navy-900">
+                  {topC.name} top band · {botC.name} body
+                </p>
+                <GoLink
+                  to="#quote"
+                  className="group mt-3 inline-flex items-center gap-2 text-sm font-bold text-navy-800 transition-colors hover:text-accent-700"
+                >
+                  Quote this combination
+                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                </GoLink>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Live two-tone drawing */}
+        <div className="lg:col-span-7">
+          <Reveal delay={200}>
+            <div className="border border-steel-300 bg-navy-50 p-6 sm:p-10">
+              <span className="font-mono text-[9.5px] tracking-[0.25em] text-steel-500">
+                TWO-TONE STUDY · ROUND TREE PLANTER
+              </span>
+              <div className="mt-4">
+                <svg
+                  viewBox="0 0 320 372"
+                  className="mx-auto w-full max-w-md text-navy-800"
+                  role="img"
+                  aria-label={`Round tree planter painted ${topC.name} over ${botC.name}`}
+                >
+                  {/* ground */}
+                  <line x1="36" y1="312" x2="284" y2="312" stroke="currentColor" strokeWidth="2.2" />
+                  {/* canopy */}
+                  <path
+                    d="M118 96 C 112 72 128 54 148 58 C 154 40 182 40 188 58 C 208 54 222 72 214 90 C 226 98 218 112 202 108 C 196 122 172 126 162 112 C 146 122 124 114 118 96 Z"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  {/* trunk */}
+                  <path
+                    d="M152 150 C 153 130 154 118 156 104 M172 150 C 171 132 170 120 169 106 M156 116 L 140 102 M169 120 L 184 104"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                  {/* rim opening */}
+                  <ellipse cx="162" cy="150" rx="82" ry="12" fill="#0e1a2e" fillOpacity="0.82" stroke="currentColor" strokeWidth="2" />
+                  {/* top band — recolours live */}
+                  <path
+                    d="M80 150 L244 150 L240 208 L84 208 Z"
+                    fill={topC.hex}
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    style={{ transition: "fill .45s ease" }}
+                  />
+                  {/* body — recolours live */}
+                  <path
+                    d="M84 208 L240 208 L232 300 L92 300 Z"
+                    fill={botC.hex}
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    style={{ transition: "fill .45s ease" }}
+                  />
+                  {/* sheen */}
+                  <path d="M100 154 L96 298 M118 154 L115 298" stroke="#ffffff" strokeOpacity="0.16" strokeWidth="5" fill="none" />
+                  {/* shadow-gap base */}
+                  <path d="M100 300 L224 300 L218 312 L106 312 Z" fill="#0e1a2e" fillOpacity="0.85" stroke="currentColor" strokeWidth="1.4" />
+                  {/* dimensions */}
+                  <g stroke="currentColor" strokeWidth="1" fontFamily="IBM Plex Mono, monospace" fill="currentColor">
+                    <line x1="80" y1="336" x2="244" y2="336" />
+                    <path d="M86 332.5 L80 336 l6 3.5 M238 332.5 L244 336 l-6 3.5" fill="none" />
+                    <text x="162" y="330" textAnchor="middle" fontSize="9" letterSpacing="1.6" stroke="none">
+                      Ø 600 MM
+                    </text>
+                    <line x1="284" y1="150" x2="284" y2="312" />
+                    <path d="M280.5 156 L284 150 l3.5 6 M280.5 306 L284 312 l3.5 -6" fill="none" />
+                    <text x="296" y="236" fontSize="9" letterSpacing="1.6" stroke="none" transform="rotate(90 296 236)" textAnchor="middle">
+                      H 750
+                    </text>
+                  </g>
+                </svg>
+              </div>
+              <p className="mt-4 font-mono text-[9.5px] tracking-[0.2em] text-steel-500">
+                COLOURS SHOWN ARE GELCOAT REFERENCES — PHYSICAL CHIPS ON REQUEST
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */
 export default function ProductPage() {
@@ -887,6 +1074,7 @@ export default function ProductPage() {
   const noFeatures = next();
   const noSizer = product.sizer ? next() : null;
   const noStudy = product.study ? next() : null;
+  const noTwotone = product.twotone ? next() : null;
   const noApps = product.applications ? next() : null;
   const noAnatomy = product.anatomy ? next() : null;
   const noShowcase = next();
@@ -905,6 +1093,7 @@ export default function ProductPage() {
         <Features product={product} no={noFeatures} />
         {product.sizer && noSizer && <SizerSection product={product} no={noSizer} />}
         {product.study && noStudy && <CylinderStudy product={product} no={noStudy} />}
+        {product.twotone && noTwotone && <TwotoneStudio product={product} no={noTwotone} />}
         {product.applications && noApps && <Applications product={product} no={noApps} />}
         {product.anatomy && noAnatomy && <AnatomySection product={product} kicker={`${noAnatomy} / ${stripNo(product.anatomy.kicker)}`} />}
         <Showcase product={product} no={noShowcase} />

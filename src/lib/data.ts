@@ -59,6 +59,11 @@ export interface Product {
     lines: string[];
     intro: string;
   };
+  twotone?: {
+    kicker: string;
+    lines: string[];
+    intro: string;
+  };
   comparison: {
     kicker: string;
     title: string[];
@@ -2112,6 +2117,157 @@ export const PRODUCTS: Product[] = [
       ],
       qtyLabel: "CYLINDER COUNT",
       qtyOptions: ["1–10 cylinders", "10–50 cylinders", "50–200 cylinders", "200+ (project supply)"],
+    },
+  },
+
+  /* ---------------- 13 · FRP TREE & BIG PLANTERS (ROUND TREE & PREMIUM BIG) ---------------- */
+  {
+    slug: "frp-tree-planters",
+    code: "BSP-13",
+    family: "FRP",
+    name: "FRP Tree & Big Planters",
+    navLabel: "Tree & Big Planters",
+    registerLine: "Round tree planters in two-tone, and the premium big monolith — built for trees.",
+    hero: {
+      kicker: "PREMIUM FRP LANDSCAPE PRODUCTS",
+      lines: [
+        { text: "Premium Big FRP &" },
+        { text: "Round Tree Planters —", underline: true },
+        { text: "Bold Design. Strong Built." },
+      ],
+      sub: "Designed to make a statement and provide the perfect home for trees and large plants.",
+      media: "drawing",
+      drawingVariant: "bigsuite",
+      stamp: "DWG NO. BSP-FP-06",
+      dimLabel: "TO SCALE · Ø 600–900",
+      tag: {
+        kicker: "SPEC 13-A · FINISH",
+        title: "Two-tone colour banding",
+        body: "The round tree planter ships in any two gelcoat colours — a top band over the body — mixed to your palette.",
+      },
+      watermark: "TREES",
+    },
+    ticker: [
+      "ROUND TREE PLANTER · TWO-TONE",
+      "PREMIUM BIG FRP PLANTER",
+      "HOLDS TREES TO 3 M",
+      "≈ 12–18 KG EMPTY",
+      "UV-STABLE GELCOAT",
+      "ROOT-SAFE DRAINAGE SUMP",
+      "BUILT FOR PUBLIC PLACES",
+    ],
+    features: [
+      {
+        icon: "tree",
+        title: "Bold by Design",
+        lead: "Sculptural presence at every scale",
+        points: [
+          "Architectural Ø 600–900 proportions for specimen planting",
+          "Two-tone colour-banded finish — mix any two gelcoats",
+          "Clean shadow-gap base keeps the profile crisp",
+        ],
+        note: "TWO-TONE FINISH SYSTEM",
+      },
+      {
+        icon: "ibeam",
+        title: "Strong Build",
+        lead: "Built to hold a tree, not just a plant",
+        points: [
+          "FRP composite shell engineered for root pressure and tree sway",
+          "Impact-tough — survives trolleys, crowds and weather",
+          "Frost, UV and rust immune from −20 °C to +80 °C",
+        ],
+        note: "TREE-SWAY LOAD TESTED",
+      },
+      {
+        icon: "dropcross",
+        title: "Root-Safe & Maintenance-Free",
+        lead: "Healthy roots, zero upkeep",
+        points: [
+          "Moulded-in drainage sump with a gravel layer",
+          "Colour moulded in — no painting, no sealing, ever",
+          "Hose it down; the gelcoat skin repels stains",
+        ],
+        note: "MOLDED-IN DRAINAGE",
+      },
+    ],
+    twotone: {
+      kicker: "02 / TWO-TONE STUDIO",
+      lines: ["MIX YOUR", "TWO TONES."],
+      intro: "The round tree planter ships in any two gelcoat colours — a top band over the body. Click the chips to paint the drawing live, or start from a quick mix, then quote the exact combination.",
+    },
+    applications: [
+      { icon: "home", title: "Courtyards & Atriums", desc: "Anchor greenery for residential and retail courts.", chip: "RESIDENTIAL" },
+      { icon: "keystone", title: "Hotel Entrances", desc: "Arrival pairings that frame drives and porte-cochères.", chip: "ARRIVAL" },
+      { icon: "tower", title: "Corporate Campuses", desc: "Branded greens for podiums, plazas and promenades.", chip: "CAMPUS" },
+      { icon: "tree", title: "Public Plazas", desc: "Civic-grade planters for street trees and squares.", chip: "CIVIC" },
+    ],
+    familyLabel: "FRP TREE PLANTER",
+    familyDim: "TREE & BIG",
+    showcaseCols: "2/3",
+    showcase: [
+      {
+        variant: "treeplanter",
+        code: "BSP-FP-06A",
+        name: "Round Tree Planter",
+        tag: "TWO-TONE",
+        dimLabel: "Ø 600 × H 750 MM",
+        desc: "The round tree planter in an attractive two-tone design — a coloured top band over the body, made for trees to 3 m.",
+        specs: ["Ø 600 × H 750 mm", "≈ 12 kg · 190 L soil", "Two-tone colour band"],
+      },
+      {
+        variant: "bigfrp",
+        code: "BSP-FP-06B",
+        name: "Premium Big FRP Planter",
+        tag: "STATEMENT",
+        dimLabel: "Ø 900 × H 900 MM",
+        desc: "The premium big planter — a broad monolith for large specimens, feature palms and statement corners.",
+        specs: ["Ø 900 × H 900 mm", "≈ 18 kg · 460 L soil", "Wide-rim detail"],
+      },
+    ],
+    comparison: {
+      kicker: "05 / WHY SWITCH",
+      title: ["BOLD DESIGN.", "STRONGER STILL."],
+      highlight: "FRP TREE PLANTER",
+      cols: ["CONCRETE TUB", "CORTEN STEEL", "FABRICATED MS"],
+      rows: [
+        { label: "Empty weight", cells: ["≈ 12–18 kg", "≈ 250 kg", "≈ 90 kg", "≈ 70 kg"] },
+        { label: "Tree sway & root load", cells: ["Engineered for it", "Fine till it cracks", "Flexes at the seam", "Welds fatigue"] },
+        { label: "Finish", cells: ["Two-tone gelcoat", "Paint flakes", "Rust run-off stains", "Repaint yearly"] },
+        { label: "Move it planted", cells: ["Two people + trolley", "A crane", "Dents at the corners", "Welds tear"] },
+        { label: "Design life", cells: ["25+ years", "Spalls in 10", "Rusts through at 15", "12 years"] },
+      ],
+      note: "* INDICATIVE VALUES FOR A 900 MM PLANTER. TEST REPORTS AVAILABLE ON REQUEST.",
+    },
+    stats: [
+      { value: 8000, suffix: "+", label: "Tree planters shipped" },
+      { value: 2, suffix: "", label: "Flagship models" },
+      { value: 40, suffix: "+", label: "Colours & two-tone mixes" },
+      { value: 10, suffix: "-YR", label: "Structural warranty" },
+    ],
+    process: {
+      kicker: "06 / FROM SPECIMEN TO PLANTED",
+      title: ["FOUR STEPS", "TO A", "STATEMENT."],
+      intro: "Tell us the tree, the size and your two-tone mix — we quote per planter and ship ready to plant.",
+      steps: [
+        { title: "Pick model & mix", desc: "Round Tree Planter, Premium Big or both; choose your two-tone colours and counts." },
+        { title: "Quote + chips in 24 h", desc: "Per-planter pricing with gelcoat chips; mixed-run discounts quoted the same day." },
+        { title: "Mould & gelcoat", desc: "One-piece shells with moulded-in two-tone bands, sump and feet." },
+        { title: "Deliver ready to plant", desc: "Crated, palletised, pan-India. Set the tree, backfill, done." },
+      ],
+      media: "drawing",
+      drawingVariant: "treeplanter",
+      caption: "ROUND TREE PLANTER · Ø 600 MM",
+    },
+    quote: {
+      heading: "TELL US YOUR TREE.",
+      sub: "Share model, two-tone colours and city — our sales engineer replies with pricing and gelcoat samples.",
+      selects: [
+        { label: "MODEL", options: ["Round Tree Planter", "Premium Big FRP Planter", "Both models", "Custom size"] },
+        { label: "COLOUR MIX", options: ["Black top / Bone body", "Terracotta top / Bone body", "Sage top / Stone body", "Any two colours", "Not sure — send chips"] },
+      ],
+      qtyLabel: "PLANTER COUNT",
+      qtyOptions: ["1–5 planters", "5–20 planters", "20–100 planters", "100+ (project supply)"],
     },
   },
 ];

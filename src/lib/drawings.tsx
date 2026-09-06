@@ -770,6 +770,77 @@ function Planter({ v }: { v: string }) {
           </text>
         </g>
       )}
+      {v === "treeplanter" && (
+        <g>
+          {/* rounded canopy */}
+          <path
+            d="M92 50 C 88 36 100 26 112 28 C 116 18 132 18 136 28 C 148 26 156 36 150 48 C 158 54 152 62 142 60 C 138 68 124 70 118 62 C 108 68 96 62 92 50 Z"
+            strokeWidth="1.6"
+          />
+          {/* trunk + branches */}
+          <path d="M116 88 C 117 74 118 64 119 56 M124 88 C 123 76 122 66 121 58 M119 66 L 108 56 M121 70 L 132 58" strokeWidth="1.4" fill="none" />
+          {/* rim */}
+          <ellipse cx="120" cy="88" rx="36" ry="5.5" strokeWidth="1.6" />
+          {/* two-tone top band (tinted) */}
+          <path d="M84 88 L156 88 L154 104 L86 104 Z" fill="currentColor" fillOpacity="0.14" strokeWidth="1.8" />
+          {/* body */}
+          <path d="M86 104 L154 104 L148 122 L92 122 Z" strokeWidth="1.8" />
+          {/* shadow-gap base */}
+          <path d="M98 122 L142 122 L138 128 L102 128 Z" strokeWidth="1.2" />
+        </g>
+      )}
+      {v === "bigfrp" && (
+        <g>
+          {/* tall specimen fronds */}
+          <g strokeWidth="1.5" fill="none" strokeLinecap="round">
+            <path d="M120 62 C 118 44 120 30 124 18" />
+            <path d="M104 62 C 100 48 96 38 88 28" />
+            <path d="M136 62 C 140 48 144 38 152 28" />
+            <path d="M92 62 C 86 54 80 48 72 44" />
+            <path d="M148 62 C 154 54 160 48 168 44" />
+          </g>
+          {/* wide rim */}
+          <ellipse cx="120" cy="62" rx="52" ry="7" strokeWidth="1.6" />
+          {/* monolith body, soft taper */}
+          <path d="M68 62 C 66 88 68 108 74 122 L 166 122 C 172 108 174 88 172 62" strokeWidth="1.8" />
+          {/* shadow-gap base */}
+          <path d="M82 122 L 158 122 L 154 128 L 86 128 Z" strokeWidth="1.2" />
+        </g>
+      )}
+      {v === "bigsuite" && (
+        <g>
+          {/* sheet labels */}
+          <g stroke="none" fill="currentColor" fontFamily="IBM Plex Mono, monospace" fontSize="6.5" letterSpacing="1.2">
+            <text x="34" y="16">ROUND TREE PLANTER</text>
+            <text x="132" y="16">PREMIUM BIG PLANTER</text>
+          </g>
+          {/* left — round tree planter, two-tone */}
+          <g>
+            <path
+              d="M46 46 C 43 36 52 29 60 31 C 63 24 74 24 77 31 C 85 29 91 36 87 44 C 92 49 88 55 81 53 C 78 59 68 60 64 55 C 57 59 49 54 46 46 Z"
+              strokeWidth="1.4"
+            />
+            <path d="M63 74 C 63.5 64 64 58 65 52 M69 74 C 68.5 65 68 59 67.5 53" strokeWidth="1.2" fill="none" />
+            <ellipse cx="66" cy="74" rx="24" ry="4" strokeWidth="1.4" />
+            <path d="M42 74 L90 74 L88 86 L44 86 Z" fill="currentColor" fillOpacity="0.14" strokeWidth="1.6" />
+            <path d="M44 86 L88 86 L84 110 L48 110 Z" strokeWidth="1.6" />
+            <path d="M50 110 L82 110 L79 128 L53 128 Z" strokeWidth="1.1" />
+          </g>
+          {/* right — premium big FRP planter */}
+          <g>
+            <g strokeWidth="1.3" fill="none" strokeLinecap="round">
+              <path d="M164 56 C 162 42 164 30 167 20" />
+              <path d="M150 56 C 147 44 144 36 138 28" />
+              <path d="M178 56 C 181 44 184 36 190 28" />
+              <path d="M138 56 C 132 48 126 42 118 38" />
+              <path d="M190 56 C 196 48 202 42 210 38" />
+            </g>
+            <ellipse cx="164" cy="56" rx="46" ry="6" strokeWidth="1.4" />
+            <path d="M118 56 C 116 80 118 100 124 122 L 204 122 C 210 100 212 80 210 56" strokeWidth="1.6" />
+            <path d="M130 122 L 198 122 L 194 128 L 134 128 Z" strokeWidth="1.1" />
+          </g>
+        </g>
+      )}
       {/* GRC-era raised/treegrate variants retired for the FRP planters sheet
         <g>
           {[78, 112, 146].map((x) => (

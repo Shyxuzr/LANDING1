@@ -35,6 +35,7 @@ const FAMILY: Record<string, Family> = {
   "frp-planters": "planter",
   "frp-square-planters": "planter",
   "frp-cylinder-planters": "planter",
+  "frp-tree-planters": "planter",
 };
 
 function FamilyChip({ family }: { family: "FRP" | "GRC" }) {
