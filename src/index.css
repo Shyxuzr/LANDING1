@@ -107,6 +107,13 @@
 .marquee:hover .marquee-track {
   animation-play-state: paused;
 }
+
+/* Greek-key meander band under the header — same mechanism, slower pace */
+.meander-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+}
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -116,15 +123,35 @@
   }
 }
 
-/* Scroll reveal (state toggled by IntersectionObserver) */
+/* Scroll reveal — AOS-style variant set, state toggled by IntersectionObserver.
+   Default (no data-aos): fade-up 28 px. Variants: fade · left · right · zoom.
+   `.reveal-gentle` softens distance + duration for card grids. */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal[data-aos="fade"] {
+  transform: none;
+  transition: opacity 1s ease-out;
+}
+.reveal[data-aos="left"] {
+  transform: translateX(-34px);
+}
+.reveal[data-aos="right"] {
+  transform: translateX(34px);
+}
+.reveal[data-aos="zoom"] {
+  transform: scale(0.94);
+}
+.reveal-gentle {
+  transform: translateY(18px);
+  transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .reveal.is-in {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 /* Slow breathing zoom on photography */
@@ -151,6 +178,69 @@
   }
   to {
     transform: translateY(7px);
+  }
+}
+
+/* Drifting "sunlight" behind the jali lattice in the hero */
+.drift-a {
+  animation: driftA 14s ease-in-out infinite alternate;
+}
+.drift-b {
+  animation: driftB 18s ease-in-out infinite alternate;
+}
+@keyframes driftA {
+  0% {
+    transform: translate(-18%, -12%) scale(1);
+  }
+  50% {
+    transform: translate(30%, 22%) scale(1.15);
+  }
+  100% {
+    transform: translate(-8%, 38%) scale(0.95);
+  }
+}
+@keyframes driftB {
+  0% {
+    transform: translate(32%, 30%) scale(1.05);
+  }
+  50% {
+    transform: translate(-14%, -6%) scale(0.9);
+  }
+  100% {
+    transform: translate(22%, -24%) scale(1.12);
+  }
+}
+
+/* Cornice section-drawing: strokes draw themselves in when scrolled into view */
+.profile-line {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+}
+.drawn .profile-line {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.drawn .profile-line.d2 {
+  transition-delay: 0.35s;
+}
+.drawn .profile-line.d3 {
+  transition-delay: 0.7s;
+}
+
+/* Soft sonar ring on the floating WhatsApp button */
+.wa-ping {
+  border-radius: 9999px;
+  animation: wa-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes wa-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
   }
 }
 
@@ -187,6 +277,14 @@
   .float-tag,
   .marquee-track {
     animation: none !important;
+  }
+  .wa-ping {
+    animation: none !important;
+    opacity: 0;
+  }
+  .profile-line {
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
   }
   *,
   *::before,
