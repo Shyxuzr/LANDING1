@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | Blue Star Plastic Industries</title>
-  <meta name="description" content="Get in touch with Blue Star Plastic Industries for quotes, technical support, and site visits. Call +91 91520 91020 or email sales@bluestarplastic.in." />
+  <title>[Product Name] | Blue Star Plastic Industries</title>
+  <meta name="description" content="[Product description - 150 chars max for SEO]" />
   <meta name="theme-color" content="#0c1e3a" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Contact Us | Blue Star Plastic Industries" />
-  <meta property="og:description" content="Get in touch for quotes, technical support, and site visits. Call +91 91520 91020." />
+  <meta property="og:title" content="[Product Name] | Blue Star Plastic Industries" />
+  <meta property="og:description" content="[Product description]" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://placehold.co/1200x630/0c1e3a/f5a81c?text=CONTACT+US" />
+  <meta property="og:image" content="https://placehold.co/1200x630/0c1e3a/f5a81c?text=[PRODUCT+NAME]" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Contact Us | Blue Star Plastic Industries" />
-  <meta name="twitter:description" content="Get in touch for quotes, technical support, and site visits." />
-  <meta name="twitter:image" content="https://placehold.co/1200x630/0c1e3a/f5a81c?text=CONTACT+US" />
+  <meta name="twitter:title" content="[Product Name] | Blue Star Plastic Industries" />
+  <meta name="twitter:description" content="[Product description]" />
+  <meta name="twitter:image" content="https://placehold.co/1200x630/0c1e3a/f5a81c?text=[PRODUCT+NAME]" />
 
   <!-- Favicon -->
   <link rel="icon" href="image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c1e3a'/%3E%3Cpath d='M16 4l2.8 9.2L28 16l-9.2 2.8L16 28l-2.8-9.2L4 16l9.2-2.8z' fill='%23f5a81c'/%3E%3C/svg%3E" />
@@ -82,12 +82,14 @@
     .nav-link:hover::after,
     .nav-link:focus-visible::after { right: 0; }
 
-    .contact-card {
+    .feature-card,
+    .variation-card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .contact-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px -12px rgba(12, 30, 58, 0.18);
+    .feature-card:hover,
+    .variation-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -12px rgba(12, 30, 58, 0.2);
     }
 
     @keyframes wa-pulse {
@@ -123,12 +125,6 @@
       transform: translateY(-8px) rotate(-45deg);
     }
 
-    /* Form focus states */
-    .form-input:focus {
-      border-color: #f5a81c;
-      box-shadow: 0 0 0 3px rgba(245, 168, 28, 0.1);
-    }
-
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -159,7 +155,7 @@
       <nav class="hidden items-center gap-7 lg:flex" aria-label="Primary">
         <a href="index.html" class="nav-link font-mono text-[11px] tracking-[0.18em] text-navy-700 hover:text-navy-950">HOME</a>
         <div class="group relative">
-          <button type="button" class="nav-link flex items-center gap-1.5 font-mono text-[11px] tracking-[0.18em] text-navy-700 hover:text-navy-950" aria-haspopup="true">
+          <button type="button" class="nav-link flex items-center gap-1.5 font-mono text-[11px] tracking-[0.18em] text-accent-600" aria-haspopup="true">
             PRODUCTS
             <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
               <path d="m6 9 6 6 6-6"/>
@@ -191,7 +187,7 @@
           </div>
         </div>
         <a href="about.html" class="nav-link font-mono text-[11px] tracking-[0.18em] text-navy-700 hover:text-navy-950">ABOUT US</a>
-        <a href="contact.html" class="nav-link font-mono text-[11px] tracking-[0.18em] text-accent-600">CONTACT</a>
+        <a href="contact.html" class="nav-link font-mono text-[11px] tracking-[0.18em] text-navy-700 hover:text-navy-950">CONTACT</a>
       </nav>
 
       <div class="flex items-center gap-2.5">
@@ -235,7 +231,7 @@
             <a href="columns.html" class="block py-2.5 text-sm text-navy-100 hover:text-accent-400">GRC Columns</a>
           </div>
           <a href="about.html" class="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-navy-100 hover:text-accent-400">ABOUT US</a>
-          <a href="contact.html" class="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-accent-400">CONTACT</a>
+          <a href="contact.html" class="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-navy-100 hover:text-accent-400">CONTACT</a>
           <a href="tel:+919152091020" class="mt-6 inline-flex items-center justify-center gap-2 bg-accent-500 px-4 py-3 text-sm font-bold text-navy-950">
             <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
             Call: +91 91520 91020
@@ -247,219 +243,148 @@
 
 
   <!-- ================================================================
-       CONTACT HERO
+       PRODUCT HERO SECTION
        ================================================================ -->
-  <section class="relative overflow-hidden bg-navy-950 pt-32 pb-16 md:pt-40 md:pb-20" style="background-image: linear-gradient(rgba(228,236,246,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(228,236,246,0.04) 1px, transparent 1px); background-size: 30px 30px;">
-    <span class="pointer-events-none absolute -bottom-6 right-0 select-none font-display text-[20vw] leading-none text-transparent [-webkit-text-stroke:1.5px_rgba(228,236,246,0.08)] md:text-[14vw]" aria-hidden="true">CONTACT</span>
+  <section class="relative overflow-hidden bg-navy-950 pt-32 pb-20 md:pt-40 md:pb-28" style="background-image: linear-gradient(rgba(228,236,246,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(228,236,246,0.04) 1px, transparent 1px); background-size: 30px 30px;">
+    <span class="pointer-events-none absolute -bottom-6 right-0 select-none font-display text-[20vw] leading-none text-transparent [-webkit-text-stroke:1.5px_rgba(228,236,246,0.08)] md:text-[14vw]" aria-hidden="true">[PRODUCT]</span>
 
     <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
       <div class="max-w-3xl">
         <p class="inline-flex items-center gap-2.5 font-mono text-[11px] tracking-[0.3em] text-accent-400">
           <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-accent-500" aria-hidden="true"><path d="M12 0 L14.6 9.4 L24 12 L14.6 14.6 L12 24 L9.4 14.6 L0 12 L9.4 9.4 Z" fill="currentColor"/></svg>
-          GET IN TOUCH
+          [PRODUCT CODE] · [FRP/GRC]
         </p>
 
         <h1 class="mt-5 font-display text-[52px] leading-[0.96] tracking-[0.015em] text-white sm:text-7xl xl:text-[88px]">
-          Let's Build
-          <br />
-          <span class="relative inline-block">
-            Something Great.
-            <svg viewBox="0 0 320 14" class="absolute -bottom-2 left-0 w-full text-accent-500" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M3 10 C 70 3, 190 3, 317 8" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
-            </svg>
-          </span>
+          [Product Name]
         </h1>
 
         <p class="mt-7 max-w-2xl text-lg leading-relaxed text-gray-300">
-          Have a project in mind? Need a quote? Our team is ready to help you bring your vision to life.
+          [Product subtitle - brief description of the product, its benefits, and applications. Keep it under 150 characters for optimal readability.]
         </p>
+
+        <div class="mt-9 flex flex-wrap items-center gap-4">
+          <a href="contact.html" class="group inline-flex items-center gap-3 bg-accent-500 px-7 py-4 text-[15px] font-bold text-navy-950 shadow-[6px_6px_0_0_#152c4f] transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:bg-accent-400 hover:shadow-[2px_2px_0_0_#152c4f]">
+            Request a Quote
+            <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+          </a>
+          <a href="index.html" class="inline-flex items-center gap-3 border-2 border-white px-7 py-[14px] text-[15px] font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-navy-900">
+            Back to Products
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
 
   <!-- ================================================================
-       CONTACT INFO + FORM (Split Layout)
+       FEATURES GRID (3 Columns)
        ================================================================ -->
   <section class="bg-white py-20 md:py-24">
     <div class="mx-auto max-w-7xl px-5 sm:px-8">
-      <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <div class="text-center">
+        <p class="font-mono text-[11px] tracking-[0.3em] text-accent-700">KEY FEATURES</p>
+        <h2 class="mt-3 font-display text-4xl text-navy-900 sm:text-5xl md:text-6xl">WHY CHOOSE THIS PRODUCT.</h2>
+      </div>
 
-        <!-- LEFT COLUMN: Company Details -->
-        <div>
-          <h2 class="font-display text-4xl text-navy-900 sm:text-5xl">Get in Touch.</h2>
-          <p class="mt-4 text-base leading-relaxed text-gray-600">
-            We're here to answer your questions and help you with your project. Reach out through any of the channels below.
-          </p>
+      <div class="mt-14 grid gap-6 md:grid-cols-3">
 
-          <div class="mt-10 space-y-6">
+        <!-- Feature 1 -->
+        <div class="feature-card group border border-gray-200 bg-paper p-7">
+          <div class="flex h-14 w-14 items-center justify-center border border-navy-800 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-accent-400">
+            <!-- Replace with your SVG icon -->
+            <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M2 12h20"/>
+            </svg>
+          </div>
+          <h3 class="mt-5 font-display text-2xl tracking-[0.03em] text-navy-900">[Feature 1 Title]</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">[Feature 1 description - explain the benefit and how it helps the customer. Keep it concise and compelling.]</p>
+        </div>
 
-            <!-- Company Name -->
-            <div class="contact-card flex items-start gap-4 border border-gray-200 bg-paper p-6">
-              <div class="flex h-12 w-12 shrink-0 items-center justify-center border border-navy-800 text-navy-800">
-                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/>
-                  <path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/>
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-display text-xl tracking-[0.03em] text-navy-900">COMPANY</h3>
-                <p class="mt-1 text-sm font-semibold text-navy-800">Blue Star Plastic Industries</p>
-                <p class="mt-0.5 text-xs text-gray-500">Manufacturer of Premium FRP &amp; GRC Products</p>
-              </div>
-            </div>
+        <!-- Feature 2 -->
+        <div class="feature-card group border border-gray-200 bg-paper p-7">
+          <div class="flex h-14 w-14 items-center justify-center border border-navy-800 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-accent-400">
+            <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h3 class="mt-5 font-display text-2xl tracking-[0.03em] text-navy-900">[Feature 2 Title]</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">[Feature 2 description - explain the benefit and how it helps the customer. Keep it concise and compelling.]</p>
+        </div>
 
-            <!-- Phone Numbers -->
-            <div class="contact-card flex items-start gap-4 border border-gray-200 bg-paper p-6">
-              <div class="flex h-12 w-12 shrink-0 items-center justify-center border border-navy-800 text-navy-800">
-                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/>
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-display text-xl tracking-[0.03em] text-navy-900">PHONE</h3>
-                <a href="tel:+919152091020" class="mt-1 block text-sm font-semibold text-navy-800 hover:text-accent-600 transition-colors">
-                  +91 91520 91020
-                </a>
-                <a href="tel:+918976820301" class="mt-0.5 block text-sm font-semibold text-navy-800 hover:text-accent-600 transition-colors">
-                  +91 8976820301
-                </a>
-              </div>
-            </div>
+        <!-- Feature 3 -->
+        <div class="feature-card group border border-gray-200 bg-paper p-7">
+          <div class="flex h-14 w-14 items-center justify-center border border-navy-800 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-accent-400">
+            <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 class="mt-5 font-display text-2xl tracking-[0.03em] text-navy-900">[Feature 3 Title]</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">[Feature 3 description - explain the benefit and how it helps the customer. Keep it concise and compelling.]</p>
+        </div>
 
-            <!-- Email -->
-            <div class="contact-card flex items-start gap-4 border border-gray-200 bg-paper p-6">
-              <div class="flex h-12 w-12 shrink-0 items-center justify-center border border-navy-800 text-navy-800">
-                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="4" width="20" height="16" rx="1"/>
-                  <path d="m2 7 10 6 10-6"/>
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-display text-xl tracking-[0.03em] text-navy-900">EMAIL</h3>
-                <a href="mailto:sales@bluestarplastic.in" class="mt-1 block text-sm font-semibold text-navy-800 hover:text-accent-600 transition-colors">
-                  sales@bluestarplastic.in
-                </a>
-              </div>
-            </div>
+      </div>
+    </div>
+  </section>
 
-            <!-- Address -->
-            <div class="contact-card flex items-start gap-4 border border-gray-200 bg-paper p-6">
-              <div class="flex h-12 w-12 shrink-0 items-center justify-center border border-navy-800 text-navy-800">
-                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-display text-xl tracking-[0.03em] text-navy-900">ADDRESS</h3>
-                <p class="mt-1 text-sm text-gray-600">
-                  Plot 42, MIDC Industrial Area,<br />
-                  Taloja, Navi Mumbai — 410208,<br />
-                  Maharashtra, India
-                </p>
-              </div>
-            </div>
 
+  <!-- ================================================================
+       DESIGN VARIATIONS (4 Columns)
+       ================================================================ -->
+  <section class="bg-paper py-20 md:py-24" style="background-image: linear-gradient(rgba(21,44,79,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(21,44,79,0.04) 1px, transparent 1px); background-size: 30px 30px;">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="text-center">
+        <p class="font-mono text-[11px] tracking-[0.3em] text-accent-700">DESIGN VARIATIONS</p>
+        <h2 class="mt-3 font-display text-4xl text-navy-900 sm:text-5xl md:text-6xl">AVAILABLE STYLES.</h2>
+        <p class="mt-4 max-w-2xl mx-auto text-base leading-relaxed text-gray-500">
+          Choose from our range of designs to match your architectural vision.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
+        <!-- Variation 1 -->
+        <div class="variation-card group border border-gray-200 bg-white overflow-hidden">
+          <div class="aspect-square overflow-hidden bg-gray-200">
+            <img src="https://placehold.co/400x400/e5e7eb/6b7280?text=Variation+1" alt="[Variation 1 Name]" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl tracking-[0.02em] text-navy-900">[Variation 1 Title]</h3>
+            <p class="mt-1 text-xs text-gray-500">[Brief description]</p>
           </div>
         </div>
 
+        <!-- Variation 2 -->
+        <div class="variation-card group border border-gray-200 bg-white overflow-hidden">
+          <div class="aspect-square overflow-hidden bg-gray-200">
+            <img src="https://placehold.co/400x400/e5e7eb/6b7280?text=Variation+2" alt="[Variation 2 Name]" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl tracking-[0.02em] text-navy-900">[Variation 2 Title]</h3>
+            <p class="mt-1 text-xs text-gray-500">[Brief description]</p>
+          </div>
+        </div>
 
-        <!-- RIGHT COLUMN: Contact Form -->
-        <div>
-          <div class="border-t-4 border-accent-500 bg-paper p-7 shadow-2xl shadow-navy-950/10 sm:p-10">
+        <!-- Variation 3 -->
+        <div class="variation-card group border border-gray-200 bg-white overflow-hidden">
+          <div class="aspect-square overflow-hidden bg-gray-200">
+            <img src="https://placehold.co/400x400/e5e7eb/6b7280?text=Variation+3" alt="[Variation 3 Name]" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl tracking-[0.02em] text-navy-900">[Variation 3 Title]</h3>
+            <p class="mt-1 text-xs text-gray-500">[Brief description]</p>
+          </div>
+        </div>
 
-            <!-- Success Message (Hidden by default) -->
-            <div id="form-success" class="hidden py-6 text-center">
-              <span class="mx-auto flex h-16 w-16 items-center justify-center bg-accent-500 text-navy-950">
-                <svg viewBox="0 0 24 24" class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12.5 5.5 5.5L20 6.5"/></svg>
-              </span>
-              <h3 class="mt-6 font-display text-4xl text-navy-900">INQUIRY SENT.</h3>
-              <p class="mt-4 max-w-sm text-sm leading-relaxed text-gray-600">
-                Thank you for reaching out. Our team will review your inquiry and respond within 24 working hours.
-              </p>
-            </div>
-
-            <!-- Form -->
-            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-              <!-- Web3Forms Access Key -->
-              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-              <input type="hidden" name="subject" value="New Inquiry — Blue Star Plastic Industries">
-              <input type="checkbox" name="botcheck" class="hidden" style="display:none">
-
-              <h3 class="font-display text-3xl text-navy-900">Send an Inquiry</h3>
-              <p class="mt-1 text-sm text-gray-600">Fill out the form below and we'll get back to you shortly.</p>
-
-              <div class="mt-7 space-y-5">
-
-                <!-- Full Name -->
-                <div>
-                  <label for="name" class="mb-1.5 block font-mono text-[10.5px] tracking-[0.18em] text-gray-600">FULL NAME *</label>
-                  <input type="text" id="name" name="name" required
-                    class="form-input w-full border border-gray-300 bg-white px-4 py-3 text-sm text-navy-900 outline-none transition placeholder:text-gray-400"
-                    placeholder="e.g. Rajesh Patil">
-                </div>
-
-                <!-- Phone Number -->
-                <div>
-                  <label for="phone" class="mb-1.5 block font-mono text-[10.5px] tracking-[0.18em] text-gray-600">PHONE NUMBER * (10 digits)</label>
-                  <input type="tel" id="phone" name="phone" required maxlength="10" pattern="[0-9]{10}"
-                    class="form-input w-full border border-gray-300 bg-white px-4 py-3 text-sm text-navy-900 outline-none transition placeholder:text-gray-400"
-                    placeholder="e.g. 9876543210">
-                  <p id="phone-error" class="mt-1.5 hidden text-xs font-medium text-red-600">Please enter exactly 10 digits.</p>
-                </div>
-
-                <!-- Email -->
-                <div>
-                  <label for="email" class="mb-1.5 block font-mono text-[10.5px] tracking-[0.18em] text-gray-600">EMAIL ADDRESS *</label>
-                  <input type="email" id="email" name="email" required
-                    class="form-input w-full border border-gray-300 bg-white px-4 py-3 text-sm text-navy-900 outline-none transition placeholder:text-gray-400"
-                    placeholder="e.g. you@company.in">
-                </div>
-
-                <!-- Product of Interest -->
-                <div>
-                  <label for="product" class="mb-1.5 block font-mono text-[10.5px] tracking-[0.18em] text-gray-600">PRODUCT OF INTEREST *</label>
-                  <select id="product" name="product" required
-                    class="form-input w-full border border-gray-300 bg-white px-4 py-3 text-sm text-navy-900 outline-none transition">
-                    <option value="">Select a product</option>
-                    <optgroup label="FRP Products">
-                      <option value="FRP Chajjas">FRP Chajjas</option>
-                      <option value="FRP Rectangular Planters">FRP Rectangular Planters</option>
-                      <option value="FRP Square Planters">FRP Square Planters</option>
-                      <option value="FRP Vertical Cylinders">FRP Vertical Cylinders</option>
-                      <option value="FRP Round & Design Planters">FRP Round &amp; Design Planters</option>
-                      <option value="FRP Tree Planters">FRP Tree Planters</option>
-                      <option value="FRP Urn & Cone Planters">FRP Urn &amp; Cone Planters</option>
-                    </optgroup>
-                    <optgroup label="GRC Products">
-                      <option value="GRC Jali Panels">GRC Jali Panels</option>
-                      <option value="GRC Cornices">GRC Cornices</option>
-                      <option value="GRC Columns">GRC Columns</option>
-                    </optgroup>
-                  </select>
-                </div>
-
-                <!-- Message (Optional) -->
-                <div>
-                  <label for="message" class="mb-1.5 block font-mono text-[10.5px] tracking-[0.18em] text-gray-600">MESSAGE (OPTIONAL)</label>
-                  <textarea id="message" name="message" rows="4"
-                    class="form-input w-full border border-gray-300 bg-white px-4 py-3 text-sm text-navy-900 outline-none transition placeholder:text-gray-400"
-                    placeholder="Tell us about your project requirements..."></textarea>
-                </div>
-
-              </div>
-
-              <!-- Submit Button -->
-              <button type="submit"
-                class="group mt-7 inline-flex w-full items-center justify-center gap-3 bg-accent-500 px-7 py-4 text-[15px] font-bold text-navy-950 shadow-[6px_6px_0_0_#152c4f] transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:bg-accent-400 hover:shadow-[2px_2px_0_0_#152c4f]">
-                Submit Inquiry
-                <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
-              </button>
-              <p class="mt-4 text-center font-mono text-[9.5px] tracking-[0.16em] text-gray-500">
-                WE RESPOND WITHIN 24 WORKING HOURS.
-              </p>
-            </form>
+        <!-- Variation 4 -->
+        <div class="variation-card group border border-gray-200 bg-white overflow-hidden">
+          <div class="aspect-square overflow-hidden bg-gray-200">
+            <img src="https://placehold.co/400x400/e5e7eb/6b7280?text=Variation+4" alt="[Variation 4 Name]" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl tracking-[0.02em] text-navy-900">[Variation 4 Title]</h3>
+            <p class="mt-1 text-xs text-gray-500">[Brief description]</p>
           </div>
         </div>
 
@@ -523,6 +448,10 @@
             Taloja MIDC, Navi Mumbai — 410208, India
           </li>
         </ul>
+        <a href="contact.html" class="mt-6 inline-flex items-center gap-2 bg-accent-500 px-5 py-3 text-sm font-bold text-navy-950 transition-colors hover:bg-accent-400">
+          Contact Us
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+        </a>
       </div>
     </div>
 
@@ -547,10 +476,9 @@
 
 
   <!-- ================================================================
-       SCRIPTS
+       SCRIPTS (Same as index.html)
        ================================================================ -->
   <script>
-    // ---- Hamburger toggle ----
     (function () {
       var btn  = document.getElementById('hamburger-btn');
       var menu = document.getElementById('mobile-menu');
@@ -593,7 +521,6 @@
       });
     })();
 
-    // ---- Header shadow on scroll ----
     (function () {
       var header = document.getElementById('site-header');
       window.addEventListener('scroll', function () {
@@ -603,61 +530,6 @@
           header.classList.remove('header-scrolled');
         }
       }, { passive: true });
-    })();
-
-    // ---- Phone validation (exactly 10 digits) ----
-    (function () {
-      var form      = document.getElementById('contact-form');
-      var phone     = document.getElementById('phone');
-      var phoneErr  = document.getElementById('phone-error');
-      var successEl = document.getElementById('form-success');
-
-      phone.addEventListener('input', function () {
-        this.value = this.value.replace(/\D/g, '').slice(0, 10);
-        if (this.value.length === 10) {
-          phoneErr.classList.add('hidden');
-          this.classList.remove('border-red-500');
-          this.classList.add('border-gray-300');
-        }
-      });
-
-      form.addEventListener('submit', function (e) {
-        var digits = phone.value.replace(/\D/g, '');
-        if (digits.length !== 10) {
-          e.preventDefault();
-          phoneErr.classList.remove('hidden');
-          phone.classList.remove('border-gray-300');
-          phone.classList.add('border-red-500');
-          phone.focus();
-          return;
-        }
-
-        // For demo purposes, show success message
-        // In production, let the form submit to Web3Forms
-        e.preventDefault();
-        var btn = form.querySelector('button[type="submit"]');
-        btn.textContent = 'Sending…';
-        btn.disabled = true;
-
-        setTimeout(function () {
-          form.classList.add('hidden');
-          successEl.classList.remove('hidden');
-        }, 1200);
-
-        /* ---- Production Web3Forms submission ----
-        fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: new FormData(form)
-        })
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          if (data.success) {
-            form.classList.add('hidden');
-            successEl.classList.remove('hidden');
-          }
-        });
-        */
-      });
     })();
   </script>
 
