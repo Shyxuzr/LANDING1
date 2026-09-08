@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blue Star Plastic Industries — GRC & FRP Architectural Products</title>
+  <meta name="description" content="Blue Star Plastic Industries — manufacturing world-class GRC and premium FRP architectural elements: chajjas, jali panels, cornices, columns, planters and more. Call +91 91520 91020." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blue Star Plastic Industries — GRC & FRP Architectural Products" />
+  <meta property="og:description" content="Manufacturing world-class GRC and premium FRP architectural elements. Strength. Style. Perfection." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630/0c1e3a/f5a81c?text=BLUE+STAR+PLASTIC+INDUSTRIES" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blue Star Plastic Industries — GRC & FRP Architectural Products" />
+  <meta name="twitter:description" content="Manufacturing world-class GRC and premium FRP architectural elements." />
+  <meta name="twitter:image" content="https://placehold.co/1200x630/0c1e3a/f5a81c?text=BLUE+STAR+PLASTIC+INDUSTRIES" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c1e3a'/%3E%3Cpath d='M16 4l2.8 9.2L28 16l-9.2 2.8L16 28l-2.8-9.2L4 16l9.2-2.8z' fill='%23f5a81c'/%3E%3C/svg%3E" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              50:  '#f2f6fb',
+              100: '#e4ecf6',
+              200: '#c8d8ea',
+              300: '#a2bbd8',
+              400: '#7192bc',
+              500: '#4a6d9e',
+              600: '#325282',
+              700: '#213e68',
+              800: '#152c4f',
+              900: '#0c1e3a',
+              950: '#071427',
+            },
+            accent: {
+              300: '#ffd489',
+              400: '#ffc258',
+              500: '#f5a81c',
+              600: '#d98e0b',
+              700: '#b37206',
+            },
+            paper: '#f6f8fb',
+          },
+          fontFamily: {
+            display: ['"Bebas Neue"', 'sans-serif'],
+            sans:    ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+            mono:    ['"IBM Plex Mono"', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'IBM Plex Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    ::selection { background: #f5a81c; color: #071427; }
+
+    /* Nav underline animation */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 100%; bottom: -4px;
+      height: 2px;
+      background: #f5a81c;
+      transition: right 0.3s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after { right: 0; }
+
+    /* Product card hover */
+    .product-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -12px rgba(12, 30, 58, 0.18);
+    }
+
+    /* WhatsApp pulse */
+    @keyframes wa-pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70%  { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    .wa-pulse { animation: wa-pulse 2.4s infinite; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body class="bg-paper text-navy-900">
+
+  <!-- ================================================================
+       HEADER
+       ================================================================ -->
+  <header id="site-header" class="fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 sm:px-8">
+
+      <!-- Logo -->
+      <a href="index.html" class="group flex items-center gap-2.5">
+        <svg viewBox="0 0 24 24" class="h-7 w-7 text-accent-500 transition-transform duration-300 group-hover:rotate-45" aria-hidden="true">
+          <path d="M12 0 L14.6 9.4 L24 12 L14.6 14.6 L12 24 L9.4 14.6 L0 12 L9.4 9.4 Z" fill="currentColor"/>
+        </svg>
+        <span class="leading-none">
+          <span class="block font-display text-[22px] tracking-[0.06em] text-navy-900">BLUE STAR</span>
+          <span class="mt-0.5 block font-mono text-[8.5px] tracking-[0.34em] text-accent-600">PLASTIC INDUSTRIES</span>
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden items-center gap-7 lg:flex" aria-label="Primary">
+        <a href="index.html"              class="nav-link font-mono text-[11px] tracking-[0.18em] text-accent-600">HOME</a>
+        <a href="chajjas.html"             class="nav-link font-mono text-[11px] tracking-[0.18em] text-navy-700 hover:text-navy-950">FRP CHAJJAS</a>
+        <a href="jali-panels.html"         class="nav-link font-mono text-[11px] tracking-[0.18em] text-navy-700 hover:text-navy-950">GRC JALI</a>
+        <a href="cornices.html"            class="nav-link font-mono text-[11px] tracking-[0.18em] text-navy-700 hover:text-navy-950">GRC CORNICES</a>
+        <a href="columns.html"             class="nav-link font-mono text-[11px] tracking-[0.18em] text-navy-700 hover:text-navy-950">GRC COLUMNS</a>
+        <a href="#products"                class="nav-link font-mono text-[11px] tracking-[0.18em] text-navy-700 hover:text-navy-950">ALL PRODUCTS</a>
+        <a href="#quote"                   class="nav-link font-mono text-[11px] tracking-[0.18em] text-navy-700 hover:text-navy-950">QUOTE</a>
+      </nav>
+
+      <!-- Right side: CTA + hamburger -->
+      <div class="flex items-center gap-2.5">
+        <a href="tel:+919152091020" class="hidden sm:inline-flex items-center gap-1.5 bg-accent-500 px-3 py-2.5 text-xs font-semibold text-navy-950 transition hover:bg-accent-400">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
+          <span class="whitespace-nowrap">+91 91520 91020</span>
+        </a>
+
+        <!-- Hamburger button -->
+        <button id="hamburger-btn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu"
+          class="flex h-10 w-10 items-center justify-center border border-navy-300 text-navy-900 transition hover:border-navy-800 lg:hidden">
+          <svg id="hamburger-icon" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h10"/>
+          </svg>
+          <svg id="close-icon" viewBox="0 0 24 24" class="hidden h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M6 6l12 12M18 6L6 18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu panel -->
+    <nav id="mobile-menu" class="hidden border-t border-navy-800 bg-navy-950 px-6 pb-8 pt-4 lg:hidden" aria-label="Mobile">
+      <div class="flex flex-col">
+        <a href="index.html"             class="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-accent-400">HOME</a>
+        <a href="chajjas.html"           class="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-navy-100 hover:text-accent-400">FRP CHAJJAS</a>
+        <a href="jali-panels.html"       class="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-navy-100 hover:text-accent-400">GRC JALI PANELS</a>
+        <a href="cornices.html"          class="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-navy-100 hover:text-accent-400">GRC CORNICES</a>
+        <a href="columns.html"           class="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-navy-100 hover:text-accent-400">GRC COLUMNS</a>
+        <a href="rectangular-planters.html" class="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-navy-100 hover:text-accent-400">FRP RECTANGULAR PLANTERS</a>
+        <a href="square-planters.html"   class="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-navy-100 hover:text-accent-400">FRP SQUARE PLANTERS</a>
+        <a href="cylinder-planters.html" class="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-navy-100 hover:text-accent-400">FRP CYLINDER PLANTERS</a>
+        <a href="round-planters.html"    class="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-navy-100 hover:text-accent-400">FRP ROUND &amp; DESIGN PLANTERS</a>
+        <a href="tree-planters.html"     class="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-navy-100 hover:text-accent-400">FRP TREE &amp; BIG PLANTERS</a>
+        <a href="urn-planters.html"      class="border-b border-navy-800/70 py-3.5 font-mono text-xs tracking-[0.2em] text-navy-100 hover:text-accent-400">FRP URN &amp; CONE PLANTERS</a>
+        <a href="#quote" class="mt-6 inline-flex items-center justify-center gap-2 bg-accent-500 px-4 py-3 text-sm font-bold text-navy-950">
+          Request a Quote
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- ================================================================
+       HERO
+       ================================================================ -->
+  <section class="relative overflow-hidden bg-paper pt-28 pb-20 md:pt-36 md:pb-28">
+    <!-- Blueprint grid -->
+    <div class="absolute inset-0 opacity-[0.06]" style="background-image: linear-gradient(rgba(21,44,79,1) 1px, transparent 1px), linear-gradient(90deg, rgba(21,44,79,1) 1px, transparent 1px); background-size: 30px 30px;" aria-hidden="true"></div>
+
+    <!-- Watermark -->
+    <span class="pointer-events-none absolute -bottom-6 right-0 select-none font-display text-[22vw] leading-none text-navy-900/[0.04] md:text-[16vw]" aria-hidden="true">BLUE STAR</span>
+
+    <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+
+        <!-- Copy -->
+        <div class="lg:col-span-7">
+          <p class="inline-flex items-center gap-2.5 font-mono text-[11px] tracking-[0.3em] text-navy-600">
+            <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-accent-500" aria-hidden="true"><path d="M12 0 L14.6 9.4 L24 12 L14.6 14.6 L12 24 L9.4 14.6 L0 12 L9.4 9.4 Z" fill="currentColor"/></svg>
+            GRC &amp; FRP ARCHITECTURAL PRODUCTS · EST. 2001
+          </p>
+
+          <h1 class="mt-5 font-display text-[52px] leading-[0.96] tracking-[0.015em] text-navy-900 sm:text-7xl xl:text-[88px]">
+            Crafting Timeless
+            <br />
+            Elegance.
+            <br />
+            <span class="relative inline-block">
+              Building Landmarks.
+              <svg viewBox="0 0 320 14" class="absolute -bottom-2 left-0 w-full text-accent-500" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M3 10 C 70 3, 190 3, 317 8" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </h1>
+
+          <p class="mt-7 max-w-xl text-lg leading-relaxed text-gray-600">
+            Manufacturing world-class <strong class="font-semibold text-navy-800">GRC</strong> and premium <strong class="font-semibold text-navy-800">FRP</strong> architectural elements.
+          </p>
+
+          <div class="mt-9 flex flex-wrap items-center gap-4">
+            <a href="#products" class="group inline-flex items-center gap-3 bg-accent-500 px-7 py-4 text-[15px] font-bold text-navy-950 shadow-[6px_6px_0_0_#152c4f] transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:bg-accent-400 hover:shadow-[2px_2px_0_0_#152c4f]">
+              Explore Our Catalog
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+            </a>
+            <a href="#quote" class="inline-flex items-center gap-3 border-2 border-navy-800 px-7 py-[14px] text-[15px] font-semibold text-navy-800 transition-colors duration-200 hover:bg-navy-800 hover:text-white">
+              Request a Quote
+            </a>
+          </div>
+
+          <ul class="mt-10 flex flex-wrap gap-x-7 gap-y-3">
+            <li class="flex items-center gap-2 font-mono text-[10.5px] tracking-[0.16em] text-gray-500">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-accent-600" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12.5 5.5 5.5L20 6.5"/></svg>
+              ISO 9001:2015 CERTIFIED
+            </li>
+            <li class="flex items-center gap-2 font-mono text-[10.5px] tracking-[0.16em] text-gray-500">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-accent-600" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12.5 5.5 5.5L20 6.5"/></svg>
+              25+ YEARS MANUFACTURING
+            </li>
+            <li class="flex items-center gap-2 font-mono text-[10.5px] tracking-[0.16em] text-gray-500">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-accent-600" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12.5 5.5 5.5L20 6.5"/></svg>
+              PAN-INDIA SUPPLY
+            </li>
+          </ul>
+        </div>
+
+        <!-- Hero visual — architectural SVG composition -->
+        <div class="lg:col-span-5">
+          <div class="relative">
+            <span class="absolute -left-2 -top-2 h-7 w-7 border-l-[3px] border-t-[3px] border-accent-500" aria-hidden="true"></span>
+            <span class="absolute -right-2 -top-2 h-7 w-7 border-r-[3px] border-t-[3px] border-accent-500" aria-hidden="true"></span>
+            <span class="absolute -bottom-2 -left-2 h-7 w-7 border-b-[3px] border-l-[3px] border-accent-500" aria-hidden="true"></span>
+            <span class="absolute -bottom-2 -right-2 h-7 w-7 border-b-[3px] border-r-[3px] border-accent-500" aria-hidden="true"></span>
+
+            <div class="overflow-hidden border border-gray-200 bg-navy-50 p-6">
+              <svg viewBox="0 0 400 320" class="w-full" aria-hidden="true">
+                <!-- Blueprint grid -->
+                <defs>
+                  <pattern id="hero-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M20 0H0V20" fill="none" stroke="#213e68" stroke-opacity="0.1" stroke-width="0.5"/>
+                  </pattern>
+                </defs>
+                <rect width="400" height="320" fill="url(#hero-grid)"/>
+
+                <!-- Building facade -->
+                <rect x="60" y="40" width="280" height="240" fill="none" stroke="#213e68" stroke-width="2"/>
+                <line x1="60" y1="100" x2="340" y2="100" stroke="#213e68" stroke-width="1" stroke-dasharray="4 4"/>
+                <line x1="60" y1="180" x2="340" y2="180" stroke="#213e68" stroke-width="1" stroke-dasharray="4 4"/>
+
+                <!-- Windows with chajjas -->
+                <g fill="none" stroke="#213e68" stroke-width="1.5">
+                  <rect x="90" y="110" width="50" height="60"/>
+                  <rect x="175" y="110" width="50" height="60"/>
+                  <rect x="260" y="110" width="50" height="60"/>
+                  <!-- Chajja projections -->
+                  <path d="M85 110 L145 110 L140 100 L90 100 Z" fill="#f5a81c" fill-opacity="0.2" stroke="#f5a81c" stroke-width="1.5"/>
+                  <path d="M170 110 L230 110 L225 100 L175 100 Z" fill="#f5a81c" fill-opacity="0.2" stroke="#f5a81c" stroke-width="1.5"/>
+                  <path d="M255 110 L315 110 L310 100 L260 100 Z" fill="#f5a81c" fill-opacity="0.2" stroke="#f5a81c" stroke-width="1.5"/>
+                </g>
+
+                <!-- Cornice at top -->
+                <g fill="none" stroke="#213e68" stroke-width="2">
+                  <path d="M50 40 L350 40 L345 30 L55 30 Z"/>
+                  <line x1="55" y1="35" x2="345" y2="35" stroke-width="1"/>
+                </g>
+
+                <!-- Column at entrance -->
+                <g fill="none" stroke="#213e68" stroke-width="1.5">
+                  <rect x="185" y="200" width="30" height="80"/>
+                  <rect x="180" y="195" width="40" height="8"/>
+                  <rect x="180" y="275" width="40" height="8"/>
+                  <!-- Column flutes -->
+                  <line x1="190" y1="203" x2="190" y2="275"/>
+                  <line x1="195" y1="203" x2="195" y2="275"/>
+                  <line x1="200" y1="203" x2="200" y2="275"/>
+                  <line x1="205" y1="203" x2="205" y2="275"/>
+                  <line x1="210" y1="203" x2="210" y2="275"/>
+                </g>
+
+                <!-- Jali panel -->
+                <g fill="none" stroke="#213e68" stroke-width="1">
+                  <rect x="90" y="200" width="60" height="80"/>
+                  <line x1="100" y1="200" x2="100" y2="280"/>
+                  <line x1="110" y1="200" x2="110" y2="280"/>
+                  <line x1="120" y1="200" x2="120" y2="280"/>
+                  <line x1="130" y1="200" x2="130" y2="280"/>
+                  <line x1="140" y1="200" x2="140" y2="280"/>
+                  <line x1="90" y1="215" x2="150" y2="215"/>
+                  <line x1="90" y1="230" x2="150" y2="230"/>
+                  <line x1="90" y1="245" x2="150" y2="245"/>
+                  <line x1="90" y1="260" x2="150" y2="260"/>
+                </g>
+
+                <!-- Planter -->
+                <g fill="none" stroke="#213e68" stroke-width="1.5">
+                  <path d="M270 260 L310 260 L305 280 L275 280 Z"/>
+                  <path d="M280 260 C278 245 285 235 290 230 C295 235 302 245 300 260" stroke-width="1"/>
+                </g>
+
+                <!-- Dimension annotations -->
+                <g fill="#213e68" font-family="IBM Plex Mono, monospace" font-size="8" letter-spacing="1">
+                  <text x="200" y="20" text-anchor="middle">ELEVATION — TYPICAL FACADE</text>
+                  <text x="365" y="160" text-anchor="start" transform="rotate(90 365 160)">H = 12000</text>
+                </g>
+              </svg>
+            </div>
+
+            <!-- Floating spec tag -->
+            <div class="absolute -bottom-5 left-4 right-4 border border-gray-200 border-l-4 border-l-accent-500 bg-white p-4 shadow-xl sm:right-auto sm:w-72">
+              <p class="font-mono text-[9.5px] tracking-[0.25em] text-accent-700">10 PRODUCT FAMILIES</p>
+              <p class="mt-1 text-sm font-semibold text-navy-900">GRC + FRP · Made to order</p>
+              <p class="mt-1 text-xs leading-relaxed text-gray-500">From chajjas to columns, every element cast and cured at our Taloja works.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       WHY CHOOSE US — 4-column features
+       ================================================================ -->
+  <section class="bg-white py-20 md:py-24">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="text-center">
+        <p class="font-mono text-[11px] tracking-[0.3em] text-accent-700">WHY BLUE STAR</p>
+        <h2 class="mt-3 font-display text-4xl text-navy-900 sm:text-5xl md:text-6xl">BUILT ON FOUR PROMISES.</h2>
+      </div>
+
+      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
+        <!-- 1 — High Strength -->
+        <div class="group border border-gray-200 bg-paper p-7 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-navy-800 hover:shadow-[8px_8px_0_0_rgba(21,44,79,0.08)]">
+          <div class="mx-auto flex h-14 w-14 items-center justify-center border border-navy-800 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-accent-400">
+            <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <h3 class="mt-5 font-display text-xl tracking-[0.03em] text-navy-900">HIGH STRENGTH &amp; DURABILITY</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-500">Engineered composites that carry loads and outlast conventional materials by decades.</p>
+        </div>
+
+        <!-- 2 — Weather Resistant -->
+        <div class="group border border-gray-200 bg-paper p-7 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-navy-800 hover:shadow-[8px_8px_0_0_rgba(21,44,79,0.08)]">
+          <div class="mx-auto flex h-14 w-14 items-center justify-center border border-navy-800 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-accent-400">
+            <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 15a4 4 0 0 0 4 4h9a5 5 0 1 0-.1-9.999 5.002 5.002 0 1 0-9.78 2.096A4.001 4.001 0 0 0 3 15z"/>
+            </svg>
+          </div>
+          <h3 class="mt-5 font-display text-xl tracking-[0.03em] text-navy-900">WEATHER &amp; CORROSION RESISTANT</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-500">UV-stable, frost-proof, salt-air immune — performs from −20 °C to +80 °C without degradation.</p>
+        </div>
+
+        <!-- 3 — Lightweight -->
+        <div class="group border border-gray-200 bg-paper p-7 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-navy-800 hover:shadow-[8px_8px_0_0_rgba(21,44,79,0.08)]">
+          <div class="mx-auto flex h-14 w-14 items-center justify-center border border-navy-800 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-accent-400">
+            <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a3 3 0 0 0-3 3c0 1.6 1.4 3 3 3s3-1.4 3-3-1.4-3-3-3z"/>
+              <path d="M12 8v14"/>
+              <path d="M5 15l7-4 7 4"/>
+              <path d="M5 19l7-4 7 4"/>
+            </svg>
+          </div>
+          <h3 class="mt-5 font-display text-xl tracking-[0.03em] text-navy-900">LIGHTWEIGHT &amp; EASY TO INSTALL</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-500">A fraction of concrete's weight — one person can handle most pieces. Dry-fix, no wet trades.</p>
+        </div>
+
+        <!-- 4 — Custom Made -->
+        <div class="group border border-gray-200 bg-paper p-7 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-navy-800 hover:shadow-[8px_8px_0_0_rgba(21,44,79,0.08)]">
+          <div class="mx-auto flex h-14 w-14 items-center justify-center border border-navy-800 text-navy-800 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-accent-400">
+            <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"/>
+              <path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+          </div>
+          <h3 class="mt-5 font-display text-xl tracking-[0.03em] text-navy-900">CUSTOM MADE SOLUTIONS</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-500">Send a sketch or CAD file — if it can be moulded, our Taloja works will quote it in 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       OUR PRODUCTS — 10-card grid
+       ================================================================ -->
+  <section id="products" class="bg-paper py-20 md:py-24" style="background-image: linear-gradient(rgba(21,44,79,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(21,44,79,0.04) 1px, transparent 1px); background-size: 30px 30px;">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="font-mono text-[11px] tracking-[0.3em] text-accent-700">THE CATALOGUE</p>
+          <h2 class="mt-3 font-display text-4xl text-navy-900 sm:text-5xl md:text-6xl">OUR PRODUCTS.</h2>
+        </div>
+        <p class="max-w-sm text-sm leading-relaxed text-gray-500 md:text-right">
+          Ten product families in FRP and GRC — every card below is a full specification page with drawings, data and a 24-hour quote line.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+        <!-- Card 1 — FRP Chajjas -->
+        <div class="product-card group flex flex-col overflow-hidden border border-gray-200 bg-white">
+          <div class="relative overflow-hidden bg-navy-50 p-4 transition-colors duration-500 group-hover:bg-navy-950">
+            <img src="https://placehold.co/600x360/0c1e3a/f5a81c?text=FRP+CHAJJAS" alt="FRP Chajjas" class="aspect-[5/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"/>
+            <span class="absolute left-3 top-3 border border-accent-500/70 bg-accent-500 px-2 py-0.5 font-mono text-[8.5px] tracking-[0.18em] text-navy-950">FRP</span>
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <p class="font-mono text-[9px] tracking-[0.22em] text-gray-400">BSP-01</p>
+            <h3 class="mt-1 font-display text-2xl tracking-[0.02em] text-navy-900">FRP Chajjas</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-500">Weather-resistant window canopies — plain, sloped, curved and decorative profiles.</p>
+            <a href="chajjas.html" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-navy-800 transition-colors group-hover:text-accent-700">
+              View Details
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 — GRC Jali Panels -->
+        <div class="product-card group flex flex-col overflow-hidden border border-gray-200 bg-white">
+          <div class="relative overflow-hidden bg-navy-50 p-4 transition-colors duration-500 group-hover:bg-navy-950">
+            <img src="https://placehold.co/600x360/0c1e3a/f5a81c?text=GRC+JALI+PANELS" alt="GRC Jali Panels" class="aspect-[5/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"/>
+            <span class="absolute left-3 top-3 border border-navy-400 bg-navy-900 px-2 py-0.5 font-mono text-[8.5px] tracking-[0.18em] text-navy-100">GRC</span>
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <p class="font-mono text-[9px] tracking-[0.22em] text-gray-400">BSP-02</p>
+            <h3 class="mt-1 font-display text-2xl tracking-[0.02em] text-navy-900">GRC Jali Panels</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-500">Decorative screens for façades, ventilation, partitions and balconies — basket weave to leaf pattern.</p>
+            <a href="jali-panels.html" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-navy-800 transition-colors group-hover:text-accent-700">
+              View Details
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3 — GRC Cornices -->
+        <div class="product-card group flex flex-col overflow-hidden border border-gray-200 bg-white">
+          <div class="relative overflow-hidden bg-navy-50 p-4 transition-colors duration-500 group-hover:bg-navy-950">
+            <img src="https://placehold.co/600x360/0c1e3a/f5a81c?text=GRC+CORNICES" alt="GRC Cornices" class="aspect-[5/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"/>
+            <span class="absolute left-3 top-3 border border-navy-400 bg-navy-900 px-2 py-0.5 font-mono text-[8.5px] tracking-[0.18em] text-navy-100">GRC</span>
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <p class="font-mono text-[9px] tracking-[0.22em] text-gray-400">BSP-03</p>
+            <h3 class="mt-1 font-display text-2xl tracking-[0.02em] text-navy-900">GRC Cornices</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-500">Classical, decorative, layered and simple cornice profiles — elegant finish, stronger performance.</p>
+            <a href="cornices.html" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-navy-800 transition-colors group-hover:text-accent-700">
+              View Details
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4 — GRC Columns -->
+        <div class="product-card group flex flex-col overflow-hidden border border-gray-200 bg-white">
+          <div class="relative overflow-hidden bg-navy-50 p-4 transition-colors duration-500 group-hover:bg-navy-950">
+            <img src="https://placehold.co/600x360/0c1e3a/f5a81c?text=GRC+COLUMNS" alt="GRC Columns" class="aspect-[5/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"/>
+            <span class="absolute left-3 top-3 border border-navy-400 bg-navy-900 px-2 py-0.5 font-mono text-[8.5px] tracking-[0.18em] text-navy-100">GRC</span>
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <p class="font-mono text-[9px] tracking-[0.22em] text-gray-400">BSP-04</p>
+            <h3 class="mt-1 font-display text-2xl tracking-[0.02em] text-navy-900">GRC Columns</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-500">All six classical orders — Corinthian, Ionic, Doric, Tuscan, Roman and Composite — in lightweight GRC.</p>
+            <a href="columns.html" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-navy-800 transition-colors group-hover:text-accent-700">
+              View Details
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 5 — FRP Rectangular Planters -->
+        <div class="product-card group flex flex-col overflow-hidden border border-gray-200 bg-white">
+          <div class="relative overflow-hidden bg-navy-50 p-4 transition-colors duration-500 group-hover:bg-navy-950">
+            <img src="https://placehold.co/600x360/0c1e3a/f5a81c?text=FRP+RECTANGULAR+PLANTERS" alt="FRP Rectangular Planters" class="aspect-[5/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"/>
+            <span class="absolute left-3 top-3 border border-accent-500/70 bg-accent-500 px-2 py-0.5 font-mono text-[8.5px] tracking-[0.18em] text-navy-950">FRP</span>
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <p class="font-mono text-[9px] tracking-[0.22em] text-gray-400">BSP-05</p>
+            <h3 class="mt-1 font-display text-2xl tracking-[0.02em] text-navy-900">FRP Rectangular Planters</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-500">Selenge and Hudson models — elegant, durable, lightweight rectangular planters for any space.</p>
+            <a href="rectangular-planters.html" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-navy-800 transition-colors group-hover:text-accent-700">
+              View Details
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 6 — FRP Square Planters -->
+        <div class="product-card group flex flex-col overflow-hidden border border-gray-200 bg-white">
+          <div class="relative overflow-hidden bg-navy-50 p-4 transition-colors duration-500 group-hover:bg-navy-950">
+            <img src="https://placehold.co/600x360/0c1e3a/f5a81c?text=FRP+SQUARE+PLANTERS" alt="FRP Square Planters" class="aspect-[5/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"/>
+            <span class="absolute left-3 top-3 border border-accent-500/70 bg-accent-500 px-2 py-0.5 font-mono text-[8.5px] tracking-[0.18em] text-navy-950">FRP</span>
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <p class="font-mono text-[9px] tracking-[0.22em] text-gray-400">BSP-06</p>
+            <h3 class="mt-1 font-display text-2xl tracking-[0.02em] text-navy-900">FRP Square Planters</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-500">The Montroy Cube — one profile in five sizes from 16″ to 40″, modern and elegant.</p>
+            <a href="square-planters.html" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-navy-800 transition-colors group-hover:text-accent-700">
+              View Details
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 7 — FRP Vertical Cylinder Planters -->
+        <div class="product-card group flex flex-col overflow-hidden border border-gray-200 bg-white">
+          <div class="relative overflow-hidden bg-navy-50 p-4 transition-colors duration-500 group-hover:bg-navy-950">
+            <img src="https://placehold.co/600x360/0c1e3a/f5a81c?text=FRP+CYLINDER+PLANTERS" alt="FRP Vertical Cylinder Planters" class="aspect-[5/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"/>
+            <span class="absolute left-3 top-3 border border-accent-500/70 bg-accent-500 px-2 py-0.5 font-mono text-[8.5px] tracking-[0.18em] text-navy-950">FRP</span>
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <p class="font-mono text-[9px] tracking-[0.22em] text-gray-400">BSP-07</p>
+            <h3 class="mt-1 font-display text-2xl tracking-[0.02em] text-navy-900">FRP Vertical Cylinder Planters</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-500">Rio Grande and Corry — sleek cylindrical planters, wide or tall, adding sophistication to any space.</p>
+            <a href="cylinder-planters.html" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-navy-800 transition-colors group-hover:text-accent-700">
+              View Details
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 8 — FRP Round & Design Planters -->
+        <div class="product-card group flex flex-col overflow-hidden border border-gray-200 bg-white">
+          <div class="relative overflow-hidden bg-navy-50 p-4 transition-colors duration-500 group-hover:bg-navy-950">
+            <img src="https://placehold.co/600x360/0c1e3a/f5a81c?text=FRP+ROUND+%26+DESIGN+PLANTERS" alt="FRP Round & Design Planters" class="aspect-[5/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"/>
+            <span class="absolute left-3 top-3 border border-accent-500/70 bg-accent-500 px-2 py-0.5 font-mono text-[8.5px] tracking-[0.18em] text-navy-950">FRP</span>
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <p class="font-mono text-[9px] tracking-[0.22em] text-gray-400">BSP-08</p>
+            <h3 class="mt-1 font-display text-2xl tracking-[0.02em] text-navy-900">FRP Round &amp; Design Planters</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-500">Classic urns, cone planters and designer rounds — timeless shapes with modern durability.</p>
+            <a href="round-planters.html" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-navy-800 transition-colors group-hover:text-accent-700">
+              View Details
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 9 — FRP Tree & Big Planters -->
+        <div class="product-card group flex flex-col overflow-hidden border border-gray-200 bg-white">
+          <div class="relative overflow-hidden bg-navy-50 p-4 transition-colors duration-500 group-hover:bg-navy-950">
+            <img src="https://placehold.co/600x360/0c1e3a/f5a81c?text=FRP+TREE+%26+BIG+PLANTERS" alt="FRP Tree & Big Planters" class="aspect-[5/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"/>
+            <span class="absolute left-3 top-3 border border-accent-500/70 bg-accent-500 px-2 py-0.5 font-mono text-[8.5px] tracking-[0.18em] text-navy-950">FRP</span>
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <p class="font-mono text-[9px] tracking-[0.22em] text-gray-400">BSP-09</p>
+            <h3 class="mt-1 font-display text-2xl tracking-[0.02em] text-navy-900">FRP Tree &amp; Big Planters</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-500">Bold design, strong built — round tree planters with two-tone finish and premium big statement pieces.</p>
+            <a href="tree-planters.html" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-navy-800 transition-colors group-hover:text-accent-700">
+              View Details
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 10 — FRP Urn & Cone Planters -->
+        <div class="product-card group flex flex-col overflow-hidden border border-gray-200 bg-white sm:col-span-2 lg:col-span-1">
+          <div class="relative overflow-hidden bg-navy-50 p-4 transition-colors duration-500 group-hover:bg-navy-950">
+            <img src="https://placehold.co/600x360/0c1e3a/f5a81c?text=FRP+URN+%26+CONE+PLANTERS" alt="FRP Urn & Cone Planters" class="aspect-[5/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"/>
+            <span class="absolute left-3 top-3 border border-accent-500/70 bg-accent-500 px-2 py-0.5 font-mono text-[8.5px] tracking-[0.18em] text-navy-950">FRP</span>
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <p class="font-mono text-[9px] tracking-[0.22em] text-gray-400">BSP-10</p>
+            <h3 class="mt-1 font-display text-2xl tracking-[0.02em] text-navy-900">FRP Urn &amp; Cone Planters</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-500">Classic urns and bold architectural cones — timeless silhouettes for landscapes that stand out.</p>
+            <a href="urn-planters.html" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-navy-800 transition-colors group-hover:text-accent-700">
+              View Details
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       CONTACT US / REQUEST A QUOTE — Web3Forms
+       ================================================================ -->
+  <section id="quote" class="relative overflow-hidden bg-navy-950 py-20 md:py-24" style="background-image: linear-gradient(rgba(228,236,246,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(228,236,246,0.04) 1px, transparent 1px); background-size: 30px 30px;">
+    <span class="pointer-events-none absolute -bottom-10 -left-4 select-none font-display text-[9rem] leading-none text-transparent [-webkit-text-stroke:1.5px_rgba(228,236,246,0.08)] md:text-[15rem]" aria-hidden="true">QUOTE</span>
+
+    <div class="relative mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-12">
+
+      <!-- Left — trust rail -->
+      <div class="lg:col-span-5">
+        <p class="font-mono text-[11px] tracking-[0.3em] text-accent-400">GET A QUOTE</p>
+        <h2 class="mt-3 font-display text-4xl leading-[1.05] text-white sm:text-5xl md:text-6xl">
+          TELL US WHAT<br/>YOU'RE BUILDING.
+        </h2>
+        <p class="mt-5 max-w-md text-sm leading-relaxed text-gray-300">
+          Share your project details — our sales engineer replies within 24 working hours with per-unit pricing, CAD drawings and material samples.
+        </p>
+
+        <!-- Sales desk indicator -->
+        <div class="mt-8 flex items-center gap-3 border border-navy-800 bg-navy-900/60 p-4">
+          <span class="relative flex h-3 w-3">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex h-3 w-3 rounded-full bg-green-500"></span>
+          </span>
+          <div>
+            <p class="text-sm font-semibold text-white">Sales desk is live</p>
+            <p class="font-mono text-[10px] tracking-[0.18em] text-gray-400">MON–SAT · 09:00–18:30 IST</p>
+          </div>
+        </div>
+
+        <!-- What happens next -->
+        <div class="mt-8 space-y-4">
+          <p class="font-mono text-[10px] tracking-[0.25em] text-accent-400">WHAT HAPPENS NEXT</p>
+          <ol class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="flex h-6 w-6 shrink-0 items-center justify-center border border-accent-500 font-mono text-[10px] font-bold text-accent-400">1</span>
+              <p class="text-sm text-gray-300">We call you back within <strong class="text-white">24 hours</strong> to confirm requirements.</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="flex h-6 w-6 shrink-0 items-center justify-center border border-accent-500 font-mono text-[10px] font-bold text-accent-400">2</span>
+              <p class="text-sm text-gray-300">Custom quote with <strong class="text-white">CAD drawings</strong> and material specs.</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="flex h-6 w-6 shrink-0 items-center justify-center border border-accent-500 font-mono text-[10px] font-bold text-accent-400">3</span>
+              <p class="text-sm text-gray-300">Physical <strong class="text-white">samples dispatched</strong> on request.</p>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Direct lines -->
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="tel:+919152091020" class="inline-flex items-center gap-2 border border-navy-700 px-4 py-2.5 font-mono text-[10.5px] tracking-[0.16em] text-gray-300 transition-colors hover:border-accent-500 hover:text-white">
+            <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-accent-500" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
+            +91 91520 91020
+          </a>
+          <a href="https://wa.me/919152091020" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-navy-700 px-4 py-2.5 font-mono text-[10.5px] tracking-[0.16em] text-gray-300 transition-colors hover:border-green-500 hover:text-white">
+            <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-green-400" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WHATSAPP
+          </a>
+        </div>
+      </div>
+
+      <!-- Right — form -->
+      <div class="lg:col-span-7">
+        <div class="border-t-4 border-accent-500 bg-paper p-7 shadow-2xl shadow-navy-950/50 sm:p-10">
+
+          <!-- Success state (hidden by default) -->
+          <div id="form-success" class="hidden py-6 text-center">
+            <span class="mx-auto flex h-16 w-16 items-center justify-center bg-accent-500 text-navy-950">
+              <svg viewBox="0 0 24 24" class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12.5 5.5 5.5L20 6.5"/></svg>
+            </span>
+            <h3 class="mt-6 font-display text-4xl text-navy-900">REQUEST RECEIVED.</h3>
+            <p class="mt-4 max-w-sm text-sm leading-relaxed text-gray-500">
+              Thanks — our sales engineer will call you within 24 working hours with your custom quote.
+            </p>
+          </div>
+
+          <!-- Form -->
+          <form id="quote-form" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Web3Forms access key placeholder -->
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
+            <input type="hidden" name="subject" value="New Quote Request — Blue Star Plastic Industries">
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+
+            <h3 class="font-display text-3xl text-navy-900">REQUEST A CUSTOM QUOTE</h3>
+            <p class="mt-1 text-sm text-gray-500">Fields marked <span class="font-bold text-accent-700">*</span> are required.</p>
+
+            <div class="mt-7 grid gap-5 sm:grid-cols-2">
+              <!-- Name -->
+              <div>
+                <label for="q-name" class="mb-1.5 block font-mono text-[10.5px] tracking-[0.18em] text-gray-500">FULL NAME *</label>
+                <input type="text" id="q-name" name="name" required placeholder="e.g. Rajesh Patil"
+                  class="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-navy-900 outline-none transition placeholder:text-gray-400 focus:border-accent-600 focus:ring-2 focus:ring-accent-500/30">
+              </div>
+
+              <!-- Phone -->
+              <div>
+                <label for="q-phone" class="mb-1.5 block font-mono text-[10.5px] tracking-[0.18em] text-gray-500">PHONE NUMBER *</label>
+                <input type="tel" id="q-phone" name="phone" required maxlength="10" pattern="[0-9]{10}" placeholder="10-digit mobile"
+                  class="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-navy-900 outline-none transition placeholder:text-gray-400 focus:border-accent-600 focus:ring-2 focus:ring-accent-500/30">
+                <p id="phone-error" class="mt-1.5 hidden text-xs font-medium text-red-600">Please enter exactly 10 digits.</p>
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label for="q-email" class="mb-1.5 block font-mono text-[10.5px] tracking-[0.18em] text-gray-500">EMAIL</label>
+                <input type="email" id="q-email" name="email" placeholder="you@company.in"
+                  class="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-navy-900 outline-none transition placeholder:text-gray-400 focus:border-accent-600 focus:ring-2 focus:ring-accent-500/30">
+              </div>
+
+              <!-- Product Category -->
+              <div>
+                <label for="q-category" class="mb-1.5 block font-mono text-[10.5px] tracking-[0.18em] text-gray-500">PRODUCT CATEGORY *</label>
+                <select id="q-category" name="category" required
+                  class="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-navy-900 outline-none transition focus:border-accent-600 focus:ring-2 focus:ring-accent-500/30">
+                  <option value="">Select a product</option>
+                  <optgroup label="FRP Range">
+                    <option value="FRP Chajjas">FRP Chajjas</option>
+                    <option value="FRP Rectangular Planters">FRP Rectangular Planters</option>
+                    <option value="FRP Square Planters">FRP Square Planters</option>
+                    <option value="FRP Vertical Cylinder Planters">FRP Vertical Cylinder Planters</option>
+                    <option value="FRP Round & Design Planters">FRP Round &amp; Design Planters</option>
+                    <option value="FRP Tree & Big Planters">FRP Tree &amp; Big Planters</option>
+                    <option value="FRP Urn & Cone Planters">FRP Urn &amp; Cone Planters</option>
+                  </optgroup>
+                  <optgroup label="GRC Range">
+                    <option value="GRC Jali Panels">GRC Jali Panels</option>
+                    <option value="GRC Cornices">GRC Cornices</option>
+                    <option value="GRC Columns">GRC Columns</option>
+                  </optgroup>
+                  <option value="Custom / Not sure">Custom / Not sure</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div class="mt-5">
+              <label for="q-message" class="mb-1.5 block font-mono text-[10.5px] tracking-[0.18em] text-gray-500">PROJECT DETAILS</label>
+              <textarea id="q-message" name="message" rows="3" placeholder="Sizes, quantities, colours, site photos, deadlines…"
+                class="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-navy-900 outline-none transition placeholder:text-gray-400 focus:border-accent-600 focus:ring-2 focus:ring-accent-500/30"></textarea>
+            </div>
+
+            <button type="submit"
+              class="group mt-7 inline-flex w-full items-center justify-center gap-3 bg-accent-500 px-7 py-4 text-[15px] font-bold text-navy-950 shadow-[6px_6px_0_0_#152c4f] transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:bg-accent-400 hover:shadow-[2px_2px_0_0_#152c4f]">
+              Send My Request
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+            </button>
+            <p class="mt-4 text-center font-mono text-[9.5px] tracking-[0.16em] text-gray-400">
+              NO SPAM — YOUR DETAILS GO STRAIGHT TO OUR SALES DESK.
+            </p>
+          </form>
+        </div>
+
+        <!-- WhatsApp CTA below form -->
+        <div class="mt-8 text-center">
+          <p class="font-mono text-[10px] tracking-[0.25em] text-gray-400">PREFER A QUICK CHAT?</p>
+          <a href="https://wa.me/919152091020?text=Hello%2C%20I%20would%20like%20to%20request%20a%20quote%20from%20Blue%20Star%20Plastic%20Industries."
+             target="_blank" rel="noopener noreferrer"
+             class="wa-pulse mt-4 inline-flex items-center justify-center gap-3 rounded-full bg-green-500 px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-green-600 hover:shadow-xl">
+            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Chat on WhatsApp
+          </a>
+          <p class="mt-3 text-xs text-gray-400">Instant reply · No waiting · +91 91520 91020</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="border-t border-navy-800 bg-navy-950 pt-16 text-gray-300">
+    <div class="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 md:grid-cols-12">
+
+      <!-- Brand + slogan -->
+      <div class="md:col-span-4">
+        <a href="index.html" class="flex items-center gap-2.5">
+          <svg viewBox="0 0 24 24" class="h-7 w-7 text-accent-500" aria-hidden="true"><path d="M12 0 L14.6 9.4 L24 12 L14.6 14.6 L12 24 L9.4 14.6 L0 12 L9.4 9.4 Z" fill="currentColor"/></svg>
+          <span class="leading-none">
+            <span class="block font-display text-[22px] tracking-[0.06em] text-white">BLUE STAR</span>
+            <span class="mt-0.5 block font-mono text-[8.5px] tracking-[0.34em] text-accent-500">PLASTIC INDUSTRIES</span>
+          </span>
+        </a>
+        <p class="mt-5 font-display text-2xl tracking-[0.04em] text-accent-400">Strength. Style. Perfection.</p>
+        <p class="mt-3 max-w-xs text-sm leading-relaxed text-gray-400">
+          Manufacturer of premium FRP and GRC architectural products — since 2001.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="border border-navy-700 px-2.5 py-1.5 font-mono text-[9px] tracking-[0.18em] text-gray-400">ISO 9001:2015</span>
+          <span class="border border-navy-700 px-2.5 py-1.5 font-mono text-[9px] tracking-[0.18em] text-gray-400">FRP · GRC SPECIALISTS</span>
+          <span class="border border-navy-700 px-2.5 py-1.5 font-mono text-[9px] tracking-[0.18em] text-gray-400">MADE IN INDIA</span>
+        </div>
+      </div>
+
+      <!-- Products -->
+      <div class="md:col-span-3">
+        <h4 class="font-mono text-[10.5px] tracking-[0.25em] text-accent-400">PRODUCTS</h4>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li><a href="chajjas.html" class="nav-link text-gray-300 transition-colors hover:text-white">FRP Chajjas</a></li>
+          <li><a href="jali-panels.html" class="nav-link text-gray-300 transition-colors hover:text-white">GRC Jali Panels</a></li>
+          <li><a href="cornices.html" class="nav-link text-gray-300 transition-colors hover:text-white">GRC Cornices</a></li>
+          <li><a href="columns.html" class="nav-link text-gray-300 transition-colors hover:text-white">GRC Columns</a></li>
+          <li><a href="rectangular-planters.html" class="nav-link text-gray-300 transition-colors hover:text-white">FRP Rectangular Planters</a></li>
+          <li><a href="square-planters.html" class="nav-link text-gray-300 transition-colors hover:text-white">FRP Square Planters</a></li>
+          <li><a href="cylinder-planters.html" class="nav-link text-gray-300 transition-colors hover:text-white">FRP Cylinder Planters</a></li>
+          <li><a href="round-planters.html" class="nav-link text-gray-300 transition-colors hover:text-white">FRP Round &amp; Design Planters</a></li>
+          <li><a href="tree-planters.html" class="nav-link text-gray-300 transition-colors hover:text-white">FRP Tree &amp; Big Planters</a></li>
+          <li><a href="urn-planters.html" class="nav-link text-gray-300 transition-colors hover:text-white">FRP Urn &amp; Cone Planters</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="md:col-span-3">
+        <h4 class="font-mono text-[10.5px] tracking-[0.25em] text-accent-400">CONTACT</h4>
+        <ul class="mt-5 space-y-4 text-sm">
+          <li>
+            <a href="tel:+919152091020" class="group inline-flex items-center gap-2.5 text-gray-300 transition-colors hover:text-accent-300">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 text-accent-500" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
+              +91 91520 91020
+            </a>
+          </li>
+          <li>
+            <a href="mailto:sales@bluestarplastic.in" class="group inline-flex items-center gap-2.5 text-gray-300 transition-colors hover:text-accent-300">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 text-accent-500" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="m2 7 10 6 10-6"/></svg>
+              sales@bluestarplastic.in
+            </a>
+          </li>
+          <li class="flex items-start gap-2.5 text-gray-400">
+            <svg viewBox="0 0 24 24" class="mt-0.5 h-4 w-4 shrink-0 text-accent-500" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Plot 42, MIDC Industrial Area, Taloja, Navi Mumbai — 410208
+          </li>
+        </ul>
+        <a href="#quote" class="mt-6 inline-flex items-center gap-2 bg-accent-500 px-5 py-3 text-sm font-bold text-navy-950 transition-colors hover:bg-accent-400">
+          Request a Quote
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Legal bar -->
+    <div class="mt-14 border-t border-navy-800">
+      <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 sm:flex-row sm:px-8">
+        <p class="text-xs text-gray-500">&copy; 2026 Blue Star Plastic Industries. All rights reserved.</p>
+        <a href="#" class="nav-link font-mono text-[10px] tracking-[0.22em] text-gray-300 transition-colors hover:text-accent-400">BACK TO TOP ↑</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ================================================================
+       FLOATING WHATSAPP BUTTON
+       ================================================================ -->
+  <a href="https://wa.me/919152091020?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20your%20products."
+     target="_blank" rel="noopener noreferrer"
+     aria-label="Chat on WhatsApp"
+     class="wa-pulse fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-all duration-300 hover:scale-110 hover:bg-green-600 hover:shadow-xl">
+    <svg viewBox="0 0 24 24" class="h-7 w-7" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+
+  <!-- ================================================================
+       SCRIPTS
+       ================================================================ -->
+  <script>
+    // ---- Hamburger toggle ----
+    (function () {
+      var btn   = document.getElementById('hamburger-btn');
+      var menu  = document.getElementById('mobile-menu');
+      var hIcon = document.getElementById('hamburger-icon');
+      var cIcon = document.getElementById('close-icon');
+
+      function toggleMenu() {
+        var isOpen = menu.classList.toggle('hidden') === false;
+        btn.setAttribute('aria-expanded', isOpen);
+        hIcon.classList.toggle('hidden', isOpen);
+        cIcon.classList.toggle('hidden', !isOpen);
+        // Lock body scroll when open
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      }
+
+      btn.addEventListener('click', toggleMenu);
+
+      // Close on link click
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (!menu.classList.contains('hidden')) toggleMenu();
+        });
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !menu.classList.contains('hidden')) toggleMenu();
+      });
+
+      // Close on outside click
+      document.addEventListener('click', function (e) {
+        if (!menu.classList.contains('hidden') &&
+            !menu.contains(e.target) &&
+            !btn.contains(e.target)) {
+          toggleMenu();
+        }
+      });
+    })();
+
+    // ---- Phone validation: exactly 10 digits ----
+    (function () {
+      var form      = document.getElementById('quote-form');
+      var phone     = document.getElementById('q-phone');
+      var phoneErr  = document.getElementById('phone-error');
+      var successEl = document.getElementById('form-success');
+
+      // Strip non-digits as user types
+      phone.addEventListener('input', function () {
+        this.value = this.value.replace(/\D/g, '').slice(0, 10);
+        // Clear error while typing if valid
+        if (this.value.length === 10) {
+          phoneErr.classList.add('hidden');
+          this.classList.remove('border-red-500');
+          this.classList.add('border-gray-300');
+        }
+      });
+
+      form.addEventListener('submit', function (e) {
+        var digits = phone.value.replace(/\D/g, '');
+        if (digits.length !== 10) {
+          e.preventDefault();
+          phoneErr.classList.remove('hidden');
+          phone.classList.remove('border-gray-300');
+          phone.classList.add('border-red-500');
+          phone.focus();
+          return;
+        }
+        // Valid — let Web3Forms handle it, then show success
+        // (For demo, we intercept and show success after a brief delay)
+        e.preventDefault();
+        var btn = form.querySelector('button[type="submit"]');
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+
+        // Simulate submission (replace with real fetch to Web3Forms in production)
+        setTimeout(function () {
+          form.classList.add('hidden');
+          successEl.classList.remove('hidden');
+        }, 1200);
+
+        /* ---- Production Web3Forms submission ----
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(form)
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data.success) {
+            form.classList.add('hidden');
+            successEl.classList.remove('hidden');
+          }
+        });
+        */
+      });
+    })();
+
+    // ---- Header shadow on scroll ----
+    (function () {
+      var header = document.getElementById('site-header');
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 24) {
+          header.classList.add('shadow-md');
+        } else {
+          header.classList.remove('shadow-md');
+        }
+      }, { passive: true });
+    })();
+  </script>
+
+</body>
+</html>
